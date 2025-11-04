@@ -1,0 +1,36 @@
+{
+  "dashboard": {
+    "nav": {
+      "overview": "Visão Geral",
+      "shops": "Minhas Lojas",
+      "products": "Produtos",
+      "orders": "Pedidos",
+      "finances": "Finanças",
+      "reviews": "Avaliações",
+      "settings": "Configurações"
+    },
+    "welcome": "Bem-vindo de volta, {name}! 👋",
+    "subtitle": "Aqui está o que está acontecendo com suas lojas hoje.",
+    "stats": {
+      "totalSales": "Vendas Totais",
+      "totalOrders": "Pedidos Totais",
+      "totalProducts": "Produtos Totais",
+      "averageRating": "Avaliação Média"
+    },
+    "salesChart": {
+      "title": "Visão Geral de Vendas"
+    },
+    "topProducts": {
+      "title": "Produtos Top"
+    },
+    "recentOrders": {
+      "title": "Pedidos Recentes",
+      "orderNumber": "Pedido #",
+      "customer": "Cliente",
+      "amount": "Valor",
+      "status": "Status",
+      "date": "Data",
+      "viewAll": "Ver Todos os Pedidos"
+    }
+  }
+}

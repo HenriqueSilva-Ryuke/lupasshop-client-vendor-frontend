@@ -10,249 +10,157 @@
   },
   "hero": {
     "title": "Welcome to LupaShop",
-    "subtitle": "The integrated e-commerce platform where multiple independent stores come together in one digital space. Shop from the global marketplace or visit specific partner stores.",
+    "subtitle": "The integrated e-commerce platform where multiple independent stores come together in one digital space.",
     "shopNow": "Start Shopping",
-    "joinStore": "Join as Store",
-    "stats": {
-      "partnerStores": "Partner Stores",
-      "products": "Products",
-      "customers": "Customers",
-      "deliveries": "Deliveries"
+    "joinStore": "Join as Store"
+  },
+  "auth": {
+    "login": {
+      "title": "Login",
+      "email": "Email",
+      "password": "Password",
+      "rememberMe": "Remember me",
+      "button": "Sign In",
+      "forgotPassword": "Forgot password?",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up",
+      "invalidEmail": "Invalid email",
+      "emailRequired": "Email is required",
+      "passwordMinLength": "Password must be at least 6 characters",
+      "loginError": "Failed to login"
+    },
+    "register": {
+      "title": "Sign Up",
+      "name": "Full Name",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "terms": "I agree to the terms and conditions",
+      "button": "Create Account",
+      "haveAccount": "Already have an account?",
+      "signIn": "Sign in",
+      "nameMinLength": "Name must be at least 3 characters",
+      "emailInvalid": "Invalid email",
+      "passwordMinLength": "Password must be at least 8 characters",
+      "passwordMismatch": "Passwords do not match",
+      "termsRequired": "You must agree to the terms",
+      "registerError": "Failed to register"
+    },
+    "forgotPassword": {
+      "title": "Forgot Password?",
+      "email": "Email",
+      "button": "Send Reset Link",
+      "successMessage": "Check your email for a link to reset your password",
+      "backToLogin": "Back to Login",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Invalid email",
+      "error": "Failed to request password reset"
+    },
+    "resetPassword": {
+      "title": "Reset Password",
+      "password": "New Password",
+      "confirmPassword": "Confirm Password",
+      "button": "Reset Password",
+      "passwordMinLength": "Password must be at least 8 characters",
+      "passwordMismatch": "Passwords do not match",
+      "success": "Password reset successfully",
+      "error": "Failed to reset password"
     }
   },
-  "features": {
-    "title": "Key Features",
-    "heroTitle": "One Platform, Infinite Possibilities",
-    "heroDescription": "Discover how LupaShop revolutionizes e-commerce with integrated technology that benefits both store owners and customers.",
-    "scrollToExplore": "Scroll to explore",
-    "ctaTitle": "Ready to Transform your E-commerce?",
-    "ctaDescription": "Join hundreds of store owners who have already discovered the power of the integrated marketplace.",
-    "startNow": "Start Now",
-    "scheduleDemo": "Schedule Demo",
-    "integratedCatalog": {
-      "title": "Integrated Catalog",
-      "description": "All products in one global marketplace",
-      "detail1": "Unified catalog central",
-      "detail2": "Advanced filters by category and price",
-      "detail3": "Complete product and variant management",
-      "detail4": "Bulk import via CSV/Excel"
-    },
-    "centralizedLogistics": {
-      "title": "Smart Logistics",
-      "description": "Complete delivery solution and shipment management",
-      "detail1": "Premium LupaShop logistics",
-      "detail2": "Flexible carrier configuration",
-      "detail3": "Real-time tracking",
-      "detail4": "Returns and exchanges management"
-    },
-    "securePayments": {
-      "title": "Secure Payments",
-      "description": "Integrated and automated financial system",
-      "detail1": "Multicaixa Express and cards",
-      "detail2": "Automatic transfer to stores",
-      "detail3": "Financial dashboard with reports",
-      "detail4": "Configurable rates"
-    },
-    "storeManagement": {
-      "title": "Partner Store Management",
-      "description": "Complete admin panels for each partner store",
-      "detail1": "Own admin panel for each store",
-      "detail2": "Product, stock and order management",
-      "detail3": "Customized store page with branding",
-      "detail4": "Simplified registration with approval"
-    },
-    "catalog": {
-      "title": "Product Catalog",
-      "description": "Organized and searchable product management",
-      "detail1": "Advanced product categorization",
-      "detail2": "High-quality image galleries",
-      "detail3": "Detailed product specifications",
-      "detail4": "Automatic inventory sync"
-    },
-    "logistics": {
-      "title": "Logistics & Delivery",
-      "description": "Efficient shipping and delivery management",
-      "detail1": "Multiple shipping options",
-      "detail2": "Real-time delivery tracking",
-      "detail3": "Warehouse location management",
-      "detail4": "Delivery confirmation system"
-    },
-    "payments": {
-      "title": "Payment Processing",
-      "description": "Secure and flexible payment solutions",
-      "detail1": "Multiple payment methods",
-      "detail2": "PCI compliant security",
-      "detail3": "Automated reconciliation",
-      "detail4": "Customizable payment terms"
-    },
-    "checkout": {
-      "title": "Streamlined Checkout",
-      "description": "Fast and user-friendly purchase process",
-      "detail1": "One-click checkout",
-      "detail2": "Guest checkout option",
-      "detail3": "Saved payment methods",
-      "detail4": "Order confirmation system"
-    },
-    "social": {
-      "title": "Social Commerce",
-      "description": "Integrated social media and marketing tools",
-      "detail1": "Social media integration",
-      "detail2": "Automated social posts",
-      "detail3": "Social login options",
-      "detail4": "Influencer collaboration tools"
-    },
-    "unifiedCheckout": {
-      "title": "Unified Checkout",
-      "description": "Single cart with products from multiple stores",
-      "detail1": "Cart with products from multiple stores",
-      "detail2": "Smart freight calculation",
-      "detail3": "Consolidated or multiple delivery",
-      "detail4": "Integrated coupons and promotions"
-    },
-    "socialIntegration": {
-      "title": "Social Integration",
-      "description": "Connect your social networks and expand your sales",
-      "detail1": "Facebook and Instagram integration",
-      "detail2": "Automatic posts",
-      "detail3": "Checkout via social networks",
-      "detail4": "Connection of own accounts"
-    },
-    "stats": {
-      "partnerStores": "Partner Stores",
+  "dashboard": {
+    "nav": {
+      "overview": "Overview",
+      "shops": "My Stores",
       "products": "Products",
-      "customers": "Customers",
-      "deliveries": "Deliveries"
-    }
-  },
-  "benefits": {
-    "title": "Why Choose LupaShop?",
-    "subtitle": "A platform that benefits all sides of the e-commerce ecosystem",
-    "forStores": {
-      "title": "For Stores",
-      "subtitle": "Grow your business",
-      "point1": "Focus on your core operations while we handle logistics, payments, and marketing.",
-      "point2": "Customized store pages with your branding and catalog.",
-      "point3": "Automated payouts with configurable fees.",
-      "point4": "Access to a larger customer base through our integrated marketplace."
+      "orders": "Orders",
+      "finances": "Finances",
+      "reviews": "Reviews",
+      "settings": "Settings"
     },
-    "forCustomers": {
-      "title": "For Customers",
-      "subtitle": "Unique experience",
-      "point1": "Shop from thousands of products across multiple stores in one place.",
-      "point2": "Advanced filters by store, category, price, and more.",
-      "point3": "Consolidated shipping and real-time checkout.",
-      "point4": "Secure payments and easy returns."
-    },
-    "shared": {
-      "title": "Everyone Wins with LupaShop",
-      "description": "A platform where store owners grow and customers find exactly what they need"
-    }
-  },
-  "cta": {
-    "title": "Ready to Transform Your Shopping Experience?",
-    "subtitle": "Join LupaShop today and be part of the future of integrated e-commerce in Angola and beyond.",
-    "registerStore": "Register Your Store",
-    "exploreProducts": "Explore Products",
+    "welcome": "Welcome, {name}!",
+    "subtitle": "Here's your store dashboard",
     "stats": {
-      "activeStores": "Active Stores",
-      "products": "Products",
-      "customers": "Customers",
-      "deliveries": "Deliveries"
+      "totalSales": "Total Sales",
+      "totalOrders": "Total Orders",
+      "totalProducts": "Total Products",
+      "averageRating": "Average Rating"
     },
-    "features": {
-      "setup": "Setup in 24h",
-      "support": "24/7 Support",
-      "securePayment": "Secure Payment",
-      "fastDelivery": "Fast Delivery"
-    }
-  },
-  "footer": {
-    "lupashop": "LupaShop",
-    "description": "Integrated e-commerce platform for Angola's businesses and customers.",
-    "about": "About",
-    "careers": "Careers",
-    "press": "Press",
-    "blog": "Blog",
-    "forStores": "For Stores",
-    "registerStore": "Register Store",
-    "pricing": "Pricing",
-    "successStories": "Success Stories",
-    "merchantSupport": "Merchant Support",
-    "support": "Support",
-    "forCustomers": "For Customers",
-    "shopNow": "Shop Now",
-    "trackOrders": "Track Orders",
-    "helpCenter": "Help Center",
-    "returns": "Returns",
-    "connect": "Connect",
-    "facebook": "Facebook",
-    "instagram": "Instagram",
-    "linkedin": "LinkedIn",
-    "contactUs": "Contact Us",
-    "paymentMethods": "Payment Methods:",
-    "verified": "Verified",
-    "secure": "Secure",
-    "ssl": "SSL",
-    "backToTop": "Back to top",
-    "tagline": "Integrated Marketplace",
-    "privacy": "Privacy",
-    "terms": "Terms",
-    "cookies": "Cookies",
-    "linkedinLabel": "LinkedIn",
-    "facebookLabel": "Facebook",
-    "instagramLabel": "Instagram",
-    "copyright": "© 2025 LupaShop. All rights reserved."
-  },
-  "about": {
-    "hero": {
-      "title": "About LupaShop",
-      "description": "We are revolutionizing e-commerce by connecting independent stores in a unified digital marketplace, creating opportunities for both sellers and buyers worldwide."
+    "common": {
+      "edit": "Edit",
+      "delete": "Delete",
+      "save": "Save",
+      "cancel": "Cancel",
+      "create": "Create",
+      "update": "Update",
+      "close": "Close",
+      "add": "Add",
+      "search": "Search...",
+      "logout": "Logout",
+      "manageProfile": "Manage your profile and settings",
+      "actions": "Actions"
     },
-    "stats": {
-      "stores": "Partner Stores",
-      "products": "Products",
-      "customers": "Happy Customers",
-      "deliveries": "Successful Deliveries"
+    "shops": {
+      "manage": "Manage your stores",
+      "newShop": "New Store",
+      "editShop": "Edit Store",
+      "name": "Store Name",
+      "email": "Email",
+      "phone": "Phone",
+      "status": "Status",
+      "active": "Active",
+      "inactive": "Inactive",
+      "pending": "Pending"
     },
-    "mission": {
-      "title": "Our Mission",
-      "description": "To democratize e-commerce by providing independent stores with the tools and platform they need to compete with large retailers, while offering customers a diverse and trustworthy shopping experience."
+    "products": {
+      "manage": "Manage your products",
+      "newProduct": "New Product",
+      "editProduct": "Edit Product",
+      "name": "Product Name",
+      "price": "Price",
+      "stock": "Stock",
+      "category": "Category",
+      "general": "General",
+      "addProduct": "Add Product",
+      "searchProducts": "Search products..."
     },
-    "values": {
-      "title": "Our Values",
-      "trust": {
-        "title": "Trust & Transparency",
-        "description": "We believe in building lasting relationships based on honesty, transparency, and mutual respect between stores and customers."
-      },
-      "innovation": {
-        "title": "Innovation",
-        "description": "We continuously evolve our platform with cutting-edge technology to provide the best experience for our community."
-      },
-      "community": {
-        "title": "Community",
-        "description": "We foster a vibrant community of entrepreneurs and shoppers, creating opportunities and connections worldwide."
-      }
+    "orders": {
+      "manage": "Manage your orders",
+      "orderDetails": "Order Details",
+      "orderNumber": "Order #",
+      "customer": "Customer",
+      "amount": "Amount",
+      "date": "Date",
+      "status": "Status",
+      "pending": "Pending",
+      "confirmed": "Confirmed",
+      "shipped": "Shipped",
+      "delivered": "Delivered"
     },
-    "team": {
-      "title": "Meet Our Team",
-      "founder": {
-        "name": "João Silva",
-        "role": "Founder & CEO"
-      },
-      "cto": {
-        "name": "Maria Santos",
-        "role": "Chief Technology Officer"
-      },
-      "design": {
-        "name": "Pedro Costa",
-        "role": "Head of Design"
-      }
+    "finances": {
+      "manage": "Manage your finances",
+      "income": "Income",
+      "expenses": "Expenses",
+      "balance": "Balance",
+      "transactions": "Transactions",
+      "sale": "Sale"
     },
-    "cta": {
-      "title": "Join Our Community",
-      "description": "Whether you're a store owner looking to grow your business or a customer seeking unique products, LupaShop is your gateway to the future of e-commerce.",
-      "joinStore": "Join as Store",
-      "startShopping": "Start Shopping"
+    "reviews": {
+      "manage": "Manage your reviews",
+      "stats": "Review Stats",
+      "total": "Total Reviews",
+      "approved": "Approved",
+      "pending": "Pending",
+      "approve": "Approve",
+      "reject": "Reject",
+      "moderation": "Moderation"
+    },
+    "settings": {
+      "manage": "Manage your settings",
+      "profile": "Profile",
+      "security": "Security",
+      "changePassword": "Change Password",
+      "logout": "Logout",
+      "danger": "Danger Zone"
     }
   }
 }

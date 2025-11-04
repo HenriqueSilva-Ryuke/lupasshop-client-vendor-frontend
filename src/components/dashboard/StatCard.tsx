@@ -1,0 +1,57 @@
+'use client';
+
+import React from 'react';
+import { motion } from 'motion/react';
+
+interface StatCardProps {
+  icon: string;
+  label: string;
+  value: string;
+  change: string;
+  color: string;
+  isPositive: boolean;
+  isLoading?: boolean;
+}
+
+export default function StatCard({
+  icon,
+  label,
+  value,
+  change,
+  color,
+  isPositive,
+  isLoading = false,
+}: StatCardProps) {
+  return (
+    <motion.div
+      whileHover={{ scale: 1.02 }}
+      className="bg-white rounded-lg p-6 border border-gray-200 hover:border-gray-300 transition-colors"
+    >
+      <div className="flex items-start justify-between">
+        <div>
+          <p className="text-gray-600 text-sm font-medium">{label}</p>
+          <div className="mt-3">
+            {isLoading ? (
+              <div className="h-8 bg-gray-200 rounded animate-pulse w-24" />
+            ) : (
+              <p className="text-2xl font-bold text-gray-900">{value}</p>
+            )}
+          </div>
+          <p className={`text-xs mt-2 ${isPositive ? 'text-green-600' : 'text-red-600'}`}>
+            {change}
+          </p>
+        </div>
+        <div className={`${color} p-3 rounded-lg`}>
+          <span className="material-icons text-white">{icon}</span>
+        </div>
+      </div>
+
+      {/* Sparkline effect */}
+      <motion.div
+        animate={{ opacity: [0.5, 1, 0.5] }}
+        transition={{ duration: 2, repeat: Infinity }}
+        className="mt-4 h-1 bg-linear-to-r from-transparent via-current to-transparent opacity-30"
+      />
+    </motion.div>
+  );
+}

@@ -1,3 +1,6 @@
+'use client';
+
+import { useParams } from 'next/navigation';
 import PageTransition from '../../components/PageTransition';
 import Navbar from '../../components/Navbar';
 import HeroSection from '../../components/HeroSection';

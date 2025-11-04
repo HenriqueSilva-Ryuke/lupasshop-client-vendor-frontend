@@ -1,0 +1,36 @@
+{
+  "dashboard": {
+    "nav": {
+      "overview": "Overview",
+      "shops": "My Shops",
+      "products": "Products",
+      "orders": "Orders",
+      "finances": "Finances",
+      "reviews": "Reviews",
+      "settings": "Settings"
+    },
+    "welcome": "Welcome back, {name}! 👋",
+    "subtitle": "Here's what's happening with your stores today.",
+    "stats": {
+      "totalSales": "Total Sales",
+      "totalOrders": "Total Orders",
+      "totalProducts": "Total Products",
+      "averageRating": "Average Rating"
+    },
+    "salesChart": {
+      "title": "Sales Overview"
+    },
+    "topProducts": {
+      "title": "Top Products"
+    },
+    "recentOrders": {
+      "title": "Recent Orders",
+      "orderNumber": "Order #",
+      "customer": "Customer",
+      "amount": "Amount",
+      "status": "Status",
+      "date": "Date",
+      "viewAll": "View All Orders"
+    }
+  }
+}

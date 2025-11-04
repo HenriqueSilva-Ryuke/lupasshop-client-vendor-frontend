@@ -1,0 +1,73 @@
+{
+  "login": {
+    "title": "Bem-vindo de volta",
+    "subtitle": "Entre na sua conta para continuar",
+    "email": "E-mail",
+    "password": "Senha",
+    "rememberMe": "Lembrar de mim",
+    "forgotPassword": "Esqueceu a senha?",
+    "button": "Entrar",
+    "noAccount": "Não tem conta?",
+    "signUp": "Registre-se aqui",
+    "errors": {
+      "emailRequired": "E-mail é obrigatório",
+      "emailInvalid": "E-mail inválido",
+      "passwordRequired": "Senha é obrigatória",
+      "passwordMin": "Senha deve ter pelo menos 6 caracteres",
+      "invalidCredentials": "E-mail ou senha incorretos"
+    }
+  },
+  "register": {
+    "title": "Criar conta",
+    "subtitle": "Junte-se ao LupaShop e comece a vender ou comprar",
+    "name": "Nome completo",
+    "email": "E-mail",
+    "password": "Senha",
+    "confirmPassword": "Confirmar senha",
+    "terms": "Concordo com os Termos de Serviço e Política de Privacidade",
+    "button": "Registrar",
+    "haveAccount": "Já tem conta?",
+    "signIn": "Faça login aqui",
+    "errors": {
+      "nameRequired": "Nome é obrigatório",
+      "nameMin": "Nome deve ter pelo menos 3 caracteres",
+      "emailRequired": "E-mail é obrigatório",
+      "emailInvalid": "E-mail inválido",
+      "emailExists": "Este e-mail já está cadastrado",
+      "passwordRequired": "Senha é obrigatória",
+      "passwordMin": "Senha deve ter pelo menos 8 caracteres",
+      "passwordStrength": "Senha deve conter letras, números e caracteres especiais",
+      "confirmPasswordRequired": "Confirme a senha",
+      "passwordMismatch": "As senhas não coincidem",
+      "termsRequired": "Você deve concordar com os termos"
+    }
+  },
+  "forgotPassword": {
+    "title": "Recuperar senha",
+    "subtitle": "Digite seu e-mail para receber um link de recuperação",
+    "email": "E-mail",
+    "button": "Enviar link",
+    "backToLogin": "Voltar para login",
+    "successMessage": "E-mail de recuperação enviado com sucesso! Verifique sua caixa de entrada.",
+    "errors": {
+      "emailRequired": "E-mail é obrigatório",
+      "emailInvalid": "E-mail inválido",
+      "emailNotFound": "Este e-mail não foi encontrado"
+    }
+  },
+  "resetPassword": {
+    "title": "Redefinir senha",
+    "subtitle": "Digite sua nova senha",
+    "password": "Nova senha",
+    "confirmPassword": "Confirmar senha",
+    "button": "Redefinir senha",
+    "successMessage": "Senha redefinida com sucesso! Você será redirecionado para o login.",
+    "errors": {
+      "passwordRequired": "Senha é obrigatória",
+      "passwordMin": "Senha deve ter pelo menos 8 caracteres",
+      "confirmPasswordRequired": "Confirme a senha",
+      "passwordMismatch": "As senhas não coincidem",
+      "invalidToken": "Link de recuperação inválido ou expirado"
+    }
+  }
+}

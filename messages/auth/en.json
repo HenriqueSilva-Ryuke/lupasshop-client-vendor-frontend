@@ -1,0 +1,73 @@
+{
+  "login": {
+    "title": "Welcome back",
+    "subtitle": "Sign in to your account to continue",
+    "email": "Email",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "button": "Sign In",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign up here",
+    "errors": {
+      "emailRequired": "Email is required",
+      "emailInvalid": "Invalid email",
+      "passwordRequired": "Password is required",
+      "passwordMin": "Password must be at least 6 characters",
+      "invalidCredentials": "Invalid email or password"
+    }
+  },
+  "register": {
+    "title": "Create account",
+    "subtitle": "Join LupaShop and start selling or shopping",
+    "name": "Full name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "terms": "I agree to the Terms of Service and Privacy Policy",
+    "button": "Sign Up",
+    "haveAccount": "Already have an account?",
+    "signIn": "Sign in here",
+    "errors": {
+      "nameRequired": "Name is required",
+      "nameMin": "Name must be at least 3 characters",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Invalid email",
+      "emailExists": "This email is already registered",
+      "passwordRequired": "Password is required",
+      "passwordMin": "Password must be at least 8 characters",
+      "passwordStrength": "Password must contain letters, numbers and special characters",
+      "confirmPasswordRequired": "Please confirm the password",
+      "passwordMismatch": "Passwords do not match",
+      "termsRequired": "You must agree to the terms"
+    }
+  },
+  "forgotPassword": {
+    "title": "Recover password",
+    "subtitle": "Enter your email to receive a recovery link",
+    "email": "Email",
+    "button": "Send link",
+    "backToLogin": "Back to login",
+    "successMessage": "Recovery email sent successfully! Check your inbox.",
+    "errors": {
+      "emailRequired": "Email is required",
+      "emailInvalid": "Invalid email",
+      "emailNotFound": "This email was not found"
+    }
+  },
+  "resetPassword": {
+    "title": "Reset password",
+    "subtitle": "Enter your new password",
+    "password": "New password",
+    "confirmPassword": "Confirm password",
+    "button": "Reset password",
+    "successMessage": "Password reset successfully! You will be redirected to login.",
+    "errors": {
+      "passwordRequired": "Password is required",
+      "passwordMin": "Password must be at least 8 characters",
+      "confirmPasswordRequired": "Please confirm the password",
+      "passwordMismatch": "Passwords do not match",
+      "invalidToken": "Recovery link is invalid or expired"
+    }
+  }
+}
