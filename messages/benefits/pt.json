@@ -1,0 +1,24 @@
+{
+  "title": "Por que Escolher LupaShop?",
+  "subtitle": "Uma plataforma que beneficia todos os lados do ecossistema de e-commerce",
+  "forStores": {
+    "title": "Para Lojas",
+    "subtitle": "Cresça seu negócio",
+    "point1": "Concentre-se nas suas operações principais enquanto cuidamos da logística, pagamentos e marketing.",
+    "point2": "Páginas de loja personalizadas com sua marca e catálogo.",
+    "point3": "Pagamentos automáticos com taxas configuráveis.",
+    "point4": "Acesso a uma base de clientes maior através do nosso marketplace integrado."
+  },
+  "forCustomers": {
+    "title": "Para Clientes",
+    "subtitle": "Experiência única",
+    "point1": "Compre milhares de produtos de várias lojas num só lugar.",
+    "point2": "Filtros avançados por loja, categoria, preço e mais.",
+    "point3": "Envio consolidado e checkout em tempo real.",
+    "point4": "Pagamentos seguros e devoluções fáceis."
+  },
+  "shared": {
+    "title": "Todos Ganham com o LupaShop",
+    "description": "Uma plataforma onde lojistas crescem e clientes encontram exatamente o que precisam"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "hero": {
+    "title": "About LupaShop",
+    "description": "We are revolutionizing e-commerce by connecting independent stores in a unified digital marketplace, creating opportunities for both sellers and buyers worldwide."
+  },
+  "stats": {
+    "title": "Our Impact",
+    "stores": "Partner Stores",
+    "products": "Products",
+    "customers": "Happy Customers",
+    "deliveries": "Successful Deliveries"
+  },
+  "mission": {
+    "title": "Our Mission",
+    "description": "To democratize e-commerce by providing independent stores with the tools and platform they need to compete with large retailers, while offering customers a diverse and trustworthy shopping experience."
+  },
+  "values": {
+    "title": "Our Values",
+    "trust": {
+      "title": "Trust & Transparency",
+      "description": "We believe in building lasting relationships based on honesty, transparency, and mutual respect between stores and customers."
+    },
+    "innovation": {
+      "title": "Innovation",
+      "description": "We continuously evolve our platform with cutting-edge technology to provide the best experience for our community."
+    },
+    "community": {
+      "title": "Community",
+      "description": "We foster a vibrant community of entrepreneurs and shoppers, creating opportunities and connections worldwide."
+    }
+  },
+  "team": {
+    "title": "Meet Our Team",
+    "founder": {
+      "name": "João Silva",
+      "role": "Founder & CEO"
+    },
+    "cto": {
+      "name": "Maria Santos",
+      "role": "Chief Technology Officer"
+    },
+    "design": {
+      "name": "Pedro Costa",
+      "role": "Head of Design"
+    }
+  },
+  "cta": {
+    "title": "Join Our Community",
+    "description": "Whether you're a store owner looking to grow your business or a customer seeking unique products, LupaShop is your gateway to the future of e-commerce.",
+    "joinStore": "Join as Store",
+    "startShopping": "Start Shopping"
+  }
+}

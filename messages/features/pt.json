@@ -1,0 +1,104 @@
+{
+  "title": "Recursos Principais",
+  "heroTitle": "Uma Plataforma, Infinitas Possibilidades",
+  "heroDescription": "Descubra como o LupaShop revoluciona o e-commerce com tecnologia integrada que beneficia tanto lojistas quanto clientes.",
+  "scrollToExplore": "Scroll para explorar",
+  "ctaTitle": "Pronto para Transformar seu E-commerce?",
+  "ctaDescription": "Junte-se a centenas de lojistas que já descobriram o poder do marketplace integrado.",
+  "startNow": "Começar Agora",
+  "scheduleDemo": "Agendar Demonstração",
+  "integratedCatalog": {
+    "title": "Catálogo Integrado",
+    "description": "Todos os produtos num único marketplace global",
+    "detail1": "Catálogo central unificado",
+    "detail2": "Filtros avançados por categoria e preço",
+    "detail3": "Gestão completa de produtos e variantes",
+    "detail4": "Importação em massa via CSV/Excel"
+  },
+  "centralizedLogistics": {
+    "title": "Logística Inteligente",
+    "description": "Solução completa de entregas e gestão de envios",
+    "detail1": "Logística premium da LupaShop",
+    "detail2": "Configuração flexível de transportadoras",
+    "detail3": "Rastreamento em tempo real",
+    "detail4": "Gestão de devoluções e trocas"
+  },
+  "securePayments": {
+    "title": "Pagamentos Seguros",
+    "description": "Sistema financeiro integrado e automatizado",
+    "detail1": "Multicaixa Express e cartões",
+    "detail2": "Repasse automático para lojas",
+    "detail3": "Painel financeiro com relatórios",
+    "detail4": "Taxas configuráveis"
+  },
+  "storeManagement": {
+    "title": "Gestão de Lojas Parceiras",
+    "description": "Painéis administrativos completos para cada loja parceira",
+    "detail1": "Painel administrativo próprio para cada loja",
+    "detail2": "Gestão de produtos, estoques e pedidos",
+    "detail3": "Página personalizada com marca da loja",
+    "detail4": "Registo com aprovação simplificada"
+  },
+  "catalog": {
+    "title": "Catálogo de Produtos",
+    "description": "Gestão organizada e pesquisável de produtos",
+    "detail1": "Categorização avançada de produtos",
+    "detail2": "Galerias de imagens de alta qualidade",
+    "detail3": "Especificações detalhadas do produto",
+    "detail4": "Sincronização automática de inventário"
+  },
+  "logistics": {
+    "title": "Logística e Entrega",
+    "description": "Gestão eficiente de envio e entrega",
+    "detail1": "Múltiplas opções de envio",
+    "detail2": "Rastreamento de entrega em tempo real",
+    "detail3": "Gestão de localização de armazém",
+    "detail4": "Sistema de confirmação de entrega"
+  },
+  "payments": {
+    "title": "Processamento de Pagamentos",
+    "description": "Soluções de pagamento seguras e flexíveis",
+    "detail1": "Múltiplos métodos de pagamento",
+    "detail2": "Segurança compatível com PCI",
+    "detail3": "Reconciliação automatizada",
+    "detail4": "Termos de pagamento personalizáveis"
+  },
+  "checkout": {
+    "title": "Checkout Otimizado",
+    "description": "Processo de compra rápido e amigável",
+    "detail1": "Checkout com um clique",
+    "detail2": "Opção de checkout para convidados",
+    "detail3": "Métodos de pagamento salvos",
+    "detail4": "Sistema de confirmação de pedido"
+  },
+  "social": {
+    "title": "Comércio Social",
+    "description": "Ferramentas integradas de mídia social e marketing",
+    "detail1": "Integração com mídia social",
+    "detail2": "Publicações sociais automatizadas",
+    "detail3": "Opções de login social",
+    "detail4": "Ferramentas de colaboração com influenciadores"
+  },
+  "unifiedCheckout": {
+    "title": "Checkout Unificado",
+    "description": "Carrinho único com produtos de múltiplas lojas",
+    "detail1": "Carrinho com produtos de várias lojas",
+    "detail2": "Cálculo de frete inteligente",
+    "detail3": "Entrega consolidada ou múltipla",
+    "detail4": "Cupões e promoções integradas"
+  },
+  "socialIntegration": {
+    "title": "Integração Social",
+    "description": "Conecte suas redes sociais e amplie suas vendas",
+    "detail1": "Integração com Facebook e Instagram",
+    "detail2": "Publicações automáticas",
+    "detail3": "Checkout via redes sociais",
+    "detail4": "Conexão de contas próprias"
+  },
+  "stats": {
+    "partnerStores": "Lojas Parceiras",
+    "products": "Produtos",
+    "customers": "Clientes",
+    "deliveries": "Entregas"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "title": "Bem-vindo ao LupaShop",
+  "subtitle": "A plataforma de e-commerce integrada onde múltiplas lojas independentes se unem num único espaço digital. Compre no marketplace global ou visite lojas parceiras específicas.",
+  "shopNow": "Começar a Comprar",
+  "joinStore": "Juntar-se como Loja",
+  "stats": {
+    "partnerStores": "Lojas Parceiras",
+    "products": "Produtos",
+    "customers": "Clientes",
+    "deliveries": "Entregas"
+  }
+}

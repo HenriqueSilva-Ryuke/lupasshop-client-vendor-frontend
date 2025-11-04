@@ -1,0 +1,53 @@
+{
+  "hero": {
+    "title": "Sobre o LupaShop",
+    "description": "Estamos revolucionando o e-commerce conectando lojas independentes em um marketplace digital unificado, criando oportunidades para vendedores e compradores em todo o mundo."
+  },
+  "stats": {
+    "title": "Nosso Impacto",
+    "stores": "Lojas Parceiras",
+    "products": "Produtos",
+    "customers": "Clientes Satisfeitos",
+    "deliveries": "Entregas Bem-Sucedidas"
+  },
+  "mission": {
+    "title": "Nossa Missão",
+    "description": "Democratizar o e-commerce fornecendo às lojas independentes as ferramentas e plataforma necessárias para competir com grandes varejistas, oferecendo aos clientes uma experiência de compra diversificada e confiável."
+  },
+  "values": {
+    "title": "Nossos Valores",
+    "trust": {
+      "title": "Confiança & Transparência",
+      "description": "Acreditamos em construir relacionamentos duradouros baseados em honestidade, transparência e respeito mútuo entre lojas e clientes."
+    },
+    "innovation": {
+      "title": "Inovação",
+      "description": "Evoluímos continuamente nossa plataforma com tecnologia de ponta para proporcionar a melhor experiência para nossa comunidade."
+    },
+    "community": {
+      "title": "Comunidade",
+      "description": "Fomentamos uma comunidade vibrante de empreendedores e compradores, criando oportunidades e conexões em todo o mundo."
+    }
+  },
+  "team": {
+    "title": "Conheça Nossa Equipe",
+    "founder": {
+      "name": "João Silva",
+      "role": "Fundador & CEO"
+    },
+    "cto": {
+      "name": "Maria Santos",
+      "role": "Diretora de Tecnologia"
+    },
+    "design": {
+      "name": "Pedro Costa",
+      "role": "Diretor de Design"
+    }
+  },
+  "cta": {
+    "title": "Junte-se à Nossa Comunidade",
+    "description": "Seja você um lojista buscando crescer seu negócio ou um cliente em busca de produtos únicos, o LupaShop é seu portal para o futuro do e-commerce.",
+    "joinStore": "Juntar-se como Loja",
+    "startShopping": "Começar a Comprar"
+  }
+}

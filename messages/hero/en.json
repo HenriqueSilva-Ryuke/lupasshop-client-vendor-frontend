@@ -1,0 +1,12 @@
+{
+  "title": "Welcome to LupaShop",
+  "subtitle": "The integrated e-commerce platform where multiple independent stores come together in one digital space. Shop from the global marketplace or visit specific partner stores.",
+  "shopNow": "Start Shopping",
+  "joinStore": "Join as Store",
+  "stats": {
+    "partnerStores": "Partner Stores",
+    "products": "Products",
+    "customers": "Customers",
+    "deliveries": "Deliveries"
+  }
+}
