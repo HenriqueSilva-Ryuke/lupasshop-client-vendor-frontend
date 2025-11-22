@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import StatCard from '@/components/dashboard/StatCard';
 import RecentOrdersTable from '@/components/dashboard/RecentOrdersTable';
 import { useAuthStore } from '@/stores/authStore';
+import { fetchDashboardStats } from '@/lib/dashboard';
 
 interface DashboardStats {
   totalSales: number;
@@ -26,16 +27,18 @@ export default function OverviewView() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulated data - will be replaced with actual API calls
-    setTimeout(() => {
-      setStats({
-        totalSales: 12450.50,
-        totalOrders: 48,
-        totalProducts: 156,
-        activeProducts: 142,
-      });
-      setIsLoading(false);
-    }, 1000);
+    const loadStats = async () => {
+      try {
+        const data = await fetchDashboardStats();
+        setStats(data);
+      } catch (error) {
+        console.error('Failed to load dashboard stats:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadStats();
   }, []);
 
   const statItems = [

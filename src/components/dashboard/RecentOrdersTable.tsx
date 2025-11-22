@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
+import { fetchRecentOrders } from '@/lib/dashboard';
 
 interface Order {
   id: string;
@@ -19,44 +20,18 @@ export default function RecentOrdersTable() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulated data
-    setTimeout(() => {
-      setOrders([
-        {
-          id: '1',
-          orderNumber: '#OD-001',
-          customer: 'João Silva',
-          amount: 2500.00,
-          status: 'delivered',
-          date: '2025-11-03',
-        },
-        {
-          id: '2',
-          orderNumber: '#OD-002',
-          customer: 'Maria Santos',
-          amount: 1800.50,
-          status: 'shipped',
-          date: '2025-11-04',
-        },
-        {
-          id: '3',
-          orderNumber: '#OD-003',
-          customer: 'Pedro Costa',
-          amount: 3200.00,
-          status: 'confirmed',
-          date: '2025-11-04',
-        },
-        {
-          id: '4',
-          orderNumber: '#OD-004',
-          customer: 'Ana Oliveira',
-          amount: 1500.00,
-          status: 'pending',
-          date: '2025-11-04',
-        },
-      ]);
-      setIsLoading(false);
-    }, 800);
+    const loadOrders = async () => {
+      try {
+        const data = await fetchRecentOrders();
+        setOrders(data);
+      } catch (error) {
+        console.error('Failed to load recent orders:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadOrders();
   }, []);
 
   const statusConfig = {

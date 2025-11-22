@@ -4,3 +4,4 @@ export * from './useOrdersQuery';
 export * from './useFinancesQuery';
 export * from './useReviewsQuery';
 export * from './useSettingsQuery';
+export * from './useShopsQuery';

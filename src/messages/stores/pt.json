@@ -1,0 +1,17 @@
+{
+  "title": "Descubra Lojas",
+  "subtitle": "Compre em várias lojas independentes em um único lugar.",
+  "searchPlaceholder": "Pesquisar lojas ou produtos...",
+  "viewGrid": "Grade",
+  "viewList": "Lista",
+  "filterAll": "Todas as Categorias",
+  "sortRelevance": "Relevância",
+  "sortTopRated": "Mais votadas",
+  "sortNewest": "Mais recentes",
+  "noStoresFound": "Nenhuma loja encontrada",
+  "shopsCount": "{count} lojas"
+  ,
+  ,
+  "viewStore": "Visitar Loja"
+  "clear": "Limpar"
+}

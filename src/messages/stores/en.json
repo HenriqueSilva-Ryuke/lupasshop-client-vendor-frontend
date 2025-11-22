@@ -1,0 +1,17 @@
+{
+  "title": "Discover Stores",
+  "subtitle": "Shop across multiple independent stores in one place.",
+  "searchPlaceholder": "Search stores or products...",
+  "viewGrid": "Grid",
+  "viewList": "List",
+  "filterAll": "All Categories",
+  "sortRelevance": "Relevance",
+  "sortTopRated": "Top Rated",
+  "sortNewest": "Newest",
+  "noStoresFound": "No stores found",
+  "shopsCount": "{count} stores"
+  ,
+  ,
+  "viewStore": "Visit Store"
+  "clear": "Clear"
+}
