@@ -1,36 +1,48 @@
 {
-  "dashboard": {
-    "nav": {
-      "overview": "Visão Geral",
-      "shops": "Minhas Lojas",
-      "products": "Produtos",
-      "orders": "Pedidos",
-      "finances": "Finanças",
-      "reviews": "Avaliações",
-      "settings": "Configurações"
-    },
-    "welcome": "Bem-vindo de volta, {name}! 👋",
-    "subtitle": "Aqui está o que está acontecendo com suas lojas hoje.",
-    "stats": {
-      "totalSales": "Vendas Totais",
-      "totalOrders": "Pedidos Totais",
-      "totalProducts": "Produtos Totais",
-      "averageRating": "Avaliação Média"
-    },
-    "salesChart": {
-      "title": "Visão Geral de Vendas"
-    },
-    "topProducts": {
-      "title": "Produtos Top"
-    },
-    "recentOrders": {
-      "title": "Pedidos Recentes",
-      "orderNumber": "Pedido #",
-      "customer": "Cliente",
-      "amount": "Valor",
-      "status": "Status",
-      "date": "Data",
-      "viewAll": "Ver Todos os Pedidos"
-    }
+  "nav": {
+    "overview": "Visão Geral",
+    "products": "Produtos",
+    "orders": "Pedidos",
+    "finances": "Finanças",
+    "reviews": "Avaliações",
+    "settings": "Configurações"
+  },
+  "common": {
+    "logout": "Sair"
+  },
+  "welcome": "Bem-vindo, {name}!",
+  "subtitle": "Aqui está o que está acontecendo com sua loja hoje.",
+  "stats": {
+    "totalSales": "Vendas Totais",
+    "totalOrders": "Total de Pedidos",
+    "totalProducts": "Total de Produtos",
+    "averageRating": "Avaliação Média"
+  },
+  "products": {
+    "manage": "Gerenciar Produtos",
+    "addProduct": "Adicionar Produto",
+    "name": "Nome",
+    "category": "Categoria",
+    "price": "Preço",
+    "stock": "Estoque",
+    "general": "Geral"
+  },
+  "orders": {
+    "manage": "Gerenciar Pedidos",
+    "orderNumber": "Pedido #",
+    "customer": "Cliente",
+    "date": "Data",
+    "amount": "Valor",
+    "status": "Status"
+  },
+  "finances": {
+    "manage": "Gerenciar Finanças"
+  },
+  "reviews": {
+    "manage": "Gerenciar Avaliações"
+  },
+  "settings": {
+    "manage": "Configurações da Loja",
+    "profile": "Perfil da Loja"
   }
 }

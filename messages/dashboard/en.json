@@ -1,36 +1,48 @@
 {
-  "dashboard": {
-    "nav": {
-      "overview": "Overview",
-      "shops": "My Shops",
-      "products": "Products",
-      "orders": "Orders",
-      "finances": "Finances",
-      "reviews": "Reviews",
-      "settings": "Settings"
-    },
-    "welcome": "Welcome back, {name}! 👋",
-    "subtitle": "Here's what's happening with your stores today.",
-    "stats": {
-      "totalSales": "Total Sales",
-      "totalOrders": "Total Orders",
-      "totalProducts": "Total Products",
-      "averageRating": "Average Rating"
-    },
-    "salesChart": {
-      "title": "Sales Overview"
-    },
-    "topProducts": {
-      "title": "Top Products"
-    },
-    "recentOrders": {
-      "title": "Recent Orders",
-      "orderNumber": "Order #",
-      "customer": "Customer",
-      "amount": "Amount",
-      "status": "Status",
-      "date": "Date",
-      "viewAll": "View All Orders"
-    }
+  "nav": {
+    "overview": "Overview",
+    "products": "Products",
+    "orders": "Orders",
+    "finances": "Finances",
+    "reviews": "Reviews",
+    "settings": "Settings"
+  },
+  "common": {
+    "logout": "Logout"
+  },
+  "welcome": "Welcome, {name}!",
+  "subtitle": "Here's what's happening with your store today.",
+  "stats": {
+    "totalSales": "Total Sales",
+    "totalOrders": "Total Orders",
+    "totalProducts": "Total Products",
+    "averageRating": "Average Rating"
+  },
+  "products": {
+    "manage": "Manage Products",
+    "addProduct": "Add Product",
+    "name": "Name",
+    "category": "Category",
+    "price": "Price",
+    "stock": "Stock",
+    "general": "General"
+  },
+  "orders": {
+    "manage": "Manage Orders",
+    "orderNumber": "Order #",
+    "customer": "Customer",
+    "date": "Date",
+    "amount": "Amount",
+    "status": "Status"
+  },
+  "finances": {
+    "manage": "Manage Finances"
+  },
+  "reviews": {
+    "manage": "Manage Reviews"
+  },
+  "settings": {
+    "manage": "Store Settings",
+    "profile": "Store Profile"
   }
 }

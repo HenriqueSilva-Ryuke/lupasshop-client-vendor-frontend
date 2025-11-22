@@ -1,52 +1,39 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
-import { useAuthStore } from '@/stores/authStore';
 
 export default function SettingsView() {
-  const t = useTranslations('dashboard');
-  const { user, logout } = useAuthStore();
+  const t = useTranslations('dashboard.settings');
 
   return (
-    <div className="space-y-6">
-      <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
-        <h1 className="text-2xl font-bold text-gray-900">{t('nav.settings')}</h1>
-        <p className="text-gray-600 mt-1">{t('settings.manage')}</p>
-      </motion.div>
+    <div className="space-y-8">
+      <div>
+        <h1 className="text-2xl font-bold text-gray-900">{t('manage')}</h1>
+        <p className="text-gray-500">Configure your store preferences</p>
+      </div>
 
-      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="bg-white border border-gray-200 rounded-lg p-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">{t('settings.profile')}</h2>
-        <div className="space-y-4">
+      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 max-w-2xl">
+        <h2 className="text-lg font-bold text-gray-900 mb-6">{t('profile')}</h2>
+
+        <form className="space-y-6">
           <div>
-            <p className="text-sm text-gray-600 mb-1">Nome</p>
-            <p className="text-gray-900 font-medium">{user?.name || 'N/A'}</p>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Store Name</label>
+            <input type="text" className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" defaultValue="My Awesome Store" />
           </div>
+
           <div>
-            <p className="text-sm text-gray-600 mb-1">Email</p>
-            <p className="text-gray-900 font-medium">{user?.email || 'N/A'}</p>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Description</label>
+            <textarea className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all h-32" defaultValue="Best store in town..." />
           </div>
-        </div>
-      </motion.div>
 
-      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="bg-white border border-gray-200 rounded-lg p-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">{t('settings.security')}</h2>
-        <button className="w-full px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-left font-medium text-gray-900">
-          <span className="material-icons text-sm mr-2 align-middle">lock</span>
-          {t('settings.changePassword')}
-        </button>
-      </motion.div>
-
-      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="bg-red-50 border border-red-200 rounded-lg p-6">
-        <h2 className="text-lg font-semibold text-red-900 mb-4">{t('settings.danger')}</h2>
-        <button
-          onClick={() => logout()}
-          className="w-full px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-medium"
-        >
-          {t('settings.logout')}
-        </button>
-      </motion.div>
+          <div className="pt-4">
+            <button type="button" className="px-6 py-2 bg-primary text-white font-medium rounded-xl hover:bg-primary-dark transition-colors">
+              Save Changes
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

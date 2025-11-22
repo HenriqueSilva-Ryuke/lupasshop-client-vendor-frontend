@@ -1,0 +1,38 @@
+{
+    "title": "Marketplace",
+    "allStores": "Todas as Lojas",
+    "results": "resultados",
+    "noStoresFound": "Nenhuma loja encontrada",
+    "tryAdjusting": "Tente ajustar sua pesquisa ou filtros",
+    "clearFilters": "Limpar todos os filtros",
+    "filters": "Filtros",
+    "priceRange": "Faixa de Preço",
+    "rating": "Avaliação",
+    "stars": "Estrelas",
+    "categories": {
+        "label": "Categorias",
+        "electronics": "Eletrônicos",
+        "fashion": "Moda",
+        "home-garden": "Casa & Jardim",
+        "beauty": "Beleza",
+        "sports": "Esportes",
+        "toys": "Brinquedos"
+    },
+    "featuredStore": "Loja em Destaque",
+    "promoted": "Promovido",
+    "visitStore": "Visitar Loja",
+    "trendingNow": "Em Alta",
+    "viewAllTrending": "Ver Tudo em Alta",
+    "searchPlaceholder": "Pesquisar lojas, produtos, categorias...",
+    "sort": {
+        "label": "Ordenar por",
+        "relevance": "Relevância",
+        "rating": "Avaliação",
+        "newest": "Mais Recentes",
+        "trending": "Em Alta"
+    },
+    "view": {
+        "grid": "Grade",
+        "list": "Lista"
+    }
+}

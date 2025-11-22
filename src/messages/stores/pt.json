@@ -9,9 +9,7 @@
   "sortTopRated": "Mais votadas",
   "sortNewest": "Mais recentes",
   "noStoresFound": "Nenhuma loja encontrada",
-  "shopsCount": "{count} lojas"
-  ,
-  ,
+  "shopsCount": "{count} lojas",
+  "clear": "Limpar",
   "viewStore": "Visitar Loja"
-  "clear": "Limpar"
 }

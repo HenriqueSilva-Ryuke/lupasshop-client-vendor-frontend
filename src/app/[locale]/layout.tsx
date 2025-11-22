@@ -68,9 +68,7 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider locale={locale || 'en'} messages={messages}>
-      <head>
-        <JsonLd data={breadcrumbSchema} />
-      </head>
+    <JsonLd data={breadcrumbSchema} />
       <PageTransition>
         {children}
       </PageTransition>

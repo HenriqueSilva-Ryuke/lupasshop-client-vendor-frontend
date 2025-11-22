@@ -1,11 +1,12 @@
 'use client';
 
 import { motion } from 'motion/react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
 
 export default function AboutSection() {
   const t = useTranslations('about');
+  const locale = useLocale();
 
   return (
     <div className="min-h-screen">
@@ -213,13 +214,13 @@ export default function AboutSection() {
             viewport={{ once: true }}
           >
             <Link
-              href="/stores/register"
+              href={`/${locale}/stores/register`}
               className="bg-white text-purple-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
             >
               {t('cta.joinStore')}
             </Link>
             <Link
-              href="/products"
+              href={`/${locale}/products`}
               className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-900 transition-colors"
             >
               {t('cta.startShopping')}

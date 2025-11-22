@@ -21,13 +21,13 @@ export default function StoreListItem({ id, name, slug, logo, rating, productCou
     <div className="flex items-center bg-white rounded-lg border border-gray-200 px-4 py-3 shadow-sm space-x-4">
       {logo ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={logo} alt={`${name} logo`} className="h-16 w-16 rounded-full object-cover" />
+        <img src={logo} alt={`${name} logo`} className="h-20 w-20 rounded-full object-cover" />
       ) : (
-        <div className="h-16 w-16 rounded-full bg-gray-200" />
+        <div className="h-20 w-20 rounded-full bg-gray-200" />
       )}
 
       <div className="flex-1">
-        <h3 className="text-sm font-semibold text-gray-900">{name}</h3>
+        <h3 className="text-base font-semibold text-gray-900">{name}</h3>
         <p className="text-xs text-gray-500">{productCount ?? 0} products</p>
         <p className="text-sm text-gray-600 mt-2">{description}</p>
       </div>

@@ -14,6 +14,36 @@
     "shopNow": "Começar a Comprar",
     "joinStore": "Juntar-se como Loja"
   },
+  "marketplace": {
+    "title": "Marketplace",
+    "allStores": "Todas as Lojas",
+    "results": "resultados",
+    "noStoresFound": "Nenhuma loja encontrada",
+    "tryAdjusting": "Tente ajustar sua pesquisa ou filtros",
+    "clearFilters": "Limpar todos os filtros",
+    "filters": "Filtros",
+    "priceRange": "Faixa de Preço",
+    "rating": "Avaliação",
+    "stars": "Estrelas",
+    "categories": "Categorias",
+    "featuredStore": "Loja em Destaque",
+    "promoted": "Promovido",
+    "visitStore": "Visitar Loja",
+    "trendingNow": "Em Alta",
+    "viewAllTrending": "Ver Tudo em Alta",
+    "searchPlaceholder": "Pesquisar lojas, produtos, categorias...",
+    "sort": {
+      "label": "Ordenar por",
+      "relevance": "Relevância",
+      "rating": "Avaliação",
+      "newest": "Mais Recentes",
+      "trending": "Em Alta"
+    },
+    "view": {
+      "grid": "Grade",
+      "list": "Lista"
+    }
+  },
   "auth": {
     "login": {
       "title": "Login",
@@ -66,101 +96,6 @@
       "success": "Senha redefinida com sucesso",
       "error": "Falha ao redefinir a senha"
     }
-  },
-  "dashboard": {
-    "nav": {
-      "overview": "Visão Geral",
-      "shops": "Minhas Lojas",
-      "products": "Produtos",
-      "orders": "Pedidos",
-      "finances": "Finanças",
-      "reviews": "Avaliações",
-      "settings": "Configurações"
-    },
-    "welcome": "Bem-vindo, {name}!",
-    "subtitle": "Aqui está seu painel de loja",
-    "stats": {
-      "totalSales": "Vendas Totais",
-      "totalOrders": "Pedidos Totais",
-      "totalProducts": "Produtos Totais",
-      "averageRating": "Avaliação Média"
-    },
-    "common": {
-      "edit": "Editar",
-      "delete": "Deletar",
-      "save": "Salvar",
-      "cancel": "Cancelar",
-      "create": "Criar",
-      "update": "Atualizar",
-      "close": "Fechar",
-      "add": "Adicionar",
-      "search": "Pesquisar...",
-      "logout": "Logout",
-      "manageProfile": "Gerencie seu perfil e configurações",
-      "actions": "Ações"
-    },
-    "shops": {
-      "manage": "Gerencie suas lojas",
-      "newShop": "Nova Loja",
-      "editShop": "Editar Loja",
-      "name": "Nome da Loja",
-      "email": "Email",
-      "phone": "Telefone",
-      "status": "Status",
-      "active": "Ativo",
-      "inactive": "Inativo",
-      "pending": "Pendente"
-    },
-    "products": {
-      "manage": "Gerencie seus produtos",
-      "newProduct": "Novo Produto",
-      "editProduct": "Editar Produto",
-      "name": "Nome do Produto",
-      "price": "Preço",
-      "stock": "Estoque",
-      "category": "Categoria",
-      "general": "Geral",
-      "addProduct": "Adicionar Produto",
-      "searchProducts": "Pesquisar produtos..."
-    },
-    "orders": {
-      "manage": "Gerencie seus pedidos",
-      "orderDetails": "Detalhes do Pedido",
-      "orderNumber": "Pedido #",
-      "customer": "Cliente",
-      "amount": "Valor",
-      "date": "Data",
-      "status": "Status",
-      "pending": "Pendente",
-      "confirmed": "Confirmado",
-      "shipped": "Enviado",
-      "delivered": "Entregue"
-    },
-    "finances": {
-      "manage": "Gerencie suas finanças",
-      "income": "Receitas",
-      "expenses": "Despesas",
-      "balance": "Saldo",
-      "transactions": "Transações",
-      "sale": "Venda"
-    },
-    "reviews": {
-      "manage": "Gerencie suas avaliações",
-      "stats": "Estatísticas de Avaliações",
-      "total": "Total de Avaliações",
-      "approved": "Aprovadas",
-      "pending": "Pendentes",
-      "approve": "Aprovar",
-      "reject": "Rejeitar",
-      "moderation": "Moderação"
-    },
-    "settings": {
-      "manage": "Gerencie suas configurações",
-      "profile": "Perfil",
-      "security": "Segurança",
-      "changePassword": "Alterar Senha",
-      "logout": "Logout",
-      "danger": "Zona de Perigo"
-    }
   }
 }
+```

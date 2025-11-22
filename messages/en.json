@@ -14,6 +14,36 @@
     "shopNow": "Start Shopping",
     "joinStore": "Join as Store"
   },
+  "marketplace": {
+    "title": "Marketplace",
+    "allStores": "All Stores",
+    "results": "results",
+    "noStoresFound": "No stores found",
+    "tryAdjusting": "Try adjusting your search or filters",
+    "clearFilters": "Clear all filters",
+    "filters": "Filters",
+    "priceRange": "Price Range",
+    "rating": "Rating",
+    "stars": "Stars",
+    "categories": "Categories",
+    "featuredStore": "Featured Store",
+    "promoted": "Promoted",
+    "visitStore": "Visit Store",
+    "trendingNow": "Trending Now",
+    "viewAllTrending": "View All Trending",
+    "searchPlaceholder": "Search stores, products, categories...",
+    "sort": {
+      "label": "Sort by",
+      "relevance": "Relevance",
+      "rating": "Rating",
+      "newest": "Newest",
+      "trending": "Trending"
+    },
+    "view": {
+      "grid": "Grid",
+      "list": "List"
+    }
+  },
   "auth": {
     "login": {
       "title": "Login",
@@ -65,102 +95,6 @@
       "passwordMismatch": "Passwords do not match",
       "success": "Password reset successfully",
       "error": "Failed to reset password"
-    }
-  },
-  "dashboard": {
-    "nav": {
-      "overview": "Overview",
-      "shops": "My Stores",
-      "products": "Products",
-      "orders": "Orders",
-      "finances": "Finances",
-      "reviews": "Reviews",
-      "settings": "Settings"
-    },
-    "welcome": "Welcome, {name}!",
-    "subtitle": "Here's your store dashboard",
-    "stats": {
-      "totalSales": "Total Sales",
-      "totalOrders": "Total Orders",
-      "totalProducts": "Total Products",
-      "averageRating": "Average Rating"
-    },
-    "common": {
-      "edit": "Edit",
-      "delete": "Delete",
-      "save": "Save",
-      "cancel": "Cancel",
-      "create": "Create",
-      "update": "Update",
-      "close": "Close",
-      "add": "Add",
-      "search": "Search...",
-      "logout": "Logout",
-      "manageProfile": "Manage your profile and settings",
-      "actions": "Actions"
-    },
-    "shops": {
-      "manage": "Manage your stores",
-      "newShop": "New Store",
-      "editShop": "Edit Store",
-      "name": "Store Name",
-      "email": "Email",
-      "phone": "Phone",
-      "status": "Status",
-      "active": "Active",
-      "inactive": "Inactive",
-      "pending": "Pending"
-    },
-    "products": {
-      "manage": "Manage your products",
-      "newProduct": "New Product",
-      "editProduct": "Edit Product",
-      "name": "Product Name",
-      "price": "Price",
-      "stock": "Stock",
-      "category": "Category",
-      "general": "General",
-      "addProduct": "Add Product",
-      "searchProducts": "Search products..."
-    },
-    "orders": {
-      "manage": "Manage your orders",
-      "orderDetails": "Order Details",
-      "orderNumber": "Order #",
-      "customer": "Customer",
-      "amount": "Amount",
-      "date": "Date",
-      "status": "Status",
-      "pending": "Pending",
-      "confirmed": "Confirmed",
-      "shipped": "Shipped",
-      "delivered": "Delivered"
-    },
-    "finances": {
-      "manage": "Manage your finances",
-      "income": "Income",
-      "expenses": "Expenses",
-      "balance": "Balance",
-      "transactions": "Transactions",
-      "sale": "Sale"
-    },
-    "reviews": {
-      "manage": "Manage your reviews",
-      "stats": "Review Stats",
-      "total": "Total Reviews",
-      "approved": "Approved",
-      "pending": "Pending",
-      "approve": "Approve",
-      "reject": "Reject",
-      "moderation": "Moderation"
-    },
-    "settings": {
-      "manage": "Manage your settings",
-      "profile": "Profile",
-      "security": "Security",
-      "changePassword": "Change Password",
-      "logout": "Logout",
-      "danger": "Danger Zone"
     }
   }
 }

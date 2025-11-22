@@ -31,25 +31,23 @@ export default function Navbar() {
 
   const navItems = [
     { href: `/${locale}`, label: t('home') },
-    { href: `/${locale}/stores`, label: t('stores') },
-    { href: `/${locale}/products`, label: t('products') },
+    { href: `/${locale}/marketplace`, label: 'Marketplace' },
     { href: `/${locale}/about`, label: t('about') }
   ];
 
   return (
     <>
       <motion.nav
-        className={`sticky top-4 z-50 transition-all duration-500 w-fit mx-auto left-0 right-0 ${
-          isScrolled 
-            ? 'bg-white/95 backdrop-blur-xl shadow-2xl rounded-full border border-white/20' 
-            : 'bg-transparent'
-        }`}
+        className={`sticky top-4 z-50 transition-all duration-500 w-fit mx-auto left-0 right-0 ${isScrolled
+          ? 'bg-white/95 backdrop-blur-xl shadow-2xl rounded-full border border-white/20'
+          : 'bg-transparent'
+          }`}
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <div className="px-4 py-2">
-          <div className="flex items-center justify-between space-x-6">
+          <div className="flex items-center justify-between gap-6">
             {/* Logo - Lupa Interativa */}
             <motion.div
               whileHover={{ rotate: 90 }}
@@ -57,37 +55,33 @@ export default function Navbar() {
               className="shrink-0"
             >
               <Link href="/" className="flex items-center space-x-3 group">
-                <div className={`relative p-3 rounded-full transition-all duration-500 ${
-                  isScrolled 
-                    ? 'bg-primary shadow-lg' 
-                    : 'bg-white/10 backdrop-blur-sm border border-white/20'
-                }`}>
-                  <svg 
-                    className={`w-6 h-6 transition-all duration-500 ${
-                      isScrolled ? 'text-white' : 'text-gray-800'
-                    }`} 
-                    fill="none" 
-                    stroke="currentColor" 
+                <div className={`relative p-3 rounded-full transition-all duration-500 ${isScrolled
+                  ? 'bg-primary shadow-lg'
+                  : 'bg-white/10 backdrop-blur-sm border border-white/20'
+                  }`}>
+                  <svg
+                    className={`w-6 h-6 transition-all duration-500 ${isScrolled ? 'text-white' : 'text-gray-800'
+                      }`}
+                    fill="none"
+                    stroke="currentColor"
                     viewBox="0 0 24 24"
                   >
-                    <path 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      strokeWidth={2} 
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" 
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                     />
                   </svg>
                   <motion.div
-                    className={`absolute inset-0 rounded-full border-2 ${
-                      isScrolled ? 'border-primary-light' : 'border-white/30'
-                    }`}
+                    className={`absolute inset-0 rounded-full border-2 ${isScrolled ? 'border-primary-light' : 'border-white/30'
+                      }`}
                     animate={{ scale: [1, 1.1, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}
                   />
                 </div>
-                <span className={`text-lg font-bold transition-all duration-500 ${
-                  isScrolled ? 'text-gray-900' : 'text-white'
-                }`}>
+                <span className={`text-lg font-bold transition-all duration-500 ${isScrolled ? 'text-gray-900' : 'text-white'
+                  }`}>
                   LupaShop
                 </span>
               </Link>
@@ -104,13 +98,12 @@ export default function Navbar() {
                 >
                   <Link
                     href={item.href}
-                    className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
-                      isActiveLink(item.href)
-                        ? 'bg-primary text-white shadow-lg'
-                        : isScrolled 
-                          ? 'text-gray-600 hover:text-white hover:bg-primary' 
-                          : 'text-white/80 hover:text-white hover:bg-primary/80'
-                    }`}
+                    className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${isActiveLink(item.href)
+                      ? 'bg-primary text-white shadow-lg'
+                      : isScrolled
+                        ? 'text-gray-600 hover:text-white hover:bg-primary'
+                        : 'text-white/80 hover:text-white hover:bg-primary/80'
+                      }`}
                   >
                     {item.label}
                   </Link>
@@ -123,22 +116,20 @@ export default function Navbar() {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className={`px-4 py-2 text-sm font-medium rounded-full border transition-all duration-300 ${
-                  isScrolled
-                    ? 'text-gray-600 border-gray-200 hover:border-gray-300 hover:text-gray-900'
-                    : 'text-white/80 border-white/30 hover:border-white/50 hover:text-white'
-                }`}
+                className={`px-4 py-2 text-sm font-medium rounded-full border transition-all duration-300 ${isScrolled
+                  ? 'text-gray-600 border-gray-200 hover:border-gray-300 hover:text-gray-900'
+                  : 'text-white/80 border-white/30 hover:border-white/50 hover:text-white'
+                  }`}
               >
                 {t('login')}
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
-                  isScrolled
-                    ? 'bg-primary text-white hover:bg-primary-dark shadow-lg'
-                    : 'bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/30'
-                }`}
+                className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${isScrolled
+                  ? 'bg-primary text-white hover:bg-primary-dark shadow-lg'
+                  : 'bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/30'
+                  }`}
               >
                 {t('signup')}
               </motion.button>
@@ -148,11 +139,10 @@ export default function Navbar() {
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`lg:hidden p-2 rounded-full transition-all duration-300 ${
-                isScrolled
-                  ? 'text-gray-600 hover:bg-gray-100'
-                  : 'text-white hover:bg-white/20'
-              }`}
+              className={`lg:hidden p-2 rounded-full transition-all duration-300 ${isScrolled
+                ? 'text-gray-600 hover:bg-gray-100'
+                : 'text-white hover:bg-white/20'
+                }`}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {isMenuOpen ? (
@@ -183,7 +173,7 @@ export default function Navbar() {
               className="absolute inset-0 bg-black/50 backdrop-blur-sm"
               onClick={() => setIsMenuOpen(false)}
             />
-            
+
             {/* Menu Content */}
             <motion.div
               initial={{ x: '100%' }}
@@ -225,11 +215,10 @@ export default function Navbar() {
                       <Link
                         href={item.href}
                         onClick={() => setIsMenuOpen(false)}
-                        className={`flex items-center px-4 py-3 text-base font-medium rounded-xl transition-all duration-200 ${
-                          isActiveLink(item.href)
-                            ? 'bg-blue-50 text-blue-600 border border-blue-100'
-                            : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                        }`}
+                        className={`flex items-center px-4 py-3 text-base font-medium rounded-xl transition-all duration-200 ${isActiveLink(item.href)
+                          ? 'bg-blue-50 text-blue-600 border border-blue-100'
+                          : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                          }`}
                       >
                         {item.label}
                       </Link>

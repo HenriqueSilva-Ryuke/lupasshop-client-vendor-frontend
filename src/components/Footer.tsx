@@ -1,12 +1,13 @@
 "use client";
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FaLinkedin, FaFacebook, FaInstagram } from 'react-icons/fa';
 
 export default function Footer() {
   const t = useTranslations('footer');
+  const locale = useLocale();
 
   const footerSections = [
     {
@@ -156,7 +157,7 @@ export default function Footer() {
               <ul className="space-y-2">
                 {section.links.map((link) => (
                   <li key={link.name}>
-                    <Link href={link.href} className="text-white/60 hover:text-white text-sm transition-colors">
+                    <Link href={link.href && link.href.startsWith('/') ? `/${locale}${link.href}` : link.href} className="text-white/60 hover:text-white text-sm transition-colors">
                       {link.name}
                     </Link>
                   </li>

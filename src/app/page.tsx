@@ -1,4 +1,4 @@
-"use cache";
+"use server";
 import { redirect } from 'next/navigation';
 import { headers } from 'next/headers';
 

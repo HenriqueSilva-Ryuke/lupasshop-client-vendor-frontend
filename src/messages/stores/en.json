@@ -9,9 +9,7 @@
   "sortTopRated": "Top Rated",
   "sortNewest": "Newest",
   "noStoresFound": "No stores found",
-  "shopsCount": "{count} stores"
-  ,
-  ,
+  "shopsCount": "{count} stores",
+  "clear": "Clear",
   "viewStore": "Visit Store"
-  "clear": "Clear"
 }

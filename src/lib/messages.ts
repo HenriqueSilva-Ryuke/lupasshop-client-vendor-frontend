@@ -5,7 +5,7 @@ export async function loadMessages(locale: string) {
   const messagesDir = path.join(process.cwd(), 'messages');
 
   // Define the sections we want to load
-  const sections = ['navbar', 'hero', 'features', 'benefits', 'cta', 'footer', 'about', 'dashboard', 'auth', 'stores'];
+  const sections = ['navbar', 'hero', 'features', 'benefits', 'cta', 'footer', 'about', 'dashboard', 'auth', 'stores', 'marketplace'];
 
   const messages: Record<string, any> = {};
 

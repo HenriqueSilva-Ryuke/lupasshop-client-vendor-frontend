@@ -1,7 +1,4 @@
-'use cache';
-
 import { mockCategories, mockShops } from '@/data/mock-stores';
-import { cacheLife, cacheTag } from 'next/cache';
 
 export interface ShopsFilters {
   q?: string;
@@ -22,17 +19,11 @@ export interface ShopsResponse {
 
 // Cache categories with long TTL
 export async function getShopCategories() {
-  'use cache';
-  cacheTag('stores-categories');
-  cacheLife('hours');
   return mockCategories;
 }
 
 // Cache shops for short TTL; filters are part of the cache key
 export async function getShopsList(filters: ShopsFilters = {}): Promise<ShopsResponse> {
-  'use cache';
-  cacheTag('stores');
-  cacheLife('minutes');
 
   const page = filters.page ?? 1;
   const limit = filters.limit ?? 12;
@@ -82,15 +73,9 @@ export async function getShopsList(filters: ShopsFilters = {}): Promise<ShopsRes
 }
 
 export async function getShopById(id: string) {
-  'use cache';
-  cacheTag('stores');
-  cacheLife('hours');
   return mockShops.find((s) => s.id === id) ?? null;
 }
 
 export async function getShopBySlug(slug: string) {
-  'use cache';
-  cacheTag('stores');
-  cacheLife('hours');
   return mockShops.find((s) => s.slug === slug) ?? null;
 }
