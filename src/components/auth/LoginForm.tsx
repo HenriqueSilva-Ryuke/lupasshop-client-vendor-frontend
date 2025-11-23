@@ -1,64 +1,16 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { useTranslations } from 'next-intl';
 import { motion } from 'motion/react';
-import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
-import { useLoginMutation } from '@/hooks/mutations';
-import { useAuthStore } from '@/stores/authStore';
-
-const loginSchema = z.object({
-  email: z.string().email('Email inválido').min(1, 'Email obrigatório'),
-  password: z.string().min(6, 'Senha deve ter no mínimo 6 caracteres'),
-  rememberMe: z.boolean().optional()
-});
-
-type LoginFormData = z.infer<typeof loginSchema>;
+import { useLoginForm } from '@/hooks/forms/useLoginForm';
 
 export default function LoginForm() {
   const t = useTranslations('auth.login');
   const locale = useLocale();
-  const router = useRouter();
-  const { isAuthenticated } = useAuthStore();
-  const [error, setError] = useState<string | null>(null);
-
-  const loginMutation = useLoginMutation();
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    watch
-  } = useForm<LoginFormData>({
-    resolver: zodResolver(loginSchema),
-    defaultValues: {
-      rememberMe: false
-    }
-  });
-
-  const onSubmit = async (data: LoginFormData) => {
-    setError(null);
-
-    try {
-      await loginMutation.mutateAsync({
-        email: data.email,
-        password: data.password
-      });
-
-      if (data.rememberMe) {
-        localStorage.setItem('remember-email', data.email);
-      }
-
-      router.push(`/${locale}/dashboard`);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Falha ao fazer login');
-    }
-  };
+  const { form, onSubmit, error, isLoading } = useLoginForm();
+  const { register, handleSubmit, formState: { errors } } = form;
 
   return (
     <motion.form
@@ -141,10 +93,10 @@ export default function LoginForm() {
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         type="submit"
-        disabled={loginMutation.isPending}
+        disabled={isLoading}
         className="w-full py-3 px-4 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {loginMutation.isPending ? 'Entrando...' : t('button')}
+        {isLoading ? 'Entrando...' : t('button')}
       </motion.button>
 
       {/* Sign Up Link */}

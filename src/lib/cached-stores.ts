@@ -1,4 +1,5 @@
 import { mockCategories, mockShops } from '@/data/mock-stores';
+import { unstable_cache } from 'next/cache';
 
 export interface ShopsFilters {
   q?: string;
@@ -18,13 +19,10 @@ export interface ShopsResponse {
 }
 
 // Cache categories with long TTL
-export async function getShopCategories() {
-  return mockCategories;
-}
+export const getShopCategories = unstable_cache(async () => mockCategories, ['stores-categories'], { revalidate: 3600 });
 
 // Cache shops for short TTL; filters are part of the cache key
-export async function getShopsList(filters: ShopsFilters = {}): Promise<ShopsResponse> {
-
+export const getShopsList = (filters: ShopsFilters = {}) => unstable_cache(async (): Promise<ShopsResponse> => {
   const page = filters.page ?? 1;
   const limit = filters.limit ?? 12;
   const q = (filters.q || '').toLowerCase().trim();
@@ -70,12 +68,8 @@ export async function getShopsList(filters: ShopsFilters = {}): Promise<ShopsRes
     page,
     limit,
   };
-}
+}, ['stores', JSON.stringify(filters)], { revalidate: 60 })();
 
-export async function getShopById(id: string) {
-  return mockShops.find((s) => s.id === id) ?? null;
-}
+export const getShopById = (id: string) => unstable_cache(async () => mockShops.find((s) => s.id === id) ?? null, ['stores', id], { revalidate: 3600 })();
 
-export async function getShopBySlug(slug: string) {
-  return mockShops.find((s) => s.slug === slug) ?? null;
-}
+export const getShopBySlug = (slug: string) => unstable_cache(async () => mockShops.find((s) => s.slug === slug) ?? null, ['stores', slug], { revalidate: 3600 })();

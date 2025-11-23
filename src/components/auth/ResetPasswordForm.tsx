@@ -1,24 +1,8 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { useTranslations } from 'next-intl';
 import { motion } from 'motion/react';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { useLocale } from 'next-intl';
-import { useResetPasswordMutation } from '@/hooks/mutations';
-
-const resetPasswordSchema = z.object({
-  password: z.string().min(8, 'Senha deve ter no mínimo 8 caracteres'),
-  confirmPassword: z.string()
-}).refine(data => data.password === data.confirmPassword, {
-  message: 'As senhas não coincidem',
-  path: ['confirmPassword']
-});
-
-type ResetPasswordFormData = z.infer<typeof resetPasswordSchema>;
+import { useTranslations } from 'next-intl';
+import { useResetPasswordForm } from '@/hooks/forms/useResetPasswordForm';
 
 interface ResetPasswordFormProps {
   token: string;
@@ -26,37 +10,8 @@ interface ResetPasswordFormProps {
 
 export default function ResetPasswordForm({ token }: ResetPasswordFormProps) {
   const t = useTranslations('auth.resetPassword');
-  const locale = useLocale();
-  const router = useRouter();
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState(false);
-
-  const resetPasswordMutation = useResetPasswordMutation();
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm<ResetPasswordFormData>({
-    resolver: zodResolver(resetPasswordSchema)
-  });
-
-  const onSubmit = async (data: ResetPasswordFormData) => {
-    setError(null);
-
-    try {
-      await resetPasswordMutation.mutateAsync({
-        token,
-        password: data.password
-      });
-      setSuccess(true);
-      setTimeout(() => {
-        router.push(`/${locale}/auth/login`);
-      }, 2000);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Falha ao redefinir senha');
-    }
-  };
+  const { form, onSubmit, error, success, isLoading } = useResetPasswordForm(token);
+  const { register, handleSubmit, formState: { errors } } = form;
 
   if (success) {
     return (
@@ -141,10 +96,10 @@ export default function ResetPasswordForm({ token }: ResetPasswordFormProps) {
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         type="submit"
-        disabled={resetPasswordMutation.isPending}
+        disabled={isLoading}
         className="w-full py-3 px-4 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {resetPasswordMutation.isPending ? 'Redefinindo...' : t('button')}
+        {isLoading ? 'Redefinindo...' : t('button')}
       </motion.button>
     </motion.form>
   );

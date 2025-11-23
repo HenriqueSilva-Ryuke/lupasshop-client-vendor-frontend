@@ -1,6 +1,4 @@
-'use cache';
-
-import { API_BASE_URL, API_ENDPOINTS } from '@/config/api';
+import { unstable_cache } from 'next/cache';
 
 interface DashboardStats {
   totalSales: number;
@@ -9,7 +7,7 @@ interface DashboardStats {
   activeProducts: number;
 }
 
-export async function getDashboardStats(): Promise<DashboardStats> {
+export const getDashboardStats = unstable_cache(async (): Promise<DashboardStats> => {
   // In a real app, this would fetch from the backend
   // For now, return mock data
   return {
@@ -18,7 +16,7 @@ export async function getDashboardStats(): Promise<DashboardStats> {
     totalProducts: 156,
     activeProducts: 142,
   };
-}
+}, ['dashboard-stats'], { revalidate: 300 });
 
 export interface RecentOrder {
   id: string;
@@ -29,7 +27,7 @@ export interface RecentOrder {
   date: string;
 }
 
-export async function getRecentOrders(): Promise<RecentOrder[]> {
+export const getRecentOrders = unstable_cache(async (): Promise<RecentOrder[]> => {
   // Mock data for recent orders
   return [
     {
@@ -65,4 +63,4 @@ export async function getRecentOrders(): Promise<RecentOrder[]> {
       date: '2025-11-04',
     },
   ];
-}
+}, ['recent-orders'], { revalidate: 300 });

@@ -4,6 +4,9 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
+  // experimental: {
+  //   cacheComponents: true,
+  // },
   productionBrowserSourceMaps: false,
   enablePrerenderSourceMaps: false,
   images: {

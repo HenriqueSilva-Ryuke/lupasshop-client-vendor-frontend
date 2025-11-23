@@ -1,60 +1,16 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { useTranslations } from 'next-intl';
 import { motion } from 'motion/react';
-import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
-import { useRegisterMutation } from '@/hooks/mutations';
-
-const registerSchema = z.object({
-  name: z.string().min(3, 'Nome deve ter no mínimo 3 caracteres'),
-  email: z.string().email('Email inválido'),
-  password: z.string().min(8, 'Senha deve ter no mínimo 8 caracteres'),
-  confirmPassword: z.string(),
-  terms: z.boolean().refine(val => val === true, 'Você deve concordar com os termos')
-}).refine(data => data.password === data.confirmPassword, {
-  message: 'As senhas não coincidem',
-  path: ['confirmPassword']
-});
-
-type RegisterFormData = z.infer<typeof registerSchema>;
+import { useRegisterForm } from '@/hooks/forms/useRegisterForm';
 
 export default function RegisterForm() {
   const t = useTranslations('auth.register');
   const locale = useLocale();
-  const router = useRouter();
-  const [error, setError] = useState<string | null>(null);
-
-  const registerMutation = useRegisterMutation();
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm<RegisterFormData>({
-    resolver: zodResolver(registerSchema)
-  });
-
-  const onSubmit = async (data: RegisterFormData) => {
-    setError(null);
-
-    try {
-      await registerMutation.mutateAsync({
-        name: data.name,
-        email: data.email,
-        password: data.password
-      });
-
-      router.push(`/${locale}/dashboard`);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Falha ao registrar');
-    }
-  };
+  const { form, onSubmit, error, isLoading } = useRegisterForm();
+  const { register, handleSubmit, formState: { errors } } = form;
 
   return (
     <motion.form
@@ -174,10 +130,10 @@ export default function RegisterForm() {
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         type="submit"
-        disabled={registerMutation.isPending}
+        disabled={isLoading}
         className="w-full py-3 px-4 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {registerMutation.isPending ? 'Registrando...' : t('button')}
+        {isLoading ? 'Registrando...' : t('button')}
       </motion.button>
 
       {/* Sign In Link */}

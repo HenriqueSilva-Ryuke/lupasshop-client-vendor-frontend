@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { QueryProvider } from "@/providers/QueryProvider";
 import { DEFAULT_SEO } from "@/lib/seo";
 import { generateOrganizationSchema, generateWebsiteSchema } from "@/lib/structured-data";
 import JsonLd from "@/components/JsonLd";
 import { ThirdPartyScripts } from "@/components/ThirdPartyScripts";
+import { ClientProviders } from "@/components/ClientProviders";
 
 const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://lupashop.com';
 
@@ -74,19 +74,19 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
         {/* JSON-LD Structured Data */}
         <JsonLd data={[generateOrganizationSchema(), generateWebsiteSchema()]} />
-        
+
         {/* Preconnect to external resources */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        
+
         {/* DNS Prefetch for third-party services */}
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
       </head>
       <body className="antialiased">
-        <QueryProvider>
+        <ClientProviders>
           {children}
-        </QueryProvider>
+        </ClientProviders>
         <ThirdPartyScripts
           googleAnalyticsId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}
           facebookPixelId={process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID}

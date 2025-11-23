@@ -1,49 +1,16 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { useTranslations } from 'next-intl';
 import { motion } from 'motion/react';
-import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
-import { useForgotPasswordMutation } from '@/hooks/mutations';
-
-const forgotPasswordSchema = z.object({
-  email: z.string().email('Email inválido').min(1, 'Email obrigatório')
-});
-
-type ForgotPasswordFormData = z.infer<typeof forgotPasswordSchema>;
+import { useForgotPasswordForm } from '@/hooks/forms/useForgotPasswordForm';
 
 export default function ForgotPasswordForm() {
   const t = useTranslations('auth.forgotPassword');
   const locale = useLocale();
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState(false);
-
-  const forgotPasswordMutation = useForgotPasswordMutation();
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm<ForgotPasswordFormData>({
-    resolver: zodResolver(forgotPasswordSchema)
-  });
-
-  const onSubmit = async (data: ForgotPasswordFormData) => {
-    setError(null);
-
-    try {
-      await forgotPasswordMutation.mutateAsync({
-        email: data.email
-      });
-      setSuccess(true);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Falha ao solicitar recuperação');
-    }
-  };
+  const { form, onSubmit, error, success, isLoading } = useForgotPasswordForm();
+  const { register, handleSubmit, formState: { errors } } = form;
 
   if (success) {
     return (
@@ -114,10 +81,10 @@ export default function ForgotPasswordForm() {
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         type="submit"
-        disabled={forgotPasswordMutation.isPending}
+        disabled={isLoading}
         className="w-full py-3 px-4 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {forgotPasswordMutation.isPending ? 'Enviando...' : t('button')}
+        {isLoading ? 'Enviando...' : t('button')}
       </motion.button>
 
       {/* Back to Login */}
