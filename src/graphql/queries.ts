@@ -309,6 +309,27 @@ export const GET_STORE_BALANCE = gql`
   }
 `;
 
+export const GET_USER_FINANCES = gql`
+  query GetUserFinances {
+    getUserFinances {
+      id
+      userId
+      walletBalance
+      totalSpent
+      totalRefunded
+      lastTransactionDate
+      transactions {
+        id
+        type
+        amount
+        description
+        orderId
+        createdAt
+      }
+    }
+  }
+`;
+
 export const LIST_PAYOUTS = gql`
   query ListPayouts($storeId: ID, $status: PayoutStatus) {
     listPayouts(storeId: $storeId, status: $status) {
