@@ -12,9 +12,9 @@ const productSchema = z.object({
   name: z.string().min(3, 'Nome deve ter no mínimo 3 caracteres'),
   description: z.string().min(10, 'Descrição deve ter no mínimo 10 caracteres'),
   price: z.number().min(0.01, 'Preço deve ser maior que 0'),
-  stock: z.number().int().min(0, 'Estoque não pode ser negativo'),
-  sku: z.string().min(3, 'SKU deve ter no mínimo 3 caracteres'),
-  category: z.string().min(1, 'Selecione uma categoria'),
+  stockQuantity: z.number().int().min(0, 'Estoque não pode ser negativo'),
+  sku: z.string().min(3, 'SKU deve ter no mínimo 3 caracteres').optional(),
+  categoryId: z.string().min(1, 'Selecione uma categoria').optional(),
   images: z.array(z.string()).min(1, 'Adicione pelo menos uma imagem'),
   isActive: z.boolean().default(true),
 });
@@ -26,15 +26,15 @@ interface CreateProductResponse {
     id: string;
     name: string;
     price: number;
-    stock: number;
-    sku: string;
-    category: string;
+    stockQuantity: number;
+    sku: string | null;
+    categoryId: string | null;
     images: string[];
     isActive: boolean;
   };
 }
 
-export function useProductForm(onSuccess?: () => void) {
+export function useProductForm(storeId: string, onSuccess?: () => void) {
   const [error, setError] = useState<string | null>(null);
   const [uploadedImages, setUploadedImages] = useState<string[]>([]);
 
@@ -44,12 +44,13 @@ export function useProductForm(onSuccess?: () => void) {
         mutation: CREATE_PRODUCT,
         variables: {
           input: {
+            storeId,
             name: data.name,
             description: data.description,
             price: data.price,
-            stock: data.stock,
+            stockQuantity: data.stockQuantity,
             sku: data.sku,
-            category: data.category,
+            categoryId: data.categoryId,
             images: data.images,
             isActive: data.isActive,
           },
@@ -64,6 +65,8 @@ export function useProductForm(onSuccess?: () => void) {
     },
     onSuccess: () => {
       setError(null);
+      form.reset();
+      setUploadedImages([]);
       onSuccess?.();
     },
     onError: (err) => {
@@ -79,9 +82,9 @@ export function useProductForm(onSuccess?: () => void) {
       name: '',
       description: '',
       price: 0,
-      stock: 0,
+      stockQuantity: 0,
       sku: '',
-      category: '',
+      categoryId: '',
       images: [],
       isActive: true,
     },

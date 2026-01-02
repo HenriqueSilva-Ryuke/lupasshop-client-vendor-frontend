@@ -1,6 +1,8 @@
 'use client';
 
 import { useProductForm } from '@/hooks/forms/useProductForm';
+import { useSellerStore } from '@/hooks/useSellerStore';
+import { useClientAuth } from '@/hooks/useClientAuth';
 import { useRef } from 'react';
 
 interface ProductDrawerProps {
@@ -10,6 +12,9 @@ interface ProductDrawerProps {
 }
 
 export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps) {
+  const { user } = useClientAuth();
+  const { data: store, isLoading: isLoadingStore } = useSellerStore(user?.id || null);
+  
   const {
     form,
     handleSubmit,
@@ -18,7 +23,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
     uploadedImages,
     isLoading,
     error,
-  } = useProductForm(() => {
+  } = useProductForm(store?.id || '', () => {
     onSuccess?.();
     onClose();
   });
@@ -31,6 +36,45 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
   const imageInputRef = useRef<HTMLInputElement>(null);
 
   if (!isOpen) return null;
+
+  // Show loading if store is still being fetched
+  if (isLoadingStore) {
+    return (
+      <>
+        <div className="fixed inset-0 bg-black/50 z-40" onClick={onClose} />
+        <div className="fixed right-0 top-0 h-full w-full sm:w-[500px] bg-white dark:bg-card-dark z-50 shadow-2xl flex items-center justify-center">
+          <div className="text-center">
+            <span className="material-symbols-outlined animate-spin text-4xl text-primary">progress_activity</span>
+            <p className="mt-2 text-sm text-text-sub-light dark:text-text-sub-dark">Carregando...</p>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  // Show error if no store found
+  if (!store) {
+    return (
+      <>
+        <div className="fixed inset-0 bg-black/50 z-40" onClick={onClose} />
+        <div className="fixed right-0 top-0 h-full w-full sm:w-[500px] bg-white dark:bg-card-dark z-50 shadow-2xl flex items-center justify-center">
+          <div className="text-center p-6">
+            <span className="material-symbols-outlined text-6xl text-red-500">error</span>
+            <h3 className="mt-4 text-lg font-bold text-foreground dark:text-white">Loja não encontrada</h3>
+            <p className="mt-2 text-sm text-text-sub-light dark:text-text-sub-dark">
+              Você precisa ter uma loja cadastrada para adicionar produtos.
+            </p>
+            <button
+              onClick={onClose}
+              className="mt-6 h-12 px-6 rounded-lg bg-primary text-white font-bold"
+            >
+              Fechar
+            </button>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
@@ -126,19 +170,19 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label className="text-sm font-medium text-foreground dark:text-gray-200" htmlFor="stock">
+              <label className="text-sm font-medium text-foreground dark:text-gray-200" htmlFor="stockQuantity">
                 Estoque
               </label>
               <input
-                {...register('stock', { valueAsNumber: true })}
-                id="stock"
+                {...register('stockQuantity', { valueAsNumber: true })}
+                id="stockQuantity"
                 placeholder="0"
                 type="number"
                 min="0"
                 className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] dark:border-gray-600 bg-white dark:bg-gray-800 text-foreground dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
               />
-              {errors.stock && (
-                <span className="text-xs text-red-600 dark:text-red-400">{errors.stock.message}</span>
+              {errors.stockQuantity && (
+                <span className="text-xs text-red-600 dark:text-red-400">{errors.stockQuantity.message}</span>
               )}
             </div>
           </div>
@@ -147,7 +191,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-1.5">
               <label className="text-sm font-medium text-foreground dark:text-gray-200" htmlFor="sku">
-                SKU
+                SKU (Opcional)
               </label>
               <input
                 {...register('sku')}
@@ -162,30 +206,31 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label className="text-sm font-medium text-foreground dark:text-gray-200" htmlFor="category">
-                Categoria
+              <label className="text-sm font-medium text-foreground dark:text-gray-200" htmlFor="categoryId">
+                Categoria (Opcional)
               </label>
               <div className="relative">
                 <select
-                  {...register('category')}
-                  id="category"
+                  {...register('categoryId')}
+                  id="categoryId"
                   className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] dark:border-gray-600 bg-white dark:bg-gray-800 text-foreground dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all appearance-none"
                 >
                   <option value="">Selecione</option>
-                  <option value="eletronicos">Eletrônicos</option>
-                  <option value="calcados">Calçados</option>
-                  <option value="acessorios">Acessórios</option>
-                  <option value="vestuario">Vestuário</option>
-                  <option value="casa">Casa</option>
-                  <option value="esportes">Esportes</option>
-                  <option value="beleza">Beleza</option>
+                  {/* These should be fetched from the backend, but for now using placeholder values */}
+                  <option value="1">Eletrônicos</option>
+                  <option value="2">Calçados</option>
+                  <option value="3">Acessórios</option>
+                  <option value="4">Vestuário</option>
+                  <option value="5">Casa</option>
+                  <option value="6">Esportes</option>
+                  <option value="7">Beleza</option>
                 </select>
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-secondary-text">
                   <span className="material-symbols-outlined">expand_more</span>
                 </div>
               </div>
-              {errors.category && (
-                <span className="text-xs text-red-600 dark:text-red-400">{errors.category.message}</span>
+              {errors.categoryId && (
+                <span className="text-xs text-red-600 dark:text-red-400">{errors.categoryId.message}</span>
               )}
             </div>
           </div>
@@ -285,3 +330,4 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
     </>
   );
 }
+
