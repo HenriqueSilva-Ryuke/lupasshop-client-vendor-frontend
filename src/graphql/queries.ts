@@ -244,23 +244,23 @@ export const GET_ORDER = gql`
 `;
 
 export const LIST_ORDERS = gql`
-  query ListOrders($userId: ID, $storeId: ID, $status: OrderStatus) {
-    listOrders(userId: $userId, storeId: $storeId, status: $status) {
-      id
-      userId
-      storeId
-      totalAmount
-      status
-      createdAt
-      orderItems {
+  query ListOrders($userId: ID, $storeId: ID, $status: OrderStatus, $limit: Int, $offset: Int) {
+    listOrders(userId: $userId, storeId: $storeId, status: $status, limit: $limit, offset: $offset) {
+      orders {
         id
-        quantity
-        priceAtPurchase
+        userId
+        storeId
+        totalAmount
+        status
+        createdAt
+        orderItems {
+          id
+          quantity
+          priceAtPurchase
+        }
       }
-      store {
-        id
-        name
-      }
+      total
+      hasMore
     }
   }
 `;

@@ -3,18 +3,12 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLocale } from 'next-intl';
+import { useNavigation } from '@/hooks/useNavigation';
 
 export function BottomNav() {
   const pathname = usePathname();
   const locale = useLocale();
-
-  const navItems = [
-    { href: `/${locale}/seller/dashboard`, icon: 'home', label: 'Resumo' },
-    { href: `/${locale}/seller/products`, icon: 'inventory_2', label: 'Produtos' },
-    { href: `/${locale}/seller/orders`, icon: 'receipt_long', label: 'Pedidos', badge: 3 },
-    { href: `/${locale}/seller/finances`, icon: 'payments', label: 'Financeiro' },
-    { href: `/${locale}/seller/settings`, icon: 'settings', label: 'Config' },
-  ];
+  const { sellerNavigation } = useNavigation();
 
   return (
     <>
@@ -35,12 +29,12 @@ export function BottomNav() {
 
             {/* Navigation */}
             <nav className="flex flex-col gap-1">
-              {navItems.map((item) => {
-                const isActive = pathname === item.href;
+              {sellerNavigation.map((item) => {
+                const isActive = pathname === `/${locale}${item.href}`;
                 return (
                   <Link
                     key={item.href}
-                    href={item.href}
+                    href={`/${locale}${item.href}`}
                     className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all ${
                       isActive
                         ? 'bg-primary text-white shadow-md shadow-primary/20'
@@ -91,12 +85,12 @@ export function BottomNav() {
       <div className="lg:hidden fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-md">
         <div className="bg-white dark:bg-card-dark rounded-full shadow-2xl border border-gray-200 dark:border-gray-700 px-2 py-2">
           <nav className="flex items-center justify-around gap-1">
-            {navItems.map((item) => {
-              const isActive = pathname === item.href;
+            {sellerNavigation.map((item) => {
+              const isActive = pathname === `/${locale}${item.href}`;
               return (
                 <Link
                   key={item.href}
-                  href={item.href}
+                  href={`/${locale}${item.href}`}
                   className={`relative flex flex-col items-center justify-center p-2 rounded-full transition-all ${
                     isActive
                       ? 'bg-primary text-white shadow-lg shadow-primary/30'
