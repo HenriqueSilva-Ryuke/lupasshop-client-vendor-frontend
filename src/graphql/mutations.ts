@@ -77,10 +77,40 @@ export const UPDATE_STORE = gql`
       description
       logoUrl
       coverImageUrl
+      bannerUrl
       location
       isVerified
       isPromoted
       isPremium
+      instagramUrl
+      facebookUrl
+      whatsappNumber
+      pixKey
+      acceptsCreditCard
+      acceptsBoleto
+      shippingMethods
+      freeShippingMin
+      updatedAt
+    }
+  }
+`;
+
+export const UPDATE_STORE_SETTINGS = gql`
+  mutation UpdateStoreSettings($id: ID!, $input: UpdateStoreInput!) {
+    updateStore(id: $id, input: $input) {
+      id
+      name
+      description
+      logoUrl
+      bannerUrl
+      instagramUrl
+      facebookUrl
+      whatsappNumber
+      pixKey
+      acceptsCreditCard
+      acceptsBoleto
+      shippingMethods
+      freeShippingMin
       updatedAt
     }
   }

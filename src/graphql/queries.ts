@@ -105,13 +105,23 @@ export const LIST_STORES = gql`
       description
       logoUrl
       coverImageUrl
+      bannerUrl
       location
       rating
       reviewCount
       isVerified
       isPromoted
       isPremium
+      instagramUrl
+      facebookUrl
+      whatsappNumber
+      pixKey
+      acceptsCreditCard
+      acceptsBoleto
+      shippingMethods
+      freeShippingMin
       createdAt
+      updatedAt
       category {
         id
         name

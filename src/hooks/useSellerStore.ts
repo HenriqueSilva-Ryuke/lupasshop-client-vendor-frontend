@@ -11,16 +11,25 @@ interface Store {
   description: string | null;
   logoUrl: string | null;
   coverImageUrl: string | null;
+  bannerUrl: string | null;
   location: string | null;
   rating: number;
   reviewCount: number;
   isVerified: boolean;
   isPromoted: boolean;
   isPremium: boolean;
+  instagramUrl: string | null;
+  facebookUrl: string | null;
+  whatsappNumber: string | null;
+  pixKey: string | null;
+  acceptsCreditCard: boolean;
+  acceptsBoleto: boolean;
+  shippingMethods: any;
+  freeShippingMin: number | null;
   createdAt: string;
 }
 
-export function useSellerStore(userId: string | null) {
+export function useSellerStore(userId?: string | null) {
   return useQuery({
     queryKey: ['sellerStore', userId],
     queryFn: async () => {
