@@ -95,7 +95,7 @@ export function useSellerMultiStepRegisterForm() {
       }
 
       setTimeout(() => {
-        router.push(`/${locale}/seller/dashboard`);
+        router.push(`/${locale}/seller/onboarding`);
       }, 500);
     },
     onError: (err) => {
