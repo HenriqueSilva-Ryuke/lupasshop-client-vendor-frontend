@@ -78,6 +78,12 @@ export default function RootLayout({
         {/* JSON-LD Structured Data */}
         <JsonLd data={[generateOrganizationSchema(), generateWebsiteSchema()]} />
 
+        {/* Material Symbols Outlined Font */}
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        />
+
         {/* DNS Prefetch & Preconnect for performance */}
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
