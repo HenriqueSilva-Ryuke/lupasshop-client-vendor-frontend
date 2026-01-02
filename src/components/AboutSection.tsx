@@ -12,7 +12,7 @@ export default function AboutSection() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center">
-        <div className="text-center space-y-8 text-white py-20 px-8">
+        <div className="text-center space-y-8 text-black py-20 px-8">
           <motion.h1
             className="text-4xl md:text-6xl font-bold"
             initial={{ opacity: 0, y: 30 }}
@@ -36,7 +36,7 @@ export default function AboutSection() {
       <section className="min-h-screen flex items-center justify-center">
         <div className="text-center space-y-12 py-20 px-8">
           <motion.h2
-            className="text-3xl md:text-4xl font-bold text-white"
+            className="text-3xl md:text-4xl font-bold text-black"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -59,8 +59,8 @@ export default function AboutSection() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="text-3xl md:text-4xl font-bold text-white">{stat.number}</div>
-                <div className="text-white">{stat.label}</div>
+                <div className="text-3xl md:text-4xl font-bold text-black">{stat.number}</div>
+                <div className="text-black">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -71,7 +71,7 @@ export default function AboutSection() {
       <section className="min-h-screen flex items-center justify-center">
         <div className="text-center space-y-8 py-20 px-8">
           <motion.h2
-            className="text-3xl md:text-4xl font-bold text-white"
+            className="text-3xl md:text-4xl font-bold text-black"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -80,7 +80,7 @@ export default function AboutSection() {
             {t('mission.title')}
           </motion.h2>
           <motion.p
-            className="text-lg text-white max-w-2xl mx-auto"
+            className="text-lg text-black max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -95,7 +95,7 @@ export default function AboutSection() {
       <section className="min-h-screen flex items-center justify-center">
         <div className="space-y-12 py-20 px-8">
           <motion.h2
-            className="text-3xl md:text-4xl font-bold text-center text-white"
+            className="text-3xl md:text-4xl font-bold text-center text-black"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -143,7 +143,7 @@ export default function AboutSection() {
       <section className="min-h-screen flex items-center justify-center">
         <div className="space-y-12 py-20 px-8">
           <motion.h2
-            className="text-3xl md:text-4xl font-bold text-center text-white"
+            className="text-3xl md:text-4xl font-bold text-center text-black"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -177,8 +177,8 @@ export default function AboutSection() {
                 <div className="w-32 h-32 bg-linear-to-br from-purple-100 to-purple-200 rounded-full mx-auto flex items-center justify-center">
                   <span className="text-4xl">👤</span>
                 </div>
-                <h3 className="text-xl font-semibold text-white">{member.name}</h3>
-                <p className="text-white">{member.role}</p>
+                <h3 className="text-xl font-semibold text-black">{member.name}</h3>
+                <p className="text-black">{member.role}</p>
               </motion.div>
             ))}
           </div>
@@ -189,7 +189,7 @@ export default function AboutSection() {
       <section className="min-h-screen flex items-center justify-center bg-linear-to-br from-purple-900 to-purple-700">
         <div className="text-center space-y-8 px-8">
           <motion.h2
-            className="text-3xl md:text-4xl font-bold text-white"
+            className="text-3xl md:text-4xl font-bold text-black"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -221,7 +221,7 @@ export default function AboutSection() {
             </Link>
             <Link
               href={`/${locale}/products`}
-              className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-900 transition-colors"
+              className="border-2 border-black text-black px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-900 transition-colors"
             >
               {t('cta.startShopping')}
             </Link>

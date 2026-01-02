@@ -4,55 +4,128 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
+import { apolloClient } from '@/lib/graphql-client';
+import { LOGIN } from '@/graphql/mutations';
 import { useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
-import { useLoginMutation } from '@/hooks/mutations';
+import { useClientAuth } from '@/hooks/useClientAuth';
 
 const loginSchema = z.object({
-  email: z.string().email('Email inválido').min(1, 'Email obrigatório'),
-  password: z.string().min(6, 'Senha deve ter no mínimo 6 caracteres'),
-  rememberMe: z.boolean().optional()
+  email: z
+    .string()
+    .min(1, 'E-mail ou usuário é obrigatório')
+    .refine(
+      (value) => {
+        const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+        const isUsername = /^[a-zA-Z0-9_-]{3,}$/.test(value);
+        return isEmail || isUsername;
+      },
+      'Digite um e-mail válido ou nome de usuário'
+    ),
+  password: z
+    .string()
+    .min(6, 'Senha deve ter no mínimo 6 caracteres')
+    .min(1, 'Senha é obrigatória'),
+  rememberMe: z.boolean(),
 });
 
-type LoginFormData = z.infer<typeof loginSchema>;
+export type LoginFormData = z.infer<typeof loginSchema>;
+
+interface LoginResponse {
+  login: {
+    token: string;
+    user: {
+      id: string;
+      email: string;
+      fullName: string;
+      role: string;
+    };
+  };
+}
 
 export function useLoginForm() {
   const locale = useLocale();
   const router = useRouter();
+  const { setUser, setToken } = useClientAuth();
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const loginMutation = useLoginMutation();
+  const loginMutation = useMutation({
+    mutationFn: async (data: LoginFormData) => {
+      const { data: response } = await apolloClient.mutate<LoginResponse>({
+        mutation: LOGIN,
+        variables: {
+          input: {
+            email: data.email,
+            password: data.password,
+          },
+        },
+      });
+
+      if (!response?.login) {
+        throw new Error('Falha ao fazer login');
+      }
+
+      return response.login;
+    },
+    onSuccess: (data, variables) => {
+      setError(null);
+      
+      // Salvar token
+      if (data.token) {
+        setToken(data.token);
+        localStorage.setItem('authToken', data.token);
+      }
+
+      // Salvar dados do usuário
+      if (data.user) {
+        setUser({
+          id: data.user.id,
+          email: data.user.email,
+          fullName: data.user.fullName,
+          role: (data.user.role as 'BUYER' | 'SELLER' | 'ADMIN') || 'BUYER',
+        });
+      }
+
+      // Lembrar email se selecionado
+      if (variables.rememberMe) {
+        localStorage.setItem('remember-email', variables.email);
+      } else {
+        localStorage.removeItem('remember-email');
+      }
+
+      // Redirecionar para dashboard
+      setTimeout(() => {
+        router.push(`/${locale}/dashboard`);
+      }, 500);
+    },
+    onError: (err) => {
+      const errorMessage = err instanceof Error ? err.message : 'Falha ao fazer login';
+      setError(errorMessage);
+      console.error('Login error:', err);
+    },
+  });
 
   const form = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      rememberMe: false
-    }
+      email: '',
+      password: '',
+      rememberMe: false,
+    },
   });
 
-  const onSubmit = async (data: LoginFormData) => {
-    setError(null);
-
-    try {
-      await loginMutation.mutateAsync({
-        email: data.email,
-        password: data.password
-      });
-
-      if (data.rememberMe) {
-        localStorage.setItem('remember-email', data.email);
-      }
-
-      router.push(`/${locale}/dashboard`);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Falha ao fazer login');
-    }
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return {
     form,
-    onSubmit,
+    onSubmit: form.handleSubmit((data) => loginMutation.mutate(data)),
+    showPassword,
+    togglePasswordVisibility,
+    isLoading: loginMutation.isPending,
     error,
-    isLoading: loginMutation.isPending
   };
 }

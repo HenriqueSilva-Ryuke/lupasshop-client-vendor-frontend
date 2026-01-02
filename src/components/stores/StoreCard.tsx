@@ -51,7 +51,7 @@ export default function StoreCard({ id, name, slug, logo, featuredImage, rating,
 
         <div className="mt-5 flex justify-between items-center">
           <Link className="text-primary font-semibold text-sm" href={`/${locale}/store/${slug}`}>{t('viewStore') || 'Visit Store'}</Link>
-          <button className="bg-primary text-white px-3 py-1 rounded text-sm">View Products</button>
+          <button className="bg-primary text-black px-3 py-1 rounded text-sm">View Products</button>
         </div>
       </div>
     </div>

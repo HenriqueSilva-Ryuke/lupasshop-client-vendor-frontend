@@ -33,7 +33,7 @@ export default function AuthIllustration() {
           className="mb-8"
         >
           <div className="w-32 h-32 mx-auto bg-linear-to-br from-primary to-primary/60 rounded-3xl flex items-center justify-center shadow-2xl">
-            <svg className="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-16 h-16 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </div>

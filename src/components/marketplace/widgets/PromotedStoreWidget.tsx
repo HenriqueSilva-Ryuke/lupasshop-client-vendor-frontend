@@ -54,7 +54,7 @@ export default function PromotedStoreWidget({ store }: PromotedStoreWidgetProps)
           </p>
           <Link 
             href={`/store/${store.slug}`}
-            className="block w-full py-2.5 text-center text-sm font-medium text-white bg-primary rounded-xl hover:bg-primary-dark transition-colors shadow-lg shadow-primary/25"
+            className="block w-full py-2.5 text-center text-sm font-medium text-black bg-primary rounded-xl hover:bg-primary-dark transition-colors shadow-lg shadow-primary/25"
           >
             Visit Store
           </Link>

@@ -25,9 +25,9 @@ interface ResetPasswordRequest {
 interface AuthResponse {
   user: {
     id: string;
-    name: string;
+    fullName: string;
     email: string;
-    role?: string;
+    role: string;
   } | null;
   token: string | null;
 }

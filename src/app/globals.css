@@ -6,6 +6,7 @@
   --primary: #412778;
   --primary-dark: #2e1a55;
   --primary-light: #5a3491;
+  color-scheme: light;
 }
 
 @theme inline {
@@ -16,13 +17,6 @@
   --color-primary-light: var(--primary-light);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {

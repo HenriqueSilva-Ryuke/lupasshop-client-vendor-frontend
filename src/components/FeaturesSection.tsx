@@ -44,7 +44,7 @@ export default function FeaturesSection() {
       >
         <div className="text-center space-y-8 px-8">
           <motion.h2
-            className="text-5xl md:text-6xl font-bold text-white"
+            className="text-5xl md:text-6xl font-bold text-black"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
           >

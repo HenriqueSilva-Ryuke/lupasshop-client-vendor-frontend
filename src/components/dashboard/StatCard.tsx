@@ -42,7 +42,7 @@ export default function StatCard({
           </p>
         </div>
         <div className={`${color} p-3 rounded-lg`}>
-          <span className="material-icons text-white">{icon}</span>
+          <span className="material-icons text-black">{icon}</span>
         </div>
       </div>
 

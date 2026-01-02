@@ -5,6 +5,10 @@ import { generateOrganizationSchema, generateWebsiteSchema } from "@/lib/structu
 import JsonLd from "@/components/JsonLd";
 import { ThirdPartyScripts } from "@/components/ThirdPartyScripts";
 import { ClientProviders } from "@/components/ClientProviders";
+import { inter, roboto } from "@/config/fonts";
+
+// Disable static rendering
+export const dynamic = 'force-dynamic';
 
 const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://lupashop.com';
 
@@ -69,15 +73,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${roboto.variable}`}>
       <head>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
         {/* JSON-LD Structured Data */}
         <JsonLd data={[generateOrganizationSchema(), generateWebsiteSchema()]} />
 
-        {/* Preconnect to external resources */}
+        {/* DNS Prefetch & Preconnect for performance */}
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href={process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'} />
 
         {/* DNS Prefetch for third-party services */}
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />

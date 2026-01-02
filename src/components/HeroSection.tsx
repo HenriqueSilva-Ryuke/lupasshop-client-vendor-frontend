@@ -113,7 +113,7 @@ export default function HeroSection() {
                 repeatType: "loop"
               }}
             >
-              <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-12 h-12 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path 
                   strokeLinecap="round" 
                   strokeLinejoin="round" 
@@ -162,7 +162,7 @@ export default function HeroSection() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.6 + index * 0.1 }}
             >
-              <div className="text-2xl md:text-3xl font-bold text-white mb-1">{stat.value}</div>
+              <div className="text-2xl md:text-3xl font-bold text-black mb-1">{stat.value}</div>
               <div className="text-sm text-blue-200">{stat.label}</div>
             </motion.div>
           ))}
@@ -210,7 +210,7 @@ export default function HeroSection() {
               backgroundColor: "rgba(255,255,255,0.1)"
             }}
             whileTap={{ scale: 0.95 }}
-            className="border-2 border-white/30 text-white px-10 py-4 rounded-full font-semibold text-lg backdrop-blur-sm hover:border-white/50 transition-all duration-300"
+            className="border-2 border-black/30 text-black px-10 py-4 rounded-full font-semibold text-lg backdrop-blur-sm hover:border-black/50 transition-all duration-300"
           >
             <span className="flex items-center">
               {t('joinStore')}

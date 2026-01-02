@@ -157,14 +157,14 @@ export default function MarketplaceShell({ categories, stores, products }: Marke
 
                     {/* Results Header */}
                     <div className="flex items-center justify-between">
-                        <h2 className="text-xl font-bold text-white">
+                        <h2 className="text-xl font-bold text-black">
                             {sort === 'trending'
                                 ? t('trendingNow')
                                 : selectedCategory
                                     ? `${categories.find(c => c.slug === selectedCategory)?.name} ${t('title')}`
                                     : t('allStores')}
                         </h2>
-                        <span className="text-sm text-white/80 font-medium">
+                        <span className="text-sm text-black/80 font-medium">
                             {sort === 'trending' ? trendingProducts.length : sortedStores.length} {t('results')}
                         </span>
                     </div>

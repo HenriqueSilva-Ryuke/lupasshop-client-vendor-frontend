@@ -28,7 +28,7 @@ export default function SettingsView() {
           </div>
 
           <div className="pt-4">
-            <button type="button" className="px-6 py-2 bg-primary text-white font-medium rounded-xl hover:bg-primary-dark transition-colors">
+            <button type="button" className="px-6 py-2 bg-primary text-black font-medium rounded-xl hover:bg-primary-dark transition-colors">
               Save Changes
             </button>
           </div>

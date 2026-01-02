@@ -117,7 +117,7 @@ export default function BenefitsSection() {
           >
             {/* Floating Card */}
             <motion.div
-              className="absolute -top-6 -left-6 bg-[#412778] backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-white/20 z-20 text-white"
+              className="absolute -top-6 -left-6 bg-[#412778] backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-white/20 z-20 text-black"
               initial={{ opacity: 0, x: -20, rotate: -5 }}
               animate={isInView ? { opacity: 1, x: 0, rotate: 0 } : { opacity: 0, x: -20, rotate: -5 }}
               transition={{ duration: 0.6, delay: 0.6 }}
@@ -127,8 +127,8 @@ export default function BenefitsSection() {
                   <StoreIcon />
                 </div>
                 <div>
-                  <div className="font-semibold text-white">{t('forStores.title')}</div>
-                  <div className="text-sm text-white/80">{t('forStores.subtitle')}</div>
+                  <div className="font-semibold text-black">{t('forStores.title')}</div>
+                  <div className="text-sm text-black/80">{t('forStores.subtitle')}</div>
                 </div>
               </div>
             </motion.div>
@@ -160,7 +160,7 @@ export default function BenefitsSection() {
                     <div className="flex items-start space-x-4">
                       <motion.div
                         className={`w-14 h-14 rounded-xl flex items-center justify-center text-xl shrink-0 shadow-lg ${
-                          index % 2 === 0 ? 'bg-[#412778] text-white' : 'bg-white text-[#412778]'
+                          index % 2 === 0 ? 'bg-[#412778] text-black' : 'bg-white text-[#412778]'
                         }`}
                         whileHover={{ 
                           scale: 1.1,
@@ -204,7 +204,7 @@ export default function BenefitsSection() {
               transition={{ duration: 0.6, delay: 0.6 }}
             >
               <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-[#412778] rounded-xl flex items-center justify-center text-white text-lg">
+                <div className="w-12 h-12 bg-[#412778] rounded-xl flex items-center justify-center text-black text-lg">
                   <UserIcon />
                 </div>
                 <div>
@@ -241,7 +241,7 @@ export default function BenefitsSection() {
                     <div className="flex items-start space-x-4">
                       <motion.div
                         className={`w-14 h-14 rounded-xl flex items-center justify-center text-xl shrink-0 shadow-lg ${
-                          index % 2 === 0 ? 'bg-white text-[#412778]' : 'bg-[#412778] text-white'
+                          index % 2 === 0 ? 'bg-white text-[#412778]' : 'bg-[#412778] text-black'
                         }`}
                         whileHover={{ 
                           scale: 1.1,
@@ -278,11 +278,11 @@ export default function BenefitsSection() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 1 }}
         >
-          <div className="bg-[#412778] backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/30 max-w-2xl mx-auto text-white">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+          <div className="bg-[#412778] backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/30 max-w-2xl mx-auto text-black">
+            <h3 className="text-2xl md:text-3xl font-bold text-black mb-4">
               {t('shared.title')}
             </h3>
-            <p className="text-white/90 mb-6 text-lg">
+            <p className="text-black/90 mb-6 text-lg">
               {t('shared.description')}
             </p>
             <motion.div
@@ -301,7 +301,7 @@ export default function BenefitsSection() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="border-2 border-white/30 text-white px-8 py-4 rounded-full font-semibold text-lg backdrop-blur-sm hover:border-white/50 hover:bg-white/10 transition-all duration-300"
+                className="border-2 border-black/30 text-black px-8 py-4 rounded-full font-semibold text-lg backdrop-blur-sm hover:border-black/50 hover:bg-black/10 transition-all duration-300"
               >
                 {tCta('exploreProducts')}
               </motion.button>

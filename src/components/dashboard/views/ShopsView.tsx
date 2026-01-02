@@ -17,7 +17,7 @@ export default function ShopsView() {
           <h1 className="text-2xl font-bold text-gray-900">My Shops</h1>
           <p className="text-gray-500">Manage your stores and settings</p>
         </div>
-        <button className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-xl hover:bg-primary-dark transition-colors">
+        <button className="flex items-center gap-2 bg-primary text-black px-4 py-2 rounded-xl hover:bg-primary-dark transition-colors">
           <Plus size={20} />
           <span>Create New Shop</span>
         </button>
@@ -39,9 +39,9 @@ export default function ShopsView() {
 
               {/* Status Badge */}
               <div className="absolute top-3 right-3">
-                <span className={`px-2 py-1 rounded-lg text-xs font-bold ${shop.status === 'active' ? 'bg-green-500 text-white' :
-                    shop.status === 'pending' ? 'bg-amber-500 text-white' :
-                      'bg-red-500 text-white'
+                <span className={`px-2 py-1 rounded-lg text-xs font-bold ${shop.status === 'active' ? 'bg-green-500 text-black' :
+                    shop.status === 'pending' ? 'bg-amber-500 text-black' :
+                      'bg-red-500 text-black'
                   }`}>
                   {shop.status.toUpperCase()}
                 </span>

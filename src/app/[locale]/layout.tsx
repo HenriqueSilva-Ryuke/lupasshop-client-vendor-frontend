@@ -6,6 +6,9 @@ import { DEFAULT_SEO } from '@/lib/seo';
 import JsonLd from '@/components/JsonLd';
 import { generateBreadcrumbSchema } from '@/lib/structured-data';
 
+// Disable static rendering
+export const dynamic = 'force-dynamic';
+
 const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://lupashop.com';
 
 export async function generateMetadata({

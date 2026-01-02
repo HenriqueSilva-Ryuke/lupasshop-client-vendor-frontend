@@ -1,114 +1,111 @@
 'use client';
 
-import { motion } from 'motion/react';
-import { useTranslations } from 'next-intl';
-import Link from 'next/link';
-import { useLocale } from 'next-intl';
+import React from 'react';
 import { useLoginForm } from '@/hooks/forms/useLoginForm';
 
 export default function LoginForm() {
-  const t = useTranslations('auth.login');
-  const locale = useLocale();
-  const { form, onSubmit, error, isLoading } = useLoginForm();
-  const { register, handleSubmit, formState: { errors } } = form;
+  const { form, onSubmit, showPassword, togglePasswordVisibility, isLoading, error } = useLoginForm();
+  const { register, formState: { errors } } = form;
 
   return (
-    <motion.form
-      onSubmit={handleSubmit(onSubmit)}
-      className="space-y-6 w-full"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
+    <form onSubmit={onSubmit} className="flex flex-col gap-5">
+      {/* Error Alert */}
       {error && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 text-sm"
-        >
+        <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
           {error}
-        </motion.div>
+        </div>
       )}
 
-      {/* Email Field */}
-      <div>
-        <label className="block text-sm font-semibold text-gray-700 mb-2">
-          {t('email')}
-        </label>
-        <input
-          {...register('email')}
-          type="email"
-          placeholder="seu@email.com"
-          className={`w-full px-4 py-3 rounded-xl border-2 transition-colors duration-200 ${
-            errors.email
-              ? 'border-red-300 focus:border-red-500 focus:ring-red-100'
-              : 'border-gray-200 focus:border-primary focus:ring-primary/10'
-          } focus:outline-none focus:ring-4 bg-white`}
-        />
-        {errors.email && (
-          <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
-        )}
-      </div>
-
-      {/* Password Field */}
-      <div>
-        <label className="block text-sm font-semibold text-gray-700 mb-2">
-          {t('password')}
-        </label>
-        <input
-          {...register('password')}
-          type="password"
-          placeholder="••••••••"
-          className={`w-full px-4 py-3 rounded-xl border-2 transition-colors duration-200 ${
-            errors.password
-              ? 'border-red-300 focus:border-red-500 focus:ring-red-100'
-              : 'border-gray-200 focus:border-primary focus:ring-primary/10'
-          } focus:outline-none focus:ring-4 bg-white`}
-        />
-        {errors.password && (
-          <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>
-        )}
-      </div>
-
-      {/* Remember Me & Forgot Password */}
-      <div className="flex items-center justify-between">
-        <label className="flex items-center space-x-2 cursor-pointer">
+      {/* Email Input */}
+      <label className="flex flex-col w-full">
+        <p className="text-text-main text-sm font-semibold leading-normal pb-2">E-mail ou Usuário</p>
+        <div className="relative">
+          <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-[#617989]">
+            mail
+          </span>
           <input
-            {...register('rememberMe')}
-            type="checkbox"
-            className="w-4 h-4 rounded border-gray-300 accent-primary"
+            {...register('email')}
+            className={`form-input flex w-full rounded-lg text-text-main focus:outline-0 focus:ring-2 focus:ring-primary/20 border bg-white focus:border-primary h-12 pl-12 pr-4 text-base font-normal placeholder:text-[#9aaebc] transition-all ${
+              errors.email ? 'border-red-500' : 'border-[#dbe1e6]'
+            }`}
+            placeholder="exemplo@email.com"
+            type="text"
+            disabled={isLoading}
           />
-          <span className="text-sm text-gray-600">{t('rememberMe')}</span>
+          {errors.email && (
+            <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
+          )}
+        </div>
+      </label>
+
+      {/* Password Input */}
+      <label className="flex flex-col w-full">
+        <div className="flex justify-between items-center pb-2">
+          <p className="text-text-main text-sm font-semibold leading-normal">Senha</p>
+        </div>
+        <div className="relative flex w-full items-center">
+          <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-[#617989]">
+            lock
+          </span>
+          <input
+            {...register('password')}
+            className={`form-input flex w-full rounded-lg text-text-main focus:outline-0 focus:ring-2 focus:ring-primary/20 border bg-white focus:border-primary h-12 pl-12 pr-12 text-base font-normal placeholder:text-[#9aaebc] transition-all ${
+              errors.password ? 'border-red-500' : 'border-[#dbe1e6]'
+            }`}
+            placeholder="Digite sua senha"
+            type={showPassword ? 'text' : 'password'}
+            disabled={isLoading}
+          />
+          <button
+            onClick={togglePasswordVisibility}
+            type="button"
+            className="absolute right-0 h-full px-4 text-[#617989] hover:text-primary transition-colors flex items-center justify-center focus:outline-none"
+            tabIndex={-1}
+          >
+            <span className="material-symbols-outlined text-[20px]">
+              {showPassword ? 'visibility' : 'visibility_off'}
+            </span>
+          </button>
+          {errors.password && (
+            <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>
+          )}
+        </div>
+      </label>
+
+      {/* Options Row */}
+      <div className="flex items-center justify-between">
+        <label className="inline-flex items-center cursor-pointer group">
+          <div className="relative flex items-center">
+            <input
+              {...register('rememberMe')}
+              className="peer h-5 w-5 cursor-pointer appearance-none rounded border border-[#dbe1e6] checked:border-primary checked:bg-primary transition-all"
+              type="checkbox"
+              disabled={isLoading}
+            />
+            <span className="material-symbols-outlined absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-[16px] opacity-0 peer-checked:opacity-100 pointer-events-none font-bold">
+              check
+            </span>
+          </div>
+          <span className="ml-2 text-sm text-[#617989] group-hover:text-text-main transition-colors">
+            Lembrar-me
+          </span>
         </label>
-        <Link
-          href={`/${locale}/auth/forgot-password`}
-          className="text-sm text-primary hover:text-primary/80 transition-colors"
+        <a
+          className="text-sm font-semibold text-primary hover:text-primary-dark hover:underline transition-colors"
+          href="#"
         >
-          {t('forgotPassword')}
-        </Link>
+          Esqueci minha senha
+        </a>
       </div>
 
-      {/* Submit Button */}
-      <motion.button
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
+      {/* Login Button */}
+      <button
         type="submit"
         disabled={isLoading}
-        className="w-full py-3 px-4 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="flex w-full cursor-pointer items-center justify-center rounded-lg h-12 px-4 bg-primary hover:bg-primary-dark active:scale-[0.98] transition-all text-white text-base font-bold shadow-md shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {isLoading ? 'Entrando...' : t('button')}
-      </motion.button>
-
-      {/* Sign Up Link */}
-      <p className="text-center text-sm text-gray-600">
-        {t('noAccount')}{' '}
-        <Link
-          href={`/${locale}/auth/register`}
-          className="text-primary font-semibold hover:text-primary/80 transition-colors"
-        >
-          {t('signUp')}
-        </Link>
-      </p>
-    </motion.form>
+        {isLoading ? 'Entrando...' : 'Entrar'}
+      </button>
+    </form>
   );
 }

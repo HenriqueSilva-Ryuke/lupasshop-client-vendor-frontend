@@ -22,7 +22,7 @@ export default function ProductList() {
                 <h2 className="text-lg font-bold text-gray-900">{t('manage')}</h2>
                 <Link
                     href="/dashboard/products/new"
-                    className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-xl hover:bg-primary-dark transition-colors text-sm font-medium"
+                    className="flex items-center gap-2 bg-primary text-black px-4 py-2 rounded-xl hover:bg-primary-dark transition-colors text-sm font-medium"
                 >
                     <Plus size={18} />
                     {t('addProduct')}

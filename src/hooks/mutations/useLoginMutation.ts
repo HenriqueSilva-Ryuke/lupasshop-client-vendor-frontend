@@ -2,11 +2,11 @@
 
 import { useMutation } from '@tanstack/react-query';
 import { authService, type LoginRequest, type AuthResponse } from '@/services/auth';
-import { useAuthStore } from '@/stores/authStore';
+import { useClientAuth } from '@/hooks/useClientAuth';
 import { useTranslations } from 'next-intl';
 
 export function useLoginMutation() {
-  const { setUser, setToken } = useAuthStore();
+  const { setUser, setToken } = useClientAuth();
   const t = useTranslations('auth');
 
   return useMutation({
@@ -19,7 +19,10 @@ export function useLoginMutation() {
     },
     onSuccess: (data: AuthResponse) => {
       if (data.user) {
-        setUser(data.user);
+        setUser({
+          ...data.user,
+          role: data.user.role as 'BUYER' | 'SELLER' | 'ADMIN',
+        });
       }
       if (data.token) {
         setToken(data.token);

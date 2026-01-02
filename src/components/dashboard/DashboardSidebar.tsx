@@ -66,7 +66,7 @@ export default function DashboardSidebar({
         <div className="p-6 border-b border-gray-200">
           <Link href={`/${locale}`} className="flex items-center space-x-2 group">
             <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center group-hover:shadow-lg transition-shadow">
-              <span className="material-icons text-white text-xl">dashboard</span>
+              <span className="material-icons text-black text-xl">dashboard</span>
             </div>
             <div>
               <h1 className="font-bold text-lg text-gray-900">LupaShop</h1>

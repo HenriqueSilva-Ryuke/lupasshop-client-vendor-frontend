@@ -88,11 +88,11 @@ export default function DashboardLayout({
                                         setIsSidebarOpen(false);
                                     }}
                                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group ${active
-                                        ? 'bg-primary text-white shadow-lg shadow-primary/25'
+                                        ? 'bg-primary text-black shadow-lg shadow-primary/25'
                                         : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                                         }`}
                                 >
-                                    <item.icon size={20} className={active ? 'text-white' : 'text-gray-400 group-hover:text-gray-600'} />
+                                    <item.icon size={20} className={active ? 'text-black' : 'text-gray-400 group-hover:text-gray-600'} />
                                     <span className="font-medium">{item.label}</span>
                                 </button>
                             );

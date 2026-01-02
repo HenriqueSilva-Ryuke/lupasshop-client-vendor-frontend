@@ -81,8 +81,24 @@ export const GET_STORE = gql`
 `;
 
 export const LIST_STORES = gql`
-  query ListStores($ownerId: ID, $categoryId: ID, $search: String) {
-    listStores(ownerId: $ownerId, categoryId: $categoryId, search: $search) {
+  query ListStores(
+    $ownerId: ID, 
+    $categoryId: ID, 
+    $search: String,
+    $limit: Int,
+    $offset: Int,
+    $featured: Boolean,
+    $promoted: Boolean
+  ) {
+    listStores(
+      ownerId: $ownerId, 
+      categoryId: $categoryId, 
+      search: $search,
+      limit: $limit,
+      offset: $offset,
+      featured: $featured,
+      promoted: $promoted
+    ) {
       id
       name
       slug
@@ -142,8 +158,26 @@ export const GET_PRODUCT = gql`
 `;
 
 export const LIST_PRODUCTS = gql`
-  query ListProducts($storeId: ID, $categoryId: ID, $search: String) {
-    listProducts(storeId: $storeId, categoryId: $categoryId, search: $search) {
+  query ListProducts(
+    $storeId: ID, 
+    $categoryId: ID, 
+    $search: String,
+    $isNew: Boolean,
+    $isTrending: Boolean,
+    $limit: Int,
+    $offset: Int,
+    $featured: Boolean
+  ) {
+    listProducts(
+      storeId: $storeId, 
+      categoryId: $categoryId, 
+      search: $search,
+      isNew: $isNew,
+      isTrending: $isTrending,
+      limit: $limit,
+      offset: $offset,
+      featured: $featured
+    ) {
       id
       name
       slug

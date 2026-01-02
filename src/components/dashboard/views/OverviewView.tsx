@@ -5,7 +5,7 @@ import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
 import StatCard from '@/components/dashboard/StatCard';
 import RecentOrdersTable from '@/components/dashboard/RecentOrdersTable';
-import { useAuthStore } from '@/stores/authStore';
+import { useClientAuth } from '@/hooks/useClientAuth';
 import { fetchDashboardStats } from '@/lib/dashboard';
 
 interface DashboardStats {
@@ -17,7 +17,7 @@ interface DashboardStats {
 
 export default function OverviewView() {
   const t = useTranslations('dashboard');
-  const { user } = useAuthStore();
+  const { user } = useClientAuth();
   const [stats, setStats] = useState<DashboardStats>({
     totalSales: 0,
     totalOrders: 0,
@@ -85,7 +85,7 @@ export default function OverviewView() {
         className="bg-white rounded-lg p-6 border border-gray-200"
       >
         <h1 className="text-2xl font-bold text-gray-900">
-          {t('welcome', { name: user?.name || 'Seller' })}
+          {t('welcome', { name: user?.fullName || 'Seller' })}
         </h1>
         <p className="text-gray-600 mt-2">
           {t('subtitle')}

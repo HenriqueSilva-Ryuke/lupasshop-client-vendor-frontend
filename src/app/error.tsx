@@ -62,7 +62,7 @@ export default function RootError({ error, reset }: ErrorProps) {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={reset}
-                className="px-6 py-2 bg-orange-600 text-white rounded-lg font-semibold hover:bg-orange-700 transition-colors"
+                className="px-6 py-2 bg-orange-600 text-black rounded-lg font-semibold hover:bg-orange-700 transition-colors"
               >
                 Tentar Novamente
               </motion.button>

@@ -1,13 +1,10 @@
-"use server";
-import { redirect } from 'next/navigation';
-import { headers } from 'next/headers';
+'use client';
 
-export default async function RootPage() {
-  const headersList = await headers();
-  const acceptLanguage = headersList.get('accept-language') || '';
+import Marketplace from '@/components/Marketplace';
 
-  // Check if Portuguese is preferred
-  const isPortuguese = acceptLanguage.toLowerCase().startsWith('pt');
+// Prevent static optimization for pages using client stores
+export const dynamic = 'force-dynamic';
 
-  redirect(isPortuguese ? '/pt' : '/en');
+export default function RootPage() {
+  return <Marketplace />;
 }

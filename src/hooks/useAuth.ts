@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { useAuthStore } from '../stores/authStore';
+import { useClientAuth } from './useClientAuth';
 
 interface LoginCredentials {
   email: string;
@@ -13,18 +13,20 @@ interface RegisterCredentials {
 }
 
 interface AuthResponse {
-  user: {
+  user?: {
     id: string;
-    name: string;
     email: string;
-  };
-  token: string;
+    fullName?: string;
+    name?: string;
+    role?: string | null;
+  } | null;
+  token?: string | null;
 }
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api';
 
 export const useAuth = () => {
-  const { user, token, setUser, setToken, logout } = useAuthStore();
+  const { user, token, setUser, setToken, logout } = useClientAuth();
 
   const login = useCallback(async (credentials: LoginCredentials) => {
     try {
@@ -41,8 +43,17 @@ export const useAuth = () => {
       }
 
       const data: AuthResponse = await response.json();
-      setToken(data.token);
-      setUser(data.user);
+      const normalizedUser = data.user
+        ? {
+            id: data.user.id,
+            email: data.user.email,
+            fullName: data.user.fullName ?? data.user.name ?? '',
+            role: (data.user.role as 'BUYER' | 'SELLER' | 'ADMIN' | undefined) ?? 'BUYER',
+          }
+        : null;
+
+      if (data.token) setToken(data.token);
+      if (normalizedUser) setUser(normalizedUser);
       return { success: true, data };
     } catch (error) {
       return { success: false, error: (error as Error).message };
@@ -64,8 +75,17 @@ export const useAuth = () => {
       }
 
       const data: AuthResponse = await response.json();
-      setToken(data.token);
-      setUser(data.user);
+      const normalizedUser = data.user
+        ? {
+            id: data.user.id,
+            email: data.user.email,
+            fullName: data.user.fullName ?? data.user.name ?? '',
+            role: (data.user.role as 'BUYER' | 'SELLER' | 'ADMIN' | undefined) ?? 'BUYER',
+          }
+        : null;
+
+      if (data.token) setToken(data.token);
+      if (normalizedUser) setUser(normalizedUser);
       return { success: true, data };
     } catch (error) {
       return { success: false, error: (error as Error).message };

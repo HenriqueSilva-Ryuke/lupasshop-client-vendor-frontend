@@ -32,7 +32,7 @@ export default function CategoryWidget({ categories, selectedCategory, onSelectC
                                 }`}
                         >
                             <div className="flex items-center gap-3">
-                                <div className={`p-2 rounded-lg transition-colors ${isSelected ? 'bg-primary text-white' : 'bg-gray-100 text-gray-500 group-hover:bg-white group-hover:shadow-sm'
+                                <div className={`p-2 rounded-lg transition-colors ${isSelected ? 'bg-primary text-black' : 'bg-gray-100 text-gray-500 group-hover:bg-white group-hover:shadow-sm'
                                     }`}>
                                     <Icon size={18} />
                                 </div>

@@ -34,5 +34,54 @@
     "view": {
         "grid": "Grid",
         "list": "List"
+    },
+    "search": {
+        "placeholder": "Search for products, stores...",
+        "searching": "Searching...",
+        "noResults": "No results found for \"{query}\"",
+        "products": "Products",
+        "stores": "Stores",
+        "categories": "Categories"
+    },
+    "cart": "Cart",
+    "notifications": "Notifications",
+    "filter": {
+        "title": "Filters",
+        "category": "Category",
+        "store": "Store",
+        "price": "Price",
+        "priceMin": "Min",
+        "priceMax": "Max",
+        "apply": "Apply",
+        "brand": "Brand",
+        "availability": "Availability",
+        "inStock": "In Stock",
+        "fastDelivery": "Fast Delivery",
+        "preOrder": "Pre-order"
+    },
+    "sorting": {
+        "sortBy": "Sort by:",
+        "priceLow": "Lowest Price",
+        "priceHigh": "Highest Price",
+        "bestSeller": "Best Sellers"
+    },
+    "breadcrumb": {
+        "home": "Home",
+        "marketplace": "Marketplace"
+    },
+    "products": {
+        "title": "Products",
+        "showing": "Showing {count} results",
+        "new": "NEW",
+        "outOfStock": "Out of Stock",
+        "addToCart": "Add to Cart",
+        "soldBy": "Sold by",
+        "verified": "Verified",
+        "noProducts": "No products found",
+        "reviews": "reviews"
+    },
+    "pagination": {
+        "previous": "Previous",
+        "next": "Next"
     }
 }

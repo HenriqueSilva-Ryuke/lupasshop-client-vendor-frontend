@@ -104,7 +104,7 @@ export default function Error({ error, reset }: ErrorProps) {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={reset}
-              className="inline-block px-8 py-3 bg-orange-600 text-white rounded-lg font-semibold hover:bg-orange-700 transition-colors shadow-lg"
+              className="inline-block px-8 py-3 bg-orange-600 text-black rounded-lg font-semibold hover:bg-orange-700 transition-colors shadow-lg"
             >
               Tentar Novamente
             </motion.button>

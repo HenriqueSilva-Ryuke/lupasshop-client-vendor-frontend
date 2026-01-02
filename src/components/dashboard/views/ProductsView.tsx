@@ -24,7 +24,7 @@ export default function ProductsView() {
           <h1 className="text-2xl font-bold text-gray-900">Products</h1>
           <p className="text-gray-500">Manage your product catalog</p>
         </div>
-        <button className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-xl hover:bg-primary-dark transition-colors">
+        <button className="flex items-center gap-2 bg-primary text-black px-4 py-2 rounded-xl hover:bg-primary-dark transition-colors">
           <Plus size={20} />
           <span>Add Product</span>
         </button>

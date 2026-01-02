@@ -32,7 +32,7 @@ export default function BottomNavigation({
                 onClick={() => onViewChange(item.id as DashboardView)}
                 className={`flex items-center gap-2 px-3 py-2 rounded-full transition-all whitespace-nowrap text-sm font-medium ${
                   currentView === item.id
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-blue-600 text-black'
                     : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
                 }`}
               >

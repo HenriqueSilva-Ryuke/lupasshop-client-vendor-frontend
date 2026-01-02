@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { useTranslations, useLocale } from 'next-intl';
-import { useAuthStore } from '@/stores/authStore';
+import { useClientAuth } from '@/hooks/useClientAuth';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
@@ -27,7 +27,7 @@ export default function DashboardNavigation({
 }: DashboardNavigationProps) {
   const t = useTranslations();
   const locale = useLocale();
-  const { user, logout } = useAuthStore();
+  const { user, logout } = useClientAuth();
   const router = useRouter();
 
   const handleLogout = () => {
@@ -102,12 +102,12 @@ export default function DashboardNavigation({
             className="flex items-center space-x-3 px-4 py-2 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer group"
           >
             <div className="w-8 h-8 bg-linear-to-br from-primary to-primary/60 rounded-full flex items-center justify-center">
-              <span className="text-white text-sm font-bold">
-                {user?.name?.charAt(0).toUpperCase() || 'U'}
+              <span className="text-black text-sm font-bold">
+                {user?.fullName?.charAt(0).toUpperCase() || 'U'}
               </span>
             </div>
             <div className="hidden sm:block">
-              <p className="text-sm font-medium text-gray-900">{user?.name || 'User'}</p>
+              <p className="text-sm font-medium text-gray-900">{user?.fullName || 'User'}</p>
               <p className="text-xs text-gray-500">{user?.email || ''}</p>
             </div>
             <span className="material-icons text-gray-600 text-xl group-hover:rotate-180 transition-transform">

@@ -34,5 +34,54 @@
     "view": {
         "grid": "Grade",
         "list": "Lista"
+    },
+    "search": {
+        "placeholder": "Buscar produtos, lojas...",
+        "searching": "Buscando...",
+        "noResults": "Nenhum resultado encontrado para \"{query}\"",
+        "products": "Produtos",
+        "stores": "Lojas",
+        "categories": "Categorias"
+    },
+    "cart": "Carrinho",
+    "notifications": "Notificações",
+    "filter": {
+        "title": "Filtros",
+        "category": "Categoria",
+        "store": "Loja",
+        "price": "Preço",
+        "priceMin": "Mín",
+        "priceMax": "Máx",
+        "apply": "Aplicar",
+        "brand": "Marca",
+        "availability": "Disponibilidade",
+        "inStock": "Em estoque",
+        "fastDelivery": "Entrega imediata",
+        "preOrder": "Pré-venda"
+    },
+    "sorting": {
+        "sortBy": "Ordenar por:",
+        "priceLow": "Menor Preço",
+        "priceHigh": "Maior Preço",
+        "bestSeller": "Mais Vendidos"
+    },
+    "breadcrumb": {
+        "home": "Início",
+        "marketplace": "Marketplace"
+    },
+    "products": {
+        "title": "Produtos",
+        "showing": "Mostrando {count} resultados",
+        "new": "NOVO",
+        "outOfStock": "Esgotado",
+        "addToCart": "Adicionar ao Carrinho",
+        "soldBy": "Vendido por",
+        "verified": "Verificado",
+        "noProducts": "Nenhum produto encontrado",
+        "reviews": "avaliações"
+    },
+    "pagination": {
+        "previous": "Anterior",
+        "next": "Próximo"
     }
 }

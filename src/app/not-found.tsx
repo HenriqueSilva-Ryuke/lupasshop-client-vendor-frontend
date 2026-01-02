@@ -51,7 +51,7 @@ export default function NotFound() {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href="/"
-                className="inline-block px-8 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg"
+                className="inline-block px-8 py-3 bg-blue-600 text-black rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg"
               >
                 Home
               </Link>

@@ -26,7 +26,7 @@ export const FeatureItem = ({ feature, transforms, zIndex }: FeatureItemProps) =
           transition={{ delay: 0.2 }}
         >
           <div className="w-16 h-16 rounded-xl bg-linear-to-br from-primary to-purple-200 flex items-center justify-center text-purple-600">
-            <div className="text-white">
+            <div className="text-black">
               {feature.icon}
             </div>
           </div>

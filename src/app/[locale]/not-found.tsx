@@ -79,7 +79,7 @@ export default function NotFound() {
             >
               <Link
                 href={`/${locale}`}
-                className="inline-block px-8 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg"
+                className="inline-block px-8 py-3 bg-blue-600 text-black rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg"
               >
                 Ir para Home
               </Link>

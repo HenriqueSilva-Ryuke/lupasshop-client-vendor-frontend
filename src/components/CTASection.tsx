@@ -7,7 +7,7 @@ export default function CTASection() {
   const t = useTranslations('cta');
 
   return (
-    <section className="relative py-32 overflow-hidden bg-gradient-to-br from-[#412778] via-[#4a2d85] to-[#2e1a55] text-white">
+    <section className="relative py-32 overflow-hidden bg-gradient-to-br from-[#412778] via-[#4a2d85] to-[#2e1a55] text-black">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-72 h-72 bg-[#5a3491] rounded-full blur-3xl"></div>
@@ -75,7 +75,7 @@ export default function CTASection() {
             {t('title')}
           </motion.h2>
           <motion.p
-            className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-black/80 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -102,8 +102,8 @@ export default function CTASection() {
               key={stat.label}
               className={`text-center p-4 rounded-2xl backdrop-blur-sm border transition-all duration-300 ${
                 index % 2 === 0 
-                  ? 'bg-white/10 border-white/20 text-white' 
-                  : 'bg-[#412778]/80 border-[#5a3491]/50 text-white'
+                  ? 'bg-white/10 border-white/20 text-black' 
+                  : 'bg-[#412778]/80 border-[#5a3491]/50 text-black'
               }`}
               whileHover={{ 
                 scale: 1.05,
@@ -115,12 +115,12 @@ export default function CTASection() {
               viewport={{ once: true }}
             >
               <div className="flex justify-center mb-2">
-                <span className="material-icons text-3xl text-white/80">
+                <span className="material-icons text-3xl text-black/80">
                   {stat.icon}
                 </span>
               </div>
-              <div className="text-2xl md:text-3xl font-bold text-white mb-1">{stat.number}</div>
-              <div className="text-sm text-white/60">{stat.label}</div>
+              <div className="text-2xl md:text-3xl font-bold text-black mb-1">{stat.number}</div>
+              <div className="text-sm text-black/60">{stat.label}</div>
             </motion.div>
           ))}
         </motion.div>
@@ -160,7 +160,7 @@ export default function CTASection() {
               borderColor: "rgba(255,255,255,0.5)"
             }}
             whileTap={{ scale: 0.95 }}
-            className="group border-2 border-white/30 text-white px-10 py-4 rounded-full font-semibold text-lg backdrop-blur-sm hover:border-white/50 transition-all duration-300 flex items-center justify-center"
+            className="group border-2 border-black/30 text-black px-10 py-4 rounded-full font-semibold text-lg backdrop-blur-sm hover:border-black/50 transition-all duration-300 flex items-center justify-center"
           >
             <span className="material-icons mr-3">shopping_bag</span>
             {t('exploreProducts')}
@@ -169,7 +169,7 @@ export default function CTASection() {
 
         {/* Additional Options */}
         <motion.div
-          className="flex flex-wrap justify-center gap-8 text-white/60"
+          className="flex flex-wrap justify-center gap-8 text-black/60"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1 }}

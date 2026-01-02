@@ -30,7 +30,7 @@ export default function ForgotPasswordForm() {
         </div>
         <Link
           href={`/${locale}/auth/login`}
-          className="inline-block px-6 py-2 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-colors"
+          className="inline-block px-6 py-2 bg-primary text-black rounded-xl font-semibold hover:bg-primary/90 transition-colors"
         >
           {t('backToLogin')}
         </Link>
@@ -82,7 +82,7 @@ export default function ForgotPasswordForm() {
         whileTap={{ scale: 0.98 }}
         type="submit"
         disabled={isLoading}
-        className="w-full py-3 px-4 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full py-3 px-4 bg-primary text-black rounded-xl font-semibold hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isLoading ? 'Enviando...' : t('button')}
       </motion.button>
