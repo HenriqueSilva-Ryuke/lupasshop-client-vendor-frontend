@@ -387,8 +387,8 @@ export const LIST_ORDER_TRANSACTIONS = gql`
 // ==================== CATEGORIES ====================
 
 export const LIST_CATEGORIES = gql`
-  query ListCategories($type: CategoryType) {
-    listCategories(type: $type) {
+  query ListCategories($type: CategoryType, $limit: Int) {
+    listCategories(type: $type, limit: $limit) {
       id
       name
       slug
