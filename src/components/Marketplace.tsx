@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import { useTranslations } from 'next-intl';
 import { Heart, ShoppingCart, Search, Menu, X, Star, MapPin, TrendingUp, Package, Loader } from 'lucide-react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
@@ -117,7 +118,8 @@ const defaultCategories: Category[] = [
 ];
 
 export default function Marketplace() {
-  const t = useTranslations();
+  const tHome = useTranslations('home');
+  const tMarket = useTranslations('marketplace');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
@@ -247,12 +249,8 @@ export default function Marketplace() {
       <section className="bg-gradient-to-br from-[#412778] to-purple-900 text-black py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">
-              Discover Amazing Products
-            </h1>
-            <p className="text-purple-100 text-lg">
-              Your one-stop marketplace for electronics, fashion, home & more
-            </p>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{tHome('hero.title')}</h1>
+            <p className="text-purple-100 text-lg">{tHome('hero.subtitle')}</p>
           </div>
 
           {/* Search Bar */}
@@ -480,7 +478,7 @@ export default function Marketplace() {
                   {store.salesCount.toLocaleString()} sales
                 </p>
                 <button className="w-full border-2 border-[#412778] text-[#412778] hover:bg-[#412778] hover:text-black py-2 rounded-lg font-semibold transition">
-                  Visit Store
+                  {tMarket('visitStore')}
                 </button>
               </div>
             ))}
@@ -498,9 +496,7 @@ export default function Marketplace() {
                 <Package className="w-6 h-6 text-[#412778]" />
                 <span className="text-xl font-bold">LupaShop</span>
               </div>
-              <p className="text-gray-400">
-                Your trusted marketplace for quality products and exceptional service.
-              </p>
+              <p className="text-gray-400">{tMarket('tagline')}</p>
               <div className="flex gap-4 mt-4">
                 <a href="#" className="text-gray-400 hover:text-black">Facebook</a>
                 <a href="#" className="text-gray-400 hover:text-black">Twitter</a>

@@ -1,0 +1,37 @@
+{
+  "hero": {
+    "title": "Discover Amazing Products",
+    "subtitle": "Your one-stop marketplace for electronics, fashion, home & more",
+    "searchPlaceholder": "What are you looking for today?",
+    "searchButton": "Search"
+  },
+  "searchResults": {
+    "products": "Products",
+    "stores": "Stores",
+    "categories": "Categories",
+    "noProducts": "Nothing found.",
+    "noStores": "No stores found.",
+    "noCategories": "No categories found.",
+    "loading": "Searching..."
+  },
+  "promotions": {
+    "featuredTitle": "Featured Deals",
+    "viewProduct": "View product"
+  },
+  "categories": {
+    "title": "Popular Categories",
+    "viewAll": "View all"
+  },
+  "deals": {
+    "sectionTitle": "Deals of the Day",
+    "addButton": "Add"
+  },
+  "stores": {
+    "featuredTitle": "Featured Stores",
+    "viewAll": "See all stores",
+    "description": "Buy directly from the best independent shops."
+  },
+  "marketplace": {
+    "tagline": "Your trusted marketplace for quality products and exceptional service."
+  }
+}

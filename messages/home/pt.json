@@ -1,0 +1,37 @@
+{
+  "hero": {
+    "title": "Descubra Produtos Incríveis",
+    "subtitle": "Seu marketplace único para eletrônicos, moda, casa e muito mais",
+    "searchPlaceholder": "O que você está procurando hoje?",
+    "searchButton": "Buscar"
+  },
+  "searchResults": {
+    "products": "Produtos",
+    "stores": "Lojas",
+    "categories": "Categorias",
+    "noProducts": "Nada encontrado.",
+    "noStores": "Nenhuma loja encontrada.",
+    "noCategories": "Nenhuma categoria encontrada.",
+    "loading": "Buscando..."
+  },
+  "promotions": {
+    "featuredTitle": "Ofertas em Destaque",
+    "viewProduct": "Ver produto"
+  },
+  "categories": {
+    "title": "Categorias Populares",
+    "viewAll": "Ver todas"
+  },
+  "deals": {
+    "sectionTitle": "Ofertas do Dia",
+    "addButton": "Adicionar"
+  },
+  "stores": {
+    "featuredTitle": "Lojas em Destaque",
+    "viewAll": "Ver todas as lojas",
+    "description": "Compre diretamente das melhores lojas independentes."
+  },
+  "marketplace": {
+    "tagline": "Seu marketplace confiável para produtos de qualidade e serviço excepcional."
+  }
+}

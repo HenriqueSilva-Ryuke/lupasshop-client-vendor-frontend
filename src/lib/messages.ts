@@ -19,6 +19,7 @@ export async function loadMessages(locale: string) {
   const sections = [
     'navbar',
     'hero',
+    'home',
     'features',
     'benefits',
     'cta',

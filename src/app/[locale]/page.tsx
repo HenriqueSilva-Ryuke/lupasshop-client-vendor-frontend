@@ -4,7 +4,7 @@ import type React from 'react';
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'motion/react';
 import {
   Search,
@@ -29,6 +29,7 @@ import { useFeaturedStores } from '@/hooks/useFeaturedStores';
 
 export default function Home() {
   const locale = useLocale();
+  const t = useTranslations('home');
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
   const debouncedQuery = useDebounce(searchQuery, 300);
@@ -111,7 +112,7 @@ export default function Home() {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="O que você está procurando hoje?"
+                  placeholder={t('hero.searchPlaceholder')}
                   className="flex-1 h-full bg-transparent border-none text-text-main dark:text-black placeholder:text-text-sub focus:ring-0 text-base md:text-lg px-2"
                 />
                 <motion.button
@@ -120,7 +121,7 @@ export default function Home() {
                   type="submit"
                   className="h-10 md:h-11 px-6 md:px-8 mr-2 bg-primary text-white rounded-lg font-bold text-sm hover:bg-primary-dark transition-colors shadow-md flex items-center gap-2"
                 >
-                  Buscar
+                  {t('hero.searchButton')}
                   <ArrowRight className="w-4 h-4" />
                 </motion.button>
               </form>
@@ -134,11 +135,11 @@ export default function Home() {
                   <div className="grid grid-cols-1 md:grid-cols-3">
                     <div className="p-4 md:p-5 space-y-2">
                       <div className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-200">
-                        <ShoppingCart className="w-4 h-4" /> Produtos
+                        <ShoppingCart className="w-4 h-4" /> {t('searchResults.products')}
                       </div>
-                      {searchLoading && <p className="text-sm text-gray-500">Buscando...</p>}
+                      {searchLoading && <p className="text-sm text-gray-500">{t('searchResults.loading')}</p>}
                       {!searchLoading && highlightedProducts.length === 0 && (
-                        <p className="text-sm text-gray-500">Nada encontrado.</p>
+                        <p className="text-sm text-gray-500">{t('searchResults.noProducts')}</p>
                       )}
                       <div className="space-y-2">
                         {highlightedProducts.map((p) => (
@@ -174,10 +175,10 @@ export default function Home() {
 
                     <div className="p-4 md:p-5 space-y-2 border-t md:border-t-0 md:border-l border-gray-100 dark:border-gray-800">
                       <div className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-200">
-                        <Store className="w-4 h-4" /> Lojas
+                        <Store className="w-4 h-4" /> {t('searchResults.stores')}
                       </div>
                       {!searchLoading && highlightedStores.length === 0 && (
-                        <p className="text-sm text-gray-500">Nenhuma loja encontrada.</p>
+                        <p className="text-sm text-gray-500">{t('searchResults.noStores')}</p>
                       )}
                       <div className="space-y-2">
                         {highlightedStores.map((s) => (
@@ -207,10 +208,10 @@ export default function Home() {
 
                     <div className="p-4 md:p-5 space-y-2 border-t md:border-t-0 md:border-l border-gray-100 dark:border-gray-800">
                       <div className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-200">
-                        <Tag className="w-4 h-4" /> Categorias
+                        <Tag className="w-4 h-4" /> {t('searchResults.categories')}
                       </div>
                       {!searchLoading && highlightedCategories.length === 0 && (
-                        <p className="text-sm text-gray-500">Nenhuma categoria encontrada.</p>
+                        <p className="text-sm text-gray-500">{t('searchResults.noCategories')}</p>
                       )}
                       <div className="grid grid-cols-2 gap-2">
                         {highlightedCategories.map((c) => (
@@ -266,7 +267,7 @@ export default function Home() {
                       <h3 className="text-xl font-bold leading-tight group-hover:text-primary transition-colors line-clamp-2">{deal.title}</h3>
                       <p className="text-text-sub text-sm mt-2 font-medium">{deal.store}</p>
                       <span className="inline-flex items-center text-primary font-bold text-sm mt-3 group-hover:underline gap-1">
-                        Ver produto
+                        {t('promotions.viewProduct')}
                         <ArrowRight className="w-4 h-4" />
                       </span>
                     </div>
@@ -279,8 +280,8 @@ export default function Home() {
           {/* Categorias populares */}
           <section className="mb-14">
             <div className="flex items-center justify-between mb-6 px-1">
-              <h2 className="text-2xl font-bold tracking-tight">Categorias Populares</h2>
-              <Link href={`/${locale}/marketplace`} className="text-primary text-sm font-semibold hover:text-primary-dark hover:underline">Ver todas</Link>
+              <h2 className="text-2xl font-bold tracking-tight">{t('categories.title')}</h2>
+              <Link href={`/${locale}/marketplace`} className="text-primary text-sm font-semibold hover:text-primary-dark hover:underline">{t('categories.viewAll')}</Link>
             </div>
             {categoriesLoading ? (
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
@@ -315,7 +316,7 @@ export default function Home() {
           <section className="mb-14">
             <div className="flex items-center gap-3 mb-6 px-1">
               <Bolt className="text-primary w-7 h-7" />
-              <h2 className="text-2xl font-bold tracking-tight">Ofertas do Dia</h2>
+              <h2 className="text-2xl font-bold tracking-tight">{t('deals.sectionTitle')}</h2>
             </div>
             {productsLoading ? (
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -369,7 +370,7 @@ export default function Home() {
                           onClick={(e) => e.stopPropagation()}
                         >
                           <ShoppingCart className="w-4 h-4" />
-                          Adicionar
+                          {t('deals.addButton')}
                         </motion.button>
                       </div>
                     </div>
@@ -383,8 +384,8 @@ export default function Home() {
           <section className="rounded-3xl bg-gray-50 dark:bg-surface-dark p-8 md:p-10 border border-gray-100 dark:border-[#2a3b47]">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
               <div>
-                <h2 className="text-2xl font-bold tracking-tight">Lojas em Destaque</h2>
-                <p className="text-text-sub mt-2 text-sm">Compre diretamente das melhores lojas independentes.</p>
+                <h2 className="text-2xl font-bold tracking-tight">{t('stores.featuredTitle')}</h2>
+                <p className="text-text-sub mt-2 text-sm">{t('stores.description')}</p>
               </div>
               <motion.a
                 href={`/${locale}/marketplace`}
@@ -392,7 +393,7 @@ export default function Home() {
                 whileTap={{ scale: 0.98 }}
                 className="px-5 py-2.5 rounded-lg border border-gray-300 dark:border-[#3c4e5c] text-text-main dark:text-black text-sm font-bold hover:bg-white dark:hover:bg-gray-800 hover:shadow transition-all"
               >
-                Ver todas as lojas
+                {t('stores.viewAll')}
               </motion.a>
             </div>
             {storesLoading ? (
