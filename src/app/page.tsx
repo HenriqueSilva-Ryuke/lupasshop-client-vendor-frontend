@@ -1,10 +1,7 @@
-'use client';
-
-import Marketplace from '@/components/Marketplace';
-
-// Prevent static optimization for pages using client stores
-export const dynamic = 'force-dynamic';
+import { redirect } from 'next/navigation';
 
 export default function RootPage() {
-  return <Marketplace />;
+  // Redirect root to default locale marketplace to ensure NextIntl provider
+  // is mounted from the locale layout and translations are available.
+  redirect('/en/marketplace');
 }

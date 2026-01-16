@@ -1,4 +1,4 @@
-import { NextIntlClientProvider } from 'next-intl';
+import IntlProviderClient from '@/components/IntlProviderClient';
 import type { Metadata } from 'next';
 import { loadMessages } from '../../lib/messages';
 import PageTransition from '../../components/PageTransition';
@@ -70,11 +70,11 @@ export default async function LocaleLayout({
   ]);
 
   return (
-    <NextIntlClientProvider locale={locale || 'en'} messages={messages}>
-    <JsonLd data={breadcrumbSchema} />
+    <IntlProviderClient locale={locale || 'en'} messages={messages}>
+      <JsonLd data={breadcrumbSchema} />
       <PageTransition>
         {children}
       </PageTransition>
-    </NextIntlClientProvider>
+    </IntlProviderClient>
   );
 }
