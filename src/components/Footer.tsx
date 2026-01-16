@@ -86,17 +86,17 @@ export default function Footer() {
         { 
           name: t('facebook'), 
           href: "#",
-          icon: <FaFacebook className="text-black/40 group-hover:text-black text-lg" />
+          icon: <FaFacebook className="text-white/70 group-hover:text-white text-lg" />
         },
         { 
           name: t('instagram'), 
           href: "#",
-          icon: <FaInstagram className="text-black/40 group-hover:text-black text-lg" />
+          icon: <FaInstagram className="text-white/70 group-hover:text-white text-lg" />
         },
         { 
           name: t('linkedin'), 
           href: "#",
-          icon: <FaLinkedin className="text-black/40 group-hover:text-black text-lg" />
+          icon: <FaLinkedin className="text-white/70 group-hover:text-white text-lg" />
         }
       ]
     }
@@ -111,7 +111,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-linear-to-br from-[#2e1a55] to-[#412778] text-black">
+    <footer className="bg-linear-to-br from-[#2e1a55] to-[#412778] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Main Content */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
@@ -125,21 +125,21 @@ export default function Footer() {
           >
             <Link href="/" className="flex items-center space-x-2 group mb-4">
               <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center group-hover:bg-white/20 transition-all">
-                <span className="material-icons text-black text-xl">search</span>
+                <span className="material-icons text-white text-xl">search</span>
               </div>
-              <h3 className="text-xl font-bold">LupaShop</h3>
+              <h3 className="text-xl font-bold text-white">LupaShop</h3>
             </Link>
             
             {/* Social Links */}
             <div className="flex space-x-3">
               <motion.a href="#" className="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-all" whileHover={{ scale: 1.1 }} aria-label="LinkedIn">
-                <FaLinkedin className="text-black text-sm" />
+                <FaLinkedin className="text-white text-sm" />
               </motion.a>
               <motion.a href="#" className="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-all" whileHover={{ scale: 1.1 }} aria-label="Facebook">
-                <FaFacebook className="text-black text-sm" />
+                <FaFacebook className="text-white text-sm" />
               </motion.a>
               <motion.a href="#" className="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-all" whileHover={{ scale: 1.1 }} aria-label="Instagram">
-                <FaInstagram className="text-black text-sm" />
+                <FaInstagram className="text-white text-sm" />
               </motion.a>
             </div>
           </motion.div>
@@ -153,11 +153,11 @@ export default function Footer() {
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               viewport={{ once: true }}
             >
-              <h4 className="text-sm font-semibold mb-4 text-black">{section.title}</h4>
+              <h4 className="text-sm font-semibold mb-4 text-white/90">{section.title}</h4>
               <ul className="space-y-2">
                 {section.links.map((link) => (
                   <li key={link.name}>
-                    <Link href={link.href && link.href.startsWith('/') ? `/${locale}${link.href}` : link.href} className="text-black/60 hover:text-black text-sm transition-colors">
+                    <Link href={link.href && link.href.startsWith('/') ? `/${locale}${link.href}` : link.href} className="text-white/80 hover:text-white text-sm transition-colors">
                       {link.name}
                     </Link>
                   </li>
@@ -171,7 +171,7 @@ export default function Footer() {
         <div className="border-t border-white/10 py-6">
           {/* Bottom Info */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-black/60 text-xs">{t('copyright')}</div>
+            <div className="text-white/70 text-xs">{t('copyright')}</div>
             
             <div className="flex flex-wrap justify-center gap-4 text-xs">
               {[
@@ -179,7 +179,7 @@ export default function Footer() {
                 { name: t('terms'), href: "/terms" },
                 { name: t('cookies'), href: "/cookies" }
               ].map((link) => (
-                <Link key={link.name} href={link.href} className="text-black/60 hover:text-black transition-colors">
+                <Link key={link.name} href={link.href} className="text-white/80 hover:text-white transition-colors">
                   {link.name}
                 </Link>
               ))}

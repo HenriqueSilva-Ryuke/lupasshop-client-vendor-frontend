@@ -118,7 +118,7 @@ export default function Home() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   type="submit"
-                  className="h-10 md:h-11 px-6 md:px-8 mr-2 bg-primary text-black rounded-lg font-bold text-sm hover:bg-primary-dark transition-colors shadow-md flex items-center gap-2"
+                  className="h-10 md:h-11 px-6 md:px-8 mr-2 bg-primary text-white rounded-lg font-bold text-sm hover:bg-primary-dark transition-colors shadow-md flex items-center gap-2"
                 >
                   Buscar
                   <ArrowRight className="w-4 h-4" />
