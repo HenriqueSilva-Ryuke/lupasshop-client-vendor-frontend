@@ -16,6 +16,7 @@ import {
   Search,
   LogIn,
 } from 'lucide-react';
+import Button from '@/components/ui/Button';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -91,15 +92,14 @@ export default function CartPage() {
             <ShoppingBag className="w-16 h-16 text-gray-300 mb-4" />
             <h1 className="text-3xl font-bold mb-2">Carrinho Vazio</h1>
             <p className="text-gray-600 mb-8">Você ainda não adicionou nenhum produto ao seu carrinho.</p>
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+            <Button
+              variant="default"
               onClick={() => router.push(`/${locale}/marketplace`)}
               className="px-8 py-3 bg-primary text-white rounded-lg font-bold hover:bg-primary-dark transition-colors flex items-center gap-2"
             >
               <ArrowLeft className="w-4 h-4" />
               Voltar ao Marketplace
-            </motion.button>
+            </Button>
           </div>
           <Footer />
         </div>
@@ -121,14 +121,14 @@ export default function CartPage() {
                 Você tem {items.length} itens de {itemsByStore.length} loja{itemsByStore.length > 1 ? 's' : ''} diferente{itemsByStore.length > 1 ? 's' : ''}
               </p>
             </div>
-            <motion.button
-              whileHover={{ scale: 1.02 }}
+            <Button
+              variant="default"
               onClick={() => router.push(`/${locale}/marketplace`)}
               className="text-primary font-bold text-sm hover:underline flex items-center gap-1"
             >
               <ArrowLeft className="w-4 h-4" />
               Continuar comprando
-            </motion.button>
+            </Button>
           </div>
 
           {/* Main Grid */}
@@ -178,14 +178,14 @@ export default function CartPage() {
                                 <p className="text-red-600 text-xs font-medium">Fora de estoque</p>
                               )}
                             </div>
-                            <motion.button
-                              whileHover={{ scale: 1.05 }}
+                            <Button
+                              variant="default"
                               onClick={() => handleRemoveItem(item.id)}
                               className="text-red-500 hover:text-red-700 text-sm font-medium flex items-center gap-1 mt-2 w-fit transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
                             >
                               <Trash2 className="w-4 h-4" />
                               Remover
-                            </motion.button>
+                            </Button>
                           </div>
                         </div>
 
@@ -195,29 +195,27 @@ export default function CartPage() {
                             R$ {(item.price * item.quantity).toFixed(2)}
                           </p>
                           <div className="flex items-center gap-1 text-black border border-gray-200 rounded-lg p-1 bg-white">
-                            <motion.button
-                              whileHover={{ scale: 1.1 }}
-                              whileTap={{ scale: 0.95 }}
+                            <Button
+                              variant="icon"
                               onClick={() => handleUpdateQuantity(item.id, item.quantity - 1)}
                               className="flex h-7 w-7 items-center justify-center rounded hover:bg-gray-100 cursor-pointer transition-colors text-gray-500"
                             >
                               <Minus className="w-4 h-4" />
-                            </motion.button>
+                            </Button>
                             <input
                               type="number"
                               value={item.quantity}
                               onChange={(e) => handleUpdateQuantity(item.id, parseInt(e.target.value) || 1)}
                               className="text-sm font-semibold w-8 p-0 text-center bg-transparent focus:outline-0 focus:ring-0 border-none text-black"
                             />
-                            <motion.button
-                              whileHover={{ scale: 1.1 }}
-                              whileTap={{ scale: 0.95 }}
+                            <Button
+                              variant="icon"
                               onClick={() => handleUpdateQuantity(item.id, item.quantity + 1)}
                               disabled={item.quantity >= item.stockQuantity}
                               className="flex h-7 w-7 items-center justify-center rounded hover:bg-gray-100 cursor-pointer transition-colors text-primary disabled:opacity-50"
                             >
                               <Plus className="w-4 h-4" />
-                            </motion.button>
+                            </Button>
                           </div>
                         </div>
                       </motion.div>

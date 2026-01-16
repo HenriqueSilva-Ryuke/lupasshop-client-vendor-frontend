@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { motion, useInView } from 'motion/react';
 import { useRef } from 'react';
+import Button from '@/components/ui/Button';
 import { StoreIcon, ShoppingCartIcon, ChartIcon, SecurityIcon, UserIcon, ListIcon, TruckIcon, CreditCardIcon, TrendingUpIcon } from './icons';
 
 export default function BenefitsSection() {
@@ -291,20 +292,18 @@ export default function BenefitsSection() {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 1.2 }}
             >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <Button
+                variant="default"
                 className="bg-white text-[#412778] px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 {tCta('registerStore')}
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              </Button>
+              <Button
+                variant="default"
                 className="border-2 border-black/30 text-black px-8 py-4 rounded-full font-semibold text-lg backdrop-blur-sm hover:border-black/50 hover:bg-black/10 transition-all duration-300"
               >
                 {tCta('exploreProducts')}
-              </motion.button>
+              </Button>
             </motion.div>
           </div>
         </motion.div>

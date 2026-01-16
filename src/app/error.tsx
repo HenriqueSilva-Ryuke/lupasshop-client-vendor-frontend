@@ -2,6 +2,7 @@
 
 import { motion } from 'motion/react';
 import { useEffect } from 'react';
+import Button from '@/components/ui/Button';
 
 interface ErrorProps {
   error: Error & { digest?: string };
@@ -57,22 +58,20 @@ export default function RootError({ error, reset }: ErrorProps) {
 
           {/* Action Buttons */}
           <div className="flex gap-3 justify-center pt-4">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <Button
+              variant="default"
               onClick={reset}
               className="px-6 py-2 bg-orange-600 text-black rounded-lg font-semibold hover:bg-orange-700 transition-colors"
             >
               Tentar Novamente
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => window.location.href = '/'}
+            </Button>
+            <Button
+              variant="default"
+              onClick={() => (window.location.href = '/')}
               className="px-6 py-2 bg-gray-200 text-gray-800 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
             >
               Home
-            </motion.button>
+            </Button>
           </div>
         </motion.div>
       </div>

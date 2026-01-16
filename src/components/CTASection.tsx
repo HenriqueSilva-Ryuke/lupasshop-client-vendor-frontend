@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
+import Button from '@/components/ui/Button';
 
 export default function CTASection() {
   const t = useTranslations('cta');
@@ -133,12 +134,8 @@ export default function CTASection() {
           transition={{ duration: 0.8, delay: 0.8 }}
           viewport={{ once: true }}
         >
-          <motion.button
-            whileHover={{ 
-              scale: 1.05,
-              boxShadow: "0 20px 40px rgba(255, 255, 255, 0.2)"
-            }}
-            whileTap={{ scale: 0.95 }}
+          <Button
+            variant="default"
             className="group relative bg-white text-[#412778] px-10 py-4 rounded-full font-semibold text-lg overflow-hidden shadow-2xl"
           >
             <span className="relative z-10 flex items-center justify-center">
@@ -151,20 +148,15 @@ export default function CTASection() {
               whileHover={{ x: '0%' }}
               transition={{ duration: 0.3 }}
             />
-          </motion.button>
+          </Button>
 
-          <motion.button
-            whileHover={{ 
-              scale: 1.05,
-              backgroundColor: "rgba(255,255,255,0.1)",
-              borderColor: "rgba(255,255,255,0.5)"
-            }}
-            whileTap={{ scale: 0.95 }}
+          <Button
+            variant="default"
             className="group border-2 border-black/30 text-black px-10 py-4 rounded-full font-semibold text-lg backdrop-blur-sm hover:border-black/50 transition-all duration-300 flex items-center justify-center"
           >
             <span className="material-icons mr-3">shopping_bag</span>
             {t('exploreProducts')}
-          </motion.button>
+          </Button>
         </motion.div>
 
         {/* Additional Options */}

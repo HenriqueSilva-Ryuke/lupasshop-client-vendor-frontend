@@ -5,6 +5,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { usePathname } from 'next/navigation';
+import { Search, Menu, X, User, ShoppingBag } from 'lucide-react';
 
 export default function Navbar() {
   const t = useTranslations('navbar');
@@ -15,15 +16,15 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const currentY = window.scrollY || 0;
+      setIsScrolled(currentY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Remove locale do pathname para comparação
   const pathWithoutLocale = pathname.replace(`/${locale}`, '') || '/';
-
   const isActiveLink = (href: string) => {
     const hrefWithoutLocale = href.replace(`/${locale}`, '') || '/';
     return pathWithoutLocale === hrefWithoutLocale;
@@ -37,217 +38,112 @@ export default function Navbar() {
 
   return (
     <>
-      <motion.nav
-        className={`sticky top-4 z-50 transition-all duration-500 w-fit mx-auto left-0 right-0 rounded-full backdrop-blur-2xl border shadow-2xl ${
-          isScrolled
-            ? 'bg-white/85 border-black/10'
-            : 'bg-white/70 border-white/40'
-        }`}
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        <div className="px-4 py-2">
-          <div className="flex items-center justify-between gap-6">
-            {/* Logo - Lupa Interativa */}
-            <motion.div
-              whileHover={{ rotate: 90 }}
-              transition={{ duration: 0.3 }}
-              className="shrink-0"
-            >
-                <Link href="/" className="flex items-center space-x-3 group">
-                  <div className={`relative p-3 rounded-full transition-all duration-500 ${isScrolled
-                    ? 'bg-primary shadow-lg'
-                    : 'bg-white/20 backdrop-blur-sm border border-white/40'
-                    }`}>
-                    <svg
-                      className={`w-6 h-6 transition-all duration-500 ${isScrolled ? 'text-black' : 'text-gray-800'
-                        }`}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                      />
-                    </svg>
-                    <motion.div
-                      className={`absolute inset-0 rounded-full border-2 ${isScrolled ? 'border-primary-light' : 'border-white/50'
-                        }`}
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    />
-                  </div>
-                <span className={`text-lg font-bold transition-all duration-500 ${isScrolled ? 'text-gray-900' : 'text-black'
-                  }`}>
-                  LupaShop
-                </span>
-              </Link>
-            </motion.div>
-
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-2">
-              {navItems.map((item, index) => (
-                <motion.div
-                  key={item.href}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <Link
-                    href={item.href}
-                    className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${isActiveLink(item.href)
-                      ? 'bg-primary text-black shadow-lg'
-                      : isScrolled
-                        ? 'text-gray-700 hover:text-black hover:bg-primary'
-                        : 'text-gray-800 hover:text-primary hover:bg-white/60'
-                      }`}
-                  >
-                    {item.label}
-                  </Link>
-                </motion.div>
-              ))}
+      <div className="fixed top-0 left-0 right-0 z-50 flex justify-center p-4 pointer-events-none">
+        <motion.nav
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          className={`pointer-events-auto transition-all duration-500 flex items-center justify-between px-6 py-3 w-full max-w-6xl border rounded-xl backdrop-blur-md shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] ${
+            isScrolled
+              ? 'bg-white/80 dark:bg-zinc-950/80 border-zinc-200 dark:border-zinc-800'
+              : 'bg-white/40 dark:bg-transparent border-transparent'
+          }`}
+        >
+          {/* Logo Section */}
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="w-8 h-8 bg-zinc-900 dark:bg-white flex items-center justify-center rounded-lg group-hover:rotate-12 transition-transform duration-300">
+              <Search className="w-5 h-5 text-white dark:text-black" strokeWidth={3} />
             </div>
+            <span className="text-xl font-black tracking-tighter uppercase dark:text-white">
+              Lupa<span className="text-primary">Shop</span>
+            </span>
+          </Link>
 
-            {/* Desktop Auth Buttons */}
-            <div className="hidden md:flex items-center space-x-2">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className={`px-4 py-2 text-sm font-medium rounded-full border transition-all duration-300 ${isScrolled
-                  ? 'text-gray-700 border-gray-200 hover:border-gray-300 hover:text-gray-900'
-                  : 'text-gray-800 border-white/50 hover:border-white hover:text-primary'
-                  }`}
-              >
-                {t('login')}
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${isScrolled
-                  ? 'bg-primary text-black hover:bg-primary-dark shadow-lg'
-                  : 'bg-white/80 text-gray-900 border border-white/60 hover:bg-white'
-                  }`}
-              >
-                {t('signup')}
-              </motion.button>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <motion.button
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`lg:hidden p-2 rounded-full transition-all duration-300 ${isScrolled
-                ? 'text-gray-600 hover:bg-gray-100'
-                : 'text-black hover:bg-white/20'
+          {/* Desktop Nav - Minimalist */}
+          <div className="hidden lg:flex items-center gap-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`text-xs font-black uppercase tracking-widest transition-colors relative py-1 ${
+                  isActiveLink(item.href)
+                    ? 'text-white'
+                    : 'text-white hover:text-primary'
                 }`}
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {isMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              >
+                {item.label}
+                {isActiveLink(item.href) && (
+                  <motion.div 
+                    layoutId="nav-underline"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary" 
+                  />
                 )}
-              </svg>
+              </Link>
+            ))}
+          </div>
+
+          {/* Action Buttons - Outline Style */}
+          <div className="hidden md:flex items-center gap-4">
+            <button className="text-xs font-black uppercase tracking-widest text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors">
+              {t('login')}
+            </button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-5 py-2 text-xs font-black uppercase tracking-widest border-2 border-zinc-900 dark:border-white text-zinc-900 dark:text-white rounded-lg hover:bg-zinc-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"
+            >
+              {t('signup')}
             </motion.button>
           </div>
-        </div>
-      </motion.nav>
 
-      {/* Mobile Menu Overlay */}
+          {/* Mobile Toggle */}
+          <button 
+            className="lg:hidden p-2 text-zinc-900 dark:text-white"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X /> : <Menu />}
+          </button>
+        </motion.nav>
+      </div>
+
+      {/* Mobile Menu - Disruptive Fullscreen */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 lg:hidden"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            className="fixed inset-0 z-[60] bg-white dark:bg-zinc-950 flex flex-col p-8 lg:hidden"
           >
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-              onClick={() => setIsMenuOpen(false)}
-            />
+            <div className="flex justify-between items-center mb-12">
+              <span className="text-2xl font-black tracking-tighter uppercase dark:text-white">Menu</span>
+              <button onClick={() => setIsMenuOpen(false)} className="p-2 border-2 border-zinc-900 dark:border-white rounded-full">
+                <X className="dark:text-white"/>
+              </button>
+            </div>
 
-            {/* Menu Content */}
-            <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: "spring", damping: 30, stiffness: 300 }}
-              className="absolute right-0 top-0 h-full w-80 bg-white/95 backdrop-blur-xl shadow-2xl"
-            >
-              <div className="p-6 h-full flex flex-col">
-                {/* Header */}
-                <div className="flex items-center justify-between mb-8">
-                  <div className="flex items-center space-x-3">
-                    <div className="p-2 bg-primary rounded-full">
-                      <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                      </svg>
-                    </div>
-                    <span className="text-lg font-bold text-gray-900">LupaShop</span>
-                  </div>
-                  <button
-                    onClick={() => setIsMenuOpen(false)}
-                    className="p-2 text-gray-400 hover:text-gray-600 rounded-full hover:bg-gray-100"
-                  >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
-                </div>
+            <nav className="flex flex-col gap-6">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="text-4xl font-black uppercase tracking-tighter hover:text-primary transition-colors dark:text-white"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
 
-                {/* Navigation Items */}
-                <div className="space-y-2 flex-1">
-                  {navItems.map((item, index) => (
-                    <motion.div
-                      key={item.href}
-                      initial={{ x: 20, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      <Link
-                        href={item.href}
-                        onClick={() => setIsMenuOpen(false)}
-                        className={`flex items-center px-4 py-3 text-base font-medium rounded-xl transition-all duration-200 ${isActiveLink(item.href)
-                          ? 'bg-blue-50 text-blue-600 border border-blue-100'
-                          : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                          }`}
-                      >
-                        {item.label}
-                      </Link>
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* Auth Buttons */}
-                <div className="space-y-3 pt-6 border-t border-gray-200">
-                  <motion.button
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.4 }}
-                    className="w-full py-3 px-4 text-base font-medium text-gray-700 border border-gray-200 rounded-xl hover:border-gray-300 hover:text-gray-900 transition-all duration-200"
-                  >
-                    {t('login')}
-                  </motion.button>
-                  <motion.button
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.5 }}
-                    className="w-full py-3 px-4 text-base font-medium text-black bg-primary rounded-xl hover:bg-primary-dark transition-all duration-200 shadow-lg"
-                  >
-                    {t('signup')}
-                  </motion.button>
-                </div>
-              </div>
-            </motion.div>
+            <div className="mt-auto flex flex-col gap-4">
+              <button className="w-full py-4 text-sm font-black uppercase tracking-widest border-2 border-zinc-900 dark:border-white dark:text-white rounded-xl">
+                {t('login')}
+              </button>
+              <button className="w-full py-4 text-sm font-black uppercase tracking-widest bg-zinc-900 text-white dark:bg-white dark:text-black rounded-xl">
+                {t('signup')}
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

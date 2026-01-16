@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { motion } from 'motion/react';
 import { useState, useEffect } from 'react';
+import Button from '@/components/ui/Button';
 
 export default function HeroSection() {
   const t = useTranslations('hero');
@@ -175,12 +176,8 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <motion.button
-            whileHover={{ 
-              scale: 1.05,
-              boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)"
-            }}
-            whileTap={{ scale: 0.95 }}
+          <Button
+            variant="default"
             className="group relative bg-white text-blue-600 px-10 py-4 rounded-full font-semibold text-lg overflow-hidden"
           >
             <span className="relative z-10 flex items-center">
@@ -202,14 +199,10 @@ export default function HeroSection() {
               whileHover={{ x: '0%' }}
               transition={{ duration: 0.3 }}
             />
-          </motion.button>
+          </Button>
 
-          <motion.button
-            whileHover={{ 
-              scale: 1.05,
-              backgroundColor: "rgba(255,255,255,0.1)"
-            }}
-            whileTap={{ scale: 0.95 }}
+          <Button
+            variant="default"
             className="border-2 border-black/30 text-black px-10 py-4 rounded-full font-semibold text-lg backdrop-blur-sm hover:border-black/50 transition-all duration-300"
           >
             <span className="flex items-center">
@@ -218,7 +211,7 @@ export default function HeroSection() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
               </svg>
             </span>
-          </motion.button>
+          </Button>
         </motion.div>
 
         {/* Scroll Indicator */}

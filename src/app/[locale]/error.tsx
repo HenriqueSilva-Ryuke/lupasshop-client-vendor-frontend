@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
 import { useEffect } from 'react';
+import Button from '@/components/ui/Button';
 
 interface ErrorProps {
   error: Error & { digest?: string };
@@ -100,14 +101,13 @@ export default function Error({ error, reset }: ErrorProps) {
 
           {/* CTA Buttons */}
           <div className="flex gap-4 justify-center pt-4 flex-wrap">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <Button
+              variant="default"
               onClick={reset}
               className="inline-block px-8 py-3 bg-orange-600 text-black rounded-lg font-semibold hover:bg-orange-700 transition-colors shadow-lg"
             >
               Tentar Novamente
-            </motion.button>
+            </Button>
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

@@ -2,6 +2,7 @@
 
 import { motion } from 'motion/react';
 import Link from 'next/link';
+import Button from '@/components/ui/Button';
 
 export default function NotFound() {
   return (
@@ -55,14 +56,13 @@ export default function NotFound() {
               Home
             </Link>
           </motion.div>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <Button
+            variant="default"
             onClick={() => window.history.back()}
             className="px-8 py-3 bg-white text-blue-600 rounded-lg font-semibold border-2 border-blue-600 hover:bg-blue-50 transition-colors"
           >
             Voltar
-          </motion.button>
+          </Button>
         </motion.div>
       </div>
     </div>
