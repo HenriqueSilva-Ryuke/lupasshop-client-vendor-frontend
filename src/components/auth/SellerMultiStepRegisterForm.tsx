@@ -39,7 +39,7 @@ export function SellerMultiStepRegisterForm() {
   const progressPercentage = (currentStep / 4) * 100;
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white dark:bg-[#1a2632] p-8 rounded-xl border border-[#e5e7eb] dark:border-gray-700 shadow-sm flex flex-col gap-6">
+    <form onSubmit={handleSubmit} className="bg-white bg-[#1a2632] p-8 rounded-xl border border-[#e5e7eb] border-gray-700 shadow-sm flex flex-col gap-6">
       {/* Progress Bar */}
       <div className="flex flex-col gap-3 mb-4">
         <div className="flex items-center justify-between">
@@ -53,7 +53,7 @@ export function SellerMultiStepRegisterForm() {
             {currentStep === 4 && 'Imagens'}
           </span>
         </div>
-        <div className="w-full bg-[#f0f3f4] dark:bg-gray-700 rounded-full h-2.5">
+        <div className="w-full bg-[#f0f3f4] bg-gray-700 rounded-full h-2.5">
           <div
             className="bg-primary h-2.5 rounded-full transition-all duration-500"
             style={{ width: `${progressPercentage}%` }}
@@ -63,8 +63,8 @@ export function SellerMultiStepRegisterForm() {
 
       {/* Error Message */}
       {error && (
-        <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
-          <p className="text-sm text-red-700 dark:text-red-400">{error}</p>
+        <div className="p-4 bg-red-50 bg-red-900/20 border border-red-200 border-red-800 rounded-lg">
+          <p className="text-sm text-red-700 text-red-400">{error}</p>
         </div>
       )}
 
@@ -72,7 +72,7 @@ export function SellerMultiStepRegisterForm() {
       {currentStep === 1 && (
         <div className="flex flex-col gap-6">
           <div>
-            <h3 className="text-lg font-bold text-foreground dark:text-white mb-4 flex items-center gap-2">
+            <h3 className="text-lg font-bold text-foreground text-white mb-4 flex items-center gap-2">
               <span className="material-symbols-outlined text-primary">person</span>
               Dados do Responsável
             </h3>
@@ -83,7 +83,7 @@ export function SellerMultiStepRegisterForm() {
 
           {/* Full Name */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-medium text-foreground dark:text-gray-200" htmlFor="fullName">
+            <label className="text-sm font-medium text-foreground text-gray-200" htmlFor="fullName">
               Nome Completo
             </label>
             <input
@@ -91,16 +91,16 @@ export function SellerMultiStepRegisterForm() {
               id="fullName"
               placeholder="Seu nome completo"
               type="text"
-              className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] dark:border-gray-600 bg-white dark:bg-gray-800 text-foreground dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+              className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-white bg-gray-800 text-foreground text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
             />
             {errors.fullName && (
-              <span className="text-xs text-red-600 dark:text-red-400">{errors.fullName.message}</span>
+              <span className="text-xs text-red-600 text-red-400">{errors.fullName.message}</span>
             )}
           </div>
 
           {/* Email */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-medium text-foreground dark:text-gray-200" htmlFor="email">
+            <label className="text-sm font-medium text-foreground text-gray-200" htmlFor="email">
               E-mail
             </label>
             <input
@@ -108,16 +108,16 @@ export function SellerMultiStepRegisterForm() {
               id="email"
               placeholder="seu@email.com"
               type="email"
-              className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] dark:border-gray-600 bg-white dark:bg-gray-800 text-foreground dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+              className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-white bg-gray-800 text-foreground text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
             />
             {errors.email && (
-              <span className="text-xs text-red-600 dark:text-red-400">{errors.email.message}</span>
+              <span className="text-xs text-red-600 text-red-400">{errors.email.message}</span>
             )}
           </div>
 
           {/* Password */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-medium text-foreground dark:text-gray-200" htmlFor="password">
+            <label className="text-sm font-medium text-foreground text-gray-200" htmlFor="password">
               Senha
             </label>
             <div className="relative">
@@ -126,7 +126,7 @@ export function SellerMultiStepRegisterForm() {
                 id="password"
                 placeholder="Mínimo 6 caracteres"
                 type={showPassword ? 'text' : 'password'}
-                className="w-full h-12 px-4 pr-12 rounded-lg border border-[#dbe1e6] dark:border-gray-600 bg-white dark:bg-gray-800 text-foreground dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                className="w-full h-12 px-4 pr-12 rounded-lg border border-[#dbe1e6] border-gray-600 bg-white bg-gray-800 text-foreground text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
               />
               <button
                 type="button"
@@ -139,13 +139,13 @@ export function SellerMultiStepRegisterForm() {
               </button>
             </div>
             {errors.password && (
-              <span className="text-xs text-red-600 dark:text-red-400">{errors.password.message}</span>
+              <span className="text-xs text-red-600 text-red-400">{errors.password.message}</span>
             )}
           </div>
 
           {/* Confirm Password */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-medium text-foreground dark:text-gray-200" htmlFor="confirmPassword">
+            <label className="text-sm font-medium text-foreground text-gray-200" htmlFor="confirmPassword">
               Confirmar Senha
             </label>
             <div className="relative">
@@ -154,7 +154,7 @@ export function SellerMultiStepRegisterForm() {
                 id="confirmPassword"
                 placeholder="Repita a senha"
                 type={showConfirmPassword ? 'text' : 'password'}
-                className="w-full h-12 px-4 pr-12 rounded-lg border border-[#dbe1e6] dark:border-gray-600 bg-white dark:bg-gray-800 text-foreground dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                className="w-full h-12 px-4 pr-12 rounded-lg border border-[#dbe1e6] border-gray-600 bg-white bg-gray-800 text-foreground text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
               />
               <button
                 type="button"
@@ -167,7 +167,7 @@ export function SellerMultiStepRegisterForm() {
               </button>
             </div>
             {errors.confirmPassword && (
-              <span className="text-xs text-red-600 dark:text-red-400">{errors.confirmPassword.message}</span>
+              <span className="text-xs text-red-600 text-red-400">{errors.confirmPassword.message}</span>
             )}
           </div>
         </div>
@@ -177,7 +177,7 @@ export function SellerMultiStepRegisterForm() {
       {currentStep === 2 && (
         <div className="flex flex-col gap-6">
           <div>
-            <h3 className="text-lg font-bold text-foreground dark:text-white mb-4 flex items-center gap-2">
+            <h3 className="text-lg font-bold text-foreground text-white mb-4 flex items-center gap-2">
               <span className="material-symbols-outlined text-primary">domain</span>
               Dados da Empresa
             </h3>
@@ -188,7 +188,7 @@ export function SellerMultiStepRegisterForm() {
 
           {/* NIF */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-medium text-foreground dark:text-gray-200" htmlFor="nif">
+            <label className="text-sm font-medium text-foreground text-gray-200" htmlFor="nif">
               NIF (Número de Identificação Fiscal)
             </label>
             <input
@@ -196,16 +196,16 @@ export function SellerMultiStepRegisterForm() {
               id="nif"
               placeholder="000.000.000 XXX"
               type="text"
-              className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] dark:border-gray-600 bg-white dark:bg-gray-800 text-foreground dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+              className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-white bg-gray-800 text-foreground text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
             />
             {errors.nif && (
-              <span className="text-xs text-red-600 dark:text-red-400">{errors.nif.message}</span>
+              <span className="text-xs text-red-600 text-red-400">{errors.nif.message}</span>
             )}
           </div>
 
           {/* Razão Social */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-medium text-foreground dark:text-gray-200" htmlFor="razaoSocial">
+            <label className="text-sm font-medium text-foreground text-gray-200" htmlFor="razaoSocial">
               Razão Social
             </label>
             <input
@@ -213,16 +213,16 @@ export function SellerMultiStepRegisterForm() {
               id="razaoSocial"
               placeholder="Nome jurídico da empresa"
               type="text"
-              className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] dark:border-gray-600 bg-white dark:bg-gray-800 text-foreground dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+              className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-white bg-gray-800 text-foreground text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
             />
             {errors.razaoSocial && (
-              <span className="text-xs text-red-600 dark:text-red-400">{errors.razaoSocial.message}</span>
+              <span className="text-xs text-red-600 text-red-400">{errors.razaoSocial.message}</span>
             )}
           </div>
 
           {/* Nome Fantasia */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-medium text-foreground dark:text-gray-200" htmlFor="nomeFantasia">
+            <label className="text-sm font-medium text-foreground text-gray-200" htmlFor="nomeFantasia">
               Nome da Loja (Fantasia)
             </label>
             <input
@@ -230,23 +230,23 @@ export function SellerMultiStepRegisterForm() {
               id="nomeFantasia"
               placeholder="Como os clientes verão sua loja"
               type="text"
-              className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] dark:border-gray-600 bg-white dark:bg-gray-800 text-foreground dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+              className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-white bg-gray-800 text-foreground text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
             />
             {errors.nomeFantasia && (
-              <span className="text-xs text-red-600 dark:text-red-400">{errors.nomeFantasia.message}</span>
+              <span className="text-xs text-red-600 text-red-400">{errors.nomeFantasia.message}</span>
             )}
           </div>
 
           {/* Category */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-medium text-foreground dark:text-gray-200" htmlFor="category">
+            <label className="text-sm font-medium text-foreground text-gray-200" htmlFor="category">
               Categoria Principal
             </label>
             <div className="relative">
               <select
                 {...register('category')}
                 id="category"
-                className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] dark:border-gray-600 bg-white dark:bg-gray-800 text-foreground dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all appearance-none"
+                className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-white bg-gray-800 text-foreground text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all appearance-none"
               >
                 <option value="">Selecione uma categoria</option>
                 <option value="moda">Moda e Vestuário</option>
@@ -262,7 +262,7 @@ export function SellerMultiStepRegisterForm() {
               </div>
             </div>
             {errors.category && (
-              <span className="text-xs text-red-600 dark:text-red-400">{errors.category.message}</span>
+              <span className="text-xs text-red-600 text-red-400">{errors.category.message}</span>
             )}
           </div>
         </div>
@@ -272,7 +272,7 @@ export function SellerMultiStepRegisterForm() {
       {currentStep === 3 && (
         <div className="flex flex-col gap-6">
           <div>
-            <h3 className="text-lg font-bold text-foreground dark:text-white mb-4 flex items-center gap-2">
+            <h3 className="text-lg font-bold text-foreground text-white mb-4 flex items-center gap-2">
               <span className="material-symbols-outlined text-primary">description</span>
               Documentos
             </h3>
@@ -283,7 +283,7 @@ export function SellerMultiStepRegisterForm() {
 
           {/* Alvará Comercial */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-medium text-foreground dark:text-gray-200" htmlFor="alvara">
+            <label className="text-sm font-medium text-foreground text-gray-200" htmlFor="alvara">
               Alvará Comercial
             </label>
             <input
@@ -300,19 +300,19 @@ export function SellerMultiStepRegisterForm() {
             <button
               type="button"
               onClick={() => alvaraRef.current?.click()}
-              className="h-12 px-4 rounded-lg border-2 border-dashed border-[#dbe1e6] dark:border-gray-600 bg-white dark:bg-gray-800 text-foreground dark:text-white hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
+              className="h-12 px-4 rounded-lg border-2 border-dashed border-[#dbe1e6] border-gray-600 bg-white bg-gray-800 text-foreground text-white hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
             >
               <span className="material-symbols-outlined">cloud_upload</span>
               {uploadedFiles.alvaraComercial && uploadedFiles.alvaraComercial instanceof File ? uploadedFiles.alvaraComercial.name : 'Selecione arquivo'}
             </button>
             {errors.alvaraComercial && (
-              <span className="text-xs text-red-600 dark:text-red-400">{errors.alvaraComercial.message as string}</span>
+              <span className="text-xs text-red-600 text-red-400">{errors.alvaraComercial.message as string}</span>
             )}
           </div>
 
           {/* Licença de Venda */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-medium text-foreground dark:text-gray-200" htmlFor="licenca">
+            <label className="text-sm font-medium text-foreground text-gray-200" htmlFor="licenca">
               Licença de Venda
             </label>
             <input
@@ -329,19 +329,19 @@ export function SellerMultiStepRegisterForm() {
             <button
               type="button"
               onClick={() => licencaRef.current?.click()}
-              className="h-12 px-4 rounded-lg border-2 border-dashed border-[#dbe1e6] dark:border-gray-600 bg-white dark:bg-gray-800 text-foreground dark:text-white hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
+              className="h-12 px-4 rounded-lg border-2 border-dashed border-[#dbe1e6] border-gray-600 bg-white bg-gray-800 text-foreground text-white hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
             >
               <span className="material-symbols-outlined">cloud_upload</span>
               {uploadedFiles.licencaVenda && uploadedFiles.licencaVenda instanceof File ? uploadedFiles.licencaVenda.name : 'Selecione arquivo'}
             </button>
             {errors.licencaVenda && (
-              <span className="text-xs text-red-600 dark:text-red-400">{errors.licencaVenda.message as string}</span>
+              <span className="text-xs text-red-600 text-red-400">{errors.licencaVenda.message as string}</span>
             )}
           </div>
 
           {/* Localização Física */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-medium text-foreground dark:text-gray-200" htmlFor="localizacao">
+            <label className="text-sm font-medium text-foreground text-gray-200" htmlFor="localizacao">
               Localização do Espaço Físico
             </label>
             <input
@@ -358,13 +358,13 @@ export function SellerMultiStepRegisterForm() {
             <button
               type="button"
               onClick={() => localizacaoRef.current?.click()}
-              className="h-12 px-4 rounded-lg border-2 border-dashed border-[#dbe1e6] dark:border-gray-600 bg-white dark:bg-gray-800 text-foreground dark:text-white hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
+              className="h-12 px-4 rounded-lg border-2 border-dashed border-[#dbe1e6] border-gray-600 bg-white bg-gray-800 text-foreground text-white hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
             >
               <span className="material-symbols-outlined">cloud_upload</span>
               {uploadedFiles.localizacaoFisica && uploadedFiles.localizacaoFisica instanceof File ? uploadedFiles.localizacaoFisica.name : 'Selecione arquivo'}
             </button>
             {errors.localizacaoFisica && (
-              <span className="text-xs text-red-600 dark:text-red-400">{errors.localizacaoFisica.message as string}</span>
+              <span className="text-xs text-red-600 text-red-400">{errors.localizacaoFisica.message as string}</span>
             )}
           </div>
         </div>
@@ -374,7 +374,7 @@ export function SellerMultiStepRegisterForm() {
       {currentStep === 4 && (
         <div className="flex flex-col gap-6">
           <div>
-            <h3 className="text-lg font-bold text-foreground dark:text-white mb-4 flex items-center gap-2">
+            <h3 className="text-lg font-bold text-foreground text-white mb-4 flex items-center gap-2">
               <span className="material-symbols-outlined text-primary">image</span>
               Imagens da Loja
             </h3>
@@ -385,7 +385,7 @@ export function SellerMultiStepRegisterForm() {
 
           {/* Logotipo */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-medium text-foreground dark:text-gray-200" htmlFor="logo">
+            <label className="text-sm font-medium text-foreground text-gray-200" htmlFor="logo">
               Logotipo (PNG, JPG)
             </label>
             <input
@@ -402,19 +402,19 @@ export function SellerMultiStepRegisterForm() {
             <button
               type="button"
               onClick={() => logotipoRef.current?.click()}
-              className="h-12 px-4 rounded-lg border-2 border-dashed border-[#dbe1e6] dark:border-gray-600 bg-white dark:bg-gray-800 text-foreground dark:text-white hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
+              className="h-12 px-4 rounded-lg border-2 border-dashed border-[#dbe1e6] border-gray-600 bg-white bg-gray-800 text-foreground text-white hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
             >
               <span className="material-symbols-outlined">cloud_upload</span>
               {uploadedFiles.logotipo && uploadedFiles.logotipo instanceof File ? uploadedFiles.logotipo.name : 'Selecione arquivo'}
             </button>
             {errors.logotipo && (
-              <span className="text-xs text-red-600 dark:text-red-400">{errors.logotipo.message as string}</span>
+              <span className="text-xs text-red-600 text-red-400">{errors.logotipo.message as string}</span>
             )}
           </div>
 
           {/* Imagem de Capa */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-medium text-foreground dark:text-gray-200" htmlFor="capa">
+            <label className="text-sm font-medium text-foreground text-gray-200" htmlFor="capa">
               Imagem de Capa (PNG, JPG)
             </label>
             <input
@@ -431,19 +431,19 @@ export function SellerMultiStepRegisterForm() {
             <button
               type="button"
               onClick={() => capaRef.current?.click()}
-              className="h-12 px-4 rounded-lg border-2 border-dashed border-[#dbe1e6] dark:border-gray-600 bg-white dark:bg-gray-800 text-foreground dark:text-white hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
+              className="h-12 px-4 rounded-lg border-2 border-dashed border-[#dbe1e6] border-gray-600 bg-white bg-gray-800 text-foreground text-white hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
             >
               <span className="material-symbols-outlined">cloud_upload</span>
               {uploadedFiles.imagemCapa && uploadedFiles.imagemCapa instanceof File ? uploadedFiles.imagemCapa.name : 'Selecione arquivo'}
             </button>
             {errors.imagemCapa && (
-              <span className="text-xs text-red-600 dark:text-red-400">{errors.imagemCapa.message as string}</span>
+              <span className="text-xs text-red-600 text-red-400">{errors.imagemCapa.message as string}</span>
             )}
           </div>
 
           {/* Fotos do Espaço */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-medium text-foreground dark:text-gray-200" htmlFor="espaco">
+            <label className="text-sm font-medium text-foreground text-gray-200" htmlFor="espaco">
               Fotos do Espaço Físico (múltiplas)
             </label>
             <input
@@ -461,7 +461,7 @@ export function SellerMultiStepRegisterForm() {
             <button
               type="button"
               onClick={() => espacoRef.current?.click()}
-              className="h-12 px-4 rounded-lg border-2 border-dashed border-[#dbe1e6] dark:border-gray-600 bg-white dark:bg-gray-800 text-foreground dark:text-white hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
+              className="h-12 px-4 rounded-lg border-2 border-dashed border-[#dbe1e6] border-gray-600 bg-white bg-gray-800 text-foreground text-white hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
             >
               <span className="material-symbols-outlined">cloud_upload</span>
               {uploadedFiles.fotosEspaco && Array.isArray(uploadedFiles.fotosEspaco) && uploadedFiles.fotosEspaco.length > 0
@@ -469,7 +469,7 @@ export function SellerMultiStepRegisterForm() {
                 : 'Selecione arquivos'}
             </button>
             {errors.fotosEspaco && (
-              <span className="text-xs text-red-600 dark:text-red-400">{errors.fotosEspaco.message as string}</span>
+              <span className="text-xs text-red-600 text-red-400">{errors.fotosEspaco.message as string}</span>
             )}
           </div>
         </div>

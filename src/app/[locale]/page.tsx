@@ -19,7 +19,7 @@ export default function Home() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-background-light dark:bg-background-dark text-text-main dark:text-white">
+      <div className="min-h-screen bg-background-light text-text-main">
         <Navbar />
 
         <main className="flex-1 flex flex-col w-full ">
@@ -39,7 +39,7 @@ export default function Home() {
             <DealsSection />
           </Suspense>
 
-          <Suspense fallback={<div className="rounded-3xl bg-gray-50 dark:bg-surface-dark p-8 md:p-10 border border-gray-100 dark:border-[#2a3b47]"><div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">{[...Array(4)].map((_, i) => <div key={i} className="h-20 bg-gray-200 rounded-2xl animate-pulse" />)}</div></div>}>
+          <Suspense fallback={<div className="rounded-3xl bg-gray-50 p-8 md:p-10 border border-gray-100"><div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">{[...Array(4)].map((_, i) => <div key={i} className="h-20 bg-gray-200 rounded-2xl animate-pulse" />)}</div></div>}>
             <FeaturedStoresSection />
           </Suspense>
         </main>

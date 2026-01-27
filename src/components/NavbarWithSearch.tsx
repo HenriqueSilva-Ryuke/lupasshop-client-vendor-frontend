@@ -237,14 +237,14 @@ export default function NavbarWithSearch() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={tm('search.placeholder')}
-                  className="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-gray-800 rounded-full text-gray-900 dark:text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full pl-12 pr-4 py-3 bg-gray-50 bg-gray-800 rounded-full text-gray-900 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary"
                 />
               </div>
               <button
                 onClick={handleCloseSearch}
-                className="p-2.5 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors"
+                className="p-2.5 hover:bg-gray-100 hover:bg-gray-800 rounded-full transition-colors"
               >
-                <X className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+                <X className="w-5 h-5 text-gray-600 text-gray-300" />
               </button>
             </div>
           )}
@@ -260,7 +260,7 @@ export default function NavbarWithSearch() {
             exit={{ opacity: 0, y: -10 }}
             className="fixed left-1/2 -translate-x-1/2 top-24 w-full max-w-2xl z-40 px-4"
           >
-            <div className="bg-white dark:bg-gray-100 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+            <div className="bg-white bg-gray-100 rounded-2xl shadow-2xl border border-gray-200 border-gray-700 overflow-hidden">
               {isLoading ? (
                 <div className="p-8 text-center">
                   <div className="animate-spin w-8 h-8 border-4 border-primary border-t-transparent rounded-full mx-auto"></div>
@@ -270,7 +270,7 @@ export default function NavbarWithSearch() {
                 <div className="max-h-[70vh] overflow-y-auto">
                   {/* Products */}
                   {searchResults.products.length > 0 && (
-                    <div className="p-4 border-b border-gray-100 dark:border-gray-800">
+                    <div className="p-4 border-b border-gray-100 border-gray-800">
                       <div className="flex items-center gap-2 text-xs font-bold text-gray-500 uppercase mb-3">
                         <Package className="w-4 h-4" />
                         {tm('search.products')}
@@ -279,15 +279,15 @@ export default function NavbarWithSearch() {
                         <button
                           key={product.id}
                           onClick={() => handleResultClick('product', product.slug)}
-                          className="w-full flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors text-left"
+                          className="w-full flex items-center gap-3 p-3 hover:bg-gray-50 hover:bg-gray-800 rounded-lg transition-colors text-left"
                         >
-                          <div className="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded flex-shrink-0 overflow-hidden">
+                          <div className="w-12 h-12 bg-gray-100 bg-gray-800 rounded flex-shrink-0 overflow-hidden">
                             {product.images[0] && (
                               <img src={product.images[0]} alt={product.name} className="w-full h-full object-cover" />
                             )}
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p className="font-medium text-gray-900 dark:text-black truncate">{product.name}</p>
+                            <p className="font-medium text-gray-900 text-black truncate">{product.name}</p>
                             <p className="text-sm text-primary font-bold">R$ {product.price.toFixed(2)}</p>
                           </div>
                           <div className="flex items-center gap-1 text-xs text-gray-500">
@@ -301,7 +301,7 @@ export default function NavbarWithSearch() {
 
                   {/* Stores */}
                   {searchResults.stores.length > 0 && (
-                    <div className="p-4 border-b border-gray-100 dark:border-gray-800">
+                    <div className="p-4 border-b border-gray-100 border-gray-800">
                       <div className="flex items-center gap-2 text-xs font-bold text-gray-500 uppercase mb-3">
                         <Store className="w-4 h-4" />
                         {tm('search.stores')}
@@ -310,15 +310,15 @@ export default function NavbarWithSearch() {
                         <button
                           key={store.id}
                           onClick={() => handleResultClick('store', store.slug)}
-                          className="w-full flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors text-left"
+                          className="w-full flex items-center gap-3 p-3 hover:bg-gray-50 hover:bg-gray-800 rounded-lg transition-colors text-left"
                         >
-                          <div className="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded flex-shrink-0 overflow-hidden">
+                          <div className="w-12 h-12 bg-gray-100 bg-gray-800 rounded flex-shrink-0 overflow-hidden">
                             {store.logoUrl && (
                               <img src={store.logoUrl} alt={store.name} className="w-full h-full object-cover" />
                             )}
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p className="font-medium text-gray-900 dark:text-black truncate flex items-center gap-2">
+                            <p className="font-medium text-gray-900 text-black truncate flex items-center gap-2">
                               {store.name}
                               {store.isVerified && (
                                 <span className="text-blue-500 text-xs">✓</span>

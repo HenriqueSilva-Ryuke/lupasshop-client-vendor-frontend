@@ -7,18 +7,18 @@ import { useSellerOrders } from '@/hooks/useSellerOrders';
 import { useClientAuth } from '@/hooks/useClientAuth';
 
 const statusConfig = {
-  PENDING: { label: 'Pendente', color: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/40 dark:text-yellow-300 border border-yellow-200 dark:border-yellow-800' },
-  PAID: { label: 'Pago', color: 'bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300 border border-green-200 dark:border-green-800' },
-  SHIPPED: { label: 'Enviado', color: 'bg-purple-50 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300 border border-purple-200 dark:border-purple-800' },
-  DELIVERED: { label: 'Entregue', color: 'bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300 border border-green-200 dark:border-green-800' },
-  CANCELLED: { label: 'Cancelado', color: 'bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300 border border-red-200 dark:border-red-800' },
+  PENDING: { label: 'Pendente', color: 'bg-yellow-100 text-yellow-800 bg-yellow-900/40 text-yellow-300 border border-yellow-200 border-yellow-800' },
+  PAID: { label: 'Pago', color: 'bg-green-100 text-green-800 bg-green-900/40 text-green-300 border border-green-200 border-green-800' },
+  SHIPPED: { label: 'Enviado', color: 'bg-purple-50 text-purple-700 bg-purple-900/40 text-purple-300 border border-purple-200 border-purple-800' },
+  DELIVERED: { label: 'Entregue', color: 'bg-green-100 text-green-800 bg-green-900/40 text-green-300 border border-green-200 border-green-800' },
+  CANCELLED: { label: 'Cancelado', color: 'bg-red-100 text-red-800 bg-red-900/40 text-red-300 border border-red-200 border-red-800' },
 };
 
 const shippingStatusConfig = {
-  'Pronto p/ Envio': { label: 'Pronto p/ Envio', color: 'bg-primary/10 text-primary-dark dark:text-primary-light border border-primary/20 dark:border-primary/30' },
-  'Aguardando': { label: 'Aguardando', color: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600' },
-  'Enviado': { label: 'Enviado', color: 'bg-green-50 text-green-700 dark:bg-green-900/40 dark:text-green-300 border border-green-200 dark:border-green-800' },
-  'Cancelado': { label: 'Cancelado', color: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600' },
+  'Pronto p/ Envio': { label: 'Pronto p/ Envio', color: 'bg-primary/10 text-primary-dark text-primary-light border border-primary/20 border-primary/30' },
+  'Aguardando': { label: 'Aguardando', color: 'bg-gray-100 text-gray-800 bg-gray-700 text-gray-300 border border-gray-200 border-gray-600' },
+  'Enviado': { label: 'Enviado', color: 'bg-green-50 text-green-700 bg-green-900/40 text-green-300 border border-green-200 border-green-800' },
+  'Cancelado': { label: 'Cancelado', color: 'bg-gray-100 text-gray-800 bg-gray-700 text-gray-300 border border-gray-200 border-gray-600' },
 };
 
 export default function OrdersPage() {
@@ -90,25 +90,25 @@ export default function OrdersPage() {
   ];
 
   return (
-    <div className="flex h-screen bg-background-subtle dark:bg-background-dark overflow-hidden">
+    <div className="flex h-screen bg-background-subtle bg-background-dark overflow-hidden">
       <BottomNav />
 
       <main className="flex-1 flex flex-col h-full min-w-0 overflow-y-auto">
         {/* Header */}
-        <header className="px-6 py-4 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark sticky top-0 z-10">
+        <header className="px-6 py-4 border-b border-gray-200 border-gray-700 bg-white bg-surface-dark sticky top-0 z-10">
           <div className="flex flex-col gap-4 max-w-7xl mx-auto w-full">
             <div className="flex items-center gap-2 text-sm">
-              <a href={`/${locale}/seller/dashboard`} className="text-gray-500 dark:text-gray-400 hover:text-primary transition-colors">Home</a>
-              <span className="text-gray-500 dark:text-gray-600">/</span>
-              <span className="text-foreground dark:text-white font-medium">Pedidos</span>
+              <a href={`/${locale}/seller/dashboard`} className="text-gray-500 text-gray-400 hover:text-primary transition-colors">Home</a>
+              <span className="text-gray-500 text-gray-600">/</span>
+              <span className="text-foreground text-white font-medium">Pedidos</span>
             </div>
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
-                <h1 className="text-3xl font-bold text-foreground dark:text-white">Gestão de Pedidos</h1>
-                <p className="text-gray-500 dark:text-gray-400 mt-1">Gerencie, processe e envie seus pedidos com eficiência.</p>
+                <h1 className="text-3xl font-bold text-foreground text-white">Gestão de Pedidos</h1>
+                <p className="text-gray-500 text-gray-400 mt-1">Gerencie, processe e envie seus pedidos com eficiência.</p>
               </div>
               <div className="flex items-center gap-3">
-                <button className="hidden sm:flex items-center gap-2 px-4 py-2 bg-white dark:bg-surface-dark border border-gray-300 dark:border-gray-700 rounded-lg text-sm font-medium text-foreground dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                <button className="hidden sm:flex items-center gap-2 px-4 py-2 bg-white bg-surface-dark border border-gray-300 border-gray-700 rounded-lg text-sm font-medium text-foreground text-white hover:bg-gray-50 hover:bg-white/5 transition-colors">
                   <span className="material-symbols-outlined text-[20px]">file_download</span>
                   Exportar CSV
                 </button>
@@ -127,32 +127,32 @@ export default function OrdersPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               { label: 'Total de Pedidos', value: '1,254', icon: 'shopping_bag', trend: '+12%', trendText: 'vs. mês anterior', color: 'text-primary bg-primary/10' },
-              { label: 'Pendentes', value: '24', icon: 'schedule', trend: '', trendText: 'Requerem atenção imediata', color: 'text-yellow-600 bg-yellow-100 dark:bg-yellow-900/30 dark:text-yellow-400' },
-              { label: 'Prontos p/ Envio', value: '18', icon: 'local_shipping', trend: '', trendText: 'Gerar etiquetas em lote', color: 'text-primary-light bg-primary/10 dark:bg-primary/20', isCTA: true },
-              { label: 'Receita (Hoje)', value: 'R$ 4.350,00', icon: 'payments', trend: '+5.4%', trendText: 'vs. ontem', color: 'text-green-600 bg-green-100 dark:bg-green-900/30 dark:text-green-400' },
+              { label: 'Pendentes', value: '24', icon: 'schedule', trend: '', trendText: 'Requerem atenção imediata', color: 'text-yellow-600 bg-yellow-100 bg-yellow-900/30 text-yellow-400' },
+              { label: 'Prontos p/ Envio', value: '18', icon: 'local_shipping', trend: '', trendText: 'Gerar etiquetas em lote', color: 'text-primary-light bg-primary/10 bg-primary/20', isCTA: true },
+              { label: 'Receita (Hoje)', value: 'R$ 4.350,00', icon: 'payments', trend: '+5.4%', trendText: 'vs. ontem', color: 'text-green-600 bg-green-100 bg-green-900/30 text-green-400' },
             ].map((card) => (
-              <div key={card.label} className="bg-white dark:bg-surface-dark rounded-xl p-5 border border-gray-200 dark:border-gray-700 shadow-sm">
+              <div key={card.label} className="bg-white bg-surface-dark rounded-xl p-5 border border-gray-200 border-gray-700 shadow-sm">
                 <div className="flex justify-between items-start mb-2">
-                  <p className="text-gray-500 dark:text-gray-400 text-sm font-medium">{card.label}</p>
+                  <p className="text-gray-500 text-gray-400 text-sm font-medium">{card.label}</p>
                   <span className={`material-symbols-outlined ${card.color} p-1.5 rounded-lg text-[20px]`}>{card.icon}</span>
                 </div>
-                <p className="text-2xl font-bold text-foreground dark:text-white">{card.value}</p>
+                <p className="text-2xl font-bold text-foreground text-white">{card.value}</p>
                 <div className="flex items-center gap-1 mt-1 text-sm">
-                  {card.trend && <span className="text-green-600 dark:text-green-400 font-medium flex items-center"><span className="material-symbols-outlined text-[16px]">trending_up</span>{card.trend}</span>}
-                  <span className={card.isCTA ? 'text-primary-light dark:text-primary-light font-medium hover:underline cursor-pointer' : 'text-gray-500 dark:text-gray-500'}>{card.trendText}</span>
+                  {card.trend && <span className="text-green-600 text-green-400 font-medium flex items-center"><span className="material-symbols-outlined text-[16px]">trending_up</span>{card.trend}</span>}
+                  <span className={card.isCTA ? 'text-primary-light text-primary-light font-medium hover:underline cursor-pointer' : 'text-gray-500 text-gray-500'}>{card.trendText}</span>
                 </div>
               </div>
             ))}
           </div>
 
           {/* Filters and Table */}
-          <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between bg-white dark:bg-surface-dark p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+          <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between bg-white bg-surface-dark p-4 rounded-xl border border-gray-200 border-gray-700 shadow-sm">
             <div className="relative w-full lg:max-w-md">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <span className="material-symbols-outlined text-gray-400 text-[20px]">search</span>
               </div>
               <input 
-                className="block w-full pl-10 pr-3 py-2.5 border-none bg-gray-100 dark:bg-background-dark dark:text-white rounded-lg text-sm placeholder-gray-500 focus:ring-2 focus:ring-primary/50"
+                className="block w-full pl-10 pr-3 py-2.5 border-none bg-gray-100 bg-background-dark text-white rounded-lg text-sm placeholder-gray-500 focus:ring-2 focus:ring-primary/50"
                 placeholder="Buscar por ID, cliente ou e-mail..."
                 type="text"
               />
@@ -160,7 +160,7 @@ export default function OrdersPage() {
             <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto">
               <div className="relative group">
                 <button 
-                  className="flex items-center gap-2 px-3 py-2.5 bg-gray-100 dark:bg-background-dark rounded-lg text-sm text-foreground dark:text-white font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                  className="flex items-center gap-2 px-3 py-2.5 bg-gray-100 bg-background-dark rounded-lg text-sm text-foreground text-white font-medium hover:bg-gray-200 hover:bg-gray-700 transition-colors"
                   onClick={() => setSelectedStatus(selectedStatus ? '' : 'PENDING')}
                 >
                   <span className="material-symbols-outlined text-[20px]">filter_list</span>
@@ -168,15 +168,15 @@ export default function OrdersPage() {
                   <span className="material-symbols-outlined text-[18px]">expand_more</span>
                 </button>
               </div>
-              <button className="flex items-center gap-2 px-3 py-2.5 bg-gray-100 dark:bg-background-dark rounded-lg text-sm text-foreground dark:text-white font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+              <button className="flex items-center gap-2 px-3 py-2.5 bg-gray-100 bg-background-dark rounded-lg text-sm text-foreground text-white font-medium hover:bg-gray-200 hover:bg-gray-700 transition-colors">
                 <span className="material-symbols-outlined text-[20px]">calendar_today</span>
                 Últimos 30 dias
               </button>
-              <div className="hidden sm:flex bg-gray-100 dark:bg-background-dark rounded-lg p-1 ml-auto lg:ml-0">
-                <button className="p-1.5 rounded bg-white dark:bg-surface-dark shadow-sm text-primary">
+              <div className="hidden sm:flex bg-gray-100 bg-background-dark rounded-lg p-1 ml-auto lg:ml-0">
+                <button className="p-1.5 rounded bg-white bg-surface-dark shadow-sm text-primary">
                   <span className="material-symbols-outlined text-[20px]">view_list</span>
                 </button>
-                <button className="p-1.5 rounded text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white">
+                <button className="p-1.5 rounded text-gray-500 hover:text-gray-700 text-gray-400 hover:text-white">
                   <span className="material-symbols-outlined text-[20px]">grid_view</span>
                 </button>
               </div>
@@ -184,10 +184,10 @@ export default function OrdersPage() {
           </div>
 
           {/* Table */}
-          <div className="bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm overflow-hidden flex flex-col flex-1">
+          <div className="bg-white bg-surface-dark border border-gray-200 border-gray-700 rounded-xl shadow-sm overflow-hidden flex flex-col flex-1">
             <div className="overflow-x-auto">
               <table className="w-full text-sm text-left">
-                <thead className="bg-gray-50 dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700">
+                <thead className="bg-gray-50 bg-gray-800 text-gray-500 text-gray-400 border-b border-gray-200 border-gray-700">
                   <tr>
                     <th className="p-4 w-4">
                       <input type="checkbox" className="w-4 h-4 text-primary" />
@@ -201,9 +201,9 @@ export default function OrdersPage() {
                     <th className="px-4 py-3 font-semibold text-center">Ações</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+                <tbody className="divide-y divide-gray-200 divide-gray-700">
                   {mockOrders.map((order) => (
-                    <tr key={order.id} className={`bg-white dark:bg-surface-dark hover:bg-gray-50 dark:hover:bg-white/5 transition-colors group ${order.cancelled ? 'opacity-75' : ''}`}>
+                    <tr key={order.id} className={`bg-white bg-surface-dark hover:bg-gray-50 hover:bg-white/5 transition-colors group ${order.cancelled ? 'opacity-75' : ''}`}>
                       <td className="p-4 w-4">
                         <input type="checkbox" className="w-4 h-4 text-primary" />
                       </td>
@@ -214,19 +214,19 @@ export default function OrdersPage() {
                             <img src={order.avatar} alt={order.customer} className="w-8 h-8 rounded-full object-cover" />
                           ) : (
                             <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs ${{
-                              'JS': 'bg-purple-100 dark:bg-purple-900/40 text-purple-600 dark:text-purple-300',
-                              'AM': 'bg-pink-100 dark:bg-pink-900/40 text-pink-600 dark:text-pink-300',
+                              'JS': 'bg-purple-100 bg-purple-900/40 text-purple-600 text-purple-300',
+                              'AM': 'bg-pink-100 bg-pink-900/40 text-pink-600 text-pink-300',
                             }[order.initials!] || 'bg-gray-200'}`}>
                               {order.initials}
                             </div>
                           )}
                           <div className="flex flex-col">
-                            <span className="text-foreground dark:text-gray-200 font-medium">{order.customer}</span>
+                            <span className="text-foreground text-gray-200 font-medium">{order.customer}</span>
                             <span className="text-xs text-gray-500">{order.email}</span>
                           </div>
                         </div>
                       </td>
-                      <td className="px-4 py-3 text-gray-500 dark:text-gray-400 whitespace-nowrap">{order.date}</td>
+                      <td className="px-4 py-3 text-gray-500 text-gray-400 whitespace-nowrap">{order.date}</td>
                       <td className="px-4 py-3">
                         <span className={`text-xs font-semibold px-2.5 py-0.5 rounded ${statusConfig[order.paymentStatus as keyof typeof statusConfig]?.color || ''}`}>
                           {statusConfig[order.paymentStatus as keyof typeof statusConfig]?.label || order.paymentStatus}
@@ -237,10 +237,10 @@ export default function OrdersPage() {
                           {order.shippingStatus}
                         </span>
                       </td>
-                      <td className="px-4 py-3 text-right font-medium text-foreground dark:text-white">{order.total}</td>
+                      <td className="px-4 py-3 text-right font-medium text-foreground text-white">{order.total}</td>
                       <td className="px-4 py-3 text-center">
                         <div className="flex items-center justify-center gap-2">
-                          <button className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-500 dark:text-gray-400 transition-colors" title="Visualizar Detalhes">
+                          <button className="p-1.5 rounded-lg hover:bg-gray-100 hover:bg-gray-700 text-gray-500 text-gray-400 transition-colors" title="Visualizar Detalhes">
                             <span className="material-symbols-outlined text-[20px]">visibility</span>
                           </button>
                           {order.shippingStatus === 'Pronto p/ Envio' ? (
@@ -248,11 +248,11 @@ export default function OrdersPage() {
                               <span className="material-symbols-outlined text-[20px]">print</span>
                             </button>
                           ) : (
-                            <button disabled className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-400 cursor-not-allowed transition-colors" title="Atualizar Status">
+                            <button disabled className="p-1.5 rounded-lg hover:bg-gray-100 hover:bg-gray-700 text-gray-400 cursor-not-allowed transition-colors" title="Atualizar Status">
                               <span className="material-symbols-outlined text-[20px]">edit_note</span>
                             </button>
                           )}
-                          <button className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-500 dark:text-gray-400 transition-colors">
+                          <button className="p-1.5 rounded-lg hover:bg-gray-100 hover:bg-gray-700 text-gray-500 text-gray-400 transition-colors">
                             <span className="material-symbols-outlined text-[20px]">more_vert</span>
                           </button>
                         </div>
@@ -264,22 +264,22 @@ export default function OrdersPage() {
             </div>
 
             {/* Pagination */}
-            <div className="flex flex-col sm:flex-row items-center justify-between p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark gap-4">
-              <span className="text-sm text-gray-500 dark:text-gray-400 text-center sm:text-left">
-                Mostrando <span className="font-semibold text-foreground dark:text-white">1-10</span> de <span className="font-semibold text-foreground dark:text-white">1,254</span> pedidos
+            <div className="flex flex-col sm:flex-row items-center justify-between p-4 border-t border-gray-200 border-gray-700 bg-white bg-surface-dark gap-4">
+              <span className="text-sm text-gray-500 text-gray-400 text-center sm:text-left">
+                Mostrando <span className="font-semibold text-foreground text-white">1-10</span> de <span className="font-semibold text-foreground text-white">1,254</span> pedidos
               </span>
               <div className="inline-flex gap-2">
                 <button 
                   disabled={currentPage === 1}
                   onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-                  className="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white dark:bg-surface-dark border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-gray-400 disabled:opacity-50"
+                  className="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white bg-surface-dark border border-gray-300 border-gray-700 rounded-lg hover:bg-gray-100 hover:bg-gray-800 text-gray-400 disabled:opacity-50"
                 >
                   <span className="material-symbols-outlined text-[16px] mr-2">arrow_back</span>
                   Anterior
                 </button>
                 <button 
                   onClick={() => setCurrentPage(p => p + 1)}
-                  className="flex items-center justify-center px-4 py-2 text-sm font-medium text-foreground bg-white dark:bg-surface-dark border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-white"
+                  className="flex items-center justify-center px-4 py-2 text-sm font-medium text-foreground bg-white bg-surface-dark border border-gray-300 border-gray-700 rounded-lg hover:bg-gray-100 hover:bg-gray-800 text-white"
                 >
                   Próxima
                   <span className="material-symbols-outlined text-[16px] ml-2">arrow_forward</span>
@@ -290,7 +290,7 @@ export default function OrdersPage() {
         </div>
 
         {/* Footer */}
-        <footer className="mt-auto py-6 text-center text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700">
+        <footer className="mt-auto py-6 text-center text-sm text-gray-500 text-gray-400 border-t border-gray-200 border-gray-700">
           © 2025 LupaShop. Todos os direitos reservados.
         </footer>
       </main>

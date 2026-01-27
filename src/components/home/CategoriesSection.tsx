@@ -22,82 +22,85 @@ export default function CategoriesSection() {
   }, [categoriesData]);
 
   return (
-    <section className="mb-20 px-4">
-      {/* Header com estilo técnico */}
-      <div className="flex items-end justify-between mb-10 border-b border-zinc-200 dark:border-zinc-800 pb-6">
-        <div>
-          <span className="text-primary text-[10px] font-black uppercase tracking-[0.3em] mb-2 block">
-            Navigation System
-          </span>
-          <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase dark:text-white">
-            {t('categories.title')}
-          </h2>
-        </div>
-        
-        {/* Usando seu botão UI para o "Ver Tudo" */}
-        <Button 
-          variant="outline" 
-          size="sm"
-          asChild
-          className="hidden md:flex"
-        >
-          <Link href={`/${locale}/marketplace`} className="flex items-center gap-2">
-            {t('categories.viewAll')} <LayoutGrid className="w-4 h-4" />
-          </Link>
-        </Button>
+    <section className="relative py-20 overflow-hidden bg-white bg-[#050505]">
+      {/* Grid Pattern de Pontinhos - Identico ao Hero para continuidade */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 [background-image:radial-gradient(#000_1px,transparent_1px)] [background-image:radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px] [mask-image:linear-gradient(to_bottom,transparent,black,transparent)] opacity-10" />
       </div>
 
-      {categoriesLoading ? (
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-          {[...Array(6)].map((_, i) => (
-            <div key={i} className="h-20 bg-zinc-100 dark:bg-zinc-900 rounded-lg animate-pulse border border-zinc-200 dark:border-zinc-800" />
-          ))}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 w-full">
+        {/* Header com a mesma tipografia disruptiva do Hero */}
+        <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6 border-b-2 border-zinc-900 border-white pb-8">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <span className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-3 block">
+              Exploração / 02
+            </span>
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase text-white leading-[0.8]">
+              {t('categories.title')}
+            </h2>
+          </motion.div>
+          
+          <Button 
+            variant="inset" // Usando o efeito que segue o mouse
+            size="lg"
+            asChild
+            className="hidden md:flex border-2"
+          >
+            <Link href={`/${locale}/marketplace`} className="flex items-center gap-3">
+              {t('categories.viewAll')} <LayoutGrid className="w-5 h-5" />
+            </Link>
+          </Button>
         </div>
-      ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {categories.map((cat, idx) => (
-            <motion.div
-              key={cat.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, delay: idx * 0.05 }}
-              viewport={{ once: true }}
-            >
-              {/* Usando o seu componente Button. 
-                  A classe "w-full h-24" garante que ele tenha o aspecto de card técnico.
-                  O preenchimento inset que você definiu no componente UI 
-                  fará o background subir ao passar o mouse.
-              */}
-              <Button
-                variant="outline"
-                className="w-full h-24 flex flex-col items-start justify-between p-4 group relative overflow-hidden"
-                asChild
+
+        {categoriesLoading ? (
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="h-32 bg-zinc-100 bg-zinc-900 rounded-lg animate-pulse" />
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
+            {categories.map((cat, idx) => (
+              <motion.div
+                key={cat.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: idx * 0.05 }}
+                viewport={{ once: true }}
               >
-                <Link href={`/${locale}/marketplace?category=${cat.slug}`}>
-                  {/* Ícone de detalhe no canto superior (estilo técnico) */}
-                  <div className="w-full flex justify-between items-start">
-                    <span className="text-[10px] font-black opacity-30 group-hover:opacity-100 transition-opacity">
-                      0{idx + 1}
+                <Button
+                  variant="inset" // Mudado para Inset para ser mais chamativo
+                  className="w-full h-32 flex flex-col items-start justify-between p-6 group relative overflow-hidden border-2 rounded-none md:rounded-lg"
+                  asChild
+                >
+                  <Link href={`/${locale}/marketplace?category=${cat.slug}`}>
+                    <div className="w-full flex justify-between items-start">
+                      <span className="text-[10px] font-black opacity-40 group-hover:opacity-100 transition-opacity">
+                        ID:0{idx + 1}
+                      </span>
+                      <ArrowUpRight className="w-4 h-4 translate-x-2 -translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300" />
+                    </div>
+
+                    <span className="text-lg font-black uppercase tracking-tighter text-left leading-none max-w-[80%]">
+                      {cat.name}
                     </span>
-                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all translate-y-1 group-hover:translate-y-0" />
-                  </div>
+                  </Link>
+                </Button>
+              </motion.div>
+            ))}
+          </div>
+        )}
 
-                  {/* Nome da Categoria */}
-                  <span className="text-sm font-black uppercase tracking-tighter text-left leading-none">
-                    {cat.name}
-                  </span>
-                </Link>
-              </Button>
-            </motion.div>
-          ))}
+        {/* Mobile View All - Botão Full Width técnico */}
+        <div className="mt-8 md:hidden">
+          <Button variant="inset" size="xl" className="w-full border-2" asChild>
+            <Link href={`/${locale}/marketplace`}>{t('categories.viewAll')}</Link>
+          </Button>
         </div>
-      )}
-
-      {/* Mobile View All Button */}
-      <div className="mt-8 md:hidden">
-        <Button variant="outline" className="w-full" asChild>
-          <Link href={`/${locale}/marketplace`}>{t('categories.viewAll')}</Link>
-        </Button>
       </div>
     </section>
   );

@@ -4,7 +4,7 @@ import React, { useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'motion/react';
-import { Bolt, Heart, ShoppingCart } from 'lucide-react';
+import { Bolt, Heart, ShoppingCart, ArrowUpRight } from 'lucide-react';
 import Button from '@/components/ui/Button';
 import { useFeaturedProducts } from '@/hooks/useFeaturedProducts';
 
@@ -21,77 +21,119 @@ export default function DealsSection() {
       title: product.name,
       price: `R$ ${product.price?.toFixed(2) || '0.00'}`,
       oldPrice: product.originalPrice ? `R$ ${product.originalPrice.toFixed(2)}` : null,
-      badge: product.discount ? `-${product.discount}%` : null,
+      badge: product.discount ? `${product.discount}% OFF` : null,
       image: product.images?.[0] || 'https://via.placeholder.com/400',
       slug: product.slug,
     }));
   }, [featuredProductsData]);
 
   return (
-    <section className="mb-14">
-      <div className="flex items-center gap-3 mb-6 px-1">
-        <Bolt className="text-primary w-7 h-7" />
-        <h2 className="text-2xl font-bold tracking-tight">{t('deals.sectionTitle')}</h2>
-      </div>
-      {productsLoading ? (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {[...Array(5)].map((_, i) => (
-            <div key={i} className="h-64 bg-gray-200 rounded-2xl animate-pulse" />
-          ))}
+    <section className="relative py-20 bg-white bg-[#050505] overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 relative z-10">
+        
+        {/* Header Alinhado com o estilo Hero/Categories */}
+        <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6 border-b-2 border-primary/20 pb-8">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-center gap-2 mb-3">
+              <Bolt className="text-primary w-5 h-5 fill-primary" />
+              <span className="text-primary text-xs font-black uppercase tracking-[0.4em]">
+                Live Flash Deals
+              </span>
+            </div>
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase text-zinc-900 text-white leading-[0.8]">
+              {t('deals.sectionTitle')}
+            </h2>
+          </motion.div>
+          
+          <Button variant="inset" size="lg" className="border-primary text-primary">
+            Ver Todas as Ofertas <ArrowUpRight className="ml-2 w-4 h-4" />
+          </Button>
         </div>
-      ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {deals.map((deal, idx) => (
-            <motion.div
-              key={deal.id}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: idx * 0.05 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -4, scale: 1.01 }}
-              className="flex flex-col bg-surface-light dark:bg-surface-dark rounded-2xl border border-gray-100 dark:border-[#2a3b47] overflow-hidden group hover:shadow-xl hover:border-primary/30 transition-all duration-300 cursor-pointer"
-              onClick={() => router.push(`/${locale}/product/${deal.slug}`)}
-            >
-              <div className="relative w-full aspect-square bg-gray-50 dark:bg-gray-800 overflow-hidden">
-                <div
-                  className="absolute inset-0 bg-center bg-cover transform group-hover:scale-105 transition-transform duration-500"
-                  style={{ backgroundImage: `url(${deal.image})` }}
-                />
-                {deal.badge && (
-                  <div className="absolute top-3 left-3 bg-red-500 text-black text-[10px] font-bold px-2 py-1 rounded shadow">
-                    {deal.badge}
-                  </div>
-                )}
-                <Button
-                  variant="icon"
-                  className="absolute top-3 right-3 size-9 bg-white dark:bg-surface-dark rounded-full shadow-md flex items-center justify-center text-gray-400 hover:text-red-500 transition-all opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 duration-300 z-10"
-                  onClick={(e) => { e.stopPropagation(); }}
-                >
-                  <Heart className="w-5 h-5" />
-                </Button>
-              </div>
-              <div className="p-4 flex flex-col flex-1">
-                <p className="text-[10px] font-bold text-primary uppercase tracking-wider mb-1">{deal.store}</p>
-                <h3 className="text-sm font-bold line-clamp-2 mb-2 group-hover:text-primary transition-colors">{deal.title}</h3>
-                <div className="mt-auto pt-2">
-                  <div className="flex items-end gap-2 mb-4">
-                    <span className="text-lg font-bold">{deal.price}</span>
-                    {deal.oldPrice && <span className="text-xs text-text-sub line-through mb-1">{deal.oldPrice}</span>}
-                  </div>
-                  <Button
-                    variant="default"
-                    className="w-full h-10 rounded-lg bg-primary hover:bg-primary-dark text-black text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-sm hover:shadow-md"
+
+        {productsLoading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {[...Array(5)].map((_, i) => (
+              <div key={i} className="h-[400px] bg-zinc-100 bg-zinc-900 rounded-lg animate-pulse" />
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {deals.map((deal, idx) => (
+              <motion.div
+                key={deal.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: idx * 0.05 }}
+                viewport={{ once: true }}
+                className="group relative flex flex-col bg-white bg-zinc-900 border-2 border-zinc-100 border-zinc-800 hover:border-primary transition-all duration-500 overflow-hidden"
+                onClick={() => router.push(`/${locale}/product/${deal.slug}`)}
+              >
+                {/* Image Container */}
+                <div className="relative aspect-[4/5] overflow-hidden bg-zinc-50 bg-zinc-800">
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
+                    className="absolute inset-0 bg-center bg-cover"
+                    style={{ backgroundImage: `url(${deal.image})` }}
+                  />
+                  
+                  {/* Badge Disruptiva */}
+                  {deal.badge && (
+                    <div className="absolute top-0 left-0 bg-primary text-white text-[10px] font-black px-3 py-1.5 uppercase tracking-tighter z-10">
+                      {deal.badge}
+                    </div>
+                  )}
+
+                  <button
+                    className="absolute top-2 right-2 p-2 bg-white/80 bg-black/80 backdrop-blur-md rounded-full text-zinc-400 hover:text-red-500 transition-colors z-10"
                     onClick={(e) => { e.stopPropagation(); }}
                   >
-                    <ShoppingCart className="w-4 h-4" />
-                    {t('deals.addButton')}
-                  </Button>
+                    <Heart className="w-4 h-4" />
+                  </button>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      )}
+
+                {/* Info Content */}
+                <div className="p-5 flex flex-col flex-1 border-t-2 border-zinc-100 border-zinc-800 group-hover:border-primary/30 transition-colors">
+                  <span className="text-[10px] font-black text-primary uppercase tracking-[0.2em] mb-2">
+                    {deal.store}
+                  </span>
+                  <h3 className="text-sm font-black uppercase tracking-tighter leading-tight mb-4 line-clamp-2 text-zinc-900 text-white">
+                    {deal.title}
+                  </h3>
+
+                  <div className="mt-auto">
+                    <div className="flex flex-col mb-4">
+                      {deal.oldPrice && (
+                        <span className="text-[10px] text-zinc-400 line-through font-bold">
+                          {deal.oldPrice}
+                        </span>
+                      )}
+                      <span className="text-xl font-black text-zinc-900 text-white tracking-tighter">
+                        {deal.price}
+                      </span>
+                    </div>
+
+                    {/* Botão com efeito Inset ou Slide */}
+                    <Button
+                      variant="slide"
+                      size="md"
+                      className="w-full border-primary text-primary"
+                      onClick={(e) => { e.stopPropagation(); }}
+                    >
+                      <ShoppingCart className="w-4 h-4 mr-2" />
+                      {t('deals.addButton')}
+                    </Button>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        )}
+      </div>
     </section>
   );
 }

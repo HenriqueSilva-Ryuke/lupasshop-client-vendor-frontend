@@ -178,9 +178,9 @@ export default function Marketplace() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950">
+    <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white dark:bg-gray-100 border-b border-gray-200 dark:border-gray-800 shadow-sm">
+      <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -191,27 +191,27 @@ export default function Marketplace() {
 
             {/* Navigation - Desktop */}
             <nav className="hidden md:flex items-center gap-8 flex-1 ml-12">
-              <Link href="#" className="text-gray-700 dark:text-gray-300 hover:text-[#412778] transition">
+              <Link href="#" className="text-gray-700 hover:text-[#412778] transition">
                 {t('navbar.home')}
               </Link>
-              <Link href="#" className="text-gray-700 dark:text-gray-300 hover:text-[#412778] transition">
+              <Link href="#" className="text-gray-700 hover:text-[#412778] transition">
                 {t('navbar.products')}
               </Link>
-              <Link href="#" className="text-gray-700 dark:text-gray-300 hover:text-[#412778] transition">
+              <Link href="#" className="text-gray-700 hover:text-[#412778] transition">
                 {t('navbar.stores')}
               </Link>
-              <Link href="#" className="text-gray-700 dark:text-gray-300 hover:text-[#412778] transition">
+              <Link href="#" className="text-gray-700 hover:text-[#412778] transition">
                 {t('navbar.deals')}
               </Link>
             </nav>
 
             {/* Right side actions */}
             <div className="hidden md:flex items-center gap-4">
-              <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition">
-                <Heart className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+              <button className="p-2 hover:bg-gray-100 rounded-lg transition">
+                <Heart className="w-6 h-6 text-gray-700" />
               </button>
-              <Link href="/dashboard/cart" className="relative p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition">
-                <ShoppingCart className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+              <Link href="/dashboard/cart" className="relative p-2 hover:bg-gray-100 hover:bg-gray-800 rounded-lg transition">
+                <ShoppingCart className="w-6 h-6 text-gray-700 text-gray-300" />
                 <span className="absolute top-1 right-1 w-5 h-5 bg-[#412778] text-black text-xs rounded-full flex items-center justify-center">
                   0
                 </span>
@@ -234,11 +234,11 @@ export default function Marketplace() {
 
         {/* Mobile menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+          <div className="md:hidden bg-gray-50 border-t border-gray-200">
             <div className="px-4 py-4 space-y-3">
-              <Link href="#" className="block text-gray-700 dark:text-gray-300">Home</Link>
-              <Link href="#" className="block text-gray-700 dark:text-gray-300">Products</Link>
-              <Link href="#" className="block text-gray-700 dark:text-gray-300">Stores</Link>
+              <Link href="#" className="block text-gray-700">Home</Link>
+              <Link href="#" className="block text-gray-700">Products</Link>
+              <Link href="#" className="block text-gray-700">Stores</Link>
               <Link href="/dashboard/auth/login" className="block text-[#412778] font-medium">Login</Link>
             </div>
           </div>
@@ -315,7 +315,7 @@ export default function Marketplace() {
 
       {/* Categories */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-black">Shop by Category</h2>
+        <h2 className="text-2xl font-bold mb-6 text-gray-900">Shop by Category</h2>
         {categoriesLoading ? (
           <div className="flex justify-center py-8">
             <Loader className="w-6 h-6 animate-spin text-[#412778]" />
@@ -329,7 +329,7 @@ export default function Marketplace() {
                 className={`p-4 rounded-lg text-center transition ${
                   selectedCategory === category.id
                     ? 'bg-[#412778] text-black'
-                    : 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-black hover:bg-gray-200 dark:hover:bg-gray-700'
+                    : 'bg-gray-100 text-gray-900 hover:bg-gray-200' 
                 }`}
               >
                 <div className="text-3xl mb-2">{category.icon}</div>
@@ -344,7 +344,7 @@ export default function Marketplace() {
       {/* Flash Deals Products */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-black">Flash Deals</h2>
+          <h2 className="text-2xl font-bold text-gray-900">Flash Deals</h2>
           <Link href="#" className="text-[#412778] hover:text-purple-900 font-semibold flex items-center gap-2">
             View All
             <span>→</span>
@@ -360,10 +360,10 @@ export default function Marketplace() {
             {displayProducts.slice(0, 5).map((product) => (
               <div
                 key={product.id}
-                className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition border border-gray-200 dark:border-gray-700"
+                className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition border border-gray-200"
               >
                 {/* Product Image */}
-                <div className="relative aspect-square bg-gray-200 dark:bg-gray-700 overflow-hidden group">
+                <div className="relative aspect-square bg-gray-200 overflow-hidden group">
                   <Image
                     src={product.image}
                     alt={product.name}
@@ -377,13 +377,13 @@ export default function Marketplace() {
                   )}
                   <button
                     onClick={() => toggleFavorite(product.id)}
-                    className="absolute top-2 left-2 p-2 bg-white dark:bg-gray-800 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+                    className="absolute top-2 left-2 p-2 bg-white rounded-full hover:bg-gray-100 transition"
                   >
                     <Heart
                       className={`w-5 h-5 ${
                         favorites.has(product.id)
                           ? 'fill-red-500 text-red-500'
-                          : 'text-gray-600 dark:text-gray-400'
+                          : 'text-gray-600' 
                       }`}
                     />
                   </button>
@@ -391,7 +391,7 @@ export default function Marketplace() {
 
                 {/* Product Info */}
                 <div className="p-4">
-                  <h3 className="font-semibold text-gray-900 dark:text-black line-clamp-2 mb-2">
+                  <h3 className="font-semibold text-gray-900 line-clamp-2 mb-2">
                     {product.name}
                   </h3>
 
@@ -406,7 +406,7 @@ export default function Marketplace() {
                         />
                       ))}
                     </div>
-                    <span className="text-xs text-gray-600 dark:text-gray-400">
+                    <span className="text-xs text-gray-600">
                       {product.rating} ({product.reviews})
                     </span>
                   </div>
@@ -414,11 +414,11 @@ export default function Marketplace() {
                   {/* Price */}
                   <div className="mb-3">
                     <div className="flex items-baseline gap-2">
-                      <span className="text-lg font-bold text-gray-900 dark:text-black">
+                      <span className="text-lg font-bold text-gray-900">
                         ${product.price.toFixed(2)}
                       </span>
                       {product.originalPrice && (
-                        <span className="text-sm text-gray-500 dark:text-gray-400 line-through">
+                        <span className="text-sm text-gray-500 line-through">
                           ${product.originalPrice.toFixed(2)}
                         </span>
                       )}
@@ -426,7 +426,7 @@ export default function Marketplace() {
                   </div>
 
                   {/* Store Info */}
-                  <p className="text-xs text-gray-600 dark:text-gray-400 mb-3">
+                  <p className="text-xs text-gray-600 mb-3">
                     by {product.store}
                   </p>
 
@@ -444,7 +444,7 @@ export default function Marketplace() {
 
       {/* Featured Stores */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-black">Featured Stores</h2>
+        <h2 className="text-2xl font-bold mb-6 text-gray-900">Featured Stores</h2>
         {storesLoading ? (
           <div className="flex justify-center py-8">
             <Loader className="w-6 h-6 animate-spin text-[#412778]" />
@@ -454,12 +454,12 @@ export default function Marketplace() {
             {displayStores.map((store) => (
               <div
                 key={store.id}
-                className="bg-white dark:bg-gray-800 rounded-lg p-6 text-center shadow-sm hover:shadow-lg transition border border-gray-200 dark:border-gray-700"
+                className="bg-white rounded-lg p-6 text-center shadow-sm hover:shadow-lg transition border border-gray-200"
               >
                 <div className="w-16 h-16 mx-auto bg-[#412778] text-black rounded-full flex items-center justify-center font-bold text-2xl mb-4">
                   {store.logo}
                 </div>
-                <h3 className="font-bold text-gray-900 dark:text-black mb-2">{store.name}</h3>
+                <h3 className="font-bold text-gray-900 mb-2">{store.name}</h3>
                 <div className="flex items-center justify-center gap-1 mb-2">
                   <div className="flex text-yellow-400">
                     {[...Array(5)].map((_, i) => (
@@ -470,11 +470,11 @@ export default function Marketplace() {
                       />
                     ))}
                   </div>
-                  <span className="text-xs text-gray-600 dark:text-gray-400 ml-1">
+                  <span className="text-xs text-gray-600 ml-1">
                     {store.rating}
                   </span>
                 </div>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                <p className="text-sm text-gray-600 mb-4">
                   {store.salesCount.toLocaleString()} sales
                 </p>
                 <button className="w-full border-2 border-[#412778] text-[#412778] hover:bg-[#412778] hover:text-black py-2 rounded-lg font-semibold transition">
