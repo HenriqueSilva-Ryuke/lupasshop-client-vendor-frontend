@@ -88,8 +88,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       icon: 'p-2 border-2 border-zinc-200 border-zinc-800 rounded-lg hover:border-primary transition-colors text-zinc-900 text-white',
     };
 
+    const DynamicComponent = Component as any;
+
     return (
-      <Component
+      <DynamicComponent
         ref={btnRef}
         onMouseMove={variant === 'inset' ? handleMove : undefined}
         onMouseEnter={variant === 'inset' ? handleEnter : undefined}
@@ -103,7 +105,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...rest}
       >
         {renderContent()}
-      </Component>
+      </DynamicComponent>
     );
   }
 );

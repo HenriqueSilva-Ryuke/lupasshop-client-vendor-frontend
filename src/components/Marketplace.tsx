@@ -4,7 +4,6 @@ import React, { useState, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { Heart, ShoppingCart, Search, Menu, X, Star, MapPin, TrendingUp, Package, Loader } from 'lucide-react';
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useFeaturedProducts } from '@/hooks/useFeaturedProducts';
 import { useFeaturedStores } from '@/hooks/useFeaturedStores';
@@ -192,16 +191,16 @@ export default function Marketplace() {
             {/* Navigation - Desktop */}
             <nav className="hidden md:flex items-center gap-8 flex-1 ml-12">
               <Link href="#" className="text-gray-700 hover:text-[#412778] transition">
-                {t('navbar.home')}
+                {tMarket('navbar.home')}
               </Link>
               <Link href="#" className="text-gray-700 hover:text-[#412778] transition">
-                {t('navbar.products')}
+                {tMarket('navbar.products')}
               </Link>
               <Link href="#" className="text-gray-700 hover:text-[#412778] transition">
-                {t('navbar.stores')}
+                {tMarket('navbar.stores')}
               </Link>
               <Link href="#" className="text-gray-700 hover:text-[#412778] transition">
-                {t('navbar.deals')}
+                {tMarket('navbar.deals')}
               </Link>
             </nav>
 
@@ -210,14 +209,14 @@ export default function Marketplace() {
               <button className="p-2 hover:bg-gray-100 rounded-lg transition">
                 <Heart className="w-6 h-6 text-gray-700" />
               </button>
-              <Link href="/dashboard/cart" className="relative p-2 hover:bg-gray-100 hover:bg-gray-800 rounded-lg transition">
-                <ShoppingCart className="w-6 h-6 text-gray-700 text-gray-300" />
-                <span className="absolute top-1 right-1 w-5 h-5 bg-[#412778] text-black text-xs rounded-full flex items-center justify-center">
+              <Link href="/cart" className="relative p-2 hover:bg-gray-100 rounded-lg transition">
+                <ShoppingCart className="w-6 h-6 text-gray-700" />
+                <span className="absolute top-1 right-1 w-5 h-5 bg-[#412778] text-white text-xs rounded-full flex items-center justify-center">
                   0
                 </span>
               </Link>
-              <Link href="/dashboard/auth/login" className="px-4 py-2 text-[#412778] border border-[#412778] rounded-lg hover:bg-[#412778] hover:text-black transition font-medium">
-                {t('navbar.login')}
+              <Link href="/auth/login" className="px-4 py-2 text-[#412778] border border-[#412778] rounded-lg hover:bg-[#412778] hover:text-white transition font-medium">
+                {tMarket('navbar.login')}
               </Link>
             </div>
 
@@ -326,11 +325,10 @@ export default function Marketplace() {
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`p-4 rounded-lg text-center transition ${
-                  selectedCategory === category.id
-                    ? 'bg-[#412778] text-black'
-                    : 'bg-gray-100 text-gray-900 hover:bg-gray-200' 
-                }`}
+                className={`p-4 rounded-lg text-center transition ${selectedCategory === category.id
+                  ? 'bg-[#412778] text-black'
+                  : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
+                  }`}
               >
                 <div className="text-3xl mb-2">{category.icon}</div>
                 <p className="font-medium text-sm">{category.name}</p>
@@ -380,11 +378,10 @@ export default function Marketplace() {
                     className="absolute top-2 left-2 p-2 bg-white rounded-full hover:bg-gray-100 transition"
                   >
                     <Heart
-                      className={`w-5 h-5 ${
-                        favorites.has(product.id)
-                          ? 'fill-red-500 text-red-500'
-                          : 'text-gray-600' 
-                      }`}
+                      className={`w-5 h-5 ${favorites.has(product.id)
+                        ? 'fill-red-500 text-red-500'
+                        : 'text-gray-600'
+                        }`}
                     />
                   </button>
                 </div>
