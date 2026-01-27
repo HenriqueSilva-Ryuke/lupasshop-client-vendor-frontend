@@ -1,6 +1,6 @@
 'use client';
 
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { LIST_ORDERS } from '@/graphql/queries';
 import { useLocale } from 'next-intl';
 import Link from 'next/link';

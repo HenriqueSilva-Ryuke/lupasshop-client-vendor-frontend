@@ -10,7 +10,7 @@ export const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
-  preload: true,
+  preload: false,
   fallback: ['system-ui', 'arial'],
   adjustFontFallback: true,
 });
@@ -21,6 +21,7 @@ export const roboto = Roboto({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-roboto',
+  preload: false,
   fallback: ['system-ui', 'arial'],
 });
 

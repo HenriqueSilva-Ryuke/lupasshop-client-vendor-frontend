@@ -1,6 +1,6 @@
 'use client';
 
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { SalesLineChart } from '@/components/SalesLineChart'; // Placeholder for chart component
 import { GET_STORE_BALANCE } from '@/graphql/queries';
 import { DollarSign, Package, ShoppingBag, TrendingUp } from 'lucide-react';

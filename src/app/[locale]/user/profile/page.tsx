@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client/react';
 import { GET_CURRENT_USER } from '@/graphql/queries';
 import { UPDATE_USER } from '@/graphql/mutations';
 import Button from '@/components/ui/Button';
