@@ -1,0 +1,187 @@
+{
+  "customer": {
+    "dashboard": {
+      "title": "Minha Conta",
+      "orders": "Meus Pedidos",
+      "addresses": "Endereços",
+      "wishlist": "Lista de Desejos",
+      "reviews": "Avaliações",
+      "settings": "Configurações"
+    },
+    "addresses": {
+      "title": "Meus Endereços",
+      "addNew": "Adicionar Novo Endereço",
+      "edit": "Editar",
+      "delete": "Excluir",
+      "setDefault": "Definir como Padrão",
+      "default": "Padrão",
+      "noAddresses": "Nenhum endereço cadastrado",
+      "form": {
+        "label": "Etiqueta (Casa, Trabalho, etc.)",
+        "fullName": "Nome Completo",
+        "street": "Rua",
+        "city": "Cidade",
+        "state": "Província",
+        "postalCode": "Código Postal",
+        "country": "País",
+        "phone": "Telefone",
+        "save": "Salvar Endereço",
+        "cancel": "Cancelar"
+      }
+    },
+    "wishlist": {
+      "title": "Lista de Desejos",
+      "empty": "Sua lista de desejos está vazia",
+      "addToCart": "Adicionar ao Carrinho",
+      "remove": "Remover",
+      "itemsCount": "{{count}} itens"
+    },
+    "cart": {
+      "title": "Carrinho de Compras",
+      "empty": "Seu carrinho está vazio",
+      "continueShopping": "Continuar Comprando",
+      "checkout": "Finalizar Compra",
+      "subtotal": "Subtotal",
+      "shipping": "Envio",
+      "total": "Total",
+      "multiStore": "Seu carrinho contém itens de {{count}} lojas",
+      "consolidatedShipping": "Envio Consolidado Disponível",
+      "separateShipping": "Envio Separado por Loja"
+    },
+    "returns": {
+      "title": "Devoluções e Trocas",
+      "request": "Solicitar Devolução",
+      "reason": "Motivo da Devolução",
+      "description": "Descrição",
+      "submit": "Enviar Solicitação",
+      "status": {
+        "requested": "Solicitado",
+        "approved": "Aprovado",
+        "rejected": "Rejeitado",
+        "completed": "Concluído"
+      }
+    }
+  },
+  "seller": {
+    "dashboard": {
+      "title": "Painel do Vendedor",
+      "store": "Minha Loja",
+      "products": "Produtos",
+      "orders": "Pedidos",
+      "finances": "Financeiro",
+      "settings": "Configurações"
+    },
+    "store": {
+      "approval": {
+        "pending": "Aprovação Pendente",
+        "approved": "Loja Aprovada",
+        "rejected": "Loja Rejeitada",
+        "message": "Sua loja está aguardando aprovação do administrador"
+      },
+      "customization": {
+        "title": "Personalização da Loja",
+        "logo": "Logo",
+        "banner": "Banner",
+        "themeColor": "Cor do Tema",
+        "customCss": "CSS Personalizado",
+        "customHeader": "Cabeçalho Personalizado",
+        "customFooter": "Rodapé Personalizado",
+        "save": "Salvar Alterações"
+      }
+    },
+    "products": {
+      "add": "Adicionar Produto",
+      "import": "Importar em Massa",
+      "export": "Exportar",
+      "variants": {
+        "title": "Variantes",
+        "add": "Adicionar Variante",
+        "name": "Nome (ex: Tamanho)",
+        "value": "Valor (ex: Grande)",
+        "price": "Preço",
+        "stock": "Estoque"
+      }
+    },
+    "settings": {
+      "payment": {
+        "title": "Configurações de Pagamento",
+        "pixKey": "Chave PIX",
+        "creditCard": "Aceitar Cartão de Crédito",
+        "boleto": "Aceitar Boleto"
+      },
+      "shipping": {
+        "title": "Configurações de Envio",
+        "methods": "Métodos de Envio",
+        "lupaLogistics": "Usar Lupa Logística (Premium)",
+        "freeShippingMin": "Valor Mínimo para Frete Grátis",
+        "carriers": "Transportadoras"
+      },
+      "financial": {
+        "title": "Configurações Financeiras",
+        "commissionRate": "Taxa de Comissão",
+        "autoPayoutEnabled": "Repasse Automático Ativado"
+      }
+    },
+    "logistics": {
+      "labels": {
+        "title": "Etiquetas de Envio",
+        "generate": "Gerar Etiqueta",
+        "print": "Imprimir",
+        "download": "Baixar",
+        "trackingCode": "Código de Rastreamento"
+      }
+    }
+  },
+  "admin": {
+    "dashboard": {
+      "title": "Painel Administrativo",
+      "stores": "Lojas",
+      "users": "Usuários",
+      "products": "Produtos",
+      "orders": "Pedidos",
+      "finances": "Financeiro",
+      "reviews": "Avaliações"
+    },
+    "stores": {
+      "pending": "Lojas Pendentes",
+      "approve": "Aprovar",
+      "reject": "Rejeitar",
+      "notes": "Notas de Aprovação"
+    },
+    "users": {
+      "title": "Gerenciamento de Usuários",
+      "role": "Função",
+      "ban": "Banir",
+      "unban": "Desbanir",
+      "delete": "Excluir Conta"
+    },
+    "finances": {
+      "overview": "Visão Geral Financeira",
+      "totalRevenue": "Receita Total",
+      "platformFees": "Taxas da Plataforma",
+      "pendingPayouts": "Repasses Pendentes",
+      "revenueByMonth": "Receita por Mês",
+      "topStores": "Lojas com Maior Receita"
+    },
+    "reviews": {
+      "moderation": {
+        "title": "Moderação de Avaliações",
+        "pending": "Pendentes",
+        "approve": "Aprovar",
+        "reject": "Rejeitar",
+        "notes": "Notas de Moderação"
+      }
+    }
+  },
+  "coupons": {
+    "title": "Cupons",
+    "code": "Código",
+    "discount": "Desconto",
+    "apply": "Aplicar Cupom",
+    "remove": "Remover",
+    "valid": "Cupom aplicado com sucesso",
+    "invalid": "Cupom inválido",
+    "expired": "Cupom expirado",
+    "minPurchase": "Compra mínima de {{amount}} necessária"
+  }
+}

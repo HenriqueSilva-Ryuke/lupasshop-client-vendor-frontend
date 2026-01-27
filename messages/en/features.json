@@ -1,0 +1,187 @@
+{
+  "customer": {
+    "dashboard": {
+      "title": "My Account",
+      "orders": "My Orders",
+      "addresses": "Addresses",
+      "wishlist": "Wishlist",
+      "reviews": "Reviews",
+      "settings": "Settings"
+    },
+    "addresses": {
+      "title": "My Addresses",
+      "addNew": "Add New Address",
+      "edit": "Edit",
+      "delete": "Delete",
+      "setDefault": "Set as Default",
+      "default": "Default",
+      "noAddresses": "No addresses registered",
+      "form": {
+        "label": "Label (Home, Work, etc.)",
+        "fullName": "Full Name",
+        "street": "Street",
+        "city": "City",
+        "state": "State",
+        "postalCode": "Postal Code",
+        "country": "Country",
+        "phone": "Phone",
+        "save": "Save Address",
+        "cancel": "Cancel"
+      }
+    },
+    "wishlist": {
+      "title": "Wishlist",
+      "empty": "Your wishlist is empty",
+      "addToCart": "Add to Cart",
+      "remove": "Remove",
+      "itemsCount": "{{count}} items"
+    },
+    "cart": {
+      "title": "Shopping Cart",
+      "empty": "Your cart is empty",
+      "continueShopping": "Continue Shopping",
+      "checkout": "Checkout",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "total": "Total",
+      "multiStore": "Your cart contains items from {{count}} stores",
+      "consolidatedShipping": "Consolidated Shipping Available",
+      "separateShipping": "Separate Shipping per Store"
+    },
+    "returns": {
+      "title": "Returns & Exchanges",
+      "request": "Request Return",
+      "reason": "Return Reason",
+      "description": "Description",
+      "submit": "Submit Request",
+      "status": {
+        "requested": "Requested",
+        "approved": "Approved",
+        "rejected": "Rejected",
+        "completed": "Completed"
+      }
+    }
+  },
+  "seller": {
+    "dashboard": {
+      "title": "Seller Dashboard",
+      "store": "My Store",
+      "products": "Products",
+      "orders": "Orders",
+      "finances": "Finances",
+      "settings": "Settings"
+    },
+    "store": {
+      "approval": {
+        "pending": "Pending Approval",
+        "approved": "Store Approved",
+        "rejected": "Store Rejected",
+        "message": "Your store is awaiting administrator approval"
+      },
+      "customization": {
+        "title": "Store Customization",
+        "logo": "Logo",
+        "banner": "Banner",
+        "themeColor": "Theme Color",
+        "customCss": "Custom CSS",
+        "customHeader": "Custom Header",
+        "customFooter": "Custom Footer",
+        "save": "Save Changes"
+      }
+    },
+    "products": {
+      "add": "Add Product",
+      "import": "Bulk Import",
+      "export": "Export",
+      "variants": {
+        "title": "Variants",
+        "add": "Add Variant",
+        "name": "Name (e.g., Size)",
+        "value": "Value (e.g., Large)",
+        "price": "Price",
+        "stock": "Stock"
+      }
+    },
+    "settings": {
+      "payment": {
+        "title": "Payment Settings",
+        "pixKey": "PIX Key",
+        "creditCard": "Accept Credit Card",
+        "boleto": "Accept Boleto"
+      },
+      "shipping": {
+        "title": "Shipping Settings",
+        "methods": "Shipping Methods",
+        "lupaLogistics": "Use Lupa Logistics (Premium)",
+        "freeShippingMin": "Minimum Value for Free Shipping",
+        "carriers": "Carriers"
+      },
+      "financial": {
+        "title": "Financial Settings",
+        "commissionRate": "Commission Rate",
+        "autoPayoutEnabled": "Auto Payout Enabled"
+      }
+    },
+    "logistics": {
+      "labels": {
+        "title": "Shipping Labels",
+        "generate": "Generate Label",
+        "print": "Print",
+        "download": "Download",
+        "trackingCode": "Tracking Code"
+      }
+    }
+  },
+  "admin": {
+    "dashboard": {
+      "title": "Admin Dashboard",
+      "stores": "Stores",
+      "users": "Users",
+      "products": "Products",
+      "orders": "Orders",
+      "finances": "Finances",
+      "reviews": "Reviews"
+    },
+    "stores": {
+      "pending": "Pending Stores",
+      "approve": "Approve",
+      "reject": "Reject",
+      "notes": "Approval Notes"
+    },
+    "users": {
+      "title": "User Management",
+      "role": "Role",
+      "ban": "Ban",
+      "unban": "Unban",
+      "delete": "Delete Account"
+    },
+    "finances": {
+      "overview": "Financial Overview",
+      "totalRevenue": "Total Revenue",
+      "platformFees": "Platform Fees",
+      "pendingPayouts": "Pending Payouts",
+      "revenueByMonth": "Revenue by Month",
+      "topStores": "Top Revenue Stores"
+    },
+    "reviews": {
+      "moderation": {
+        "title": "Review Moderation",
+        "pending": "Pending",
+        "approve": "Approve",
+        "reject": "Reject",
+        "notes": "Moderation Notes"
+      }
+    }
+  },
+  "coupons": {
+    "title": "Coupons",
+    "code": "Code",
+    "discount": "Discount",
+    "apply": "Apply Coupon",
+    "remove": "Remove",
+    "valid": "Coupon applied successfully",
+    "invalid": "Invalid coupon",
+    "expired": "Coupon expired",
+    "minPurchase": "Minimum purchase of {{amount}} required"
+  }
+}
