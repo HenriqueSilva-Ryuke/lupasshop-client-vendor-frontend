@@ -1,0 +1,106 @@
+'use client';
+
+import { useQuery } from '@apollo/client';
+import { LIST_ORDERS } from '@/graphql/queries';
+import { useLocale } from 'next-intl';
+import Link from 'next/link';
+import { Package, ChevronRight, Calendar, CreditCard } from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+export default function OrdersPage() {
+    const locale = useLocale();
+    // We assume the user ID is extracted from the token context in the backend resolver
+    const { data, loading, error } = useQuery(LIST_ORDERS, {
+        variables: { limit: 10, offset: 0 },
+    });
+
+    if (loading) return <div className="p-8 text-center text-gray-500">Carregando pedidos...</div>;
+    if (error) return <div className="p-8 text-center text-red-500">Erro ao carregar pedidos.</div>;
+
+    const orders = data?.listOrders?.orders || [];
+
+    if (orders.length === 0) {
+        return (
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 text-center">
+                <Package className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+                <h2 className="text-xl font-bold mb-2">Nenhum pedido encontrado</h2>
+                <p className="text-gray-500 mb-6">Você ainda não fez nenhuma compra.</p>
+                <Link
+                    href={`/${locale}/marketplace`}
+                    className="inline-flex h-10 items-center justify-center rounded-lg bg-primary px-8 text-sm font-medium text-white transition-colors hover:bg-primary/90"
+                >
+                    Ir às compras
+                </Link>
+            </div>
+        );
+    }
+
+    return (
+        <div className="space-y-6">
+            <h1 className="text-2xl font-bold">Meus Pedidos</h1>
+
+            <div className="flex flex-col gap-4">
+                {orders.map((order: any) => (
+                    <div key={order.id} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div className="bg-gray-50 px-6 py-4 flex flex-wrap justify-between items-center gap-4 border-b border-gray-100">
+                            <div className="flex items-center gap-4 text-sm">
+                                <div>
+                                    <p className="text-gray-500 mb-1">Data do Pedido</p>
+                                    <p className="font-semibold flex items-center gap-1">
+                                        <Calendar className="w-3 h-3 text-gray-400" />
+                                        {new Date(parseInt(order.createdAt)).toLocaleDateString()}
+                                    </p>
+                                </div>
+                                <div className="h-8 w-px bg-gray-200" />
+                                <div>
+                                    <p className="text-gray-500 mb-1">Total</p>
+                                    <p className="font-semibold">R$ {order.totalAmount.toFixed(2)}</p>
+                                </div>
+                                <div className="h-8 w-px bg-gray-200" />
+                                <div>
+                                    <p className="text-gray-500 mb-1">Status</p>
+                                    <span className={cn(
+                                        "inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium",
+                                        order.status === 'PAID' ? "bg-green-100 text-green-700" :
+                                            order.status === 'PENDING' ? "bg-yellow-100 text-yellow-800" :
+                                                "bg-gray-100 text-gray-800"
+                                    )}>
+                                        {order.status}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <Link
+                                href={`/${locale}/user/orders/${order.id}`}
+                                className="text-primary text-sm font-bold hover:underline flex items-center gap-1"
+                            >
+                                Ver Detalhes
+                                <ChevronRight className="w-4 h-4" />
+                            </Link>
+                        </div>
+
+                        <div className="p-6">
+                            <div className="flex flex-col gap-4">
+                                {order.orderItems.map((item: any) => (
+                                    <div key={item.id} className="flex gap-4 items-center">
+                                        <div className="w-16 h-16 bg-gray-100 rounded-md shrink-0 overflow-hidden">
+                                            {/* Placeholder image logic if needed */}
+                                            {item.product?.images?.[0] && (
+                                                <img src={item.product.images[0]} alt="" className="w-full h-full object-cover" />
+                                            )}
+                                        </div>
+                                        <div className="flex-1">
+                                            <p className="font-medium text-sm text-black">{item.product?.name || 'Produto indisponível'}</p>
+                                            <p className="text-gray-500 text-xs">Qtd: {item.quantity}</p>
+                                        </div>
+                                        <span className="font-semibold text-sm">R$ {item.priceAtPurchase.toFixed(2)}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+}
