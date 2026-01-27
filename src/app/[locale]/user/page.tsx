@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation';
 
-export default function UserPage({ params }: { params: { locale: string } }) {
-    redirect(`/${params.locale}/user/profile`);
+export default async function UserPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    redirect(`/${locale}/user/profile`);
 }

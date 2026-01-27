@@ -31,8 +31,10 @@ const DELETE_PRODUCT_MUTATION = gql`
   }
 `;
 
-export default function SellerProductsPage() {
-  const locale = useLocale();
+import { use } from 'react';
+
+export default function SellerProductsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = use(params);
   const { data, loading, error, refetch } = useQuery(SELLER_PRODUCTS_QUERY) as any;
   const [deleteProduct] = useMutation(DELETE_PRODUCT_MUTATION);
 

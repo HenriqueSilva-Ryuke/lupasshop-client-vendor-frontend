@@ -5,7 +5,8 @@ import { SalesLineChart } from '@/components/SalesLineChart'; // Placeholder for
 import { GET_STORE_BALANCE } from '@/graphql/queries';
 import { DollarSign, Package, ShoppingBag, TrendingUp } from 'lucide-react';
 
-export default function SellerDashboardPage() {
+export default function SellerDashboardPage({ params }: { params: Promise<{ locale: string }> }) {
+  // const { locale } = use(params);
   // Mock store ID - in real app would come from context
   const storeId = "store-1";
   const { data, loading } = useQuery(GET_STORE_BALANCE, {

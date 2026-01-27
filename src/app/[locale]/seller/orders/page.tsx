@@ -28,8 +28,10 @@ function StatusBadge({ status }: { status: string }) {
   );
 }
 
-export default function SellerOrdersPage() {
-  const locale = useLocale();
+import { use } from 'react';
+
+export default function SellerOrdersPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = use(params);
   // Fetch orders. The backend resolver automatically filters by the seller's store if storeId is omitted
   const { data, loading, error } = useQuery(LIST_ORDERS, {
     variables: { limit: 20, offset: 0 },
