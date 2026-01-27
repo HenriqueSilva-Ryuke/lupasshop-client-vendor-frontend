@@ -1,6 +1,7 @@
 'use client';
 
-import { useQuery, useMutation } from '@apollo/client';
+import React, { use } from 'react';
+import { useQuery, useMutation } from '@apollo/client/react';
 import { GET_ORDER } from '@/graphql/queries';
 import { UPDATE_ORDER_STATUS } from '@/graphql/mutations';
 import { useRouter } from 'next/navigation';
@@ -9,11 +10,12 @@ import Button from '@/components/ui/Button';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
 
-export default function SellerOrderDetailPage({ params }: { params: { id: string } }) {
+export default function SellerOrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = use(params);
     const router = useRouter();
     const { data, loading, error, refetch } = useQuery(GET_ORDER, {
-        variables: { id: params.id }
-    });
+        variables: { id }
+    }) as any;
 
     const [updateStatus, { loading: updating }] = useMutation(UPDATE_ORDER_STATUS);
 
@@ -21,7 +23,7 @@ export default function SellerOrderDetailPage({ params }: { params: { id: string
         try {
             await updateStatus({
                 variables: {
-                    id: params.id,
+                    id,
                     input: { status: newStatus }
                 }
             });
@@ -45,7 +47,7 @@ export default function SellerOrderDetailPage({ params }: { params: { id: string
     return (
         <div className="max-w-4xl mx-auto space-y-6">
             <div className="flex items-center gap-4 mb-4">
-                <Button variant="ghost" onClick={() => router.back()} className="p-2">
+                <Button variant="outline" onClick={() => router.back()} className="p-2">
                     <ArrowLeft className="w-5 h-5" />
                 </Button>
                 <div>
@@ -67,7 +69,7 @@ export default function SellerOrderDetailPage({ params }: { params: { id: string
                     </Button>
                     {order.status === 'PAID' && (
                         <Button
-                            className="gap-2 bg-purple-600 hover:bg-purple-700 text-white"
+                            className="gap-2 bg-purple-600 hover:bg-purple-700 text-white px-4 h-10"
                             onClick={() => handleStatusChange('SHIPPED')}
                             disabled={updating}
                         >
@@ -77,7 +79,7 @@ export default function SellerOrderDetailPage({ params }: { params: { id: string
                     )}
                     {order.status === 'SHIPPED' && (
                         <Button
-                            className="gap-2 bg-green-600 hover:bg-green-700 text-white"
+                            className="gap-2 bg-green-600 hover:bg-green-700 text-white px-4 h-10"
                             onClick={() => handleStatusChange('DELIVERED')}
                             disabled={updating}
                         >
@@ -117,7 +119,6 @@ export default function SellerOrderDetailPage({ params }: { params: { id: string
                         </div>
                     </div>
 
-                    {/* Timeline */}
                     <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
                         <h3 className="font-semibold mb-6">Histórico do Pedido</h3>
                         <div className="relative border-l-2 border-gray-100 ml-3 space-y-8 pl-8 pb-2">
@@ -148,19 +149,16 @@ export default function SellerOrderDetailPage({ params }: { params: { id: string
                 </div>
 
                 <div className="space-y-6">
-                    {/* Customer Info */}
                     <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
                         <h3 className="font-semibold mb-4 flex items-center gap-2">
                             <User className="w-4 h-4 text-gray-400" />
                             Cliente
                         </h3>
                         <p className="font-medium">João Silva (Mock)</p>
-                        {/* Need user expansion in query for details */}
                         <p className="text-sm text-gray-500">joao.silva@example.com</p>
                         <p className="text-sm text-gray-500">+244 923 456 789</p>
                     </div>
 
-                    {/* Shipping Info */}
                     <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
                         <h3 className="font-semibold mb-4 flex items-center gap-2">
                             <MapPin className="w-4 h-4 text-gray-400" />
@@ -171,7 +169,6 @@ export default function SellerOrderDetailPage({ params }: { params: { id: string
                             Luanda, Angola<br />
                             CEP: 1000
                         </p>
-
                         <div className="mt-4 pt-4 border-t border-gray-100">
                             <h4 className="text-xs font-bold text-gray-400 uppercase mb-2">Método de Envio</h4>
                             <p className="text-sm font-medium">Correios (Expresso)</p>

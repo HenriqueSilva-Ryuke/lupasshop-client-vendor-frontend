@@ -1,16 +1,10 @@
-'use client';
-
-import { useQuery, useMutation } from '@apollo/client';
-import { LIST_PRODUCTS, DELETE_PRODUCT } from '@/graphql'; // Assuming clean exports or I'll fix imports
-import { GET_CURRENT_USER } from '@/graphql/queries'; // Need to know user to get store? No, resolver handles "sellerProducts"
+import { useQuery, useMutation } from '@apollo/client/react';
+import { gql } from '@apollo/client';
 import { useLocale } from 'next-intl';
 import Link from 'next/link';
 import { Plus, Edit, Trash2, Search, MoreVertical } from 'lucide-react';
 import Button from '@/components/ui/Button';
 import { toast } from 'sonner';
-
-// FIX: We need a specific query for seller products that enforces ownership context
-import { gql } from '@apollo/client';
 
 const SELLER_PRODUCTS_QUERY = gql`
   query SellerProducts($search: String, $limit: Int, $offset: Int) {
@@ -39,7 +33,7 @@ const DELETE_PRODUCT_MUTATION = gql`
 
 export default function SellerProductsPage() {
   const locale = useLocale();
-  const { data, loading, error, refetch } = useQuery(SELLER_PRODUCTS_QUERY);
+  const { data, loading, error, refetch } = useQuery(SELLER_PRODUCTS_QUERY) as any;
   const [deleteProduct] = useMutation(DELETE_PRODUCT_MUTATION);
 
   const handleDelete = async (id: string) => {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { LIST_ORDERS } from '@/graphql/queries';
 import { useLocale } from 'next-intl';
 import Link from 'next/link';
@@ -34,7 +34,7 @@ export default function SellerOrdersPage() {
   const { data, loading, error } = useQuery(LIST_ORDERS, {
     variables: { limit: 20, offset: 0 },
     fetchPolicy: 'network-only' // Ensure fresh data
-  });
+  }) as any;
 
   if (loading) return <div>Carregando pedidos...</div>;
   if (error) return <div className="text-red-500">Erro ao carregar pedidos: {error.message}</div>;

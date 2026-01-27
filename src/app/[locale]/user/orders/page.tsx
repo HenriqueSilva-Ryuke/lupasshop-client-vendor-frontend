@@ -12,7 +12,7 @@ export default function OrdersPage() {
     // We assume the user ID is extracted from the token context in the backend resolver
     const { data, loading, error } = useQuery(LIST_ORDERS, {
         variables: { limit: 10, offset: 0 },
-    });
+    }) as any;
 
     if (loading) return <div className="p-8 text-center text-gray-500">Carregando pedidos...</div>;
     if (error) return <div className="p-8 text-center text-red-500">Erro ao carregar pedidos.</div>;
