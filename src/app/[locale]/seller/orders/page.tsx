@@ -52,11 +52,11 @@ export default function SellerOrdersPage({ params }: { params: Promise<{ locale:
         </div>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+      <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-gray-50 border-b border-gray-100 text-xs text-gray-500 uppercase">
+              <tr className="bg-gray-50 border-b text-xs uppercase">
                 <th className="px-6 py-4 font-semibold">Pedido ID</th>
                 <th className="px-6 py-4 font-semibold">Data</th>
                 <th className="px-6 py-4 font-semibold">Cliente</th>
@@ -74,7 +74,7 @@ export default function SellerOrdersPage({ params }: { params: Promise<{ locale:
                 </tr>
               ) : (
                 orders.map((order: any) => (
-                  <tr key={order.id} className="border-b border-gray-50 hover:bg-accent50/50 transition-colors">
+                  <tr key={order.id} className="border-b hover:bg-accent50/50 transition-colors">
                     <td className="px-6 py-4 font-mono text-sm">#{order.id.slice(0, 8)}...</td>
                     <td className="px-6 py-4 text-sm text-gray-600">
                       {new Date(parseInt(order.createdAt)).toLocaleDateString()}

@@ -23,7 +23,7 @@ export default function StoreListItem({ id, name, slug, logo, rating, productCou
         // eslint-disable-next-line @next/next/no-img-element
         <img src={logo} alt={`${name} logo`} className="h-20 w-20 rounded-full object-cover" />
       ) : (
-        <div className="h-20 w-20 rounded-full bg-gray-200" />
+        <div className="h-20 w-20 rounded-full" />
       )}
 
       <div className="flex-1">

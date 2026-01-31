@@ -8,8 +8,8 @@ interface PromotedStoreWidgetProps {
 }
 export default function PromotedStoreWidget({ store }: PromotedStoreWidgetProps) {
   return (
-    <div className="bg-card rounded-2xl shadow-sm border border-gray-100 overflow-hidden group">
-      <div className="p-4 border-b border-gray-100 flex items-center justify-between">
+    <div className="bg-card rounded-2xl shadow-sm border overflow-hidden group">
+      <div className="p-4 border-b flex items-center justify-between">
         <h3 className="font-semibold text-foreground">Featured Store</h3>
         <span className="text-xs font-medium bg-amber-100 text-amber-700 px-2 py-1 rounded-full">
           Promoted

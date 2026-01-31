@@ -21,7 +21,7 @@ export default function FilterWidget({
     const t = useTranslations('marketplace');
 
     return (
-        <div className="bg-card rounded-2xl shadow-sm border border-gray-100 p-4">
+        <div className="bg-card rounded-2xl shadow-sm border p-4">
             <div className="flex items-center gap-2 mb-4">
                 <SlidersHorizontal size={18} className="text-muted-foreground" />
                 <h3 className="font-semibold text-foreground">{t('filters')}</h3>
@@ -39,7 +39,7 @@ export default function FilterWidget({
                             step="1000"
                             value={maxPrice}
                             onChange={(e) => onPriceChange(minPrice, Number(e.target.value))}
-                            className="w-full accent-primary h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                            className="w-full accent-primary h-2 rounded-lg appearance-none cursor-pointer"
                         />
                         <div className="flex justify-between text-xs text-muted-foreground mt-2 font-medium">
                             <span>0 AOA</span>

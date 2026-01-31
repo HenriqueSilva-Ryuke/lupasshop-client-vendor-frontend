@@ -33,8 +33,8 @@ export default function ReviewsView() {
         <p className="text-muted-foreground">Monitor and respond to customer reviews</p>
       </div>
 
-      <div className="bg-card rounded-2xl border border-gray-100 overflow-hidden">
-        <div className="px-6 py-4 border-b border-gray-100">
+      <div className="bg-card rounded-2xl border overflow-hidden">
+        <div className="px-6 py-4 border-b">
           <h3 className="font-semibold">Reviews</h3>
         </div>
 

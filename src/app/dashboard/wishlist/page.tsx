@@ -69,7 +69,7 @@ export default function WishlistPage() {
                 <button
                   onClick={() => handleAddToCart(item.product.id)}
                   disabled={item.product.stockQuantity === 0}
-                  className="flex-1 bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="flex-1 bg-primary px-4 py-2 rounded-lg hover:bg-primary/90 disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   <ShoppingCart className="w-4 h-4" />
                   {t('addToCart')}

@@ -39,11 +39,11 @@ export function SellerHeader() {
               {/* Notifications Dropdown */}
               {showNotifications && (
                 <div className="absolute right-0 mt-2 w-80 bg-card bg-card-dark rounded-xl shadow-2xl border border-border border-border overflow-hidden z-50">
-                  <div className="p-4 border-b border-gray-100 border-border bg-muted bg-gray-800">
+                  <div className="p-4 border-b border-border bg-muted">
                     <h3 className="text-sm font-bold text-text-main-light text-text-main-dark">Notificações</h3>
                   </div>
                   <div className="max-h-96 overflow-y-auto">
-                    <div className="p-4 hover:bg-muted hover:bg-accent800 transition-colors cursor-pointer border-b border-gray-100 border-border">
+                    <div className="p-4 hover:bg-muted hover:bg-accent800 transition-colors cursor-pointer border-b border-border">
                       <div className="flex gap-3">
                         <div className="flex-shrink-0 w-10 h-10 bg-green-100 bg-green-900/30 rounded-full flex items-center justify-center">
                           <span className="material-symbols-outlined text-primary text-green-400 text-[20px]">shopping_bag</span>
@@ -55,7 +55,7 @@ export function SellerHeader() {
                         </div>
                       </div>
                     </div>
-                    <div className="p-4 hover:bg-muted hover:bg-accent800 transition-colors cursor-pointer border-b border-gray-100 border-border">
+                    <div className="p-4 hover:bg-muted hover:bg-accent800 transition-colors cursor-pointer border-b border-border">
                       <div className="flex gap-3">
                         <div className="flex-shrink-0 w-10 h-10 bg-orange-100 bg-orange-900/30 rounded-full flex items-center justify-center">
                           <span className="material-symbols-outlined text-orange-600 text-orange-400 text-[20px]">warning</span>
@@ -80,7 +80,7 @@ export function SellerHeader() {
                       </div>
                     </div>
                   </div>
-                  <div className="p-3 border-t border-gray-100 border-border bg-muted bg-gray-800">
+                  <div className="p-3 border-t border-border bg-muted">
                     <button className="w-full text-center text-sm font-medium text-primary hover:text-primary-dark transition-colors">
                       Ver todas as notificações
                     </button>
@@ -106,7 +106,7 @@ export function SellerHeader() {
                 className="flex items-center gap-2 p-1 rounded-full hover:bg-muted hover:bg-accent700 transition-colors"
               >
                 <div
-                  className="h-10 w-10 rounded-full bg-gray-200 bg-cover bg-center ring-2 ring-gray-200 ring-gray-700"
+                  className="h-10 w-10 rounded-full bg-cover bg-center ring-2 ring-gray-200 ring-gray-700"
                   style={{
                     backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuC9XoTRKQB7OEepJJDpuroW3AHLNjkPKZ9BF4xPPy2G4RzhZWaxpOtAjCsNKy6uoVw86ta_otBSHVqG2jPy1kDSgBV6jmztppioFfvWXCpjYIfb_MkWt7YbWjO0S4p91Zeqc8CecdIT5LyJ8IedsAV8fcJYZ2ih6qK2FlFmLiOHJKulNM7pJq0my_daYlCmvwnPy9OMLXLGPIRPZ4MH4y5zfarpB9-cVGLvwxWD2hFeaH6E3G7w2_xIGknzUnDjQVA1L4Q1TbaaLe8")',
                   }}
@@ -116,7 +116,7 @@ export function SellerHeader() {
               {/* User Dropdown */}
               {showUserMenu && (
                 <div className="absolute right-0 mt-2 w-64 bg-card bg-card-dark rounded-xl shadow-2xl border border-border border-border overflow-hidden z-50">
-                  <div className="p-4 border-b border-gray-100 border-border bg-muted bg-gray-800">
+                  <div className="p-4 border-b border-border bg-muted">
                     <p className="text-sm font-bold text-text-main-light text-text-main-dark">Loja Exemplo</p>
                     <p className="text-xs text-text-sub-light text-text-sub-dark">admin@lupashop.com.br</p>
                   </div>
@@ -143,7 +143,7 @@ export function SellerHeader() {
                       <span className="text-sm font-medium">Ajuda</span>
                     </button>
                   </div>
-                  <div className="p-2 border-t border-gray-100 border-border">
+                  <div className="p-2 border-t border-border">
                     <button
                       onClick={() => {
                         localStorage.removeItem('authToken');

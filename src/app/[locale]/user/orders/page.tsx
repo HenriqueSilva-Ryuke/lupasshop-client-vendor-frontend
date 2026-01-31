@@ -23,13 +23,13 @@ export default function OrdersPage({ params }: { params: Promise<{ locale: strin
 
     if (orders.length === 0) {
         return (
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 text-center">
-                <Package className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+            <div className="bg-white rounded-xl shadow-sm border p-8 text-center">
+                <Package className="w-12 h-12 mx-auto mb-4" />
                 <h2 className="text-xl font-bold mb-2">Nenhum pedido encontrado</h2>
                 <p className="text-gray-500 mb-6">Você ainda não fez nenhuma compra.</p>
                 <Link
                     href={`/${locale}/marketplace`}
-                    className="inline-flex h-10 items-center justify-center rounded-lg bg-primary px-8 text-sm font-medium text-white transition-colors hover:bg-primary/90"
+                    className="inline-flex h-10 items-center justify-center rounded-lg bg-primary px-8 text-sm font-medium transition-colors hover:bg-primary/90"
                 >
                     Ir às compras
                 </Link>
@@ -43,7 +43,7 @@ export default function OrdersPage({ params }: { params: Promise<{ locale: strin
 
             <div className="flex flex-col gap-4">
                 {orders.map((order: any) => (
-                    <div key={order.id} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div key={order.id} className="bg-white rounded-xl shadow-sm border overflow-hidden">
                         <div className="bg-gray-50 px-6 py-4 flex flex-wrap justify-between items-center gap-4 border-b border-gray-100">
                             <div className="flex items-center gap-4 text-sm">
                                 <div>
@@ -85,7 +85,7 @@ export default function OrdersPage({ params }: { params: Promise<{ locale: strin
                             <div className="flex flex-col gap-4">
                                 {order.orderItems.map((item: any) => (
                                     <div key={item.id} className="flex gap-4 items-center">
-                                        <div className="w-16 h-16 bg-gray-100 rounded-md shrink-0 overflow-hidden">
+                                        <div className="w-16 h-16 rounded-md shrink-0 overflow-hidden">
                                             {/* Placeholder image logic if needed */}
                                             {item.product?.images?.[0] && (
                                                 <img src={item.product.images[0]} alt="" className="w-full h-full object-cover" />

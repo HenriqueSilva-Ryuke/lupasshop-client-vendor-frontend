@@ -56,7 +56,7 @@ export default function SellerOrderDetailPage({ params }: { params: Promise<{ id
                         Pedido #{order.id.slice(0, 8)}
                         <span className={cn(
                             "text-sm px-2 py-1 rounded-full border",
-                            order.status === 'PAID' ? "bg-green-50 border-green-200 text-green-700" : "bg-gray-50 border-gray-200 text-gray-700"
+                            order.status === 'PAID' ? "bg-green-50 border-green-200 text-green-700" : "bg-gray-50 text-gray-700"
                         )}>
                             {order.status}
                         </span>
@@ -70,7 +70,7 @@ export default function SellerOrderDetailPage({ params }: { params: Promise<{ id
                     </Button>
                     {order.status === 'PAID' && (
                         <Button
-                            className="gap-2 bg-primary600 hover:bg-primary700 text-white px-4 h-10"
+                            className="gap-2 bg-primary600 hover:bg-primary700 px-4 h-10"
                             onClick={() => handleStatusChange('SHIPPED')}
                             disabled={updating}
                         >
@@ -80,7 +80,7 @@ export default function SellerOrderDetailPage({ params }: { params: Promise<{ id
                     )}
                     {order.status === 'SHIPPED' && (
                         <Button
-                            className="gap-2 bg-green-600 hover:bg-green-700 text-white px-4 h-10"
+                            className="gap-2 bg-green-600 hover:bg-green-700 px-4 h-10"
                             onClick={() => handleStatusChange('DELIVERED')}
                             disabled={updating}
                         >
@@ -94,12 +94,12 @@ export default function SellerOrderDetailPage({ params }: { params: Promise<{ id
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="md:col-span-2 space-y-6">
                     {/* Items */}
-                    <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-                        <div className="px-6 py-4 border-b border-gray-100 font-semibold bg-gray-50">Itens do Pedido</div>
+                    <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
+                        <div className="px-6 py-4 border-b font-semibold bg-gray-50">Itens do Pedido</div>
                         <div className="divide-y divide-gray-100">
                             {order.orderItems.map((item: any) => (
                                 <div key={item.id} className="p-6 flex gap-4">
-                                    <div className="w-20 h-20 bg-gray-100 rounded-lg shrink-0 overflow-hidden border border-gray-200">
+                                    <div className="w-20 h-20 rounded-lg shrink-0 overflow-hidden border border-gray-200">
                                         {item.product.images?.[0] && <img src={item.product.images[0]} className="w-full h-full object-cover" />}
                                     </div>
                                     <div className="flex-1">
@@ -114,15 +114,15 @@ export default function SellerOrderDetailPage({ params }: { params: Promise<{ id
                                 </div>
                             ))}
                         </div>
-                        <div className="bg-gray-50 px-6 py-4 border-t border-gray-100 flex justify-between items-center">
+                        <div className="bg-gray-50 px-6 py-4 border-t flex justify-between items-center">
                             <span className="font-semibold text-gray-700">Total do Pedido</span>
                             <span className="text-xl font-bold text-gray-900">R$ {order.totalAmount.toFixed(2)}</span>
                         </div>
                     </div>
 
-                    <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                    <div className="bg-white rounded-xl shadow-sm border p-6">
                         <h3 className="font-semibold mb-6">Histórico do Pedido</h3>
-                        <div className="relative border-l-2 border-gray-100 ml-3 space-y-8 pl-8 pb-2">
+                        <div className="relative border-l-2 ml-3 space-y-8 pl-8 pb-2">
                             {steps.map((step, index) => {
                                 const isCompleted = index <= currentStepIndex;
                                 const isCurrent = index === currentStepIndex;
@@ -150,7 +150,7 @@ export default function SellerOrderDetailPage({ params }: { params: Promise<{ id
                 </div>
 
                 <div className="space-y-6">
-                    <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                    <div className="bg-white rounded-xl shadow-sm border p-6">
                         <h3 className="font-semibold mb-4 flex items-center gap-2">
                             <User className="w-4 h-4 text-gray-400" />
                             Cliente
@@ -162,7 +162,7 @@ export default function SellerOrderDetailPage({ params }: { params: Promise<{ id
                         )}
                     </div>
 
-                    <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                    <div className="bg-white rounded-xl shadow-sm border p-6">
                         <h3 className="font-semibold mb-4 flex items-center gap-2">
                             <MapPin className="w-4 h-4 text-gray-400" />
                             Endereço de Entrega
@@ -173,7 +173,7 @@ export default function SellerOrderDetailPage({ params }: { params: Promise<{ id
                             {shippingAddress.zipCode ? `CEP: ${shippingAddress.zipCode}` : ''}
                         </p>
                         <div className="mt-4 pt-4 border-t border-gray-100">
-                            <h4 className="text-xs font-bold text-gray-400 uppercase mb-2">Método de Envio</h4>
+                            <h4 className="text-xs font-bold uppercase mb-2">Método de Envio</h4>
                             <p className="text-sm font-medium">{order.shipment?.carrier?.name || '—'}</p>
                         </div>
                     </div>

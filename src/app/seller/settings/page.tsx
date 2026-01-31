@@ -138,7 +138,7 @@ export default function StoreSettingsPage() {
         <div className="flex justify-end">
           <button
             onClick={handleSave}
-            className="flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90"
+            className="flex items-center gap-2 px-6 py-3 bg-primary rounded-lg hover:bg-primary/90"
           >
             <Save className="w-5 h-5" />
             Salvar Alterações

@@ -13,7 +13,7 @@ export default function SellerRegisterPage() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Top Navigation Bar */}
-      <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-100 px-6 lg:px-10 py-4 bg-white z-20">
+      <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-100 px-6 lg:px-10 py-4 z-20">
         <Link href={`/${locale}`} className="flex items-center gap-3 cursor-pointer">
           <div className="size-8 text-primary flex items-center justify-center rounded-lg bg-primary/10">
             <span className="material-symbols-outlined text-[24px]">storefront</span>
@@ -88,7 +88,7 @@ export default function SellerRegisterPage() {
               className="w-full h-full object-cover"
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoSfTglbrr5lOKNQoF-NDtIn6tMzbp3xFJbgzTftoJU7PyPvqxT_mjxNbswvvyOjBlhxXcLme1cG_B30yHoCesnuVXDGgryaaC5xtNQXJuls8fCzwe1D9JK1933izwzpWvHoZIMl-wQardvQEuEI9YJedVVAJfPqFcl4VkJWVSApRwxIl9gW_vjEtxarAglFk2N6RpaLM6n-FaKlg8YYL41VT3qL40E_jtBfW5956wKSSKsYxTYOL2x9P1mck9wGDthlk42BBz1vg"
             />
-            <div className="absolute bottom-0 left-0 p-12 z-20 text-white max-w-lg">
+            <div className="absolute bottom-0 left-0 p-12 z-20 max-w-lg">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/20 text-xs font-semibold mb-6">
                 <span className="material-symbols-outlined text-[16px]">verified</span>
                 Plataforma Confiável

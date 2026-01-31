@@ -34,7 +34,7 @@ export default function ShopsView() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         {shops.map((shop: any) => (
-          <div key={shop.id} className="bg-card rounded-2xl border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 group">
+          <div key={shop.id} className="bg-card rounded-2xl border overflow-hidden hover:shadow-lg transition-all duration-300 group">
             <div className="relative h-32 bg-muted">
               {shop.coverImageUrl ? (
                 <Image
@@ -62,7 +62,7 @@ export default function ShopsView() {
 
             <div className="p-5 pt-12 relative">
               <div className="absolute -top-10 left-5 p-1 bg-card rounded-xl shadow-sm">
-                <div className="relative h-20 w-20 rounded-lg overflow-hidden bg-muted border border-gray-100">
+                <div className="relative h-20 w-20 rounded-lg overflow-hidden bg-muted border">
                   {shop.logoUrl ? (
                     <Image
                       src={shop.logoUrl}
@@ -98,7 +98,7 @@ export default function ShopsView() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 py-4 border-t border-gray-100">
+              <div className="grid grid-cols-2 gap-4 py-4 border-t">
                 <div>
                   <p className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Revenue</p>
                   <p className="text-lg font-bold text-foreground">
@@ -111,7 +111,7 @@ export default function ShopsView() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-2 mt-4 pt-4 border-t border-gray-100">
+              <div className="flex items-center gap-2 mt-4 pt-4 border-t">
                 <button className="flex-1 flex items-center justify-center gap-2 py-2 px-4 bg-muted text-foreground rounded-lg hover:bg-muted transition-colors text-sm font-medium">
                   <Edit size={16} />
                   Edit

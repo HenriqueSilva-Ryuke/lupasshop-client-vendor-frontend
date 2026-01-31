@@ -13,8 +13,8 @@ export default function CategoryWidget({ categories, selectedCategory, onSelectC
     const t = useTranslations('marketplace');
 
     return (
-        <div className="bg-card rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-            <div className="p-4 border-b border-gray-100">
+        <div className="bg-card rounded-2xl shadow-sm border overflow-hidden">
+            <div className="p-4 border-b">
                 <h3 className="font-semibold text-foreground">{t('categories.label')}</h3>
             </div>
             <div className="p-2">

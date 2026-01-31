@@ -117,7 +117,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
 
           {/* Product Name */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-medium text-foreground text-gray-200" htmlFor="name">
+            <label className="text-sm font-medium text-foreground" htmlFor="name">
               Nome do Produto
             </label>
             <input
@@ -125,7 +125,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
               id="name"
               placeholder="Ex: Tênis Nike Air Max"
               type="text"
-              className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-card bg-gray-800 text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+              className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
             />
             {errors.name && (
               <span className="text-xs text-destructive text-red-400">{errors.name.message}</span>
@@ -134,7 +134,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
 
           {/* Description */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-medium text-foreground text-gray-200" htmlFor="description">
+            <label className="text-sm font-medium text-foreground" htmlFor="description">
               Descrição
             </label>
             <textarea
@@ -142,7 +142,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
               id="description"
               placeholder="Descreva as características e benefícios do produto"
               rows={4}
-              className="w-full px-4 py-3 rounded-lg border border-[#dbe1e6] border-gray-600 bg-card bg-gray-800 text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all resize-none"
+              className="w-full px-4 py-3 rounded-lg border border-[#dbe1e6] bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all resize-none"
             />
             {errors.description && (
               <span className="text-xs text-destructive text-red-400">{errors.description.message}</span>
@@ -152,7 +152,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
           {/* Price and Stock */}
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-1.5">
-              <label className="text-sm font-medium text-foreground text-gray-200" htmlFor="price">
+              <label className="text-sm font-medium text-foreground" htmlFor="price">
                 Preço (R$)
               </label>
               <input
@@ -162,7 +162,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
                 type="number"
                 step="0.01"
                 min="0"
-                className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-card bg-gray-800 text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
               />
               {errors.price && (
                 <span className="text-xs text-destructive text-red-400">{errors.price.message}</span>
@@ -170,7 +170,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label className="text-sm font-medium text-foreground text-gray-200" htmlFor="stockQuantity">
+              <label className="text-sm font-medium text-foreground" htmlFor="stockQuantity">
                 Estoque
               </label>
               <input
@@ -179,7 +179,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
                 placeholder="0"
                 type="number"
                 min="0"
-                className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-card bg-gray-800 text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
               />
               {errors.stockQuantity && (
                 <span className="text-xs text-destructive text-red-400">{errors.stockQuantity.message}</span>
@@ -190,7 +190,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
           {/* SKU and Category */}
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-1.5">
-              <label className="text-sm font-medium text-foreground text-gray-200" htmlFor="sku">
+              <label className="text-sm font-medium text-foreground" htmlFor="sku">
                 SKU (Opcional)
               </label>
               <input
@@ -198,7 +198,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
                 id="sku"
                 placeholder="SKU-1234"
                 type="text"
-                className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-card bg-gray-800 text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
               />
               {errors.sku && (
                 <span className="text-xs text-destructive text-red-400">{errors.sku.message}</span>
@@ -206,14 +206,14 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label className="text-sm font-medium text-foreground text-gray-200" htmlFor="categoryId">
+              <label className="text-sm font-medium text-foreground" htmlFor="categoryId">
                 Categoria (Opcional)
               </label>
               <div className="relative">
                 <select
                   {...register('categoryId')}
                   id="categoryId"
-                  className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-card bg-gray-800 text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all appearance-none"
+                  className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all appearance-none"
                 >
                   <option value="">Selecione</option>
                   {/* These should be fetched from the backend, but for now using placeholder values */}
@@ -237,7 +237,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
 
           {/* Images */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-medium text-foreground text-gray-200">
+            <label className="text-sm font-medium text-foreground">
               Imagens do Produto
             </label>
             <input
@@ -256,7 +256,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
             <button
               type="button"
               onClick={() => imageInputRef.current?.click()}
-              className="h-32 rounded-lg border-2 border-dashed border-[#dbe1e6] border-gray-600 hover:border-primary hover:bg-primary/5 transition-all flex flex-col items-center justify-center gap-2 text-text-sub-light text-text-sub-dark"
+              className="h-32 rounded-lg border-2 border-dashed border-[#dbe1e6] hover:border-primary hover:bg-primary/5 transition-all flex flex-col items-center justify-center gap-2 text-text-sub-light text-text-sub-dark"
             >
               <span className="material-symbols-outlined text-3xl">cloud_upload</span>
               <span className="text-sm font-medium">Clique para adicionar imagens</span>
@@ -289,7 +289,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
           </div>
 
           {/* Active Toggle */}
-          <div className="flex items-center justify-between p-4 bg-muted bg-gray-800 rounded-lg">
+          <div className="flex items-center justify-between p-4 bg-muted rounded-lg">
             <div>
               <p className="text-sm font-medium text-foreground text-card-foreground">Produto Ativo</p>
               <p className="text-xs text-text-sub-light text-text-sub-dark mt-0.5">
@@ -303,7 +303,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
                 className="sr-only peer"
                 defaultChecked
               />
-              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 peer-focus:ring-primary/40 rounded-full peer bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-border after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:border-border after:border after:rounded-full after:h-5 after:w-5 after:transition-all border-gray-600 peer-checked:bg-primary"></div>
+              <div className="w-11 h-6 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 peer-focus:ring-primary/40 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-border after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:border-border after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
             </label>
           </div>
 
@@ -312,7 +312,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 h-12 rounded-lg border-2 border-border border-gray-600 text-foreground text-card-foreground font-medium hover:bg-muted hover:bg-accent700 transition-all"
+              className="flex-1 h-12 rounded-lg border-2 border-border text-foreground text-card-foreground font-medium hover:bg-muted hover:bg-accent700 transition-all"
               disabled={isLoading}
             >
               Cancelar

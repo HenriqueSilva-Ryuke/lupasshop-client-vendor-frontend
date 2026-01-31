@@ -79,7 +79,7 @@ export default function MarketplaceProductListing() {
               <h3 className="text-lg font-bold text-foreground text-black mb-4">{t('filter.title')}</h3>
 
               {/* Category Filter */}
-              <details className="group open:pb-4 border-b border-gray-100 border-border" open>
+              <details className="group open:pb-4 border-b border-border" open>
                 <summary className="flex cursor-pointer items-center justify-between py-3 list-none">
                   <span className="text-sm font-bold text-foreground text-black">{t('filter.category')}</span>
                   <ChevronRight className="w-5 h-5 text-muted-foreground group-open:rotate-90 transition-transform" />
@@ -91,7 +91,7 @@ export default function MarketplaceProductListing() {
                         type="checkbox"
                         checked={selectedCategories.includes(cat.id)}
                         onChange={() => handleCategoryToggle(cat.id)}
-                        className="w-4 h-4 rounded border-border text-primary focus:ring-primary bg-card bg-[#2c3640] border-gray-600"
+                        className="w-4 h-4 rounded border-border text-primary focus:ring-primary bg-card bg-[#2c3640]"
                       />
                       <span className="text-sm text-muted-foreground text-muted-foreground">{cat.name}</span>
                     </label>
@@ -100,7 +100,7 @@ export default function MarketplaceProductListing() {
               </details>
 
               {/* Store Filter */}
-              <details className="group open:pb-4 border-b border-gray-100 border-border" open>
+              <details className="group open:pb-4 border-b border-border" open>
                 <summary className="flex cursor-pointer items-center justify-between py-3 list-none">
                   <span className="text-sm font-bold text-foreground text-black">{t('filter.store')}</span>
                   <ChevronRight className="w-5 h-5 text-muted-foreground group-open:rotate-90 transition-transform" />
@@ -112,7 +112,7 @@ export default function MarketplaceProductListing() {
                         type="checkbox"
                         checked={selectedStores.includes(store.id)}
                         onChange={() => handleStoreToggle(store.id)}
-                        className="w-4 h-4 rounded border-border text-primary focus:ring-primary bg-card bg-[#2c3640] border-gray-600"
+                        className="w-4 h-4 rounded border-border text-primary focus:ring-primary bg-card bg-[#2c3640]"
                       />
                       <span className="text-sm text-muted-foreground text-muted-foreground">{store.name}</span>
                       {store.isVerified && <span className="text-primary text-xs">✓</span>}
@@ -137,7 +137,7 @@ export default function MarketplaceProductListing() {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="appearance-none bg-muted bg-[#2c3640] border border-border border-gray-600 text-foreground text-black text-sm font-medium rounded-lg h-9 pl-4 pr-10 focus:ring-2 focus:ring-primary cursor-pointer focus:outline-none"
+                  className="appearance-none bg-muted bg-[#2c3640] border border-border text-foreground text-black text-sm font-medium rounded-lg h-9 pl-4 pr-10 focus:ring-2 focus:ring-primary cursor-pointer focus:outline-none"
                 >
                   <option value="relevance">{t('sort.relevance')}</option>
                   <option value="price-asc">{t('sorting.priceLow')}</option>
@@ -152,11 +152,11 @@ export default function MarketplaceProductListing() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 {Array.from({ length: 8 }).map((_, i) => (
                   <div key={i} className="bg-card bg-[#1e2832] rounded-xl border border-border border-[#2e3a45] overflow-hidden animate-pulse">
-                    <div className="aspect-square bg-gray-200 bg-gray-800"></div>
+                    <div className="aspect-square"></div>
                     <div className="p-4 space-y-3">
-                      <div className="h-4 bg-gray-200 bg-gray-800 rounded"></div>
-                      <div className="h-4 bg-gray-200 bg-gray-800 rounded w-2/3"></div>
-                      <div className="h-6 bg-gray-200 bg-gray-800 rounded w-1/2"></div>
+                      <div className="h-4 rounded"></div>
+                      <div className="h-4 rounded w-2/3"></div>
+                      <div className="h-6 rounded w-1/2"></div>
                     </div>
                   </div>
                 ))}
@@ -173,7 +173,7 @@ export default function MarketplaceProductListing() {
                     href={`/${locale}/product/${product.slug}`}
                     className="group flex flex-col bg-card bg-[#1e2832] rounded-xl border border-border border-[#2e3a45] overflow-hidden hover:shadow-lg hover:border-primary/50 transition-all duration-300"
                   >
-                    <div className="relative aspect-square bg-card bg-[#121212] overflow-hidden p-4 border-b border-gray-50 border-border">
+                    <div className="relative aspect-square bg-card bg-[#121212] overflow-hidden p-4 border-b border-border">
                       {product.images[0] && (
                         <Image
                           src={product.images[0]}
@@ -184,7 +184,7 @@ export default function MarketplaceProductListing() {
                       )}
                       <button 
                         onClick={(e) => e.preventDefault()}
-                        className="absolute top-3 right-3 p-2 rounded-full bg-card/90 bg-black/50 hover:bg-card text-muted-foreground hover:text-red-500 shadow-sm transition-colors backdrop-blur-sm border border-gray-100 border-transparent"
+                        className="absolute top-3 right-3 p-2 rounded-full bg-card/90 bg-black/50 hover:bg-card text-muted-foreground hover:text-red-500 shadow-sm transition-colors backdrop-blur-sm border border-transparent"
                       >
                         <Heart className="w-5 h-5" />
                       </button>

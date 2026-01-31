@@ -17,7 +17,7 @@ export default function RootError({ error, reset }: ErrorProps) {
 
   return (
     <div className="bg-linear-to-br from-red-900 to-orange-900 min-h-screen flex items-center justify-center">
-      <div className="max-w-md w-full p-6 bg-white rounded-xl shadow-2xl">
+      <div className="max-w-md w-full p-6 rounded-xl shadow-2xl">
         {/* Error Icon */}
         <motion.div
           initial={{ scale: 0, rotate: -180 }}
@@ -68,7 +68,7 @@ export default function RootError({ error, reset }: ErrorProps) {
             <Button
               variant="default"
               onClick={() => (window.location.href = '/')}
-              className="px-6 py-2 bg-gray-200 text-gray-800 rounded-lg font-semibold hover:bg-accent300 transition-colors"
+              className="px-6 py-2 text-gray-800 rounded-lg font-semibold hover:bg-accent300 transition-colors"
             >
               Home
             </Button>

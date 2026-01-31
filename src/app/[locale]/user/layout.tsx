@@ -9,7 +9,7 @@ export default function UserLayout({
     children: React.ReactNode;
 }) {
     return (
-        <div className="min-h-screen bg-gray-50 flex flex-col">
+        <div className="min-h-screen flex flex-col">
             <Navbar />
 
             <main className="flex-1 py-8 px-4 md:px-8">

@@ -39,7 +39,7 @@ export function UserSidebar() {
     const locale = useLocale();
 
     return (
-        <div className="w-full md:w-64 flex flex-col gap-2 bg-card rounded-xl shadow-sm border border-gray-100 p-4 h-fit">
+        <div className="w-full md:w-64 flex flex-col gap-2 bg-card rounded-xl shadow-sm border p-4 h-fit">
 
             <div className="mb-4 px-2">
                 <h2 className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Minha Conta</h2>
@@ -67,7 +67,7 @@ export function UserSidebar() {
                     );
                 })}
 
-                <div className="my-2 border-t border-gray-100" />
+                <div className="my-2 border-t" />
 
                 <button
                     className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-destructive hover:bg-destructive/10 transition-colors w-full text-left"

@@ -26,15 +26,15 @@ export default function OrderList() {
     };
 
     return (
-        <div className="bg-card rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-            <div className="p-6 border-b border-gray-100">
+        <div className="bg-card rounded-2xl border shadow-sm overflow-hidden">
+            <div className="p-6 border-b">
                 <h2 className="text-lg font-bold text-foreground">{t('manage')}</h2>
             </div>
 
             <div className="overflow-x-auto">
                 <table className="w-full text-left">
                     <thead>
-                        <tr className="bg-muted border-b border-gray-100">
+                        <tr className="bg-muted border-b">
                             <th className="px-6 py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">{t('orderNumber')}</th>
                             <th className="px-6 py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">{t('customer')}</th>
                             <th className="px-6 py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">{t('date')}</th>

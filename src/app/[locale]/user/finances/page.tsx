@@ -104,7 +104,7 @@ export default function UserFinancesPage() {
 
   return (
     <main className="flex-1 overflow-y-auto h-full relative scroll-smooth bg-background-light bg-background-dark">
-      <header className="sticky top-0 z-20 w-full bg-white/95 bg-card-dark/95 backdrop-blur-md border-b border-gray-200 border-gray-800">
+      <header className="sticky top-0 z-20 w-full bg-white/95 bg-card-dark/95 backdrop-blur-md border-b border-gray-800">
         <div className="px-6 py-4 lg:px-10">
           <div className="flex flex-wrap justify-between items-center gap-4">
             <div className="flex flex-col gap-1">
@@ -115,7 +115,7 @@ export default function UserFinancesPage() {
                 Acompanhe seu saldo e histórico de transações.
               </p>
             </div>
-            <button className="flex items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary-dark transition-colors shadow-lg shadow-primary/30">
+            <button className="flex items-center justify-center rounded-lg h-10 px-4 bg-primary text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary-dark transition-colors shadow-lg shadow-primary/30">
               <span className="mr-2 material-symbols-outlined text-[18px]">file_download</span>
               <span className="truncate">Exportar</span>
             </button>
@@ -126,7 +126,7 @@ export default function UserFinancesPage() {
       <div className="px-6 py-8 lg:px-10 max-w-[1400px] mx-auto flex flex-col gap-8">
         {/* Balance Card */}
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <div className="flex flex-col gap-2 rounded-xl p-6 bg-primary bg-primary-dark border border-primary border-primary-dark/50 shadow-lg text-white transition-transform hover:-translate-y-1">
+          <div className="flex flex-col gap-2 rounded-xl p-6 bg-primary bg-primary-dark border border-primary border-primary-dark/50 shadow-lg transition-transform hover:-translate-y-1">
             <div className="flex items-center justify-between">
               <p className="text-primary-light/80 text-white/70 text-sm font-medium">Saldo em Carteira</p>
               <div className="p-2 bg-white/10 rounded-lg text-white">
@@ -143,7 +143,7 @@ export default function UserFinancesPage() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-2 rounded-xl p-6 bg-white bg-card-dark border border-gray-200 border-gray-700 shadow-sm transition-transform hover:-translate-y-1">
+          <div className="flex flex-col gap-2 rounded-xl p-6 bg-card-dark border border-gray-700 shadow-sm transition-transform hover:-translate-y-1">
             <div className="flex items-center justify-between">
               <p className="text-text-sub-light text-text-sub-dark text-sm font-medium">Total Gasto</p>
               <div className="p-2 bg-primary50 bg-primary900/20 rounded-lg text-primary text-blue-400">
@@ -163,7 +163,7 @@ export default function UserFinancesPage() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-2 rounded-xl p-6 bg-white bg-card-dark border border-gray-200 border-gray-700 shadow-sm transition-transform hover:-translate-y-1">
+          <div className="flex flex-col gap-2 rounded-xl p-6 bg-card-dark border border-gray-700 shadow-sm transition-transform hover:-translate-y-1">
             <div className="flex items-center justify-between">
               <p className="text-text-sub-light text-text-sub-dark text-sm font-medium">Total Reembolsado</p>
               <div className="p-2 bg-green-50 bg-green-900/20 rounded-lg text-primary text-green-400">
@@ -192,11 +192,11 @@ export default function UserFinancesPage() {
             </h3>
           </div>
 
-          <div className="w-full overflow-hidden rounded-xl border border-gray-200 border-gray-700 bg-white bg-card-dark shadow-sm">
+          <div className="w-full overflow-hidden rounded-xl border border-gray-700 bg-card-dark shadow-sm">
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="bg-gray-50 bg-gray-800/50 border-b border-gray-100 border-gray-700">
+                  <tr className="bg-gray-50 bg-gray-800/50 border-b border-gray-700">
                     <th className="p-4 text-xs font-bold uppercase tracking-wider text-text-sub-light text-text-sub-dark">
                       Data
                     </th>

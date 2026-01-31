@@ -41,19 +41,19 @@ export default function FinancesView() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="bg-card p-6 rounded-2xl border border-gray-100">
+        <div className="bg-card p-6 rounded-2xl border">
           <p className="text-sm text-muted-foreground">Saldo atual</p>
           <p className="text-2xl font-bold text-foreground">
             {new Intl.NumberFormat('pt-AO', { style: 'currency', currency: 'AOA' }).format(balance?.currentBalance || 0)}
           </p>
         </div>
-        <div className="bg-card p-6 rounded-2xl border border-gray-100">
+        <div className="bg-card p-6 rounded-2xl border">
           <p className="text-sm text-muted-foreground">Pendente</p>
           <p className="text-2xl font-bold text-foreground">
             {new Intl.NumberFormat('pt-AO', { style: 'currency', currency: 'AOA' }).format(balance?.pendingPayout || 0)}
           </p>
         </div>
-        <div className="bg-card p-6 rounded-2xl border border-gray-100">
+        <div className="bg-card p-6 rounded-2xl border">
           <p className="text-sm text-muted-foreground">Último pagamento</p>
           <p className="text-sm text-foreground">
             {balance?.lastPayoutDate ? new Date(balance.lastPayoutDate).toLocaleDateString() : '—'}
@@ -61,8 +61,8 @@ export default function FinancesView() {
         </div>
       </div>
 
-      <div className="bg-card rounded-2xl border border-gray-100 overflow-hidden">
-        <div className="px-6 py-4 border-b border-gray-100">
+      <div className="bg-card rounded-2xl border overflow-hidden">
+        <div className="px-6 py-4 border-b">
           <h3 className="font-semibold">Pagamentos</h3>
         </div>
         {(balanceLoading || payoutsLoading) ? (
@@ -72,7 +72,7 @@ export default function FinancesView() {
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-muted border-b border-gray-100">
+              <thead className="bg-muted border-b">
                 <tr>
                   <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground">ID</th>
                   <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground">Valor</th>

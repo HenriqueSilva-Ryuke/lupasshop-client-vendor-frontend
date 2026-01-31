@@ -117,11 +117,11 @@ export default function MarketplaceShell({ categories, stores, products }: Marke
                                 placeholder={t('searchPlaceholder')}
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full pl-12 pr-4 py-4 bg-card rounded-2xl border border-gray-100 shadow-sm focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none text-foreground placeholder-gray-400"
+                                className="w-full pl-12 pr-4 py-4 bg-card rounded-2xl border shadow-sm focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none text-foreground placeholder-gray-400"
                             />
                         </div>
 
-                        <div className="flex items-center justify-between bg-card p-2 rounded-xl border border-gray-100 shadow-sm">
+                        <div className="flex items-center justify-between bg-card p-2 rounded-xl border shadow-sm">
                             <div className="flex items-center gap-2 px-2">
                                 <span className="text-sm text-muted-foreground font-medium hidden sm:inline">{t('sort.label')}:</span>
                                 <select

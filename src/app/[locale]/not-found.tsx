@@ -37,7 +37,7 @@ export default function NotFound() {
           className="text-center space-y-6"
         >
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">
+            <h2 className="text-3xl font-bold mb-3">
               Página não encontrada
             </h2>
             <p className="text-gray-600 text-lg">
@@ -90,7 +90,7 @@ export default function NotFound() {
             >
               <button
                 onClick={() => window.history.back()}
-                className="inline-block px-8 py-3 bg-white text-primary rounded-lg font-semibold border-2 border-primary600 hover:bg-primary50 transition-colors"
+                className="inline-block px-8 py-3 text-primary rounded-lg font-semibold border-2 border-primary600 hover:bg-primary50 transition-colors"
               >
                 Voltar
               </button>

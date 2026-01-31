@@ -14,8 +14,8 @@ export default function TrendingProductsWidget({ products, onViewTrending }: Tre
     const locale = useLocale();
 
     return (
-        <div className="bg-card rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-            <div className="p-4 border-b border-gray-100 flex items-center gap-2">
+        <div className="bg-card rounded-2xl shadow-sm border overflow-hidden">
+            <div className="p-4 border-b flex items-center gap-2">
                 <div className="p-1.5 bg-rose-100 text-rose-600 rounded-lg">
                     <TrendingUp size={18} />
                 </div>
@@ -57,7 +57,7 @@ export default function TrendingProductsWidget({ products, onViewTrending }: Tre
                 ))}
             </div>
 
-            <div className="p-3 border-t border-gray-100">
+            <div className="p-3 border-t">
                 {onViewTrending ? (
                     <button
                         onClick={onViewTrending}

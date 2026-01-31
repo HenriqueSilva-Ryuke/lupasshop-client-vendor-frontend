@@ -13,7 +13,7 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Top Navigation Bar */}
-      <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-100 px-6 lg:px-10 py-4 bg-white z-20">
+      <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-100 px-6 lg:px-10 py-4 z-20">
         <Link href={`/${locale}`} className="flex items-center gap-3 cursor-pointer">
           <div className="size-8 text-primary flex items-center justify-center rounded-lg bg-primary/10">
             <span className="material-symbols-outlined text-[24px]">shopping_bag</span>
@@ -88,7 +88,7 @@ export default function RegisterPage() {
               className="w-full h-full object-cover"
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVI6bdkV1UYi_5rncM6PQkV0GGn_Zhi8uYKpz06tnd2RQd_0JKccs4Ab_UdN831f4EnOdpHYBGvfB4ExDSyAvqoP6mq3iVIj_zZSza6YGdmki3JL7cnv-VewVrBF1x6rgTP9VflmjRogguh-vJnmRPjjCLfuvvA8pqcfNjI-oKvmWxDHsvXskOfOOh65kv5fMVuSN0uHmhIIiAJmnzIvYLB7RulVRjmb_Oe9soO7GGukAOslw1ZaBvKoXEm2y_tAneCUzswJjXpEc"
             />
-            <div className="absolute bottom-0 left-0 p-12 z-20 text-white max-w-lg">
+            <div className="absolute bottom-0 left-0 p-12 z-20 max-w-lg">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/20 text-xs font-semibold mb-6">
                 <span className="material-symbols-outlined text-[16px]">verified</span>
                 Compra Segura

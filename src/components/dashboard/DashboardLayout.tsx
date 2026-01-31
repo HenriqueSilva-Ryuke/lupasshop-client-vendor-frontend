@@ -62,12 +62,12 @@ export default function DashboardLayout({
 
             {/* Sidebar */}
             <motion.aside
-                className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-card border-r border-gray-100 shadow-xl lg:shadow-none transform transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
+                className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-card border-r shadow-xl lg:shadow-none transform transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
                     }`}
             >
                 <div className="h-full flex flex-col">
                     {/* Logo */}
-                    <div className="h-16 flex items-center px-6 border-b border-gray-100">
+                    <div className="h-16 flex items-center px-6 border-b">
                         <Link href="/" className="flex items-center gap-2 group">
                             <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
                                 <Store className="w-6 h-6 text-primary" />
@@ -100,7 +100,7 @@ export default function DashboardLayout({
                     </nav>
 
                     {/* User Profile & Logout */}
-                    <div className="p-4 border-t border-gray-100">
+                    <div className="p-4 border-t">
                         <button className="flex items-center gap-3 w-full px-4 py-3 text-muted-foreground hover:bg-destructive/10 hover:text-destructive rounded-xl transition-colors">
                             <LogOut size={20} />
                             <span className="font-medium">{t('common.logout')}</span>
@@ -112,7 +112,7 @@ export default function DashboardLayout({
             {/* Main Content */}
             <div className="flex-1 flex flex-col min-w-0">
                 {/* Header */}
-                <header className="h-16 bg-card border-b border-gray-100 flex items-center justify-between px-4 lg:px-8 sticky top-0 z-30">
+                <header className="h-16 bg-card border-b flex items-center justify-between px-4 lg:px-8 sticky top-0 z-30">
                     <button
                         onClick={() => setIsSidebarOpen(true)}
                         className="lg:hidden p-2 text-muted-foreground hover:bg-muted rounded-lg"
@@ -125,7 +125,7 @@ export default function DashboardLayout({
                             <Bell size={20} />
                             <span className="absolute top-2 right-2 w-2 h-2 bg-destructive/100 rounded-full border-2 border-border"></span>
                         </button>
-                        <div className="flex items-center gap-3 pl-4 border-l border-gray-100">
+                        <div className="flex items-center gap-3 pl-4 border-l">
                             <div className="text-right hidden sm:block">
                                 <p className="text-sm font-semibold text-foreground">Store Owner</p>
                                 <p className="text-xs text-muted-foreground">store@lupashop.com</p>

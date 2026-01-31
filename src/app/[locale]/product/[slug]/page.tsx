@@ -134,7 +134,7 @@ export default function ProductDetailPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12">
             {/* Gallery */}
             <div className="lg:col-span-7 flex flex-col gap-4">
-              <div className="relative w-full aspect-[4/3] md:aspect-[16/10] bg-white bg-surface-dark rounded-xl overflow-hidden border border-slate-200 border-slate-700 flex items-center justify-center group shadow-sm">
+              <div className="relative w-full aspect-[4/3] md:aspect-[16/10] bg-surface-dark rounded-xl overflow-hidden border border-slate-200 border-slate-700 flex items-center justify-center group shadow-sm">
                 <div className="absolute top-4 right-4 z-10">
                   <motion.button
                     whileTap={{ scale: 0.95 }}
@@ -229,7 +229,7 @@ export default function ProductDetailPage() {
 
                 <div className="flex flex-col gap-3 pt-2">
                   <div className="flex gap-3 h-12">
-                    <div className="flex items-center rounded-lg border border-slate-300 border-slate-600 px-1 bg-white bg-slate-800 w-32">
+                    <div className="flex items-center rounded-lg border border-slate-300 border-slate-600 px-1 bg-slate-800 w-32">
                       <button className="w-10 h-full flex items-center justify-center text-slate-500 hover:text-foreground hover:text-black" aria-label="Diminuir quantidade">
                         <span className="material-symbols-outlined text-[20px]">remove</span>
                       </button>
@@ -258,7 +258,7 @@ export default function ProductDetailPage() {
                 </div>
 
                 <div className="mt-2 bg-slate-50 bg-slate-800/50 rounded-lg p-3 flex items-center gap-3 border border-slate-100 border-slate-700">
-                  <div className="w-10 h-10 rounded-full bg-white bg-slate-700 flex items-center justify-center border border-slate-200 border-slate-600 overflow-hidden">
+                  <div className="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center border border-slate-200 border-slate-600 overflow-hidden">
                     <span className="material-symbols-outlined text-slate-400">storefront</span>
                   </div>
                   <div className="flex-1">

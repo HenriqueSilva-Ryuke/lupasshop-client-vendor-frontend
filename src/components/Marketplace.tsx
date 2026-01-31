@@ -283,7 +283,7 @@ export default function Marketplace() {
                 className="bg-card rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition border border-border"
               >
                 {/* Product Image */}
-                <div className="relative aspect-square bg-gray-200 overflow-hidden group">
+                <div className="relative aspect-square overflow-hidden group">
                   {product.image ? (
                     <Image
                       src={product.image}

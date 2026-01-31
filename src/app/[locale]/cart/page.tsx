@@ -86,16 +86,16 @@ export default function CartPage() {
   if (items.length === 0) {
     return (
       <PageTransition>
-        <div className="min-h-screen bg-white text-black flex flex-col">
+        <div className="min-h-screen text-black flex flex-col">
           <Navbar />
           <div className="flex-1 flex flex-col items-center justify-center px-4">
-            <ShoppingBag className="w-16 h-16 text-gray-300 mb-4" />
+            <ShoppingBag className="w-16 h-16 mb-4" />
             <h1 className="text-3xl font-bold mb-2">Carrinho Vazio</h1>
             <p className="text-gray-600 mb-8">Você ainda não adicionou nenhum produto ao seu carrinho.</p>
             <Button
               variant="default"
               onClick={() => router.push(`/${locale}/marketplace`)}
-              className="px-8 py-3 bg-primary text-white rounded-lg font-bold hover:bg-primary-dark transition-colors flex items-center gap-2"
+              className="px-8 py-3 bg-primary rounded-lg font-bold hover:bg-primary-dark transition-colors flex items-center gap-2"
             >
               <ArrowLeft className="w-4 h-4" />
               Voltar ao Marketplace
@@ -109,12 +109,12 @@ export default function CartPage() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-white text-black flex flex-col">
+      <div className="min-h-screen text-black flex flex-col">
         <Navbar />
 
         <div className="flex-1 px-4 md:px-10 py-8 max-w-[1440px] mx-auto w-full">
           {/* Header */}
-          <div className="flex flex-wrap justify-between items-end gap-3 pb-6 border-b border-gray-200 mb-8">
+          <div className="flex flex-wrap justify-between items-end gap-3 pb-6 border-b mb-8">
             <div className="flex min-w-72 flex-col gap-2">
               <h1 className="text-3xl md:text-4xl font-black leading-tight">Carrinho de Compras</h1>
               <p className="text-gray-500 text-base font-normal">
@@ -140,9 +140,9 @@ export default function CartPage() {
                 const storeName = storeItems[0]?.storeName || 'Loja';
 
                 return (
-                  <div key={storeId} className="flex flex-col gap-0 rounded-xl overflow-hidden bg-white shadow-sm border border-gray-200">
+                  <div key={storeId} className="flex flex-col gap-0 rounded-xl overflow-hidden shadow-sm border border-gray-200">
                     {/* Store Header */}
-                    <div className="bg-gray-50 px-6 py-4 border-b border-gray-100 flex justify-between items-center">
+                    <div className="bg-gray-50 px-6 py-4 border-b flex justify-between items-center">
                       <div className="flex items-center gap-2">
                         <Zap className="w-5 h-5 text-primary" />
                         <h3 className="text-black text-sm font-bold leading-tight uppercase">{storeName}</h3>
@@ -158,12 +158,12 @@ export default function CartPage() {
                         key={item.id}
                         initial={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="flex flex-col sm:flex-row gap-4 px-6 py-6 justify-between border-b border-gray-100 hover:bg-accent50/50 transition-colors group"
+                        className="flex flex-col sm:flex-row gap-4 px-6 py-6 justify-between border-b hover:bg-accent50/50 transition-colors group"
                       >
                         {/* Product Info */}
                         <div className="flex items-start gap-4 flex-1">
                           <div
-                            className="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-24 shrink-0 bg-gray-100 border border-gray-100"
+                            className="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-24 shrink-0 border border-gray-100"
                             style={{ backgroundImage: `url(${item.image || 'https://via.placeholder.com/96'})` }}
                           />
                           <div className="flex flex-col justify-between h-full min-h-[96px]">
@@ -194,7 +194,7 @@ export default function CartPage() {
                           <p className="text-black text-lg font-bold leading-normal">
                             R$ {(item.price * item.quantity).toFixed(2)}
                           </p>
-                          <div className="flex items-center gap-1 text-black border border-gray-200 rounded-lg p-1 bg-white">
+                          <div className="flex items-center gap-1 text-black border rounded-lg p-1 bg-white">
                             <Button
                               variant="icon"
                               onClick={() => handleUpdateQuantity(item.id, item.quantity - 1)}
@@ -222,7 +222,7 @@ export default function CartPage() {
                     ))}
 
                     {/* Store Subtotal */}
-                    <div className="bg-gray-50 px-6 py-4 border-t border-gray-100 flex justify-end items-center gap-3">
+                    <div className="bg-gray-50 px-6 py-4 border-t flex justify-end items-center gap-3">
                       <span className="text-sm text-gray-600">
                         Subtotal da loja ({storeItems.length} itens):
                       </span>
@@ -252,7 +252,7 @@ export default function CartPage() {
                       value={shippingCep}
                       onChange={(e) => setShippingCep(e.target.value)}
                       placeholder="Digite seu CEP"
-                      className="flex-1 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                      className="flex-1 rounded-lg border bg-white px-3 py-2 text-sm text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
                     />
                     <motion.button
                       whileHover={{ scale: 1.02 }}
@@ -266,14 +266,14 @@ export default function CartPage() {
                     href="https://buscacepinter.correios.com.br/app/endereco/index.php"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs text-gray-500 underline mt-2 inline-block hover:text-primary"
+                    className="text-xs underline mt-2 inline-block hover:text-primary"
                   >
                     Não sei meu CEP
                   </a>
                 </div>
 
                 {/* Coupon */}
-                <div className="mb-6 border-b border-gray-100 pb-6">
+                <div className="mb-6 border-b pb-6">
                   <label className="block text-sm font-bold text-black mb-2">Cupom de Desconto</label>
                   <div className="flex gap-2">
                     <div className="relative flex-1">
@@ -282,7 +282,7 @@ export default function CartPage() {
                         value={couponCode}
                         onChange={(e) => setCouponCode(e.target.value)}
                         placeholder="Adicionar código"
-                        className="w-full rounded-lg border border-gray-300 bg-white pl-9 pr-3 py-2 text-sm text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                        className="w-full rounded-lg border bg-white pl-9 pr-3 py-2 text-sm text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
                       />
                     </div>
                     <motion.button
@@ -318,12 +318,12 @@ export default function CartPage() {
                 </div>
 
                 {/* Total */}
-                <div className="border-t border-gray-100 pt-4 mb-6">
+                <div className="border-t pt-4 mb-6">
                   <div className="flex justify-between items-center mb-1">
                     <span className="text-lg font-bold text-black">Total</span>
                     <span className="text-2xl font-black text-black">R$ {total.toFixed(2)}</span>
                   </div>
-                  <p className="text-xs text-gray-500 text-right">
+                  <p className="text-xs text-right">
                     em até {installments}x de R$ {installmentValue.toFixed(2)} sem juros
                   </p>
                 </div>
@@ -333,7 +333,7 @@ export default function CartPage() {
                   whileHover={{ scale: 1.02, translateY: -2 }}
                   whileTap={{ scale: 0.98, translateY: 0 }}
                   onClick={handleCheckout}
-                  className="w-full bg-primary hover:bg-primary-dark text-white font-bold text-lg py-4 rounded-lg shadow-lg shadow-primary/25 transition-all flex items-center justify-center gap-2 mb-3"
+                  className="w-full bg-primary hover:bg-primary-dark font-bold text-lg py-4 rounded-lg shadow-lg shadow-primary/25 transition-all flex items-center justify-center gap-2 mb-3"
                 >
                   Finalizar Compra
                   <ArrowRight className="w-5 h-5" />
@@ -343,7 +343,7 @@ export default function CartPage() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => router.push(`/${locale}/marketplace`)}
-                  className="w-full bg-white border border-gray-300 hover:bg-accent50 text-black font-bold py-3 rounded-lg transition-colors text-sm"
+                  className="w-full border hover:bg-accent50 text-black font-bold py-3 rounded-lg transition-colors text-sm"
                 >
                   Escolher mais produtos
                 </motion.button>

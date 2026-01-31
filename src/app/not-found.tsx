@@ -59,7 +59,7 @@ export default function NotFound() {
           <Button
             variant="default"
             onClick={() => window.history.back()}
-            className="px-8 py-3 bg-white text-primary rounded-lg font-semibold border-2 border-primary600 hover:bg-primary50 transition-colors"
+            className="px-8 py-3 text-primary rounded-lg font-semibold border-2 border-primary600 hover:bg-primary50 transition-colors"
           >
             Voltar
           </Button>

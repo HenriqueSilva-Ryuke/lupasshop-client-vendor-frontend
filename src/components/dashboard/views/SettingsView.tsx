@@ -51,7 +51,7 @@ export default function SettingsView() {
         <p className="text-muted-foreground">Configure your store preferences</p>
       </div>
 
-      <div className="bg-card rounded-2xl border border-gray-100 shadow-sm p-6 max-w-2xl">
+      <div className="bg-card rounded-2xl border shadow-sm p-6 max-w-2xl">
         <h2 className="text-lg font-bold text-foreground mb-6">{t('profile')}</h2>
 
         <form className="space-y-6">

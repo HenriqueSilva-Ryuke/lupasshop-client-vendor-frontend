@@ -37,7 +37,7 @@ export default function StoreCard({ id, name, slug, logo, featuredImage, rating,
               // eslint-disable-next-line @next/next/no-img-element
               <img src={logo} alt={`${name} logo`} className="h-12 w-12 rounded-full object-cover" />
             ) : (
-              <div className="h-12 w-12 rounded-full bg-gray-200" />
+              <div className="h-12 w-12 rounded-full" />
             )}
               <div>
               <h3 className="text-lg font-semibold text-foreground">{name}</h3>

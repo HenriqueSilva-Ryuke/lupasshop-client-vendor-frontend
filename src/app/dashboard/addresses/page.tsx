@@ -101,7 +101,7 @@ export default function AddressesPage() {
         <div className="md:col-span-2 flex gap-4">
           <button
             type="submit"
-            className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90"
+            className="px-6 py-2 bg-primary rounded-lg hover:bg-primary/90"
           >
             {t('form.save')}
           </button>
@@ -111,7 +111,7 @@ export default function AddressesPage() {
               setShowForm(false);
               setEditingId(null);
             }}
-            className="px-6 py-2 border border-gray-300 rounded-lg hover:bg-accent50"
+            className="px-6 py-2 border rounded-lg hover:bg-accent50"
           >
             {t('form.cancel')}
           </button>
@@ -127,7 +127,7 @@ export default function AddressesPage() {
         {!showForm && (
           <button
             onClick={() => setShowForm(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90"
+            className="flex items-center gap-2 px-4 py-2 bg-primary rounded-lg hover:bg-primary/90"
           >
             <Plus className="w-5 h-5" />
             {t('addNew')}
@@ -157,7 +157,7 @@ export default function AddressesPage() {
                     <span className="text-sm font-semibold text-primary">{address.label}</span>
                   )}
                   {address.isDefault && (
-                    <span className="ml-2 text-xs bg-primary text-white px-2 py-1 rounded">
+                    <span className="ml-2 text-xs bg-primary px-2 py-1 rounded">
                       {t('default')}
                     </span>
                   )}

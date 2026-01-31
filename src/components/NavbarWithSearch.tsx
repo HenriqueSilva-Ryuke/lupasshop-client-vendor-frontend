@@ -237,7 +237,7 @@ export default function NavbarWithSearch() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={tm('search.placeholder')}
-                  className="w-full pl-12 pr-4 py-3 bg-muted bg-gray-800 rounded-full text-foreground text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full pl-12 pr-4 py-3 bg-muted rounded-full text-foreground text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary"
                 />
               </div>
               <button
@@ -270,7 +270,7 @@ export default function NavbarWithSearch() {
                 <div className="max-h-[70vh] overflow-y-auto">
                   {/* Products */}
                   {searchResults.products.length > 0 && (
-                    <div className="p-4 border-b border-gray-100 border-border">
+                    <div className="p-4 border-b border-border">
                       <div className="flex items-center gap-2 text-xs font-bold text-muted-foreground uppercase mb-3">
                         <Package className="w-4 h-4" />
                         {tm('search.products')}
@@ -281,7 +281,7 @@ export default function NavbarWithSearch() {
                           onClick={() => handleResultClick('product', product.slug)}
                           className="w-full flex items-center gap-3 p-3 hover:bg-muted hover:bg-accent800 rounded-lg transition-colors text-left"
                         >
-                          <div className="w-12 h-12 bg-muted bg-gray-800 rounded flex-shrink-0 overflow-hidden">
+                          <div className="w-12 h-12 bg-muted rounded flex-shrink-0 overflow-hidden">
                             {product.images[0] && (
                               <img src={product.images[0]} alt={product.name} className="w-full h-full object-cover" />
                             )}
@@ -301,7 +301,7 @@ export default function NavbarWithSearch() {
 
                   {/* Stores */}
                   {searchResults.stores.length > 0 && (
-                    <div className="p-4 border-b border-gray-100 border-border">
+                    <div className="p-4 border-b border-border">
                       <div className="flex items-center gap-2 text-xs font-bold text-muted-foreground uppercase mb-3">
                         <Store className="w-4 h-4" />
                         {tm('search.stores')}
@@ -312,7 +312,7 @@ export default function NavbarWithSearch() {
                           onClick={() => handleResultClick('store', store.slug)}
                           className="w-full flex items-center gap-3 p-3 hover:bg-muted hover:bg-accent800 rounded-lg transition-colors text-left"
                         >
-                          <div className="w-12 h-12 bg-muted bg-gray-800 rounded flex-shrink-0 overflow-hidden">
+                          <div className="w-12 h-12 bg-muted rounded flex-shrink-0 overflow-hidden">
                             {store.logoUrl && (
                               <img src={store.logoUrl} alt={store.name} className="w-full h-full object-cover" />
                             )}

@@ -53,7 +53,7 @@ function StoreCard({ store }: StoreCardProps) {
                   sizes="80px"
                 />
               ) : (
-                <div className="w-full h-full bg-gray-200 flex items-center justify-center text-2xl font-bold text-muted-foreground">
+                <div className="w-full h-full flex items-center justify-center text-2xl font-bold text-muted-foreground">
                   {store.name[0].toUpperCase()}
                 </div>
               )}
@@ -109,11 +109,11 @@ function StoresSkeleton() {
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {[...Array(6)].map((_, i) => (
         <div key={i} className="bg-card rounded-lg shadow-sm overflow-hidden animate-pulse">
-          <div className="h-32 bg-gray-200"></div>
+          <div className="h-32"></div>
           <div className="p-4 space-y-3">
-            <div className="h-6 bg-gray-200 rounded w-2/3"></div>
-            <div className="h-4 bg-gray-200 rounded w-full"></div>
-            <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+            <div className="h-6 rounded w-2/3"></div>
+            <div className="h-4 rounded w-full"></div>
+            <div className="h-4 rounded w-1/2"></div>
           </div>
         </div>
       ))}

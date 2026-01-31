@@ -8,7 +8,7 @@ export default function SellerLayout({
     children: React.ReactNode;
 }) {
     return (
-        <div className="min-h-screen bg-gray-50 flex flex-col md:flex-row">
+        <div className="min-h-screen flex flex-col md:flex-row">
             <aside className="md:w-64 shrink-0 bg-gray-900">
                 <SellerSidebar />
             </aside>

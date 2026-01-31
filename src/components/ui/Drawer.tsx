@@ -35,7 +35,7 @@ export default function Drawer({
             className="fixed bottom-0 left-0 right-0 z-50 rounded-t-2xl bg-card"
           >
             <div className="flex justify-center pt-3 pb-1">
-              <div className="h-1 w-12 rounded-full bg-gray-300" />
+              <div className="h-1 w-12 rounded-full" />
             </div>
             <div className="flex items-center justify-between border-b px-6 py-4">
               <h2 className="text-lg font-bold text-foreground">{title}</h2>

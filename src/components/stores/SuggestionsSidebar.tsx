@@ -22,7 +22,7 @@ export default function SuggestionsSidebar({ suggestions = [] }: SuggestionsSide
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={s.logo} alt={`${s.name} logo`} className="h-12 w-12 rounded object-cover" />
                 ) : (
-                  <div className="h-12 w-12 rounded bg-gray-200" />
+                  <div className="h-12 w-12 rounded" />
                 )}
                 <div className="flex-1">
                   <Link href={`/${locale}/store/${s.slug}`} className="text-sm font-semibold text-foreground">{s.name}</Link>

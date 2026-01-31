@@ -15,7 +15,7 @@ export default function StoreCard({ store }: StoreCardProps) {
     return (
         <Link
             href={`/store/${store.slug}`}
-            className="group bg-card rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 transition-all duration-300 block h-full flex flex-col"
+            className="group bg-card rounded-2xl border overflow-hidden hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 transition-all duration-300 block h-full flex flex-col"
         >
             {/* Cover Image */}
             <div className="relative h-32 w-full bg-muted overflow-hidden">

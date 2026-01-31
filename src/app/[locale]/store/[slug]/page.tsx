@@ -87,7 +87,7 @@ export default function StorePage() {
   if (storesLoading) {
     return (
       <PageTransition>
-        <div className="min-h-screen bg-white text-black flex items-center justify-center">
+        <div className="min-h-screen text-black flex items-center justify-center">
           <div className="text-center">
             <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
             <p className="text-gray-600">Carregando loja...</p>
@@ -100,10 +100,10 @@ export default function StorePage() {
   if (!store) {
     return (
       <PageTransition>
-        <div className="min-h-screen bg-white text-black flex flex-col items-center justify-center">
+        <div className="min-h-screen text-black flex flex-col items-center justify-center">
           <h1 className="text-3xl font-bold mb-4">Loja não encontrada</h1>
           <p className="text-gray-600 mb-6">A loja que você procura não existe ou foi removida.</p>
-          <Link href={`/${locale}/marketplace`} className="px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-colors">
+          <Link href={`/${locale}/marketplace`} className="px-6 py-3 bg-primary rounded-lg font-semibold hover:bg-primary-dark transition-colors">
             Voltar ao Marketplace
           </Link>
         </div>
@@ -113,7 +113,7 @@ export default function StorePage() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-white text-black flex flex-col">
+      <div className="min-h-screen text-black flex flex-col">
         <Navbar />
 
         {/* Breadcrumb */}
@@ -145,7 +145,7 @@ export default function StorePage() {
             <div className="relative -mt-16 mb-4 flex flex-col md:flex-row gap-6 items-start md:items-end pb-6 border-b border-gray-200">
               {/* Logo */}
               <div className="relative group">
-                <div className="size-32 rounded-full border-4 border-white bg-white shadow-md overflow-hidden flex items-center justify-center">
+                <div className="size-32 rounded-full border-4 bg-white shadow-md overflow-hidden flex items-center justify-center">
                   <img
                     alt={`${store.name} Logo`}
                     className="w-full h-full object-cover"
@@ -153,7 +153,7 @@ export default function StorePage() {
                   />
                 </div>
                 {store.isVerified && (
-                  <div className="absolute bottom-1 right-1 text-primary border-2 border-white rounded-full size-6 flex items-center justify-center" title="Loja Verificada">
+                  <div className="absolute bottom-1 right-1 text-primary border-2 rounded-full size-6 flex items-center justify-center" title="Loja Verificada">
                     <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
@@ -187,20 +187,20 @@ export default function StorePage() {
                 <div className="flex gap-3 w-full md:w-auto">
                   <Button
                     variant="default"
-                    className="flex-1 md:flex-none h-10 px-6 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primary-dark transition-colors flex items-center justify-center gap-2"
+                    className="flex-1 md:flex-none h-10 px-6 bg-primary text-sm font-bold rounded-lg hover:bg-primary-dark transition-colors flex items-center justify-center gap-2"
                   >
                     <Plus className="w-4 h-4" />
                     Seguir Loja
                   </Button>
                   <Button
                     variant="icon"
-                    className="size-10 flex items-center justify-center rounded-lg border border-gray-200 text-black hover:bg-accent50 transition-colors"
+                    className="size-10 flex items-center justify-center rounded-lg border text-black hover:bg-accent50 transition-colors"
                   >
                     <Share2 className="w-5 h-5" />
                   </Button>
                   <Button
                     variant="icon"
-                    className="size-10 flex items-center justify-center rounded-lg border border-gray-200 text-black hover:bg-accent50 transition-colors"
+                    className="size-10 flex items-center justify-center rounded-lg border text-black hover:bg-accent50 transition-colors"
                   >
                     <MessageCircle className="w-5 h-5" />
                   </Button>
@@ -213,10 +213,10 @@ export default function StorePage() {
               <a href="#products" className="pb-3 border-b-[3px] border-primary text-primary font-bold text-sm whitespace-nowrap">
                 Produtos
               </a>
-              <a href="#reviews" className="pb-3 border-b-[3px] border-transparent text-gray-600 hover:text-black font-medium text-sm whitespace-nowrap transition-colors">
+              <a href="#reviews" className="pb-3 border-b-[3px] border-transparent hover:text-black font-medium text-sm whitespace-nowrap transition-colors">
                 Avaliações da Loja
               </a>
-              <a href="#about" className="pb-3 border-b-[3px] border-transparent text-gray-600 hover:text-black font-medium text-sm whitespace-nowrap transition-colors">
+              <a href="#about" className="pb-3 border-b-[3px] border-transparent hover:text-black font-medium text-sm whitespace-nowrap transition-colors">
                 Sobre {store.name.split(' ')[0]}
               </a>
             </div>
@@ -229,29 +229,29 @@ export default function StorePage() {
             {/* Sidebar */}
             <aside className="space-y-8">
               {/* Store Info */}
-              <div className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+              <div className="bg-white rounded-xl border p-5 shadow-sm">
                 <h3 className="font-bold text-lg mb-4 text-black">Informações da Loja</h3>
                 <div className="space-y-4">
                   <div className="flex gap-3">
-                    <MapPin className="w-5 h-5 text-gray-600 mt-0.5" />
+                    <MapPin className="w-5 h-5 mt-0.5" />
                     <div>
-                      <p className="text-xs text-gray-600 font-medium uppercase tracking-wide">Endereço</p>
+                      <p className="text-xs font-medium uppercase tracking-wide">Endereço</p>
                       <p className="text-sm text-black">{store.location || 'Endereço não informado'}</p>
                     </div>
                   </div>
                   <hr className="border-gray-200" />
                   <div className="flex gap-3">
-                    <Clock className="w-5 h-5 text-gray-600 mt-0.5" />
+                    <Clock className="w-5 h-5 mt-0.5" />
                     <div>
-                      <p className="text-xs text-gray-600 font-medium uppercase tracking-wide">Horário</p>
+                      <p className="text-xs font-medium uppercase tracking-wide">Horário</p>
                       <p className="text-sm text-black">Seg-Sex: 09h - 18h</p>
                     </div>
                   </div>
                   <hr className="border-gray-200" />
                   <div className="flex gap-3">
-                    <Mail className="w-5 h-5 text-gray-600 mt-0.5" />
+                    <Mail className="w-5 h-5 mt-0.5" />
                     <div>
-                      <p className="text-xs text-gray-600 font-medium uppercase tracking-wide">Contato</p>
+                      <p className="text-xs font-medium uppercase tracking-wide">Contato</p>
                       <p className="text-sm text-black break-all">{store.owner?.email || 'contato@loja.com.br'}</p>
                     </div>
                   </div>
@@ -259,7 +259,7 @@ export default function StorePage() {
               </div>
 
               {/* Filters */}
-              <div className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+              <div className="bg-white rounded-xl border p-5 shadow-sm">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="font-bold text-lg text-black">Filtros</h3>
                   <button className="text-xs font-medium text-primary hover:underline">Limpar</button>
@@ -273,7 +273,7 @@ export default function StorePage() {
                         setSortBy(e.target.value);
                         setCurrentPage(1);
                       }}
-                      className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-primary focus:border-primary bg-white text-black"
+                      className="w-full border rounded-lg px-3 py-2 text-sm focus:ring-primary focus:border-primary text-black"
                     >
                       <option value="relevant">Mais Relevantes</option>
                       <option value="price-low">Menor Preço</option>
@@ -307,7 +307,7 @@ export default function StorePage() {
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: idx * 0.05 }}
                       viewport={{ once: true }}
-                      className="group bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col h-full cursor-pointer"
+                      className="group rounded-xl border overflow-hidden hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col h-full cursor-pointer"
                     >
                       {/* Product Image */}
                       <div className="relative aspect-square overflow-hidden bg-gray-100">
@@ -318,13 +318,13 @@ export default function StorePage() {
                         />
                         <motion.button
                           whileHover={{ scale: 1.1 }}
-                          className="absolute top-3 right-3 size-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors shadow-md"
+                          className="absolute top-3 right-3 size-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center hover:text-red-500 transition-colors shadow-md"
                           onClick={() => toggleFavorite(product.id)}
                         >
                           <Heart className={`w-5 h-5 ${favorites.has(product.id) ? 'fill-red-500 text-red-500' : ''}`} />
                         </motion.button>
                         {product.discount && (
-                          <div className="absolute top-3 left-3 bg-primary text-white text-xs font-bold px-2 py-1 rounded shadow-sm">
+                          <div className="absolute top-3 left-3 bg-primary text-xs font-bold px-2 py-1 rounded shadow-sm">
                             -{product.discount}%
                           </div>
                         )}
@@ -332,7 +332,7 @@ export default function StorePage() {
 
                       {/* Product Info */}
                       <div className="p-4 flex flex-col flex-1">
-                        <p className="text-xs text-gray-600 mb-1 uppercase font-medium">{product.category?.name || 'Produtos'}</p>
+                        <p className="text-xs mb-1 uppercase font-medium">{product.category?.name || 'Produtos'}</p>
                         <h3 className="font-medium text-black mb-2 line-clamp-2 leading-tight group-hover:text-primary transition-colors">
                           {product.name}
                         </h3>
@@ -340,13 +340,13 @@ export default function StorePage() {
                           <div className="flex items-end gap-2">
                             <p className="text-xl font-bold text-black">R$ {(product.price || 0).toFixed(2)}</p>
                             {product.originalPrice && (
-                              <p className="text-xs text-gray-400 line-through">R$ {product.originalPrice.toFixed(2)}</p>
+                              <p className="text-xs line-through">R$ {product.originalPrice.toFixed(2)}</p>
                             )}
                           </div>
                           <motion.button
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className="w-full bg-primary hover:bg-primary-dark text-white rounded-lg h-9 flex items-center justify-center gap-2 font-bold text-xs transition-colors"
+                            className="w-full bg-primary hover:bg-primary-dark rounded-lg h-9 flex items-center justify-center gap-2 font-bold text-xs transition-colors"
                           >
                             <ShoppingCart className="w-4 h-4" />
                             Adicionar
@@ -366,7 +366,7 @@ export default function StorePage() {
                       whileHover={{ scale: 1.05 }}
                       disabled={currentPage === 1}
                       onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
-                      className="size-10 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-accent50 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="size-10 flex items-center justify-center rounded-lg border text-gray-600 hover:bg-accent50 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <ChevronLeft className="w-5 h-5" />
                     </motion.button>
@@ -381,7 +381,7 @@ export default function StorePage() {
                           className={`size-10 flex items-center justify-center rounded-lg font-bold transition-colors ${
                             currentPage === pageNum
                               ? 'bg-primary text-white'
-                              : 'border border-gray-200 text-black hover:bg-accent50'
+                              : 'border text-black hover:bg-accent50'
                           }`}
                         >
                           {pageNum}
@@ -398,7 +398,7 @@ export default function StorePage() {
                           className={`size-10 flex items-center justify-center rounded-lg font-bold transition-colors ${
                             currentPage === totalPages
                               ? 'bg-primary text-white'
-                              : 'border border-gray-200 text-black hover:bg-accent50'
+                              : 'border text-black hover:bg-accent50'
                           }`}
                         >
                           {totalPages}
@@ -410,7 +410,7 @@ export default function StorePage() {
                       whileHover={{ scale: 1.05 }}
                       disabled={currentPage === totalPages}
                       onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
-                      className="size-10 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-accent50 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="size-10 flex items-center justify-center rounded-lg border text-gray-600 hover:bg-accent50 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <ChevronRight className="w-5 h-5" />
                     </motion.button>

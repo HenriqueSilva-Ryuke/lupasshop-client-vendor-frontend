@@ -17,8 +17,8 @@ export default function ProductList() {
     ];
 
     return (
-        <div className="bg-card rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-            <div className="p-6 border-b border-gray-100 flex items-center justify-between">
+        <div className="bg-card rounded-2xl border shadow-sm overflow-hidden">
+            <div className="p-6 border-b flex items-center justify-between">
                 <h2 className="text-lg font-bold text-foreground">{t('manage')}</h2>
                 <Link
                     href="/dashboard/products/new"
@@ -32,7 +32,7 @@ export default function ProductList() {
             <div className="overflow-x-auto">
                 <table className="w-full text-left">
                     <thead>
-                        <tr className="bg-muted border-b border-gray-100">
+                        <tr className="bg-muted border-b">
                             <th className="px-6 py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">{t('name')}</th>
                             <th className="px-6 py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">{t('category')}</th>
                             <th className="px-6 py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">{t('price')}</th>

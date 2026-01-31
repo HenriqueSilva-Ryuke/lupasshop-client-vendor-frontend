@@ -13,7 +13,7 @@ export default function SellerLoginPage() {
   return (
     <div className="flex min-h-screen w-full flex-row">
       {/* Left Side: Login Form */}
-      <div className="flex w-full flex-col justify-center bg-white px-6 py-12 lg:w-1/2 lg:px-20 xl:px-32">
+      <div className="flex w-full flex-col justify-center px-6 py-12 lg:w-1/2 lg:px-20 xl:px-32">
         <div className="mx-auto w-full max-w-[480px]">
           {/* Header / Logo */}
           <div className="mb-12 flex items-center gap-3">
@@ -80,15 +80,15 @@ export default function SellerLoginPage() {
           <div className="mt-8 flex justify-center gap-8 border-t border-white/20 pt-8">
             <div className="flex flex-col">
               <span className="text-2xl font-bold">15k+</span>
-              <span className="text-xs text-gray-300 uppercase tracking-wider">Lojistas</span>
+              <span className="text-xs uppercase tracking-wider">Lojistas</span>
             </div>
             <div className="flex flex-col">
               <span className="text-2xl font-bold">99.9%</span>
-              <span className="text-xs text-gray-300 uppercase tracking-wider">Uptime</span>
+              <span className="text-xs uppercase tracking-wider">Uptime</span>
             </div>
             <div className="flex flex-col">
               <span className="text-2xl font-bold">24/7</span>
-              <span className="text-xs text-gray-300 uppercase tracking-wider">Suporte</span>
+              <span className="text-xs uppercase tracking-wider">Suporte</span>
             </div>
           </div>
         </div>

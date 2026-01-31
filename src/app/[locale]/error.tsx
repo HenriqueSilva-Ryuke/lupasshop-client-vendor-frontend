@@ -48,7 +48,7 @@ export default function Error({ error, reset }: ErrorProps) {
           className="text-center space-y-6"
         >
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">
+            <h2 className="text-3xl font-bold mb-3">
               Algo deu errado!
             </h2>
             <p className="text-gray-600 text-lg">
@@ -114,7 +114,7 @@ export default function Error({ error, reset }: ErrorProps) {
             >
               <Link
                 href={`/${locale}`}
-                className="inline-block px-8 py-3 bg-white text-orange-600 rounded-lg font-semibold border-2 border-orange-600 hover:bg-orange-50 transition-colors"
+                className="inline-block px-8 py-3 text-orange-600 rounded-lg font-semibold border-2 border-orange-600 hover:bg-orange-50 transition-colors"
               >
                 Ir para Home
               </Link>
@@ -126,12 +126,12 @@ export default function Error({ error, reset }: ErrorProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="pt-4 border-t border-gray-300 space-y-2"
+            className="pt-4 border-t space-y-2"
           >
             <p className="text-sm text-gray-600">
               Se o problema persistir, tente:
             </p>
-            <ul className="text-sm text-gray-500 space-y-1">
+            <ul className="text-sm space-y-1">
               <li>✓ Limpar o cache do navegador</li>
               <li>✓ Recarregar a página</li>
               <li>✓ Entrar em contato com o suporte</li>

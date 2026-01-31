@@ -62,25 +62,25 @@ export default function ProfilePage({ params }: { params: Promise<{ locale: stri
     if (loading) return <div>Carregando...</div>;
 
     return (
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+        <div className="bg-white rounded-xl shadow-sm border p-6">
             <h1 className="text-2xl font-bold mb-6">Meu Perfil</h1>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 max-w-md">
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Nome Completo</label>
+                    <label className="block text-sm font-medium mb-1">Nome Completo</label>
                     <input
                         {...register('fullName')}
-                        className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
+                        className="w-full rounded-lg border px-3 py-2 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
                     />
                     {errors.fullName && <p className="text-red-500 text-xs mt-1">{errors.fullName.message}</p>}
                 </div>
 
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <label className="block text-sm font-medium mb-1">Email</label>
                     <input
                         {...register('email')}
                         disabled // Often email is immutable without re-verification
-                        className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-gray-500 cursor-not-allowed"
+                        className="w-full rounded-lg border bg-gray-50 px-3 py-2 cursor-not-allowed"
                     />
                     {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
                 </div>

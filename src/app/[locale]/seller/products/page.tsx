@@ -62,21 +62,21 @@ export default function SellerProductsPage({ params }: { params: Promise<{ local
           <p className="text-gray-500">Gerencie seu catálogo de produtos</p>
         </div>
         <Link href={`/${locale}/seller/products/new`}>
-          <Button className="bg-primary text-white flex items-center gap-2">
+          <Button className="bg-primary flex items-center gap-2">
             <Plus className="w-4 h-4" />
             Adicionar Produto
           </Button>
         </Link>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-        <div className="p-4 border-b border-gray-100 flex gap-4">
+      <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
+        <div className="p-4 border-b flex gap-4">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <input
               type="text"
               placeholder="Buscar produtos..."
-              className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-200 outline-none focus:border-primary"
+              className="w-full pl-10 pr-4 py-2 rounded-lg border outline-none focus:border-primary"
             />
           </div>
           {/* Filters could go here */}
@@ -85,7 +85,7 @@ export default function SellerProductsPage({ params }: { params: Promise<{ local
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-gray-50 border-b border-gray-100 text-xs text-gray-500 uppercase">
+              <tr className="bg-gray-50 border-b text-xs uppercase">
                 <th className="px-6 py-4 font-semibold">Produto</th>
                 <th className="px-6 py-4 font-semibold">Preço</th>
                 <th className="px-6 py-4 font-semibold">Estoque</th>
@@ -102,13 +102,13 @@ export default function SellerProductsPage({ params }: { params: Promise<{ local
                 </tr>
               ) : (
                 products.map((product: any) => (
-                  <tr key={product.id} className="border-b border-gray-50 hover:bg-accent50/50 transition-colors">
+                  <tr key={product.id} className="border-b hover:bg-accent50/50 transition-colors">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-gray-100 overflow-hidden shrink-0">
+                        <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0">
                           {product.images?.[0] && <img src={product.images[0]} className="w-full h-full object-cover" />}
                         </div>
-                        <span className="font-medium text-gray-900 max-w-xs truncate">{product.name}</span>
+                        <span className="font-medium max-w-xs truncate">{product.name}</span>
                       </div>
                     </td>
                     <td className="px-6 py-4 text-gray-600">R$ {product.price.toFixed(2)}</td>

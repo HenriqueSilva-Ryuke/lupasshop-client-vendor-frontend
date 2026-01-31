@@ -178,7 +178,7 @@ export default function SettingsPage() {
                 <button
                   onClick={handleSaveSettings}
                   disabled={updateSettingsMutation.isPending}
-                  className="flex items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary-dark transition-colors shadow-lg shadow-primary/30 disabled:opacity-50"
+                  className="flex items-center justify-center rounded-lg h-10 px-4 bg-primary text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary-dark transition-colors shadow-lg shadow-primary/30 disabled:opacity-50"
                 >
                   <span className="mr-2 material-symbols-outlined text-[18px]">save</span>
                   <span className="truncate">
@@ -197,18 +197,18 @@ export default function SettingsPage() {
               <span className="material-symbols-outlined text-primary">storefront</span>
               Perfil da Loja
             </h2>
-            <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 lg:p-8">
+            <div className="bg-white rounded-xl border shadow-sm p-6 lg:p-8">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="flex flex-col gap-4 items-center text-center">
                   <div className="relative group cursor-pointer">
                     <div
-                      className="w-32 h-32 rounded-full bg-gray-100 overflow-hidden border-2 border-dashed border-gray-300 flex items-center justify-center bg-cover bg-center"
+                      className="w-32 h-32 rounded-full overflow-hidden border-2 border-dashed flex items-center justify-center bg-cover bg-center"
                       style={{
                         backgroundImage: logoUrl ? `url(${logoUrl})` : 'none',
                       }}
                     >
                       {!logoUrl && (
-                        <span className="material-symbols-outlined text-gray-400 text-4xl">
+                        <span className="material-symbols-outlined text-4xl">
                           store
                         </span>
                       )}
@@ -226,14 +226,14 @@ export default function SettingsPage() {
                     value={logoUrl}
                     onChange={(e) => setLogoUrl(e.target.value)}
                     placeholder="URL da logo"
-                    className="text-sm w-full px-3 py-1.5 border border-gray-300 rounded-lg"
+                    className="text-sm w-full px-3 py-1.5 border rounded-lg"
                   />
                 </div>
 
                 <div className="md:col-span-2 flex flex-col gap-5">
                   <div className="w-full relative group cursor-pointer">
                     <div
-                      className="h-32 w-full rounded-lg bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center bg-cover bg-center relative overflow-hidden"
+                      className="h-32 w-full rounded-lg border-2 border-dashed flex items-center justify-center bg-cover bg-center relative overflow-hidden"
                       style={{
                         backgroundImage: bannerUrl ? `url(${bannerUrl})` : 'none',
                       }}
@@ -253,7 +253,7 @@ export default function SettingsPage() {
                       value={bannerUrl}
                       onChange={(e) => setBannerUrl(e.target.value)}
                       placeholder="URL do banner"
-                      className="text-sm w-full px-3 py-1.5 border border-gray-300 rounded-lg mt-2"
+                      className="text-sm w-full px-3 py-1.5 border rounded-lg mt-2"
                     />
                   </div>
 
@@ -263,7 +263,7 @@ export default function SettingsPage() {
                         Nome da Loja
                       </label>
                       <input
-                        className="w-full rounded-lg border-gray-300 bg-white text-text-main-light focus:border-primary focus:ring-primary sm:text-sm py-2.5"
+                        className="w-full rounded-lg bg-white text-text-main-light focus:border-primary focus:ring-primary sm:text-sm py-2.5"
                         type="text"
                         value={storeName}
                         onChange={(e) => setStoreName(e.target.value)}
@@ -274,7 +274,7 @@ export default function SettingsPage() {
                         Descrição Curta
                       </label>
                       <textarea
-                        className="w-full rounded-lg border-gray-300 bg-white text-text-main-light focus:border-primary focus:ring-primary sm:text-sm p-2.5"
+                        className="w-full rounded-lg bg-white text-text-main-light focus:border-primary focus:ring-primary sm:text-sm p-2.5"
                         rows={3}
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
@@ -292,8 +292,8 @@ export default function SettingsPage() {
               <span className="material-symbols-outlined text-primary">local_shipping</span>
               Políticas de Envio
             </h2>
-            <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-              <div className="p-6 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
+              <div className="p-6 border-b flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
                   <h3 className="text-base font-semibold text-text-main-light">
                     Transportadoras Ativas
@@ -323,7 +323,7 @@ export default function SettingsPage() {
                     </div>
                     <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
                       <input
-                        className={`toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer ${
+                        className={`toggle-checkbox absolute block w-5 h-5 rounded-full border-4 appearance-none cursor-pointer ${
                           method.enabled
                             ? 'border-primary translate-x-5'
                             : 'border-gray-300'
@@ -344,14 +344,14 @@ export default function SettingsPage() {
                 ))}
               </div>
 
-              <div className="p-4 bg-gray-50 border-t border-gray-100">
+              <div className="p-4 border-t border-gray-100">
                 <div className="flex flex-col gap-3">
                   <h4 className="text-sm font-semibold text-text-main-light">
                     Configurações Avançadas de Frete
                   </h4>
                   <div className="flex items-center gap-3">
                     <input
-                      className="rounded border-gray-300 text-primary focus:ring-primary"
+                      className="rounded text-primary focus:ring-primary"
                       id="free-shipping"
                       type="checkbox"
                       checked={enableFreeShipping}
@@ -361,7 +361,7 @@ export default function SettingsPage() {
                       Oferecer Frete Grátis acima de R$
                     </label>
                     <input
-                      className="w-24 rounded border-gray-300 py-1 px-2 text-sm bg-white focus:ring-primary focus:border-primary"
+                      className="w-24 rounded py-1 px-2 text-sm focus:ring-primary focus:border-primary"
                       type="number"
                       value={freeShippingMin}
                       onChange={(e) => setFreeShippingMin(e.target.value)}
@@ -379,9 +379,9 @@ export default function SettingsPage() {
               <span className="material-symbols-outlined text-primary">credit_card</span>
               Métodos de Pagamento
             </h2>
-            <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+            <div className="bg-white rounded-xl border shadow-sm p-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="border border-gray-200 rounded-lg p-4 flex items-start gap-4 hover:border-primary transition-colors cursor-pointer group relative">
+                <div className="border rounded-lg p-4 flex items-start gap-4 hover:border-primary transition-colors cursor-pointer group relative">
                   {pixKey && (
                     <div className="absolute top-4 right-4 text-primary">
                       <span className="material-symbols-outlined">check_circle</span>
@@ -399,7 +399,7 @@ export default function SettingsPage() {
                       value={pixKey}
                       onChange={(e) => setPixKey(e.target.value)}
                       placeholder="Chave PIX (CNPJ, email, telefone)"
-                      className="text-xs w-full mt-2 px-2 py-1 border border-gray-300 rounded"
+                      className="text-xs w-full mt-2 px-2 py-1 border rounded"
                     />
                   </div>
                 </div>
@@ -443,7 +443,7 @@ export default function SettingsPage() {
                       <span className="material-symbols-outlined">check_circle</span>
                     </div>
                   )}
-                  <div className="h-10 w-10 rounded bg-gray-100 flex items-center justify-center text-gray-500">
+                  <div className="h-10 w-10 rounded flex items-center justify-center text-gray-500">
                     <span className="material-symbols-outlined">receipt</span>
                   </div>
                   <div>
@@ -463,7 +463,7 @@ export default function SettingsPage() {
               <span className="material-symbols-outlined text-primary">share</span>
               Redes Sociais
             </h2>
-            <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+            <div className="bg-white rounded-xl border shadow-sm p-6">
               <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-3">
                   <div className="w-8 flex justify-center text-pink-600">
@@ -474,7 +474,7 @@ export default function SettingsPage() {
                       Instagram
                     </label>
                     <input
-                      className="w-full rounded-lg border-gray-300 bg-gray-50 text-text-main-light focus:border-primary focus:ring-primary text-sm py-2"
+                      className="w-full rounded-lg bg-gray-50 text-text-main-light focus:border-primary focus:ring-primary text-sm py-2"
                       placeholder="@seuinstagram"
                       type="text"
                       value={instagramUrl}
@@ -492,7 +492,7 @@ export default function SettingsPage() {
                       Facebook
                     </label>
                     <input
-                      className="w-full rounded-lg border-gray-300 bg-gray-50 text-text-main-light focus:border-primary focus:ring-primary text-sm py-2"
+                      className="w-full rounded-lg bg-gray-50 text-text-main-light focus:border-primary focus:ring-primary text-sm py-2"
                       placeholder="facebook.com/suapagina"
                       type="text"
                       value={facebookUrl}
@@ -510,7 +510,7 @@ export default function SettingsPage() {
                       WhatsApp (Botão flutuante)
                     </label>
                     <input
-                      className="w-full rounded-lg border-gray-300 bg-gray-50 text-text-main-light focus:border-primary focus:ring-primary text-sm py-2"
+                      className="w-full rounded-lg bg-gray-50 text-text-main-light focus:border-primary focus:ring-primary text-sm py-2"
                       placeholder="(00) 00000-0000"
                       type="text"
                       value={whatsappNumber}
@@ -526,11 +526,11 @@ export default function SettingsPage() {
         </div>
 
         {/* Mobile Save Button */}
-        <div className="fixed bottom-0 left-0 right-0 z-10 w-full bg-white border-t border-gray-200 p-4 lg:hidden">
+        <div className="fixed bottom-0 left-0 right-0 z-10 w-full border-t p-4 lg:hidden">
           <button
             onClick={handleSaveSettings}
             disabled={updateSettingsMutation.isPending}
-            className="w-full flex items-center justify-center rounded-lg h-12 px-4 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary-dark transition-colors shadow-lg disabled:opacity-50"
+            className="w-full flex items-center justify-center rounded-lg h-12 px-4 bg-primary text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary-dark transition-colors shadow-lg disabled:opacity-50"
           >
             {updateSettingsMutation.isPending ? 'Salvando...' : 'Salvar Todas as Alterações'}
           </button>

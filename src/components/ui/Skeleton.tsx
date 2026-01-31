@@ -30,7 +30,7 @@ export default function Skeleton({
   className = '',
   count = 1,
 }: SkeletonProps) {
-  const baseClass = `${skeletonVariants.type[type]} ${width} ${height || ''} bg-gray-200 ${className}`;
+  const baseClass = `${skeletonVariants.type[type]} ${width} ${height || ''} ${className}`;
 
   const pulseVariants = {
     initial: { opacity: 0.6 },

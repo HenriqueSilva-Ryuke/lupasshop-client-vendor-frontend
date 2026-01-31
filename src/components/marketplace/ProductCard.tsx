@@ -15,7 +15,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     return (
         <Link
             href={`/product/${product.slug}`}
-            className="group bg-card rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 transition-all duration-300 block h-full flex flex-col"
+            className="group bg-card rounded-2xl border overflow-hidden hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 transition-all duration-300 block h-full flex flex-col"
         >
             {/* Product Image */}
             <div className="relative h-48 w-full bg-muted overflow-hidden">
@@ -55,7 +55,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                 <div className="flex items-center gap-2 mb-3">
                     <div className="w-5 h-5 rounded-full bg-muted relative overflow-hidden">
                         {/* Placeholder for store logo if we had it in product type, using generic icon for now or just text */}
-                        <div className="absolute inset-0 bg-gray-200" />
+                        <div className="absolute inset-0" />
                     </div>
                     <span className="text-xs text-muted-foreground font-medium truncate">
                         {product.storeName}
