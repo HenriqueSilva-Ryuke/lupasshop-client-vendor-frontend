@@ -66,7 +66,7 @@ function StoreCard({ store }: StoreCardProps) {
                 {store.name}
               </h3>
               {store.isVerified && (
-                <span className="text-blue-500" title="Loja verificada">✓</span>
+                <span className="text-primary" title="Loja verificada">✓</span>
               )}
               {store.isPremium && (
                 <span className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-black text-xs px-2 py-0.5 rounded">

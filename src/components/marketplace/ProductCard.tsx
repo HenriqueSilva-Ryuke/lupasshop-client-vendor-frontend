@@ -28,7 +28,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                 {/* Badges */}
                 <div className="absolute top-3 left-3 flex flex-col gap-2">
                     {product.isNew && (
-                        <span className="px-2 py-1 bg-blue-500 text-black text-xs font-bold rounded-lg shadow-sm">
+                        <span className="px-2 py-1 bg-primary500 text-black text-xs font-bold rounded-lg shadow-sm">
                             NEW
                         </span>
                     )}

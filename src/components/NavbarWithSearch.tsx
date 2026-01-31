@@ -170,7 +170,7 @@ export default function NavbarWithSearch() {
                     onClick={handleSearchClick}
                     className={`p-2.5 rounded-full transition-all duration-300 ${
                       isScrolled
-                        ? 'bg-muted text-foreground hover:bg-gray-200'
+                        ? 'bg-muted text-foreground hover:bg-accent200'
                         : 'bg-card/20 text-black hover:bg-card/30'
                     }`}
                   >
@@ -242,7 +242,7 @@ export default function NavbarWithSearch() {
               </div>
               <button
                 onClick={handleCloseSearch}
-                className="p-2.5 hover:bg-muted hover:bg-gray-800 rounded-full transition-colors"
+                className="p-2.5 hover:bg-muted hover:bg-accent800 rounded-full transition-colors"
               >
                 <X className="w-5 h-5 text-muted-foreground text-muted-foreground" />
               </button>
@@ -279,7 +279,7 @@ export default function NavbarWithSearch() {
                         <button
                           key={product.id}
                           onClick={() => handleResultClick('product', product.slug)}
-                          className="w-full flex items-center gap-3 p-3 hover:bg-muted hover:bg-gray-800 rounded-lg transition-colors text-left"
+                          className="w-full flex items-center gap-3 p-3 hover:bg-muted hover:bg-accent800 rounded-lg transition-colors text-left"
                         >
                           <div className="w-12 h-12 bg-muted bg-gray-800 rounded flex-shrink-0 overflow-hidden">
                             {product.images[0] && (
@@ -310,7 +310,7 @@ export default function NavbarWithSearch() {
                         <button
                           key={store.id}
                           onClick={() => handleResultClick('store', store.slug)}
-                          className="w-full flex items-center gap-3 p-3 hover:bg-muted hover:bg-gray-800 rounded-lg transition-colors text-left"
+                          className="w-full flex items-center gap-3 p-3 hover:bg-muted hover:bg-accent800 rounded-lg transition-colors text-left"
                         >
                           <div className="w-12 h-12 bg-muted bg-gray-800 rounded flex-shrink-0 overflow-hidden">
                             {store.logoUrl && (
@@ -321,7 +321,7 @@ export default function NavbarWithSearch() {
                             <p className="font-medium text-foreground text-black truncate flex items-center gap-2">
                               {store.name}
                               {store.isVerified && (
-                                <span className="text-blue-500 text-xs">✓</span>
+                                <span className="text-primary text-xs">✓</span>
                               )}
                             </p>
                             <div className="flex items-center gap-2 text-xs text-muted-foreground">

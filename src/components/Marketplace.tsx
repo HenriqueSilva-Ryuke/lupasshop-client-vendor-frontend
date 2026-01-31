@@ -169,7 +169,7 @@ export default function Marketplace() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-3">{tHome('hero.title')}</h1>
-            <p className="text-purple-100 text-lg">{tHome('hero.subtitle')}</p>
+            <p className="text-primary100 text-lg">{tHome('hero.subtitle')}</p>
           </div>
 
           {/* Search Bar */}
@@ -213,7 +213,7 @@ export default function Marketplace() {
               <h3 className="text-lg font-bold">New Collection</h3>
             </div>
             <p className="text-blue-100 mb-4">Latest trends just arrived</p>
-            <button className="bg-card text-blue-500 px-4 py-2 rounded font-semibold hover:bg-blue-50 transition">
+            <button className="bg-card text-primary px-4 py-2 rounded font-semibold hover:bg-primary50 transition">
               Explore
             </button>
           </div>
@@ -247,7 +247,7 @@ export default function Marketplace() {
                 onClick={() => setSelectedCategory(category.id)}
                 className={`p-4 rounded-lg text-center transition ${selectedCategory === category.id
                   ? 'bg-primary text-black'
-                  : 'bg-muted text-foreground hover:bg-gray-200'
+                  : 'bg-muted text-foreground hover:bg-accent200'
                   }`}
               >
                 <div className="text-3xl mb-2">{category.icon}</div>
@@ -263,7 +263,7 @@ export default function Marketplace() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-bold text-foreground">Flash Deals</h2>
-          <Link href="#" className="text-primary hover:text-purple-900 font-semibold flex items-center gap-2">
+          <Link href="#" className="text-primary hover:text-primary900 font-semibold flex items-center gap-2">
             View All
             <span>→</span>
           </Link>
@@ -356,7 +356,7 @@ export default function Marketplace() {
                   </p>
 
                   {/* Add to Cart Button */}
-                  <button className="w-full bg-primary hover:bg-purple-900 text-black py-2 rounded-lg font-semibold transition flex items-center justify-center gap-2">
+                  <button className="w-full bg-primary hover:bg-primary900 text-black py-2 rounded-lg font-semibold transition flex items-center justify-center gap-2">
                     <ShoppingCart size={16} />
                     Add to Cart
                   </button>

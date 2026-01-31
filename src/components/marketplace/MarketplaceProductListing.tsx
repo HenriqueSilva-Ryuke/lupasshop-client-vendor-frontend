@@ -115,7 +115,7 @@ export default function MarketplaceProductListing() {
                         className="w-4 h-4 rounded border-border text-primary focus:ring-primary bg-card bg-[#2c3640] border-gray-600"
                       />
                       <span className="text-sm text-muted-foreground text-muted-foreground">{store.name}</span>
-                      {store.isVerified && <span className="text-blue-500 text-xs">✓</span>}
+                      {store.isVerified && <span className="text-primary text-xs">✓</span>}
                     </label>
                   ))}
                 </div>

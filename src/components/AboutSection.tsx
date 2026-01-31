@@ -22,7 +22,7 @@ export default function AboutSection() {
             {t('hero.title')}
           </motion.h1>
           <motion.p
-            className="text-xl text-purple-100 max-w-2xl mx-auto"
+            className="text-xl text-primary100 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -198,7 +198,7 @@ export default function AboutSection() {
             {t('cta.title')}
           </motion.h2>
           <motion.p
-            className="text-xl text-purple-100 mb-8"
+            className="text-xl text-primary100 mb-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -215,13 +215,13 @@ export default function AboutSection() {
           >
             <Link
               href={`/${locale}/stores/register`}
-              className="bg-card text-purple-900 px-8 py-3 rounded-lg font-semibold hover:bg-muted transition-colors"
+              className="bg-card text-primary900 px-8 py-3 rounded-lg font-semibold hover:bg-muted transition-colors"
             >
               {t('cta.joinStore')}
             </Link>
             <Link
               href={`/${locale}/products`}
-              className="border-2 border-black text-black px-8 py-3 rounded-lg font-semibold hover:bg-card hover:text-purple-900 transition-colors"
+              className="border-2 border-black text-black px-8 py-3 rounded-lg font-semibold hover:bg-card hover:text-primary900 transition-colors"
             >
               {t('cta.startShopping')}
             </Link>

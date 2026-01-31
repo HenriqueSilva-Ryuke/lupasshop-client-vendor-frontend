@@ -38,7 +38,7 @@ export function BottomNav() {
                     className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all ${
                       isActive
                         ? 'bg-primary text-card-foreground shadow-md shadow-primary/20'
-                        : 'hover:bg-muted hover:bg-gray-700/50 text-text-main-light text-text-main-dark'
+                        : 'hover:bg-muted hover:bg-accent700/50 text-text-main-light text-text-main-dark'
                     }`}
                   >
                     <span className={`material-symbols-outlined text-[20px] ${
@@ -62,7 +62,7 @@ export function BottomNav() {
           <div className="flex flex-col gap-2 border-t border-border border-border pt-4">
             <Link
               href={`/${locale}/seller/help`}
-              className="group flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-muted hover:bg-gray-700/50 text-text-sub-light text-text-sub-dark transition-colors"
+              className="group flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-muted hover:bg-accent700/50 text-text-sub-light text-text-sub-dark transition-colors"
             >
               <span className="material-symbols-outlined text-[20px]">help</span>
               <span className="text-sm font-medium leading-normal">Ajuda & Suporte</span>
@@ -94,7 +94,7 @@ export function BottomNav() {
                   className={`relative flex flex-col items-center justify-center p-2 rounded-full transition-all ${
                     isActive
                       ? 'bg-primary text-card-foreground shadow-lg shadow-primary/30'
-                      : 'text-muted-foreground text-muted-foreground hover:bg-muted hover:bg-gray-700'
+                      : 'text-muted-foreground text-muted-foreground hover:bg-muted hover:bg-accent700'
                   }`}
                 >
                   <span className="material-symbols-outlined text-[22px]">{item.icon}</span>

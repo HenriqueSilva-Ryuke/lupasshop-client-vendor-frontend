@@ -65,7 +65,7 @@ export default function ShopsList({
           <div className="mt-4 flex gap-2">
             <button
               onClick={() => onEdit(shop)}
-              className="px-3 py-1 text-sm bg-blue-50 text-blue-600 rounded hover:bg-blue-100 transition-colors"
+              className="px-3 py-1 text-sm bg-primary50 text-primary rounded hover:bg-primary100 transition-colors"
             >
               {t('common.edit')}
             </button>

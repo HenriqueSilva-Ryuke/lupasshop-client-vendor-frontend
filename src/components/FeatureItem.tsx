@@ -25,7 +25,7 @@ export const FeatureItem = ({ feature, transforms, zIndex }: FeatureItemProps) =
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <div className="w-16 h-16 rounded-xl bg-linear-to-br from-primary to-purple-200 flex items-center justify-center text-purple-600">
+          <div className="w-16 h-16 rounded-xl bg-linear-to-br from-primary to-purple-200 flex items-center justify-center text-primary600">
             <div className="text-black">
               {feature.icon}
             </div>
@@ -45,7 +45,7 @@ export const FeatureItem = ({ feature, transforms, zIndex }: FeatureItemProps) =
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 + idx * 0.1 }}
               >
-                <span className="text-purple-600 mt-1">{detail.icon}</span>
+                <span className="text-primary600 mt-1">{detail.icon}</span>
                 <span className="text-foreground">{detail.text}</span>
               </motion.div>
             ))}
@@ -54,17 +54,17 @@ export const FeatureItem = ({ feature, transforms, zIndex }: FeatureItemProps) =
 
         {/* Right Visual */}
         <motion.div
-          className={`relative h-96 rounded-2xl bg-linear-to-br ${feature.gradient} p-8 flex items-center justify-center overflow-hidden border border-purple-100`}
+          className={`relative h-96 rounded-2xl bg-linear-to-br ${feature.gradient} p-8 flex items-center justify-center overflow-hidden border border-primary100`}
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.3 }}
         >
           <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-10 right-10 w-32 h-32 bg-purple-200 rounded-full blur-3xl" />
-            <div className="absolute bottom-10 left-10 w-40 h-40 bg-purple-200 rounded-full blur-3xl" />
+            <div className="absolute top-10 right-10 w-32 h-32 bg-primary200 rounded-full blur-3xl" />
+            <div className="absolute bottom-10 left-10 w-40 h-40 bg-primary200 rounded-full blur-3xl" />
           </div>
           <motion.div
-            className="text-purple-600 text-6xl opacity-80"
+            className="text-primary600 text-6xl opacity-80"
             animate={{
               y: [0, -10, 0],
               rotate: [0, 5, 0],

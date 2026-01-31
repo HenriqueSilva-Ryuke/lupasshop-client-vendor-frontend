@@ -51,7 +51,7 @@ export default function FeaturesSection() {
             {t('ctaTitle')}
           </motion.h2>
           <motion.p
-            className="text-xl text-purple-100 max-w-2xl mx-auto"
+            className="text-xl text-primary100 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -59,7 +59,7 @@ export default function FeaturesSection() {
             {t('ctaDescription')}
           </motion.p>
           <motion.button
-            className="px-8 py-4 bg-card text-purple-900 rounded-lg font-bold text-lg hover:bg-purple-50 transition-colors"
+            className="px-8 py-4 bg-card text-primary900 rounded-lg font-bold text-lg hover:bg-primary50 transition-colors"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}

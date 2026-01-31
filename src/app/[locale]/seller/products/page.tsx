@@ -102,7 +102,7 @@ export default function SellerProductsPage({ params }: { params: Promise<{ local
                 </tr>
               ) : (
                 products.map((product: any) => (
-                  <tr key={product.id} className="border-b border-gray-50 hover:bg-gray-50/50 transition-colors">
+                  <tr key={product.id} className="border-b border-gray-50 hover:bg-accent50/50 transition-colors">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-lg bg-gray-100 overflow-hidden shrink-0">
@@ -119,8 +119,8 @@ export default function SellerProductsPage({ params }: { params: Promise<{ local
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex flex-col gap-1">
-                        {product.isNew && <span className="text-[10px] leading-tight bg-blue-50 text-blue-600 px-1.5 py-0.5 rounded w-fit">Novo</span>}
-                        {product.isTrending && <span className="text-[10px] leading-tight bg-purple-50 text-purple-600 px-1.5 py-0.5 rounded w-fit">Destaque</span>}
+                        {product.isNew && <span className="text-[10px] leading-tight bg-primary50 text-primary px-1.5 py-0.5 rounded w-fit">Novo</span>}
+                        {product.isTrending && <span className="text-[10px] leading-tight bg-primary50 text-primary600 px-1.5 py-0.5 rounded w-fit">Destaque</span>}
                       </div>
                     </td>
                     <td className="px-6 py-4 text-right">

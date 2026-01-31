@@ -49,7 +49,7 @@ function ProductCard({ product }: ProductCardProps) {
             </div>
           )}
           {product.isNew && (
-            <span className="absolute top-2 left-2 bg-blue-500 text-black text-xs px-2 py-1 rounded">
+            <span className="absolute top-2 left-2 bg-primary500 text-black text-xs px-2 py-1 rounded">
               Novo
             </span>
           )}
@@ -67,7 +67,7 @@ function ProductCard({ product }: ProductCardProps) {
           
           <Link 
             href={`/stores/${product.store.slug}`}
-            className="text-sm text-muted-foreground hover:text-blue-600 mb-2 block"
+            className="text-sm text-muted-foreground hover:text-primary mb-2 block"
             onClick={(e) => e.stopPropagation()}
           >
             {product.store.name}

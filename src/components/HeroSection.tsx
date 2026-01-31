@@ -178,7 +178,7 @@ export default function HeroSection() {
         >
           <Button
             variant="default"
-            className="group relative bg-card text-blue-600 px-10 py-4 rounded-full font-semibold text-lg overflow-hidden"
+            className="group relative bg-card text-primary px-10 py-4 rounded-full font-semibold text-lg overflow-hidden"
           >
             <span className="relative z-10 flex items-center">
               {t('shopNow')}

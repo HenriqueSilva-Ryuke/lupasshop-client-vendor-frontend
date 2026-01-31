@@ -23,9 +23,9 @@ interface DashboardSidebarProps {
 }
 
 const colorMap: Record<string, string> = {
-  overview: 'bg-blue-500',
-  shops: 'bg-purple-500',
-  products: 'bg-green-500',
+  overview: 'bg-primary500',
+  shops: 'bg-primary500',
+  products: 'text-primary',
   orders: 'bg-orange-500',
   finances: 'bg-emerald-500',
   reviews: 'bg-yellow-500',

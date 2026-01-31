@@ -111,7 +111,7 @@ export default function AddressesPage() {
               setShowForm(false);
               setEditingId(null);
             }}
-            className="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
+            className="px-6 py-2 border border-gray-300 rounded-lg hover:bg-accent50"
           >
             {t('form.cancel')}
           </button>

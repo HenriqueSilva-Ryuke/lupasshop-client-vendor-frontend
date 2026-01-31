@@ -99,7 +99,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
             </div>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-muted hover:bg-gray-700 rounded-lg transition-colors"
+              className="p-2 hover:bg-muted hover:bg-accent700 rounded-lg transition-colors"
             >
               <span className="material-symbols-outlined">close</span>
             </button>
@@ -312,7 +312,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 h-12 rounded-lg border-2 border-border border-gray-600 text-foreground text-card-foreground font-medium hover:bg-muted hover:bg-gray-700 transition-all"
+              className="flex-1 h-12 rounded-lg border-2 border-border border-gray-600 text-foreground text-card-foreground font-medium hover:bg-muted hover:bg-accent700 transition-all"
               disabled={isLoading}
             >
               Cancelar

@@ -22,9 +22,9 @@ interface OrdersListProps {
 
 const statusIcons = {
   pending: { icon: 'schedule', color: 'text-yellow-600' },
-  confirmed: { icon: 'check_circle', color: 'text-blue-600' },
-  shipped: { icon: 'local_shipping', color: 'text-purple-600' },
-  delivered: { icon: 'done_all', color: 'text-green-600' },
+  confirmed: { icon: 'check_circle', color: 'text-primary' },
+  shipped: { icon: 'local_shipping', color: 'text-primary600' },
+  delivered: { icon: 'done_all', color: 'text-primary' },
 };
 
 export default function OrdersList({

@@ -40,7 +40,7 @@ export default function PromotedStoreWidget({ store }: PromotedStoreWidgetProps)
           <div className="flex items-center gap-2 mb-1">
             <h4 className="font-bold text-lg text-foreground">{store.name}</h4>
             {store.isVerified && (
-              <BadgeCheck className="w-5 h-5 text-blue-500" />
+              <BadgeCheck className="w-5 h-5 text-primary" />
             )}
           </div>
           

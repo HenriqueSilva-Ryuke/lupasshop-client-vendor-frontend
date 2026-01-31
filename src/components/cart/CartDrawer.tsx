@@ -80,7 +80,7 @@ export function CartDrawer() {
           <div className="flex items-center gap-2">
             <ShoppingBag size={24} />
             <h2 className="text-xl font-bold">Carrinho</h2>
-            <span className="bg-blue-600 text-black text-xs rounded-full w-6 h-6 flex items-center justify-center">
+            <span className="bg-primary600 text-black text-xs rounded-full w-6 h-6 flex items-center justify-center">
               {getTotalItems()}
             </span>
           </div>
@@ -121,7 +121,7 @@ export function CartDrawer() {
             <Link
               href="/checkout"
               onClick={closeCartDrawer}
-              className="block w-full py-3 bg-blue-600 hover:bg-blue-700 text-black text-center font-medium rounded-lg transition-colors"
+              className="block w-full py-3 bg-primary600 hover:bg-primary700 text-black text-center font-medium rounded-lg transition-colors"
             >
               Finalizar Compra
             </Link>

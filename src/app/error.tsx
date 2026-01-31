@@ -68,7 +68,7 @@ export default function RootError({ error, reset }: ErrorProps) {
             <Button
               variant="default"
               onClick={() => (window.location.href = '/')}
-              className="px-6 py-2 bg-gray-200 text-gray-800 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
+              className="px-6 py-2 bg-gray-200 text-gray-800 rounded-lg font-semibold hover:bg-accent300 transition-colors"
             >
               Home
             </Button>

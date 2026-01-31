@@ -153,7 +153,7 @@ export default function StorePage() {
                   />
                 </div>
                 {store.isVerified && (
-                  <div className="absolute bottom-1 right-1 bg-green-500 border-2 border-white rounded-full size-6 flex items-center justify-center" title="Loja Verificada">
+                  <div className="absolute bottom-1 right-1 text-primary border-2 border-white rounded-full size-6 flex items-center justify-center" title="Loja Verificada">
                     <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
@@ -175,7 +175,7 @@ export default function StorePage() {
                     {store.isVerified && (
                       <>
                         <span className="hidden sm:inline">•</span>
-                        <span className="text-green-600 font-medium flex items-center gap-1">
+                        <span className="text-primary font-medium flex items-center gap-1">
                           ✓ Loja Verificada
                         </span>
                       </>
@@ -194,13 +194,13 @@ export default function StorePage() {
                   </Button>
                   <Button
                     variant="icon"
-                    className="size-10 flex items-center justify-center rounded-lg border border-gray-200 text-black hover:bg-gray-50 transition-colors"
+                    className="size-10 flex items-center justify-center rounded-lg border border-gray-200 text-black hover:bg-accent50 transition-colors"
                   >
                     <Share2 className="w-5 h-5" />
                   </Button>
                   <Button
                     variant="icon"
-                    className="size-10 flex items-center justify-center rounded-lg border border-gray-200 text-black hover:bg-gray-50 transition-colors"
+                    className="size-10 flex items-center justify-center rounded-lg border border-gray-200 text-black hover:bg-accent50 transition-colors"
                   >
                     <MessageCircle className="w-5 h-5" />
                   </Button>
@@ -366,7 +366,7 @@ export default function StorePage() {
                       whileHover={{ scale: 1.05 }}
                       disabled={currentPage === 1}
                       onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
-                      className="size-10 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="size-10 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-accent50 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <ChevronLeft className="w-5 h-5" />
                     </motion.button>
@@ -381,7 +381,7 @@ export default function StorePage() {
                           className={`size-10 flex items-center justify-center rounded-lg font-bold transition-colors ${
                             currentPage === pageNum
                               ? 'bg-primary text-white'
-                              : 'border border-gray-200 text-black hover:bg-gray-50'
+                              : 'border border-gray-200 text-black hover:bg-accent50'
                           }`}
                         >
                           {pageNum}
@@ -398,7 +398,7 @@ export default function StorePage() {
                           className={`size-10 flex items-center justify-center rounded-lg font-bold transition-colors ${
                             currentPage === totalPages
                               ? 'bg-primary text-white'
-                              : 'border border-gray-200 text-black hover:bg-gray-50'
+                              : 'border border-gray-200 text-black hover:bg-accent50'
                           }`}
                         >
                           {totalPages}
@@ -410,7 +410,7 @@ export default function StorePage() {
                       whileHover={{ scale: 1.05 }}
                       disabled={currentPage === totalPages}
                       onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
-                      className="size-10 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="size-10 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-accent50 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <ChevronRight className="w-5 h-5" />
                     </motion.button>

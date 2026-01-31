@@ -51,7 +51,7 @@ export default function NotFound() {
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
               href="/"
-              className="inline-block px-8 py-3 bg-blue-600 text-black rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg"
+              className="inline-block px-8 py-3 bg-primary600 text-black rounded-lg font-semibold hover:bg-primary700 transition-colors shadow-lg"
             >
               Home
             </Link>
@@ -59,7 +59,7 @@ export default function NotFound() {
           <Button
             variant="default"
             onClick={() => window.history.back()}
-            className="px-8 py-3 bg-white text-blue-600 rounded-lg font-semibold border-2 border-blue-600 hover:bg-blue-50 transition-colors"
+            className="px-8 py-3 bg-white text-primary rounded-lg font-semibold border-2 border-primary600 hover:bg-primary50 transition-colors"
           >
             Voltar
           </Button>

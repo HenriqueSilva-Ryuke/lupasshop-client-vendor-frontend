@@ -146,7 +146,7 @@ export default function UserFinancesPage() {
           <div className="flex flex-col gap-2 rounded-xl p-6 bg-white bg-card-dark border border-gray-200 border-gray-700 shadow-sm transition-transform hover:-translate-y-1">
             <div className="flex items-center justify-between">
               <p className="text-text-sub-light text-text-sub-dark text-sm font-medium">Total Gasto</p>
-              <div className="p-2 bg-blue-50 bg-blue-900/20 rounded-lg text-blue-600 text-blue-400">
+              <div className="p-2 bg-primary50 bg-primary900/20 rounded-lg text-primary text-blue-400">
                 <span className="material-symbols-outlined text-[20px]">shopping_cart</span>
               </div>
             </div>
@@ -155,7 +155,7 @@ export default function UserFinancesPage() {
                 {formatCurrency(finances.totalSpent)}
               </p>
               <div className="flex items-center gap-1 mt-2">
-                <span className="material-symbols-outlined text-[16px] text-blue-600">info</span>
+                <span className="material-symbols-outlined text-[16px] text-primary">info</span>
                 <p className="text-text-sub-light text-text-sub-dark text-xs font-normal">
                   Desde o início da conta
                 </p>
@@ -166,7 +166,7 @@ export default function UserFinancesPage() {
           <div className="flex flex-col gap-2 rounded-xl p-6 bg-white bg-card-dark border border-gray-200 border-gray-700 shadow-sm transition-transform hover:-translate-y-1">
             <div className="flex items-center justify-between">
               <p className="text-text-sub-light text-text-sub-dark text-sm font-medium">Total Reembolsado</p>
-              <div className="p-2 bg-green-50 bg-green-900/20 rounded-lg text-green-600 text-green-400">
+              <div className="p-2 bg-green-50 bg-green-900/20 rounded-lg text-primary text-green-400">
                 <span className="material-symbols-outlined text-[20px]">undo</span>
               </div>
             </div>
@@ -175,8 +175,8 @@ export default function UserFinancesPage() {
                 {formatCurrency(finances.totalRefunded)}
               </p>
               <div className="flex items-center gap-1 mt-2">
-                <span className="material-symbols-outlined text-[16px] text-green-600">arrow_upward</span>
-                <p className="text-green-600 text-sm font-medium">
+                <span className="material-symbols-outlined text-[16px] text-primary">arrow_upward</span>
+                <p className="text-primary text-sm font-medium">
                   Devolvidos
                 </p>
               </div>
@@ -215,7 +215,7 @@ export default function UserFinancesPage() {
                   {transactions.map((transaction) => (
                     <tr
                       key={transaction.id}
-                      className="group hover:bg-gray-50 hover:bg-gray-800 transition-colors"
+                      className="group hover:bg-accent50 hover:bg-accent800 transition-colors"
                     >
                       <td className="p-4 text-sm text-text-sub-light text-text-sub-dark">
                         {formatDate(transaction.createdAt)}
@@ -238,7 +238,7 @@ export default function UserFinancesPage() {
                           </span>
                         )}
                         {transaction.type === 'CREDIT' && (
-                          <span className="inline-flex items-center gap-1 text-green-600 text-green-400">
+                          <span className="inline-flex items-center gap-1 text-primary text-green-400">
                             <span className="material-symbols-outlined text-[16px]">
                               add_circle
                             </span>
@@ -246,7 +246,7 @@ export default function UserFinancesPage() {
                           </span>
                         )}
                         {transaction.type === 'REFUND' && (
-                          <span className="inline-flex items-center gap-1 text-blue-600 text-blue-400">
+                          <span className="inline-flex items-center gap-1 text-primary text-blue-400">
                             <span className="material-symbols-outlined text-[16px]">
                               undo
                             </span>
@@ -261,12 +261,12 @@ export default function UserFinancesPage() {
                           </span>
                         )}
                         {transaction.type === 'CREDIT' && (
-                          <span className="text-green-600 text-green-400">
+                          <span className="text-primary text-green-400">
                             + {formatCurrency(transaction.amount)}
                           </span>
                         )}
                         {transaction.type === 'REFUND' && (
-                          <span className="text-blue-600 text-blue-400">
+                          <span className="text-primary text-blue-400">
                             + {formatCurrency(transaction.amount)}
                           </span>
                         )}

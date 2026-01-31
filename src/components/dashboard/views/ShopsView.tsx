@@ -51,7 +51,7 @@ export default function ShopsView() {
               <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
 
               <div className="absolute top-3 right-3">
-                <span className={`px-2 py-1 rounded-lg text-xs font-bold ${shop.approvalStatus === 'APPROVED' ? 'bg-green-500 text-black' :
+                <span className={`px-2 py-1 rounded-lg text-xs font-bold ${shop.approvalStatus === 'APPROVED' ? 'text-primary text-black' :
                     shop.approvalStatus === 'PENDING' ? 'bg-amber-500 text-black' :
                       'bg-destructive/100 text-black'
                   }`}>

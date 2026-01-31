@@ -96,7 +96,7 @@ export function OnboardingTour() {
                 {/* Status Indicator */}
                 {step.status === 'completed' && (
                   <div className="absolute right-0 top-0 p-3">
-                    <div className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100 text-green-600">
+                    <div className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100 text-primary">
                       <span className="material-symbols-outlined text-[16px] font-bold">
                         check
                       </span>
@@ -167,7 +167,7 @@ export function OnboardingTour() {
 
                 {/* Bottom Indicator */}
                 {step.status === 'completed' && (
-                  <div className="h-1 w-full bg-green-500" />
+                  <div className="h-1 w-full text-primary" />
                 )}
               </div>
             ))}

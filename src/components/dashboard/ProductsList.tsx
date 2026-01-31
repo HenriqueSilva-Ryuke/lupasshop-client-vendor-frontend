@@ -65,7 +65,7 @@ export default function ProductsList({
               <td className="px-6 py-4 flex gap-2">
                 <button
                   onClick={() => onEdit(product)}
-                  className="text-blue-600 hover:text-blue-700 transition-colors"
+                  className="text-primary hover:text-blue-700 transition-colors"
                 >
                   <span className="material-icons text-sm">edit</span>
                 </button>

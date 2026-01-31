@@ -12,8 +12,8 @@ import Button from '@/components/ui/Button';
 function StatusBadge({ status }: { status: string }) {
   const styles = {
     PENDING: "bg-yellow-100 text-yellow-800",
-    PAID: "bg-blue-100 text-blue-800",
-    SHIPPED: "bg-purple-100 text-purple-800",
+    PAID: "bg-primary100 text-blue-800",
+    SHIPPED: "bg-primary100 text-primary800",
     DELIVERED: "bg-green-100 text-green-800",
     CANCELLED: "bg-red-100 text-red-800"
   };
@@ -74,7 +74,7 @@ export default function SellerOrdersPage({ params }: { params: Promise<{ locale:
                 </tr>
               ) : (
                 orders.map((order: any) => (
-                  <tr key={order.id} className="border-b border-gray-50 hover:bg-gray-50/50 transition-colors">
+                  <tr key={order.id} className="border-b border-gray-50 hover:bg-accent50/50 transition-colors">
                     <td className="px-6 py-4 font-mono text-sm">#{order.id.slice(0, 8)}...</td>
                     <td className="px-6 py-4 text-sm text-gray-600">
                       {new Date(parseInt(order.createdAt)).toLocaleDateString()}
@@ -89,7 +89,7 @@ export default function SellerOrdersPage({ params }: { params: Promise<{ locale:
                     </td>
                     <td className="px-6 py-4 text-right">
                       <Link href={`/${locale}/seller/orders/${order.id}`}>
-                        <Button variant="outline" size="sm" className="bg-white hover:bg-gray-50">
+                        <Button variant="outline" size="sm" className="bg-white hover:bg-accent50">
                           Detalhes
                           <ChevronRight className="w-3 h-3 ml-1" />
                         </Button>

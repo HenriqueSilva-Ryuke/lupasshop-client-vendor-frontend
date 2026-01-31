@@ -98,14 +98,14 @@ export default function NotificationBell() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setShowUnreadOnly(!showUnreadOnly)}
-                  className="text-sm text-blue-600 hover:text-blue-700"
+                  className="text-sm text-primary hover:text-blue-700"
                 >
                   {showUnreadOnly ? 'Todas' : 'Não lidas'}
                 </button>
                 {unreadCount > 0 && (
                   <button
                     onClick={handleMarkAllAsRead}
-                    className="text-sm text-blue-600 hover:text-blue-700"
+                    className="text-sm text-primary hover:text-blue-700"
                     title="Marcar todas como lidas"
                   >
                     <Check className="h-4 w-4" />
@@ -148,7 +148,7 @@ export default function NotificationBell() {
             <div className="p-2 border-t border-border dark:border-border">
               <Link
                 href="/notifications"
-                className="block w-full text-center text-sm text-blue-600 hover:text-blue-700 py-2"
+                className="block w-full text-center text-sm text-primary hover:text-blue-700 py-2"
                 onClick={() => setIsOpen(false)}
               >
                 Ver todas as notificações
@@ -172,8 +172,8 @@ function NotificationItem({
 
   const content = (
     <div
-      className={`p-4 hover:bg-muted dark:hover:bg-gray-700 cursor-pointer transition-colors ${
-        !notification.read ? 'bg-blue-50 dark:bg-blue-900/20' : ''
+      className={`p-4 hover:bg-muted dark:hover:bg-accent700 cursor-pointer transition-colors ${
+        !notification.read ? 'bg-primary50 dark:bg-primary900/20' : ''
       }`}
       onClick={onClick}
     >
@@ -184,7 +184,7 @@ function NotificationItem({
               {notification.title}
             </p>
             {!notification.read && (
-              <span className="flex-shrink-0 w-2 h-2 bg-blue-500 rounded-full" />
+              <span className="flex-shrink-0 w-2 h-2 bg-primary500 rounded-full" />
             )}
           </div>
           <p className="text-sm text-muted-foreground dark:text-muted-foreground mt-1">

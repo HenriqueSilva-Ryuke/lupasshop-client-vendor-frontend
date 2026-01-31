@@ -80,7 +80,7 @@ export default function ReviewsList({
               <div className="flex gap-2">
                 <button
                   onClick={() => onApprove?.(review.id)}
-                  className="px-3 py-1 text-xs bg-green-50 text-green-600 rounded hover:bg-green-100 transition-colors"
+                  className="px-3 py-1 text-xs bg-green-50 text-primary rounded hover:bg-green-100 transition-colors"
                 >
                   {t('reviews.approve')}
                 </button>

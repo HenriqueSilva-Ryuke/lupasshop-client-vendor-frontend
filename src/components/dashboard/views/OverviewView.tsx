@@ -41,7 +41,7 @@ export default function OverviewView() {
       label: t('stats.totalSales'),
       value: `AOA ${stats.totalSales.toLocaleString()}`,
       change: `${stats.totalOrders} pedidos`,
-      color: 'bg-blue-500',
+      color: 'bg-primary500',
       isPositive: true,
     },
     {
@@ -57,7 +57,7 @@ export default function OverviewView() {
       label: t('stats.totalProducts'),
       value: stats.totalProducts.toString(),
       change: `${stats.activeProducts} ativos`,
-      color: 'bg-green-500',
+      color: 'text-primary',
       isPositive: true,
     },
     {
@@ -151,7 +151,7 @@ export default function OverviewView() {
                       {product.reviewCount} reviews
                     </p>
                   </div>
-                  <span className="text-xs font-semibold text-blue-600 bg-blue-100 px-2 py-1 rounded">
+                  <span className="text-xs font-semibold text-primary bg-primary100 px-2 py-1 rounded">
                     Top {index + 1}
                   </span>
                 </motion.div>

@@ -30,7 +30,7 @@ export function SellerHeader() {
             <div className="relative">
               <button
                 onClick={() => setShowNotifications(!showNotifications)}
-                className="relative p-2 rounded-full hover:bg-muted hover:bg-gray-700 text-text-sub-light text-text-sub-dark transition-colors"
+                className="relative p-2 rounded-full hover:bg-muted hover:bg-accent700 text-text-sub-light text-text-sub-dark transition-colors"
               >
                 <span className="material-symbols-outlined">notifications</span>
                 <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-destructive/100 ring-2 ring-white ring-card-dark"></span>
@@ -43,10 +43,10 @@ export function SellerHeader() {
                     <h3 className="text-sm font-bold text-text-main-light text-text-main-dark">Notificações</h3>
                   </div>
                   <div className="max-h-96 overflow-y-auto">
-                    <div className="p-4 hover:bg-muted hover:bg-gray-800 transition-colors cursor-pointer border-b border-gray-100 border-border">
+                    <div className="p-4 hover:bg-muted hover:bg-accent800 transition-colors cursor-pointer border-b border-gray-100 border-border">
                       <div className="flex gap-3">
                         <div className="flex-shrink-0 w-10 h-10 bg-green-100 bg-green-900/30 rounded-full flex items-center justify-center">
-                          <span className="material-symbols-outlined text-green-600 text-green-400 text-[20px]">shopping_bag</span>
+                          <span className="material-symbols-outlined text-primary text-green-400 text-[20px]">shopping_bag</span>
                         </div>
                         <div className="flex-1">
                           <p className="text-sm font-medium text-text-main-light text-text-main-dark">Novo pedido #7382</p>
@@ -55,7 +55,7 @@ export function SellerHeader() {
                         </div>
                       </div>
                     </div>
-                    <div className="p-4 hover:bg-muted hover:bg-gray-800 transition-colors cursor-pointer border-b border-gray-100 border-border">
+                    <div className="p-4 hover:bg-muted hover:bg-accent800 transition-colors cursor-pointer border-b border-gray-100 border-border">
                       <div className="flex gap-3">
                         <div className="flex-shrink-0 w-10 h-10 bg-orange-100 bg-orange-900/30 rounded-full flex items-center justify-center">
                           <span className="material-symbols-outlined text-orange-600 text-orange-400 text-[20px]">warning</span>
@@ -67,10 +67,10 @@ export function SellerHeader() {
                         </div>
                       </div>
                     </div>
-                    <div className="p-4 hover:bg-muted hover:bg-gray-800 transition-colors cursor-pointer">
+                    <div className="p-4 hover:bg-muted hover:bg-accent800 transition-colors cursor-pointer">
                       <div className="flex gap-3">
-                        <div className="flex-shrink-0 w-10 h-10 bg-blue-100 bg-blue-900/30 rounded-full flex items-center justify-center">
-                          <span className="material-symbols-outlined text-blue-600 text-blue-400 text-[20px]">local_shipping</span>
+                        <div className="flex-shrink-0 w-10 h-10 bg-primary100 bg-primary900/30 rounded-full flex items-center justify-center">
+                          <span className="material-symbols-outlined text-primary text-blue-400 text-[20px]">local_shipping</span>
                         </div>
                         <div className="flex-1">
                           <p className="text-sm font-medium text-text-main-light text-text-main-dark">Pedido enviado</p>
@@ -103,7 +103,7 @@ export function SellerHeader() {
             <div className="relative">
               <button
                 onClick={() => setShowUserMenu(!showUserMenu)}
-                className="flex items-center gap-2 p-1 rounded-full hover:bg-muted hover:bg-gray-700 transition-colors"
+                className="flex items-center gap-2 p-1 rounded-full hover:bg-muted hover:bg-accent700 transition-colors"
               >
                 <div
                   className="h-10 w-10 rounded-full bg-gray-200 bg-cover bg-center ring-2 ring-gray-200 ring-gray-700"
@@ -123,21 +123,21 @@ export function SellerHeader() {
                   <div className="p-2">
                     <button
                       onClick={() => router.push(`/${locale}/seller/profile`)}
-                      className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-muted hover:bg-gray-700 text-text-main-light text-text-main-dark transition-colors"
+                      className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-muted hover:bg-accent700 text-text-main-light text-text-main-dark transition-colors"
                     >
                       <span className="material-symbols-outlined text-[20px]">person</span>
                       <span className="text-sm font-medium">Meu Perfil</span>
                     </button>
                     <button
                       onClick={() => router.push(`/${locale}/seller/settings`)}
-                      className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-muted hover:bg-gray-700 text-text-main-light text-text-main-dark transition-colors"
+                      className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-muted hover:bg-accent700 text-text-main-light text-text-main-dark transition-colors"
                     >
                       <span className="material-symbols-outlined text-[20px]">settings</span>
                       <span className="text-sm font-medium">Configurações</span>
                     </button>
                     <button
                       onClick={() => router.push(`/${locale}/seller/help`)}
-                      className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-muted hover:bg-gray-700 text-text-main-light text-text-main-dark transition-colors"
+                      className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-muted hover:bg-accent700 text-text-main-light text-text-main-dark transition-colors"
                     >
                       <span className="material-symbols-outlined text-[20px]">help</span>
                       <span className="text-sm font-medium">Ajuda</span>

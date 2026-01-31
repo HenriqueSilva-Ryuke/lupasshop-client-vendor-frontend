@@ -23,8 +23,8 @@ export default function OverviewStats() {
             change: '+5.2%',
             trend: 'up',
             icon: ShoppingBag,
-            color: 'text-blue-600',
-            bg: 'bg-blue-50',
+            color: 'text-primary',
+            bg: 'bg-primary50',
         },
         {
             label: t('totalProducts'),
@@ -32,8 +32,8 @@ export default function OverviewStats() {
             change: '0%',
             trend: 'neutral',
             icon: Package,
-            color: 'text-purple-600',
-            bg: 'bg-purple-50',
+            color: 'text-primary600',
+            bg: 'bg-primary50',
         },
         {
             label: t('averageRating'),

@@ -48,7 +48,7 @@ export default function StoreCard({ store }: StoreCardProps) {
                                 {store.name}
                             </h3>
                             {store.isVerified && (
-                                <BadgeCheck className="w-4 h-4 text-blue-500 shrink-0" />
+                                <BadgeCheck className="w-4 h-4 text-primary shrink-0" />
                             )}
                         </div>
                         <div className="flex items-center gap-1 bg-amber-50 px-2 py-0.5 rounded-full">

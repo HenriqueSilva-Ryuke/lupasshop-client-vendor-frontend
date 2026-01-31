@@ -158,7 +158,7 @@ export default function CartPage() {
                         key={item.id}
                         initial={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="flex flex-col sm:flex-row gap-4 px-6 py-6 justify-between border-b border-gray-100 hover:bg-gray-50/50 transition-colors group"
+                        className="flex flex-col sm:flex-row gap-4 px-6 py-6 justify-between border-b border-gray-100 hover:bg-accent50/50 transition-colors group"
                       >
                         {/* Product Info */}
                         <div className="flex items-start gap-4 flex-1">
@@ -173,7 +173,7 @@ export default function CartPage() {
                                 Quantidade: {item.quantity}
                               </p>
                               {item.stockQuantity > 0 ? (
-                                <p className="text-green-600 text-xs font-medium">Em estoque</p>
+                                <p className="text-primary text-xs font-medium">Em estoque</p>
                               ) : (
                                 <p className="text-destructive text-xs font-medium">Fora de estoque</p>
                               )}
@@ -198,7 +198,7 @@ export default function CartPage() {
                             <Button
                               variant="icon"
                               onClick={() => handleUpdateQuantity(item.id, item.quantity - 1)}
-                              className="flex h-7 w-7 items-center justify-center rounded hover:bg-gray-100 cursor-pointer transition-colors text-gray-500"
+                              className="flex h-7 w-7 items-center justify-center rounded hover:bg-accent100 cursor-pointer transition-colors text-gray-500"
                             >
                               <Minus className="w-4 h-4" />
                             </Button>
@@ -212,7 +212,7 @@ export default function CartPage() {
                               variant="icon"
                               onClick={() => handleUpdateQuantity(item.id, item.quantity + 1)}
                               disabled={item.quantity >= item.stockQuantity}
-                              className="flex h-7 w-7 items-center justify-center rounded hover:bg-gray-100 cursor-pointer transition-colors text-primary disabled:opacity-50"
+                              className="flex h-7 w-7 items-center justify-center rounded hover:bg-accent100 cursor-pointer transition-colors text-primary disabled:opacity-50"
                             >
                               <Plus className="w-4 h-4" />
                             </Button>
@@ -295,7 +295,7 @@ export default function CartPage() {
                     </motion.button>
                   </div>
                   {appliedCoupon && (
-                    <p className="text-xs text-green-600 mt-2">✓ Cupom {appliedCoupon.code} aplicado!</p>
+                    <p className="text-xs text-primary mt-2">✓ Cupom {appliedCoupon.code} aplicado!</p>
                   )}
                 </div>
 
@@ -310,7 +310,7 @@ export default function CartPage() {
                     <span className="text-black font-medium">R$ {shippingTotal.toFixed(2)}</span>
                   </div>
                   {appliedCoupon && (
-                    <div className="flex justify-between text-sm text-green-600">
+                    <div className="flex justify-between text-sm text-primary">
                       <span>Desconto ({appliedCoupon.discount}%)</span>
                       <span className="font-medium">- R$ {discountAmount.toFixed(2)}</span>
                     </div>
@@ -343,7 +343,7 @@ export default function CartPage() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => router.push(`/${locale}/marketplace`)}
-                  className="w-full bg-white border border-gray-300 hover:bg-gray-50 text-black font-bold py-3 rounded-lg transition-colors text-sm"
+                  className="w-full bg-white border border-gray-300 hover:bg-accent50 text-black font-bold py-3 rounded-lg transition-colors text-sm"
                 >
                   Escolher mais produtos
                 </motion.button>
@@ -356,7 +356,7 @@ export default function CartPage() {
                 transition={{ delay: 0.1 }}
                 className="bg-gray-50 rounded-xl p-4 flex flex-col items-center gap-3 text-center border border-gray-200"
               >
-                <div className="flex gap-2 items-center text-green-600">
+                <div className="flex gap-2 items-center text-primary">
                   <Lock className="w-4 h-4" />
                   <span className="text-sm font-bold">Compra 100% Segura</span>
                 </div>

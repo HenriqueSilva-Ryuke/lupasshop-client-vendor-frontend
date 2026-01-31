@@ -197,7 +197,7 @@ export default function ProductDetailPage() {
                   <div className="flex items-end gap-2">
                     <span className="text-3xl font-extrabold text-primary">{price}</span>
                     {originalPrice && (
-                      <span className="text-sm text-green-600 text-green-400 font-medium mb-1.5">-
+                      <span className="text-sm text-primary text-green-400 font-medium mb-1.5">-
                         {Math.round(
                           ((Number(product.originalPrice) - Number(product.price)) / Number(product.originalPrice || 1)) * 100
                         )}%
@@ -271,7 +271,7 @@ export default function ProductDetailPage() {
                     </div>
                   </div>
                   <div className="text-right">
-                    <span className="block text-xs font-bold text-green-600">{rating.toFixed(1)} <span className="material-symbols-outlined text-[10px] align-middle">star</span></span>
+                    <span className="block text-xs font-bold text-primary">{rating.toFixed(1)} <span className="material-symbols-outlined text-[10px] align-middle">star</span></span>
                     <span className="text-[10px] text-slate-500">{reviewCount} avaliações</span>
                   </div>
                 </div>

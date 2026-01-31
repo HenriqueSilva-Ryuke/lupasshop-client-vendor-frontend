@@ -55,7 +55,7 @@ export default function SettingsPage() {
       description: 'Entrega local no mesmo dia',
       enabled: false,
       icon: 'LOGGI',
-      bgColor: 'bg-blue-600',
+      bgColor: 'bg-primary600',
       textColor: 'text-white',
     },
     {
@@ -308,7 +308,7 @@ export default function SettingsPage() {
                 {shippingMethods.map((method) => (
                   <div
                     key={method.id}
-                    className="p-4 flex items-center justify-between hover:bg-gray-50 transition-colors"
+                    className="p-4 flex items-center justify-between hover:bg-accent50 transition-colors"
                   >
                     <div className="flex items-center gap-4">
                       <div
@@ -387,7 +387,7 @@ export default function SettingsPage() {
                       <span className="material-symbols-outlined">check_circle</span>
                     </div>
                   )}
-                  <div className="h-10 w-10 rounded bg-green-50 flex items-center justify-center text-green-600">
+                  <div className="h-10 w-10 rounded bg-green-50 flex items-center justify-center text-primary">
                     <span className="material-symbols-outlined">pix</span>
                   </div>
                   <div className="flex-1">
@@ -417,7 +417,7 @@ export default function SettingsPage() {
                       <span className="material-symbols-outlined">check_circle</span>
                     </div>
                   )}
-                  <div className="h-10 w-10 rounded bg-blue-50 flex items-center justify-center text-blue-600">
+                  <div className="h-10 w-10 rounded bg-primary50 flex items-center justify-center text-primary">
                     <span className="material-symbols-outlined">credit_score</span>
                   </div>
                   <div>
@@ -484,7 +484,7 @@ export default function SettingsPage() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="w-8 flex justify-center text-blue-600">
+                  <div className="w-8 flex justify-center text-primary">
                     <span className="material-symbols-outlined">groups</span>
                   </div>
                   <div className="flex-1">

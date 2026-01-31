@@ -70,7 +70,7 @@ export default function SellerOrderDetailPage({ params }: { params: Promise<{ id
                     </Button>
                     {order.status === 'PAID' && (
                         <Button
-                            className="gap-2 bg-purple-600 hover:bg-purple-700 text-white px-4 h-10"
+                            className="gap-2 bg-primary600 hover:bg-primary700 text-white px-4 h-10"
                             onClick={() => handleStatusChange('SHIPPED')}
                             disabled={updating}
                         >
