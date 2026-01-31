@@ -69,7 +69,7 @@ export default function NotificationBell() {
       {/* Bell Icon */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative p-2 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-card-foreground"
+        className="relative p-2 text-muted-foreground hover:text-foreground"
       >
         <Bell className="h-6 w-6" />
         {unreadCount > 0 && (
@@ -89,16 +89,16 @@ export default function NotificationBell() {
           />
 
           {/* Notification Panel */}
-          <div className="absolute right-0 z-50 mt-2 w-80 sm:w-96 bg-card dark:bg-gray-800 rounded-lg shadow-xl border border-border dark:border-border max-h-[80vh] flex flex-col">
+          <div className="absolute right-0 z-50 mt-2 w-80 sm:w-96 bg-card rounded-lg shadow-xl border border-border max-h-[80vh] flex flex-col">
             {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b border-border dark:border-border">
-              <h3 className="text-lg font-semibold text-foreground dark:text-card-foreground">
+            <div className="flex items-center justify-between p-4 border-b border-border">
+              <h3 className="text-lg font-semibold text-foreground">
                 Notificações
               </h3>
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setShowUnreadOnly(!showUnreadOnly)}
-                  className="text-sm text-primary hover:text-blue-700"
+                  className="text-sm text-primary hover:text-primary/80"
                 >
                   {showUnreadOnly ? 'Todas' : 'Não lidas'}
                 </button>
@@ -132,7 +132,7 @@ export default function NotificationBell() {
                   <p>Nenhuma notificação</p>
                 </div>
               ) : (
-                <div className="divide-y divide-gray-200 dark:divide-gray-700">
+                <div className="divide-y divide-gray-200">
                   {notifications.map((notification: any) => (
                     <NotificationItem
                       key={notification.id}
@@ -145,7 +145,7 @@ export default function NotificationBell() {
             </div>
 
             {/* Footer */}
-            <div className="p-2 border-t border-border dark:border-border">
+            <div className="p-2 border-t border-border">
               <Link
                 href="/notifications"
                 className="block w-full text-center text-sm text-primary hover:text-blue-700 py-2"
@@ -172,22 +172,22 @@ function NotificationItem({
 
   const content = (
     <div
-      className={`p-4 hover:bg-muted dark:hover:bg-accent700 cursor-pointer transition-colors ${
-        !notification.read ? 'bg-primary50 dark:bg-primary900/20' : ''
+      className={`p-4 hover:bg-muted cursor-pointer transition-colors ${
+        !notification.read ? 'bg-primary50 : ''
       }`}
       onClick={onClick}
     >
       <div className="flex items-start gap-3">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
-            <p className="text-sm font-medium text-foreground dark:text-card-foreground">
+            <p className="text-sm font-medium text-foreground">
               {notification.title}
             </p>
             {!notification.read && (
               <span className="flex-shrink-0 w-2 h-2 bg-primary500 rounded-full" />
             )}
           </div>
-          <p className="text-sm text-muted-foreground dark:text-muted-foreground mt-1">
+          <p className="text-sm text-muted-foreground mt-1">
             {notification.message}
           </p>
           <p className="text-xs text-muted-foreground mt-1">{timeAgo}</p>

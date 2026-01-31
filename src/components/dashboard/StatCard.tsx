@@ -32,7 +32,7 @@ export default function StatCard({
           <p className="text-muted-foreground text-sm font-medium">{label}</p>
           <div className="mt-3">
             {isLoading ? (
-              <div className="h-8 bg-gray-200 rounded animate-pulse w-24" />
+              <div className="h-8 bg-muted rounded animate-pulse w-24" />
             ) : (
               <p className="text-2xl font-bold text-foreground">{value}</p>
             )}

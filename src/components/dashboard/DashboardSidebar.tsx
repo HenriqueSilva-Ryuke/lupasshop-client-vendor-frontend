@@ -23,11 +23,11 @@ interface DashboardSidebarProps {
 }
 
 const colorMap: Record<string, string> = {
-  overview: 'bg-primary500',
-  shops: 'bg-primary500',
+  overview: 'bg-primary',
+  shops: 'bg-primary',
   products: 'text-primary',
-  orders: 'bg-orange-500',
-  finances: 'bg-emerald-500',
+  orders: 'bg-primary',
+  finances: 'bg-primary',
   reviews: 'bg-yellow-500',
   settings: 'bg-muted0',
 };
@@ -66,7 +66,7 @@ export default function DashboardSidebar({
         <div className="p-6 border-b border-border">
           <Link href={`/${locale}`} className="flex items-center space-x-2 group">
             <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center group-hover:shadow-lg transition-shadow">
-              <span className="material-icons text-black text-xl">dashboard</span>
+              <span className="material-icons text-primary-foreground text-xl">dashboard</span>
             </div>
             <div>
               <h1 className="font-bold text-lg text-foreground">LupaShop</h1>
