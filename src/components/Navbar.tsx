@@ -43,18 +43,18 @@ export default function Navbar() {
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-          className={`pointer-events-auto transition-all duration-500 flex items-center justify-between px-6 py-3 w-full max-w-6xl border rounded-xl  ${
+          className={`pointer-events-auto transition-all duration-500 flex items-center justify-between px-6 py-3 w-full max-w-6xl border rounded-xl backdrop-blur-md ${
             isScrolled
-              ? 'bg-white/80 border-zinc-200'
-              : 'bg-white/40 border-transparent'
+              ? 'bg-background/80 border-border shadow-sm'
+              : 'bg-background/40 border-transparent shadow-none'
           }`}
         >
           {/* Logo Section */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 bg-zinc-900 flex items-center justify-center rounded-lg group-hover:rotate-12 transition-transform duration-300">
-              <Search className="w-5 h-5 text-white" strokeWidth={3} />
+            <div className="w-8 h-8 bg-primary flex items-center justify-center rounded-lg group-hover:rotate-12 transition-transform duration-300">
+              <Search className="w-5 h-5 text-primary-foreground" strokeWidth={3} />
             </div>
-            <span className="text-xl font-black tracking-tighter uppercase">
+            <span className="text-xl font-black tracking-tighter uppercase text-foreground">
               Lupa<span className="text-primary">Shop</span>
             </span>
           </Link>
@@ -67,8 +67,8 @@ export default function Navbar() {
                 href={item.href}
                 className={`text-xs font-black uppercase tracking-widest transition-colors relative py-1 ${
                   isActiveLink(item.href)
-                    ? 'text-white'
-                    : 'text-white hover:text-primary'
+                    ? 'text-primary'
+                    : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
                 {item.label}

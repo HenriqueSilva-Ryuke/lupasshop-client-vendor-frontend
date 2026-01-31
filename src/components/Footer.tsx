@@ -111,7 +111,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-linear-to-br from-[#2e1a55] to-[#412778] text-white">
+    <footer className="bg-primary text-primary-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Main Content */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
@@ -124,22 +124,22 @@ export default function Footer() {
             className="md:col-span-1"
           >
             <Link href="/" className="flex items-center space-x-2 group mb-4">
-              <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center group-hover:bg-white/20 transition-all">
-                <span className="material-icons text-white text-xl">search</span>
+              <div className="w-10 h-10 bg-primary-foreground/10 rounded-lg flex items-center justify-center group-hover:bg-primary-foreground/20 transition-all">
+                <span className="material-icons text-primary-foreground text-xl">search</span>
               </div>
-              <h3 className="text-xl font-bold text-white">LupaShop</h3>
+              <h3 className="text-xl font-bold text-primary-foreground">LupaShop</h3>
             </Link>
             
             {/* Social Links */}
             <div className="flex space-x-3">
-              <motion.a href="#" className="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-all" whileHover={{ scale: 1.1 }} aria-label="LinkedIn">
-                <FaLinkedin className="text-white text-sm" />
+              <motion.a href="#" className="w-9 h-9 bg-primary-foreground/10 rounded-lg flex items-center justify-center hover:bg-primary-foreground/20 transition-all" whileHover={{ scale: 1.1 }} aria-label="LinkedIn">
+                <FaLinkedin className="text-primary-foreground text-sm" />
               </motion.a>
-              <motion.a href="#" className="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-all" whileHover={{ scale: 1.1 }} aria-label="Facebook">
-                <FaFacebook className="text-white text-sm" />
+              <motion.a href="#" className="w-9 h-9 bg-primary-foreground/10 rounded-lg flex items-center justify-center hover:bg-primary-foreground/20 transition-all" whileHover={{ scale: 1.1 }} aria-label="Facebook">
+                <FaFacebook className="text-primary-foreground text-sm" />
               </motion.a>
-              <motion.a href="#" className="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-all" whileHover={{ scale: 1.1 }} aria-label="Instagram">
-                <FaInstagram className="text-white text-sm" />
+              <motion.a href="#" className="w-9 h-9 bg-primary-foreground/10 rounded-lg flex items-center justify-center hover:bg-primary-foreground/20 transition-all" whileHover={{ scale: 1.1 }} aria-label="Instagram">
+                <FaInstagram className="text-primary-foreground text-sm" />
               </motion.a>
             </div>
           </motion.div>
@@ -153,11 +153,11 @@ export default function Footer() {
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               viewport={{ once: true }}
             >
-              <h4 className="text-sm font-semibold mb-4 text-white/90">{section.title}</h4>
+              <h4 className="text-sm font-semibold mb-4 text-primary-foreground/90">{section.title}</h4>
               <ul className="space-y-2">
                 {section.links.map((link) => (
                   <li key={link.name}>
-                    <Link href={link.href && link.href.startsWith('/') ? `/${locale}${link.href}` : link.href} className="text-white/80 hover:text-white text-sm transition-colors">
+                    <Link href={link.href && link.href.startsWith('/') ? `/${locale}${link.href}` : link.href} className="text-primary-foreground/80 hover:text-primary-foreground text-sm transition-colors">
                       {link.name}
                     </Link>
                   </li>
@@ -168,10 +168,10 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-white/10 py-6">
+        <div className="border-t border-primary-foreground/10 py-6">
           {/* Bottom Info */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-white/70 text-xs">{t('copyright')}</div>
+            <div className="text-primary-foreground/70 text-xs">{t('copyright')}</div>
             
             <div className="flex flex-wrap justify-center gap-4 text-xs">
               {[
@@ -179,7 +179,7 @@ export default function Footer() {
                 { name: t('terms'), href: "/terms" },
                 { name: t('cookies'), href: "/cookies" }
               ].map((link) => (
-                <Link key={link.name} href={link.href} className="text-white/80 hover:text-white transition-colors">
+                <Link key={link.name} href={link.href} className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                   {link.name}
                 </Link>
               ))}
