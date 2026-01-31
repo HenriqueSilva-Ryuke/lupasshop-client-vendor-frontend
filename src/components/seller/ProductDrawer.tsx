@@ -42,10 +42,10 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
     return (
       <>
         <div className="fixed inset-0 bg-black/50 z-40" onClick={onClose} />
-        <div className="fixed right-0 top-0 h-full w-full sm:w-[500px] bg-card bg-card-dark z-50 shadow-2xl flex items-center justify-center">
+        <div className="fixed right-0 top-0 h-full w-full sm:w-[500px] bg-card  z-50 shadow-2xl flex items-center justify-center">
           <div className="text-center">
             <span className="material-symbols-outlined animate-spin text-4xl text-primary">progress_activity</span>
-            <p className="mt-2 text-sm text-text-sub-light text-text-sub-dark">Carregando...</p>
+            <p className="mt-2 text-sm  ">Carregando...</p>
           </div>
         </div>
       </>
@@ -57,11 +57,11 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
     return (
       <>
         <div className="fixed inset-0 bg-black/50 z-40" onClick={onClose} />
-        <div className="fixed right-0 top-0 h-full w-full sm:w-[500px] bg-card bg-card-dark z-50 shadow-2xl flex items-center justify-center">
+        <div className="fixed right-0 top-0 h-full w-full sm:w-[500px] bg-card  z-50 shadow-2xl flex items-center justify-center">
           <div className="text-center p-6">
             <span className="material-symbols-outlined text-6xl text-red-500">error</span>
             <h3 className="mt-4 text-lg font-bold text-foreground text-card-foreground">Loja não encontrada</h3>
-            <p className="mt-2 text-sm text-text-sub-light text-text-sub-dark">
+            <p className="mt-2 text-sm  ">
               Você precisa ter uma loja cadastrada para adicionar produtos.
             </p>
             <button
@@ -85,21 +85,21 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
       />
 
       {/* Drawer */}
-      <div className="fixed right-0 top-0 h-full w-full sm:w-[500px] bg-card bg-card-dark z-50 shadow-2xl overflow-y-auto">
+      <div className="fixed right-0 top-0 h-full w-full sm:w-[500px] bg-card  z-50 shadow-2xl overflow-y-auto">
         {/* Header */}
-        <div className="sticky top-0 bg-card bg-card-dark border-b border-border border-border px-6 py-4 z-10">
+        <div className="sticky top-0 bg-card  border-b border-border border-border px-6 py-4 z-10">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-xl font-bold text-text-main-light text-text-main-dark">
+              <h2 className="text-xl font-bold  ">
                 Adicionar Produto
               </h2>
-              <p className="text-sm text-text-sub-light text-text-sub-dark mt-1">
+              <p className="text-sm   mt-1">
                 Preencha os dados do novo produto
               </p>
             </div>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-muted hover:bg-accent700 rounded-lg transition-colors"
+              className="p-2 hover:bg-muted  rounded-lg transition-colors"
             >
               <span className="material-symbols-outlined">close</span>
             </button>
@@ -125,7 +125,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
               id="name"
               placeholder="Ex: Tênis Nike Air Max"
               type="text"
-              className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+              className="w-full h-12 px-4 rounded-lg border  bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
             />
             {errors.name && (
               <span className="text-xs text-destructive text-red-400">{errors.name.message}</span>
@@ -142,7 +142,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
               id="description"
               placeholder="Descreva as características e benefícios do produto"
               rows={4}
-              className="w-full px-4 py-3 rounded-lg border border-[#dbe1e6] bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all resize-none"
+              className="w-full px-4 py-3 rounded-lg border  bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all resize-none"
             />
             {errors.description && (
               <span className="text-xs text-destructive text-red-400">{errors.description.message}</span>
@@ -162,7 +162,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
                 type="number"
                 step="0.01"
                 min="0"
-                className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                className="w-full h-12 px-4 rounded-lg border  bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
               />
               {errors.price && (
                 <span className="text-xs text-destructive text-red-400">{errors.price.message}</span>
@@ -179,7 +179,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
                 placeholder="0"
                 type="number"
                 min="0"
-                className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                className="w-full h-12 px-4 rounded-lg border  bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
               />
               {errors.stockQuantity && (
                 <span className="text-xs text-destructive text-red-400">{errors.stockQuantity.message}</span>
@@ -198,7 +198,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
                 id="sku"
                 placeholder="SKU-1234"
                 type="text"
-                className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                className="w-full h-12 px-4 rounded-lg border  bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
               />
               {errors.sku && (
                 <span className="text-xs text-destructive text-red-400">{errors.sku.message}</span>
@@ -213,7 +213,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
                 <select
                   {...register('categoryId')}
                   id="categoryId"
-                  className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all appearance-none"
+                  className="w-full h-12 px-4 rounded-lg border  bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all appearance-none"
                 >
                   <option value="">Selecione</option>
                   {/* These should be fetched from the backend, but for now using placeholder values */}
@@ -256,7 +256,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
             <button
               type="button"
               onClick={() => imageInputRef.current?.click()}
-              className="h-32 rounded-lg border-2 border-dashed border-[#dbe1e6] hover:border-primary hover:bg-primary/5 transition-all flex flex-col items-center justify-center gap-2 text-text-sub-light text-text-sub-dark"
+              className="h-32 rounded-lg border-2 border-dashed  hover:border-primary hover:bg-primary/5 transition-all flex flex-col items-center justify-center gap-2  "
             >
               <span className="material-symbols-outlined text-3xl">cloud_upload</span>
               <span className="text-sm font-medium">Clique para adicionar imagens</span>
@@ -292,7 +292,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
           <div className="flex items-center justify-between p-4 bg-muted rounded-lg">
             <div>
               <p className="text-sm font-medium text-foreground text-card-foreground">Produto Ativo</p>
-              <p className="text-xs text-text-sub-light text-text-sub-dark mt-0.5">
+              <p className="text-xs   mt-0.5">
                 O produto ficará visível na loja
               </p>
             </div>
@@ -312,7 +312,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 h-12 rounded-lg border-2 border-border text-foreground text-card-foreground font-medium hover:bg-muted hover:bg-accent700 transition-all"
+              className="flex-1 h-12 rounded-lg border-2 border-border text-foreground text-card-foreground font-medium hover:bg-muted  transition-all"
               disabled={isLoading}
             >
               Cancelar

@@ -26,7 +26,7 @@ export default function LoginForm() {
           <input
             {...register('email')}
             className={`form-input flex w-full rounded-lg text-text-main focus:outline-0 focus:ring-2 focus:ring-primary/20 border bg-card focus:border-primary h-12 pl-12 pr-4 text-base font-normal placeholder:text-[#9aaebc] transition-all ${
-              errors.email ? 'border-red-500' : 'border-[#dbe1e6]'
+              errors.email ? 'border-red-500' : ''
             }`}
             placeholder="exemplo@email.com"
             type="text"
@@ -50,7 +50,7 @@ export default function LoginForm() {
           <input
             {...register('password')}
             className={`form-input flex w-full rounded-lg text-text-main focus:outline-0 focus:ring-2 focus:ring-primary/20 border bg-card focus:border-primary h-12 pl-12 pr-12 text-base font-normal placeholder:text-[#9aaebc] transition-all ${
-              errors.password ? 'border-red-500' : 'border-[#dbe1e6]'
+              errors.password ? 'border-red-500' : ''
             }`}
             placeholder="Digite sua senha"
             type={showPassword ? 'text' : 'password'}
@@ -78,7 +78,7 @@ export default function LoginForm() {
           <div className="relative flex items-center">
             <input
               {...register('rememberMe')}
-              className="peer h-5 w-5 cursor-pointer appearance-none rounded border border-[#dbe1e6] checked:border-primary checked:bg-primary transition-all"
+              className="peer h-5 w-5 cursor-pointer appearance-none rounded border  checked:border-primary checked:bg-primary transition-all"
               type="checkbox"
               disabled={isLoading}
             />

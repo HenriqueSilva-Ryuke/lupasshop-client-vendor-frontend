@@ -91,7 +91,7 @@ export function SellerMultiStepRegisterForm() {
               id="fullName"
               placeholder="Seu nome completo"
               type="text"
-              className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+              className="w-full h-12 px-4 rounded-lg border  bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
             />
             {errors.fullName && (
               <span className="text-xs text-destructive text-red-400">{errors.fullName.message}</span>
@@ -108,7 +108,7 @@ export function SellerMultiStepRegisterForm() {
               id="email"
               placeholder="seu@email.com"
               type="email"
-              className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+              className="w-full h-12 px-4 rounded-lg border  bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
             />
             {errors.email && (
               <span className="text-xs text-destructive text-red-400">{errors.email.message}</span>
@@ -126,7 +126,7 @@ export function SellerMultiStepRegisterForm() {
                 id="password"
                 placeholder="Mínimo 6 caracteres"
                 type={showPassword ? 'text' : 'password'}
-                className="w-full h-12 px-4 pr-12 rounded-lg border border-[#dbe1e6] bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                className="w-full h-12 px-4 pr-12 rounded-lg border  bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
               />
               <button
                 type="button"
@@ -154,7 +154,7 @@ export function SellerMultiStepRegisterForm() {
                 id="confirmPassword"
                 placeholder="Repita a senha"
                 type={showConfirmPassword ? 'text' : 'password'}
-                className="w-full h-12 px-4 pr-12 rounded-lg border border-[#dbe1e6] bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                className="w-full h-12 px-4 pr-12 rounded-lg border  bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
               />
               <button
                 type="button"
@@ -196,7 +196,7 @@ export function SellerMultiStepRegisterForm() {
               id="nif"
               placeholder="000.000.000 XXX"
               type="text"
-              className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+              className="w-full h-12 px-4 rounded-lg border  bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
             />
             {errors.nif && (
               <span className="text-xs text-destructive text-red-400">{errors.nif.message}</span>
@@ -213,7 +213,7 @@ export function SellerMultiStepRegisterForm() {
               id="razaoSocial"
               placeholder="Nome jurídico da empresa"
               type="text"
-              className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+              className="w-full h-12 px-4 rounded-lg border  bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
             />
             {errors.razaoSocial && (
               <span className="text-xs text-destructive text-red-400">{errors.razaoSocial.message}</span>
@@ -230,7 +230,7 @@ export function SellerMultiStepRegisterForm() {
               id="nomeFantasia"
               placeholder="Como os clientes verão sua loja"
               type="text"
-              className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+              className="w-full h-12 px-4 rounded-lg border  bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
             />
             {errors.nomeFantasia && (
               <span className="text-xs text-destructive text-red-400">{errors.nomeFantasia.message}</span>
@@ -246,7 +246,7 @@ export function SellerMultiStepRegisterForm() {
               <select
                 {...register('category')}
                 id="category"
-                className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all appearance-none"
+                className="w-full h-12 px-4 rounded-lg border  bg-card text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all appearance-none"
               >
                 <option value="">Selecione uma categoria</option>
                 <option value="moda">Moda e Vestuário</option>
@@ -300,7 +300,7 @@ export function SellerMultiStepRegisterForm() {
             <button
               type="button"
               onClick={() => alvaraRef.current?.click()}
-              className="h-12 px-4 rounded-lg border-2 border-dashed border-[#dbe1e6] bg-card text-foreground text-card-foreground hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
+              className="h-12 px-4 rounded-lg border-2 border-dashed  bg-card text-foreground text-card-foreground hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
             >
               <span className="material-symbols-outlined">cloud_upload</span>
               {uploadedFiles.alvaraComercial && uploadedFiles.alvaraComercial instanceof File ? uploadedFiles.alvaraComercial.name : 'Selecione arquivo'}
@@ -329,7 +329,7 @@ export function SellerMultiStepRegisterForm() {
             <button
               type="button"
               onClick={() => licencaRef.current?.click()}
-              className="h-12 px-4 rounded-lg border-2 border-dashed border-[#dbe1e6] bg-card text-foreground text-card-foreground hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
+              className="h-12 px-4 rounded-lg border-2 border-dashed  bg-card text-foreground text-card-foreground hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
             >
               <span className="material-symbols-outlined">cloud_upload</span>
               {uploadedFiles.licencaVenda && uploadedFiles.licencaVenda instanceof File ? uploadedFiles.licencaVenda.name : 'Selecione arquivo'}
@@ -358,7 +358,7 @@ export function SellerMultiStepRegisterForm() {
             <button
               type="button"
               onClick={() => localizacaoRef.current?.click()}
-              className="h-12 px-4 rounded-lg border-2 border-dashed border-[#dbe1e6] bg-card text-foreground text-card-foreground hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
+              className="h-12 px-4 rounded-lg border-2 border-dashed  bg-card text-foreground text-card-foreground hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
             >
               <span className="material-symbols-outlined">cloud_upload</span>
               {uploadedFiles.localizacaoFisica && uploadedFiles.localizacaoFisica instanceof File ? uploadedFiles.localizacaoFisica.name : 'Selecione arquivo'}
@@ -402,7 +402,7 @@ export function SellerMultiStepRegisterForm() {
             <button
               type="button"
               onClick={() => logotipoRef.current?.click()}
-              className="h-12 px-4 rounded-lg border-2 border-dashed border-[#dbe1e6] bg-card text-foreground text-card-foreground hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
+              className="h-12 px-4 rounded-lg border-2 border-dashed  bg-card text-foreground text-card-foreground hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
             >
               <span className="material-symbols-outlined">cloud_upload</span>
               {uploadedFiles.logotipo && uploadedFiles.logotipo instanceof File ? uploadedFiles.logotipo.name : 'Selecione arquivo'}
@@ -431,7 +431,7 @@ export function SellerMultiStepRegisterForm() {
             <button
               type="button"
               onClick={() => capaRef.current?.click()}
-              className="h-12 px-4 rounded-lg border-2 border-dashed border-[#dbe1e6] bg-card text-foreground text-card-foreground hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
+              className="h-12 px-4 rounded-lg border-2 border-dashed  bg-card text-foreground text-card-foreground hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
             >
               <span className="material-symbols-outlined">cloud_upload</span>
               {uploadedFiles.imagemCapa && uploadedFiles.imagemCapa instanceof File ? uploadedFiles.imagemCapa.name : 'Selecione arquivo'}
@@ -461,7 +461,7 @@ export function SellerMultiStepRegisterForm() {
             <button
               type="button"
               onClick={() => espacoRef.current?.click()}
-              className="h-12 px-4 rounded-lg border-2 border-dashed border-[#dbe1e6] bg-card text-foreground text-card-foreground hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
+              className="h-12 px-4 rounded-lg border-2 border-dashed  bg-card text-foreground text-card-foreground hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
             >
               <span className="material-symbols-outlined">cloud_upload</span>
               {uploadedFiles.fotosEspaco && Array.isArray(uploadedFiles.fotosEspaco) && uploadedFiles.fotosEspaco.length > 0

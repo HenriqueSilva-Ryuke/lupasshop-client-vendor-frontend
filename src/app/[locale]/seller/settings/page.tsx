@@ -64,7 +64,7 @@ export default function SettingsPage() {
       description: 'Taxa fixa por região',
       enabled: true,
       icon: 'MOTOBAY',
-      bgColor: 'bg-gray-800',
+      bgColor: '',
       textColor: 'text-white',
     },
   ]);
@@ -167,10 +167,10 @@ export default function SettingsPage() {
           <div className="px-6 py-4 lg:px-10">
             <div className="flex flex-wrap justify-between items-center gap-4">
               <div className="flex flex-col gap-1">
-                <h1 className="text-2xl lg:text-3xl font-black leading-tight tracking-[-0.033em] text-text-main-light">
+                <h1 className="text-2xl lg:text-3xl font-black leading-tight tracking-[-0.033em] ">
                   Configurações da Loja
                 </h1>
-                <p className="text-text-sub-light text-sm lg:text-base font-normal">
+                <p className=" text-sm lg:text-base font-normal">
                   Gerencie o perfil da sua loja, pagamentos e envios.
                 </p>
               </div>
@@ -193,7 +193,7 @@ export default function SettingsPage() {
         <div className="px-6 py-8 lg:px-10 max-w-[1000px] mx-auto flex flex-col gap-8">
           {/* Store Profile */}
           <section className="flex flex-col gap-4">
-            <h2 className="text-xl font-bold text-text-main-light flex items-center gap-2">
+            <h2 className="text-xl font-bold  flex items-center gap-2">
               <span className="material-symbols-outlined text-primary">storefront</span>
               Perfil da Loja
             </h2>
@@ -218,8 +218,8 @@ export default function SettingsPage() {
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-text-main-light">Logo da Loja</h3>
-                    <p className="text-xs text-text-sub-light mt-1">PNG ou JPG até 2MB</p>
+                    <h3 className="text-sm font-semibold ">Logo da Loja</h3>
+                    <p className="text-xs  mt-1">PNG ou JPG até 2MB</p>
                   </div>
                   <input
                     type="text"
@@ -241,7 +241,7 @@ export default function SettingsPage() {
                       {!bannerUrl && (
                         <>
                           <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary-light/10"></div>
-                          <span className="text-text-sub-light text-sm flex items-center gap-2 relative z-10">
+                          <span className=" text-sm flex items-center gap-2 relative z-10">
                             <span className="material-symbols-outlined">image</span> Banner da Loja
                             (1200x300)
                           </span>
@@ -259,22 +259,22 @@ export default function SettingsPage() {
 
                   <div className="grid grid-cols-1 gap-4">
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-sm font-medium text-text-main-light">
+                      <label className="text-sm font-medium ">
                         Nome da Loja
                       </label>
                       <input
-                        className="w-full rounded-lg bg-white text-text-main-light focus:border-primary focus:ring-primary sm:text-sm py-2.5"
+                        className="w-full rounded-lg bg-white  focus:border-primary focus:ring-primary sm:text-sm py-2.5"
                         type="text"
                         value={storeName}
                         onChange={(e) => setStoreName(e.target.value)}
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-sm font-medium text-text-main-light">
+                      <label className="text-sm font-medium ">
                         Descrição Curta
                       </label>
                       <textarea
-                        className="w-full rounded-lg bg-white text-text-main-light focus:border-primary focus:ring-primary sm:text-sm p-2.5"
+                        className="w-full rounded-lg bg-white  focus:border-primary focus:ring-primary sm:text-sm p-2.5"
                         rows={3}
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
@@ -288,17 +288,17 @@ export default function SettingsPage() {
 
           {/* Shipping Policies */}
           <section className="flex flex-col gap-4">
-            <h2 className="text-xl font-bold text-text-main-light flex items-center gap-2">
+            <h2 className="text-xl font-bold  flex items-center gap-2">
               <span className="material-symbols-outlined text-primary">local_shipping</span>
               Políticas de Envio
             </h2>
             <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
               <div className="p-6 border-b flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                  <h3 className="text-base font-semibold text-text-main-light">
+                  <h3 className="text-base font-semibold ">
                     Transportadoras Ativas
                   </h3>
-                  <p className="text-sm text-text-sub-light">
+                  <p className="text-sm ">
                     Selecione quais serviços de entrega deseja oferecer.
                   </p>
                 </div>
@@ -317,8 +317,8 @@ export default function SettingsPage() {
                         {method.icon}
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-text-main-light">{method.name}</p>
-                        <p className="text-xs text-text-sub-light">{method.description}</p>
+                        <p className="text-sm font-medium ">{method.name}</p>
+                        <p className="text-xs ">{method.description}</p>
                       </div>
                     </div>
                     <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
@@ -346,7 +346,7 @@ export default function SettingsPage() {
 
               <div className="p-4 border-t border-gray-100">
                 <div className="flex flex-col gap-3">
-                  <h4 className="text-sm font-semibold text-text-main-light">
+                  <h4 className="text-sm font-semibold ">
                     Configurações Avançadas de Frete
                   </h4>
                   <div className="flex items-center gap-3">
@@ -357,7 +357,7 @@ export default function SettingsPage() {
                       checked={enableFreeShipping}
                       onChange={(e) => setEnableFreeShipping(e.target.checked)}
                     />
-                    <label className="text-sm text-text-main-light" htmlFor="free-shipping">
+                    <label className="text-sm " htmlFor="free-shipping">
                       Oferecer Frete Grátis acima de R$
                     </label>
                     <input
@@ -375,7 +375,7 @@ export default function SettingsPage() {
 
           {/* Payment Methods */}
           <section className="flex flex-col gap-4">
-            <h2 className="text-xl font-bold text-text-main-light flex items-center gap-2">
+            <h2 className="text-xl font-bold  flex items-center gap-2">
               <span className="material-symbols-outlined text-primary">credit_card</span>
               Métodos de Pagamento
             </h2>
@@ -391,7 +391,7 @@ export default function SettingsPage() {
                     <span className="material-symbols-outlined">pix</span>
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-medium text-text-main-light group-hover:text-primary transition-colors">
+                    <h3 className="font-medium  group-hover:text-primary transition-colors">
                       PIX
                     </h3>
                     <input
@@ -421,10 +421,10 @@ export default function SettingsPage() {
                     <span className="material-symbols-outlined">credit_score</span>
                   </div>
                   <div>
-                    <h3 className="font-medium text-text-main-light group-hover:text-primary transition-colors">
+                    <h3 className="font-medium  group-hover:text-primary transition-colors">
                       Cartão de Crédito
                     </h3>
-                    <p className="text-xs text-text-sub-light mt-1">
+                    <p className="text-xs  mt-1">
                       Visa, Mastercard, Elo (via Gateway)
                     </p>
                   </div>
@@ -447,8 +447,8 @@ export default function SettingsPage() {
                     <span className="material-symbols-outlined">receipt</span>
                   </div>
                   <div>
-                    <h3 className="font-medium text-text-main-light">Boleto Bancário</h3>
-                    <p className="text-xs text-text-sub-light mt-1">
+                    <h3 className="font-medium ">Boleto Bancário</h3>
+                    <p className="text-xs  mt-1">
                       {acceptsBoleto ? 'Ativo' : 'Clique para ativar'}
                     </p>
                   </div>
@@ -459,7 +459,7 @@ export default function SettingsPage() {
 
           {/* Social Media */}
           <section className="flex flex-col gap-4">
-            <h2 className="text-xl font-bold text-text-main-light flex items-center gap-2">
+            <h2 className="text-xl font-bold  flex items-center gap-2">
               <span className="material-symbols-outlined text-primary">share</span>
               Redes Sociais
             </h2>
@@ -470,11 +470,11 @@ export default function SettingsPage() {
                     <span className="material-symbols-outlined">photo_camera</span>
                   </div>
                   <div className="flex-1">
-                    <label className="text-xs font-semibold uppercase text-text-sub-light mb-1 block">
+                    <label className="text-xs font-semibold uppercase  mb-1 block">
                       Instagram
                     </label>
                     <input
-                      className="w-full rounded-lg bg-gray-50 text-text-main-light focus:border-primary focus:ring-primary text-sm py-2"
+                      className="w-full rounded-lg bg-gray-50  focus:border-primary focus:ring-primary text-sm py-2"
                       placeholder="@seuinstagram"
                       type="text"
                       value={instagramUrl}
@@ -488,11 +488,11 @@ export default function SettingsPage() {
                     <span className="material-symbols-outlined">groups</span>
                   </div>
                   <div className="flex-1">
-                    <label className="text-xs font-semibold uppercase text-text-sub-light mb-1 block">
+                    <label className="text-xs font-semibold uppercase  mb-1 block">
                       Facebook
                     </label>
                     <input
-                      className="w-full rounded-lg bg-gray-50 text-text-main-light focus:border-primary focus:ring-primary text-sm py-2"
+                      className="w-full rounded-lg bg-gray-50  focus:border-primary focus:ring-primary text-sm py-2"
                       placeholder="facebook.com/suapagina"
                       type="text"
                       value={facebookUrl}
@@ -506,11 +506,11 @@ export default function SettingsPage() {
                     <span className="material-symbols-outlined">chat</span>
                   </div>
                   <div className="flex-1">
-                    <label className="text-xs font-semibold uppercase text-text-sub-light mb-1 block">
+                    <label className="text-xs font-semibold uppercase  mb-1 block">
                       WhatsApp (Botão flutuante)
                     </label>
                     <input
-                      className="w-full rounded-lg bg-gray-50 text-text-main-light focus:border-primary focus:ring-primary text-sm py-2"
+                      className="w-full rounded-lg bg-gray-50  focus:border-primary focus:ring-primary text-sm py-2"
                       placeholder="(00) 00000-0000"
                       type="text"
                       value={whatsappNumber}

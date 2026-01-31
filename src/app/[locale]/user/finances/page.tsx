@@ -104,14 +104,14 @@ export default function UserFinancesPage() {
 
   return (
     <main className="flex-1 overflow-y-auto h-full relative scroll-smooth bg-background-light bg-background-dark">
-      <header className="sticky top-0 z-20 w-full bg-white/95 bg-card-dark/95 backdrop-blur-md border-b border-gray-800">
+      <header className="sticky top-0 z-20 w-full bg-white/95 /95 backdrop-blur-md border-b border-gray-800">
         <div className="px-6 py-4 lg:px-10">
           <div className="flex flex-wrap justify-between items-center gap-4">
             <div className="flex flex-col gap-1">
-              <h1 className="text-2xl lg:text-3xl font-black leading-tight tracking-[-0.033em] text-text-main-light text-text-main-dark">
+              <h1 className="text-2xl lg:text-3xl font-black leading-tight tracking-[-0.033em]  ">
                 Minha Carteira
               </h1>
-              <p className="text-text-sub-light text-text-sub-dark text-sm lg:text-base font-normal">
+              <p className="  text-sm lg:text-base font-normal">
                 Acompanhe seu saldo e histórico de transações.
               </p>
             </div>
@@ -143,35 +143,35 @@ export default function UserFinancesPage() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-2 rounded-xl p-6 bg-card-dark border border-gray-700 shadow-sm transition-transform hover:-translate-y-1">
+          <div className="flex flex-col gap-2 rounded-xl p-6  border border-gray-700 shadow-sm transition-transform hover:-translate-y-1">
             <div className="flex items-center justify-between">
-              <p className="text-text-sub-light text-text-sub-dark text-sm font-medium">Total Gasto</p>
+              <p className="  text-sm font-medium">Total Gasto</p>
               <div className="p-2 bg-primary50 bg-primary900/20 rounded-lg text-primary text-blue-400">
                 <span className="material-symbols-outlined text-[20px]">shopping_cart</span>
               </div>
             </div>
             <div>
-              <p className="text-text-main-light text-text-main-dark tracking-tight text-2xl font-bold leading-tight mt-1">
+              <p className="  tracking-tight text-2xl font-bold leading-tight mt-1">
                 {formatCurrency(finances.totalSpent)}
               </p>
               <div className="flex items-center gap-1 mt-2">
                 <span className="material-symbols-outlined text-[16px] text-primary">info</span>
-                <p className="text-text-sub-light text-text-sub-dark text-xs font-normal">
+                <p className="  text-xs font-normal">
                   Desde o início da conta
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-col gap-2 rounded-xl p-6 bg-card-dark border border-gray-700 shadow-sm transition-transform hover:-translate-y-1">
+          <div className="flex flex-col gap-2 rounded-xl p-6  border border-gray-700 shadow-sm transition-transform hover:-translate-y-1">
             <div className="flex items-center justify-between">
-              <p className="text-text-sub-light text-text-sub-dark text-sm font-medium">Total Reembolsado</p>
+              <p className="  text-sm font-medium">Total Reembolsado</p>
               <div className="p-2 bg-green-50 bg-green-900/20 rounded-lg text-primary text-green-400">
                 <span className="material-symbols-outlined text-[20px]">undo</span>
               </div>
             </div>
             <div>
-              <p className="text-text-main-light text-text-main-dark tracking-tight text-2xl font-bold leading-tight mt-1">
+              <p className="  tracking-tight text-2xl font-bold leading-tight mt-1">
                 {formatCurrency(finances.totalRefunded)}
               </p>
               <div className="flex items-center gap-1 mt-2">
@@ -187,26 +187,26 @@ export default function UserFinancesPage() {
         {/* Transactions */}
         <section className="flex flex-col gap-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-lg font-bold leading-tight tracking-[-0.015em] text-text-main-light text-text-main-dark">
+            <h3 className="text-lg font-bold leading-tight tracking-[-0.015em]  ">
               Histórico de Transações
             </h3>
           </div>
 
-          <div className="w-full overflow-hidden rounded-xl border border-gray-700 bg-card-dark shadow-sm">
+          <div className="w-full overflow-hidden rounded-xl border border-gray-700  shadow-sm">
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="bg-gray-50 bg-gray-800/50 border-b border-gray-700">
-                    <th className="p-4 text-xs font-bold uppercase tracking-wider text-text-sub-light text-text-sub-dark">
+                  <tr className="bg-gray-50 /50 border-b border-gray-700">
+                    <th className="p-4 text-xs font-bold uppercase tracking-wider  ">
                       Data
                     </th>
-                    <th className="p-4 text-xs font-bold uppercase tracking-wider text-text-sub-light text-text-sub-dark">
+                    <th className="p-4 text-xs font-bold uppercase tracking-wider  ">
                       Descrição
                     </th>
-                    <th className="p-4 text-xs font-bold uppercase tracking-wider text-text-sub-light text-text-sub-dark">
+                    <th className="p-4 text-xs font-bold uppercase tracking-wider  ">
                       Tipo
                     </th>
-                    <th className="p-4 text-xs font-bold uppercase tracking-wider text-text-sub-light text-text-sub-dark text-right">
+                    <th className="p-4 text-xs font-bold uppercase tracking-wider   text-right">
                       Valor
                     </th>
                   </tr>
@@ -217,13 +217,13 @@ export default function UserFinancesPage() {
                       key={transaction.id}
                       className="group hover:bg-accent50 hover:bg-accent800 transition-colors"
                     >
-                      <td className="p-4 text-sm text-text-sub-light text-text-sub-dark">
+                      <td className="p-4 text-sm  ">
                         {formatDate(transaction.createdAt)}
                       </td>
-                      <td className="p-4 text-sm font-medium text-text-main-light text-text-main-dark">
+                      <td className="p-4 text-sm font-medium  ">
                         {transaction.description}
                         {transaction.orderId && (
-                          <p className="text-xs text-text-sub-light font-normal">
+                          <p className="text-xs  font-normal">
                             Pedido {transaction.orderId}
                           </p>
                         )}
