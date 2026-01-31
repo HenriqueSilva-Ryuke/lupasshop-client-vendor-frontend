@@ -6,13 +6,13 @@ import { apolloClient } from "@/lib/graphql-client";
 import { AuthInitializer } from "@/components/AuthInitializer";
 
 export function ClientProviders({ children }: { children: React.ReactNode }) {
-  return (
-    <ApolloProvider client={apolloClient}>
-      <QueryProvider>
-        <AuthInitializer>
-          {children}
-        </AuthInitializer>
-      </QueryProvider>
-    </ApolloProvider>
-  );
+ return (
+ <ApolloProvider client={apolloClient}>
+ <QueryProvider>
+ <AuthInitializer>
+ {children}
+ </AuthInitializer>
+ </QueryProvider>
+ </ApolloProvider>
+ );
 }

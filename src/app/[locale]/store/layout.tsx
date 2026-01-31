@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Loja | LupaShop',
-  description: 'Explore os produtos da loja',
+ title: 'Loja | LupaShop',
+ description: 'Explore os produtos da loja',
 };
 
 export default function StoreLayout({
-  children,
+ children,
 }: {
-  children: React.ReactNode;
+ children: React.ReactNode;
 }) {
-  return children;
+ return children;
 }

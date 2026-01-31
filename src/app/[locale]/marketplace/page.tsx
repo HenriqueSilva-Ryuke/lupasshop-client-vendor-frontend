@@ -5,19 +5,19 @@ import MarketplaceProductListing from '@/components/marketplace/MarketplaceProdu
 import JsonLd from '@/components/JsonLd';
 
 export default function MarketplacePage() {
-    const metaData = {
-        '@context': 'https://schema.org',
-        '@type': 'ItemList',
-        'name': 'LupaShop Marketplace',
-        'itemListElement': []
-    };
+ const metaData = {
+ '@context': 'https://schema.org',
+ '@type': 'ItemList',
+ 'name': 'LupaShop Marketplace',
+ 'itemListElement': []
+ };
 
-    return (
-        <>
-            <NavbarWithSearch />
-            <MarketplaceProductListing />
-            <JsonLd data={metaData} />
-        </>
-    );
+ return (
+ <>
+ <NavbarWithSearch />
+ <MarketplaceProductListing />
+ <JsonLd data={metaData} />
+ </>
+ );
 }
 

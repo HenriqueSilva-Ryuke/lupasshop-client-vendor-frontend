@@ -7,93 +7,93 @@ import { useLocale } from 'next-intl';
 import { useForgotPasswordForm } from '@/hooks/forms/useForgotPasswordForm';
 
 export default function ForgotPasswordForm() {
-  const t = useTranslations('auth.forgotPassword');
-  const locale = useLocale();
-  const { form, onSubmit, error, success, isLoading } = useForgotPasswordForm();
-  const { register, handleSubmit, formState: { errors } } = form;
+ const t = useTranslations('auth.forgotPassword');
+ const locale = useLocale();
+ const { form, onSubmit, error, success, isLoading } = useForgotPasswordForm();
+ const { register, handleSubmit, formState: { errors } } = form;
 
-  if (success) {
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-center space-y-6"
-      >
-        <div className="w-16 h-16 mx-auto bg-green-100 rounded-full flex items-center justify-center">
-          <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
-        <div>
-          <h3 className="text-lg font-semibold text-foreground mb-2">Email enviado!</h3>
-          <p className="text-muted-foreground text-sm">{t('successMessage')}</p>
-        </div>
-        <Link
-          href={`/${locale}/auth/login`}
-          className="inline-block px-6 py-2 bg-primary text-black rounded-xl font-semibold hover:bg-primary/90 transition-colors"
-        >
-          {t('backToLogin')}
-        </Link>
-      </motion.div>
-    );
-  }
+ if (success) {
+ return (
+ <motion.div
+ initial={{ opacity: 0, y: 20 }}
+ animate={{ opacity: 1, y: 0 }}
+ className="text-center space-y-6"
+ >
+ <div className="w-16 h-16 mx-auto bg-green-100 rounded-full flex items-center justify-center">
+ <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+ <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+ </svg>
+ </div>
+ <div>
+ <h3 className="text-lg font-semibold text-foreground mb-2">Email enviado!</h3>
+ <p className="text-muted-foreground text-sm">{t('successMessage')}</p>
+ </div>
+ <Link
+ href={`/${locale}/auth/login`}
+ className="inline-block px-6 py-2 bg-primary text-black rounded-xl font-semibold hover:bg-primary/90 transition-colors"
+ >
+ {t('backToLogin')}
+ </Link>
+ </motion.div>
+ );
+ }
 
-  return (
-    <motion.form
-      onSubmit={handleSubmit(onSubmit)}
-      className="space-y-6 w-full"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      {error && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="p-4 bg-destructive/10 border border-destructive rounded-xl text-destructive text-sm"
-        >
-          {error}
-        </motion.div>
-      )}
+ return (
+ <motion.form
+ onSubmit={handleSubmit(onSubmit)}
+ className="space-y-6 w-full"
+ initial={{ opacity: 0, y: 20 }}
+ animate={{ opacity: 1, y: 0 }}
+ transition={{ duration: 0.5 }}
+ >
+ {error && (
+ <motion.div
+ initial={{ opacity: 0 }}
+ animate={{ opacity: 1 }}
+ className="p-4 bg-destructive/10 border border-destructive rounded-xl text-destructive text-sm"
+ >
+ {error}
+ </motion.div>
+ )}
 
-      {/* Email Field */}
-      <div>
-        <label className="block text-sm font-semibold text-foreground mb-2">
-          {t('email')}
-        </label>
-        <input
-          {...register('email')}
-          type="email"
-          placeholder="seu@email.com"
-          className={`w-full px-4 py-3 rounded-xl border-2 transition-colors duration-200 ${
-            errors.email
-              ? 'border-red-300 focus:border-red-500 focus:ring-red-100'
-              : 'border-border focus:border-primary focus:ring-primary/10'
-          } focus:outline-none focus:ring-4 bg-card`}
-        />
-        {errors.email && (
-          <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
-        )}
-      </div>
+ {/* Email Field */}
+ <div>
+ <label className="block text-sm font-semibold text-foreground mb-2">
+ {t('email')}
+ </label>
+ <input
+ {...register('email')}
+ type="email"
+ placeholder="seu@email.com"
+ className={`w-full px-4 py-3 rounded-xl border-2 transition-colors duration-200 ${
+ errors.email
+ ? 'border-red-300 focus:border-red-500 focus:ring-red-100'
+ : 'border-border focus:border-primary focus:ring-primary/10'
+ } focus:outline-none focus:ring-4 bg-card`}
+ />
+ {errors.email && (
+ <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
+ )}
+ </div>
 
-      {/* Submit Button */}
-      <motion.button
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-        type="submit"
-        disabled={isLoading}
-        className="w-full py-3 px-4 bg-primary text-black rounded-xl font-semibold hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        {isLoading ? 'Enviando...' : t('button')}
-      </motion.button>
+ {/* Submit Button */}
+ <motion.button
+ whileHover={{ scale: 1.02 }}
+ whileTap={{ scale: 0.98 }}
+ type="submit"
+ disabled={isLoading}
+ className="w-full py-3 px-4 bg-primary text-black rounded-xl font-semibold hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+ >
+ {isLoading ? 'Enviando...' : t('button')}
+ </motion.button>
 
-      {/* Back to Login */}
-      <Link
-        href={`/${locale}/auth/login`}
-        className="block text-center text-sm text-primary hover:text-primary/80 transition-colors font-semibold"
-      >
-        {t('backToLogin')}
-      </Link>
-    </motion.form>
-  );
+ {/* Back to Login */}
+ <Link
+ href={`/${locale}/auth/login`}
+ className="block text-center text-sm text-primary hover:text-primary/80 transition-colors font-semibold"
+ >
+ {t('backToLogin')}
+ </Link>
+ </motion.form>
+ );
 }

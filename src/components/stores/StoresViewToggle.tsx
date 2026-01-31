@@ -3,27 +3,27 @@
 import React, { useState, useEffect } from 'react';
 
 interface StoresViewToggleProps {
-  defaultView?: 'grid' | 'list';
-  onChange?: (view: 'grid' | 'list') => void;
+ defaultView?: 'grid' | 'list';
+ onChange?: (view: 'grid' | 'list') => void;
 }
 
 export default function StoresViewToggle({ defaultView = 'grid', onChange }: StoresViewToggleProps) {
-  const [view, setView] = useState<'grid' | 'list'>(defaultView);
+ const [view, setView] = useState<'grid' | 'list'>(defaultView);
 
-  useEffect(() => {
-    const stored = localStorage.getItem('stores-view');
-    if (stored === 'list' || stored === 'grid') setView(stored);
-  }, []);
+ useEffect(() => {
+ const stored = localStorage.getItem('stores-view');
+ if (stored === 'list' || stored === 'grid') setView(stored);
+ }, []);
 
-  useEffect(() => {
-    localStorage.setItem('stores-view', view);
-    onChange?.(view);
-  }, [view, onChange]);
+ useEffect(() => {
+ localStorage.setItem('stores-view', view);
+ onChange?.(view);
+ }, [view, onChange]);
 
-  return (
-    <div className="inline-flex items-center border rounded overflow-hidden">
-      <button onClick={() => setView('grid')} className={`px-3 py-2 ${view === 'grid' ? 'bg-muted' : ''}`}>Grid</button>
-      <button onClick={() => setView('list')} className={`px-3 py-2 ${view === 'list' ? 'bg-muted' : ''}`}>List</button>
-    </div>
-  );
+ return (
+ <div className="inline-flex items-center border rounded overflow-hidden">
+ <button onClick={() => setView('grid')} className={`px-3 py-2 ${view === 'grid' ? 'bg-muted' : ''}`}>Grid</button>
+ <button onClick={() => setView('list')} className={`px-3 py-2 ${view === 'list' ? 'bg-muted' : ''}`}>List</button>
+ </div>
+ );
 }

@@ -6,154 +6,147 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 
 interface ProductCardProps {
-  product: {
-    id: string;
-    name: string;
-    slug: string;
-    price: number;
-    originalPrice?: number;
-    images: string[];
-    rating: number;
-    reviewCount: number;
-    stockQuantity: number;
-    isNew?: boolean;
-    isTrending?: boolean;
-    store: {
-      id: string;
-      name: string;
-      slug: string;
-    };
-  };
+ product: {
+ id: string;
+ name: string;
+ slug: string;
+ price: number;
+ originalPrice?: number;
+ images: string[];
+ rating: number;
+ reviewCount: number;
+ stockQuantity: number;
+ isNew?: boolean;
+ isTrending?: boolean;
+ store: {
+ id: string;
+ name: string;
+ slug: string;
+ };
+ };
 }
 
 function ProductCard({ product }: ProductCardProps) {
-  const discount = product.originalPrice 
-    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
-    : 0;
+ const discount = product.originalPrice  ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
+ : 0;
 
-  return (
-    <Link href={`/products/${product.slug}`} className="group">
-      <div className="bg-card rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
-        <div className="relative aspect-square">
-          {Array.isArray(product.images) && product.images[0] ? (
-            <Image
-              src={product.images[0]}
-              alt={product.name}
-              fill
-              className="object-cover group-hover:scale-105 transition-transform"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm bg-muted">
-              Sem imagem
-            </div>
-          )}
-          {product.isNew && (
-            <span className="absolute top-2 left-2 bg-primary500 text-black text-xs px-2 py-1 rounded">
-              Novo
-            </span>
-          )}
-          {discount > 0 && (
-            <span className="absolute top-2 right-2 bg-destructive/100 text-black text-xs px-2 py-1 rounded">
-              -{discount}%
-            </span>
-          )}
-        </div>
-        
-        <div className="p-4">
-          <h3 className="font-semibold text-foreground line-clamp-2 mb-2">
-            {product.name}
-          </h3>
-          
-          <Link 
-            href={`/stores/${product.store.slug}`}
-            className="text-sm text-muted-foreground hover:text-primary mb-2 block"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {product.store.name}
-          </Link>
-          
-          <div className="flex items-center gap-1 mb-2">
-            <span className="text-yellow-400">★</span>
-            <span className="text-sm text-foreground">{product.rating.toFixed(1)}</span>
-            <span className="text-sm text-muted-foreground">({product.reviewCount})</span>
-          </div>
-          
-          <div className="flex items-center gap-2">
-            <span className="text-xl font-bold text-foreground">
-              {product.price.toLocaleString('pt-AO', { style: 'currency', currency: 'AOA' })}
-            </span>
-            {product.originalPrice && (
-              <span className="text-sm text-muted-foreground line-through">
-                {product.originalPrice.toLocaleString('pt-AO', { style: 'currency', currency: 'AOA' })}
-              </span>
-            )}
-          </div>
-          
-          {product.stockQuantity === 0 && (
-            <p className="text-sm text-destructive mt-2">Esgotado</p>
-          )}
-        </div>
-      </div>
-    </Link>
-  );
+ return (
+ <Link href={`/products/${product.slug}`} className="group">
+ <div className="bg-card rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+ <div className="relative aspect-square">
+ {Array.isArray(product.images) && product.images[0] ? (
+ <Image
+ src={product.images[0]}
+ alt={product.name}
+ fill
+ className="object-cover group-hover:scale-105 transition-transform"
+ sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+ />
+ ) : (
+ <div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm bg-muted">
+ Sem imagem
+ </div>
+ )}
+ {product.isNew && (
+ <span className="absolute top-2 left-2 bg-primary500 text-black text-xs px-2 py-1 rounded">
+ Novo
+ </span>
+ )}
+ {discount > 0 && (
+ <span className="absolute top-2 right-2 bg-destructive/100 text-black text-xs px-2 py-1 rounded">
+ -{discount}%
+ </span>
+ )}
+ </div>
+  <div className="p-4">
+ <h3 className="font-semibold text-foreground line-clamp-2 mb-2">
+ {product.name}
+ </h3>
+  <Link  href={`/stores/${product.store.slug}`}
+ className="text-sm text-muted-foreground hover:text-primary mb-2 block"
+ onClick={(e) => e.stopPropagation()}
+ >
+ {product.store.name}
+ </Link>
+  <div className="flex items-center gap-1 mb-2">
+ <span className="text-yellow-400">★</span>
+ <span className="text-sm text-foreground">{product.rating.toFixed(1)}</span>
+ <span className="text-sm text-muted-foreground">({product.reviewCount})</span>
+ </div>
+  <div className="flex items-center gap-2">
+ <span className="text-xl font-bold text-foreground">
+ {product.price.toLocaleString('pt-AO', { style: 'currency', currency: 'AOA' })}
+ </span>
+ {product.originalPrice && (
+ <span className="text-sm text-muted-foreground line-through">
+ {product.originalPrice.toLocaleString('pt-AO', { style: 'currency', currency: 'AOA' })}
+ </span>
+ )}
+ </div>
+  {product.stockQuantity === 0 && (
+ <p className="text-sm text-destructive mt-2">Esgotado</p>
+ )}
+ </div>
+ </div>
+ </Link>
+ );
 }
 
 function ProductsSkeleton() {
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-      {[...Array(8)].map((_, i) => (
-        <div key={i} className="bg-card rounded-lg shadow-sm overflow-hidden animate-pulse">
-          <div className="aspect-square"></div>
-          <div className="p-4 space-y-3">
-            <div className="h-4 rounded w-3/4"></div>
-            <div className="h-3 rounded w-1/2"></div>
-            <div className="h-6 rounded w-1/3"></div>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
+ return (
+ <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+ {[...Array(8)].map((_, i) => (
+ <div key={i} className="bg-card rounded-lg shadow-sm overflow-hidden animate-pulse">
+ <div className="aspect-square"></div>
+ <div className="p-4 space-y-3">
+ <div className="h-4 rounded w-3/4"></div>
+ <div className="h-3 rounded w-1/2"></div>
+ <div className="h-6 rounded w-1/3"></div>
+ </div>
+ </div>
+ ))}
+ </div>
+ );
 }
 
 interface ProductGridProps {
-  filters?: {
-    storeId?: string;
-    categoryId?: string;
-    search?: string;
-    isNew?: boolean;
-    isTrending?: boolean;
-  };
+ filters?: {
+ storeId?: string;
+ categoryId?: string;
+ search?: string;
+ isNew?: boolean;
+ isTrending?: boolean;
+ };
 }
 
 export function ProductGrid({ filters }: ProductGridProps) {
-  const { data: products, isLoading, error } = useProducts(filters);
+ const { data: products, isLoading, error } = useProducts(filters);
 
-  if (isLoading) {
-    return <ProductsSkeleton />;
-  }
+ if (isLoading) {
+ return <ProductsSkeleton />;
+ }
 
-  if (error) {
-    return (
-      <div className="text-center py-12">
-        <p className="text-destructive">Erro ao carregar produtos</p>
-      </div>
-    );
-  }
+ if (error) {
+ return (
+ <div className="text-center py-12">
+ <p className="text-destructive">Erro ao carregar produtos</p>
+ </div>
+ );
+ }
 
-  if (!products || products.length === 0) {
-    return (
-      <div className="text-center py-12">
-        <p className="text-muted-foreground">Nenhum produto encontrado</p>
-      </div>
-    );
-  }
+ if (!products || products.length === 0) {
+ return (
+ <div className="text-center py-12">
+ <p className="text-muted-foreground">Nenhum produto encontrado</p>
+ </div>
+ );
+ }
 
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-      {products.map((product: any) => (
-        <ProductCard key={product.id} product={product} />
-      ))}
-    </div>
-  );
+ return (
+ <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+ {products.map((product: any) => (
+ <ProductCard key={product.id} product={product} />
+ ))}
+ </div>
+ );
 }
