@@ -25,7 +25,7 @@ export default function LoginForm() {
           </span>
           <input
             {...register('email')}
-            className={`form-input flex w-full rounded-lg text-text-main focus:outline-0 focus:ring-2 focus:ring-primary/20 border bg-white focus:border-primary h-12 pl-12 pr-4 text-base font-normal placeholder:text-[#9aaebc] transition-all ${
+            className={`form-input flex w-full rounded-lg text-text-main focus:outline-0 focus:ring-2 focus:ring-primary/20 border bg-card focus:border-primary h-12 pl-12 pr-4 text-base font-normal placeholder:text-[#9aaebc] transition-all ${
               errors.email ? 'border-red-500' : 'border-[#dbe1e6]'
             }`}
             placeholder="exemplo@email.com"
@@ -49,7 +49,7 @@ export default function LoginForm() {
           </span>
           <input
             {...register('password')}
-            className={`form-input flex w-full rounded-lg text-text-main focus:outline-0 focus:ring-2 focus:ring-primary/20 border bg-white focus:border-primary h-12 pl-12 pr-12 text-base font-normal placeholder:text-[#9aaebc] transition-all ${
+            className={`form-input flex w-full rounded-lg text-text-main focus:outline-0 focus:ring-2 focus:ring-primary/20 border bg-card focus:border-primary h-12 pl-12 pr-12 text-base font-normal placeholder:text-[#9aaebc] transition-all ${
               errors.password ? 'border-red-500' : 'border-[#dbe1e6]'
             }`}
             placeholder="Digite sua senha"
@@ -82,7 +82,7 @@ export default function LoginForm() {
               type="checkbox"
               disabled={isLoading}
             />
-            <span className="material-symbols-outlined absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-[16px] opacity-0 peer-checked:opacity-100 pointer-events-none font-bold">
+            <span className="material-symbols-outlined absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-card-foreground text-[16px] opacity-0 peer-checked:opacity-100 pointer-events-none font-bold">
               check
             </span>
           </div>
@@ -102,7 +102,7 @@ export default function LoginForm() {
       <button
         type="submit"
         disabled={isLoading}
-        className="flex w-full cursor-pointer items-center justify-center rounded-lg h-12 px-4 bg-primary hover:bg-primary-dark active:scale-[0.98] transition-all text-white text-base font-bold shadow-md shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="flex w-full cursor-pointer items-center justify-center rounded-lg h-12 px-4 bg-primary hover:bg-primary-dark active:scale-[0.98] transition-all text-card-foreground text-base font-bold shadow-md shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isLoading ? 'Entrando...' : 'Entrar'}
       </button>

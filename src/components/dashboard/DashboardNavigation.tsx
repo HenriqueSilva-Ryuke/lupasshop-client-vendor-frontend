@@ -52,7 +52,7 @@ export default function DashboardNavigation({
     <motion.header
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white border-b border-gray-200 sticky top-0 z-20"
+      className="bg-card border-b border-border sticky top-0 z-20"
     >
       <div className="flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
         {/* Left Side - Menu + Title */}
@@ -61,11 +61,11 @@ export default function DashboardNavigation({
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={onMenuClick}
-            className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            className="lg:hidden p-2 hover:bg-muted rounded-lg transition-colors"
           >
-            <span className="material-icons text-gray-600">menu</span>
+            <span className="material-icons text-muted-foreground">menu</span>
           </motion.button>
-          <h2 className="text-xl font-semibold text-gray-900">
+          <h2 className="text-xl font-semibold text-foreground">
             {getTitleForView(currentView)}
           </h2>
         </div>
@@ -76,9 +76,9 @@ export default function DashboardNavigation({
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            className="relative p-2 hover:bg-muted rounded-lg transition-colors"
           >
-            <span className="material-icons text-gray-600">notifications</span>
+            <span className="material-icons text-muted-foreground">notifications</span>
             <motion.span
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
@@ -89,9 +89,9 @@ export default function DashboardNavigation({
           {/* Language Switcher */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-1 px-3 py-2 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
+            className="flex items-center space-x-1 px-3 py-2 hover:bg-muted rounded-lg transition-colors cursor-pointer"
           >
-            <span className="text-sm font-medium text-gray-600">
+            <span className="text-sm font-medium text-muted-foreground">
               {locale.toUpperCase()}
             </span>
           </motion.div>
@@ -99,7 +99,7 @@ export default function DashboardNavigation({
           {/* Profile Dropdown */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-3 px-4 py-2 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer group"
+            className="flex items-center space-x-3 px-4 py-2 hover:bg-muted rounded-lg transition-colors cursor-pointer group"
           >
             <div className="w-8 h-8 bg-linear-to-br from-primary to-primary/60 rounded-full flex items-center justify-center">
               <span className="text-black text-sm font-bold">
@@ -107,10 +107,10 @@ export default function DashboardNavigation({
               </span>
             </div>
             <div className="hidden sm:block">
-              <p className="text-sm font-medium text-gray-900">{user?.fullName || 'User'}</p>
-              <p className="text-xs text-gray-500">{user?.email || ''}</p>
+              <p className="text-sm font-medium text-foreground">{user?.fullName || 'User'}</p>
+              <p className="text-xs text-muted-foreground">{user?.email || ''}</p>
             </div>
-            <span className="material-icons text-gray-600 text-xl group-hover:rotate-180 transition-transform">
+            <span className="material-icons text-muted-foreground text-xl group-hover:rotate-180 transition-transform">
               expand_more
             </span>
           </motion.div>
@@ -120,7 +120,7 @@ export default function DashboardNavigation({
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleLogout}
-            className="p-2 text-gray-600 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors"
+            className="p-2 text-muted-foreground hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors"
             title="Logout"
           >
             <span className="material-icons">logout</span>

@@ -29,31 +29,31 @@ export default function ReviewsView() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">{t('manage')}</h1>
-        <p className="text-gray-500">Monitor and respond to customer reviews</p>
+        <h1 className="text-2xl font-bold text-foreground">{t('manage')}</h1>
+        <p className="text-muted-foreground">Monitor and respond to customer reviews</p>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
+      <div className="bg-card rounded-2xl border border-gray-100 overflow-hidden">
         <div className="px-6 py-4 border-b border-gray-100">
           <h3 className="font-semibold">Reviews</h3>
         </div>
 
         {loading ? (
-          <div className="p-6 text-center text-gray-500">Carregando...</div>
+          <div className="p-6 text-center text-muted-foreground">Carregando...</div>
         ) : reviews.length === 0 ? (
-          <div className="p-6 text-center text-gray-500">Nenhuma avaliação encontrada</div>
+          <div className="p-6 text-center text-muted-foreground">Nenhuma avaliação encontrada</div>
         ) : (
           <div className="divide-y divide-gray-100">
             {reviews.map((review: any) => (
               <div key={review.id} className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-medium text-gray-900">{review.user?.fullName || 'Cliente'}</p>
-                    <p className="text-sm text-gray-500">{new Date(review.createdAt).toLocaleDateString()}</p>
+                    <p className="font-medium text-foreground">{review.user?.fullName || 'Cliente'}</p>
+                    <p className="text-sm text-muted-foreground">{new Date(review.createdAt).toLocaleDateString()}</p>
                   </div>
-                  <div className="text-sm font-semibold text-gray-900">{review.rating} / 5</div>
+                  <div className="text-sm font-semibold text-foreground">{review.rating} / 5</div>
                 </div>
-                <p className="text-gray-600 mt-3">{review.comment}</p>
+                <p className="text-muted-foreground mt-3">{review.comment}</p>
               </div>
             ))}
           </div>

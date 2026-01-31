@@ -169,7 +169,7 @@ export default function SellerRegisterForm() {
       <button
         type="submit"
         disabled={isLoading}
-        className="mt-4 flex w-full cursor-pointer items-center justify-center rounded-xl h-12 px-6 bg-primary hover:bg-primary-dark text-white text-base font-bold leading-normal tracking-[0.015em] transition-all shadow-lg shadow-primary/30 hover:shadow-primary/50 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="mt-4 flex w-full cursor-pointer items-center justify-center rounded-xl h-12 px-6 bg-primary hover:bg-primary-dark text-card-foreground text-base font-bold leading-normal tracking-[0.015em] transition-all shadow-lg shadow-primary/30 hover:shadow-primary/50 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         <span className="truncate">{isLoading ? 'Criando loja...' : 'Criar minha loja'}</span>
       </button>

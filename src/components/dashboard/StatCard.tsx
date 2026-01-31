@@ -25,16 +25,16 @@ export default function StatCard({
   return (
     <motion.div
       whileHover={{ scale: 1.02 }}
-      className="bg-white rounded-lg p-6 border border-gray-200 hover:border-gray-300 transition-colors"
+      className="bg-card rounded-lg p-6 border border-border hover:border-border transition-colors"
     >
       <div className="flex items-start justify-between">
         <div>
-          <p className="text-gray-600 text-sm font-medium">{label}</p>
+          <p className="text-muted-foreground text-sm font-medium">{label}</p>
           <div className="mt-3">
             {isLoading ? (
               <div className="h-8 bg-gray-200 rounded animate-pulse w-24" />
             ) : (
-              <p className="text-2xl font-bold text-gray-900">{value}</p>
+              <p className="text-2xl font-bold text-foreground">{value}</p>
             )}
           </div>
           <p className={`text-xs mt-2 ${isPositive ? 'text-green-600' : 'text-red-600'}`}>

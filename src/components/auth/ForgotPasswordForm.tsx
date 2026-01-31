@@ -25,8 +25,8 @@ export default function ForgotPasswordForm() {
           </svg>
         </div>
         <div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">Email enviado!</h3>
-          <p className="text-gray-600 text-sm">{t('successMessage')}</p>
+          <h3 className="text-lg font-semibold text-foreground mb-2">Email enviado!</h3>
+          <p className="text-muted-foreground text-sm">{t('successMessage')}</p>
         </div>
         <Link
           href={`/${locale}/auth/login`}
@@ -58,7 +58,7 @@ export default function ForgotPasswordForm() {
 
       {/* Email Field */}
       <div>
-        <label className="block text-sm font-semibold text-gray-700 mb-2">
+        <label className="block text-sm font-semibold text-foreground mb-2">
           {t('email')}
         </label>
         <input
@@ -68,8 +68,8 @@ export default function ForgotPasswordForm() {
           className={`w-full px-4 py-3 rounded-xl border-2 transition-colors duration-200 ${
             errors.email
               ? 'border-red-300 focus:border-red-500 focus:ring-red-100'
-              : 'border-gray-200 focus:border-primary focus:ring-primary/10'
-          } focus:outline-none focus:ring-4 bg-white`}
+              : 'border-border focus:border-primary focus:ring-primary/10'
+          } focus:outline-none focus:ring-4 bg-card`}
         />
         {errors.email && (
           <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>

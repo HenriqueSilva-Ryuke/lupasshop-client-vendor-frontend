@@ -29,7 +29,7 @@ const colorMap: Record<string, string> = {
   orders: 'bg-orange-500',
   finances: 'bg-emerald-500',
   reviews: 'bg-yellow-500',
-  settings: 'bg-gray-500',
+  settings: 'bg-muted0',
 };
 
 export default function DashboardSidebar({
@@ -60,17 +60,17 @@ export default function DashboardSidebar({
         animate={{ x: isOpen ? 0 : -300 }}
         exit={{ x: -300 }}
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-        className="fixed lg:relative w-64 h-screen bg-white border-r border-gray-200 z-40 lg:translate-x-0"
+        className="fixed lg:relative w-64 h-screen bg-card border-r border-border z-40 lg:translate-x-0"
       >
         {/* Logo */}
-        <div className="p-6 border-b border-gray-200">
+        <div className="p-6 border-b border-border">
           <Link href={`/${locale}`} className="flex items-center space-x-2 group">
             <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center group-hover:shadow-lg transition-shadow">
               <span className="material-icons text-black text-xl">dashboard</span>
             </div>
             <div>
-              <h1 className="font-bold text-lg text-gray-900">LupaShop</h1>
-              <p className="text-xs text-gray-500">Seller Panel</p>
+              <h1 className="font-bold text-lg text-foreground">LupaShop</h1>
+              <p className="text-xs text-muted-foreground">Seller Panel</p>
             </div>
           </Link>
         </div>
@@ -90,7 +90,7 @@ export default function DashboardSidebar({
               className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${
                 currentView === item.id
                   ? 'bg-primary/10 text-primary'
-                  : 'text-gray-600 hover:bg-gray-50'
+                  : 'text-muted-foreground hover:bg-muted'
               }`}
             >
               <span className="material-icons text-lg">{item.icon}</span>
@@ -106,8 +106,8 @@ export default function DashboardSidebar({
         </nav>
 
         {/* Footer */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200 bg-gray-50">
-          <p className="text-xs text-gray-500 text-center">
+        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-border bg-muted">
+          <p className="text-xs text-muted-foreground text-center">
             v1.0.0 • {new Date().getFullYear()}
           </p>
         </div>

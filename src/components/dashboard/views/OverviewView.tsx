@@ -78,12 +78,12 @@ export default function OverviewView() {
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white rounded-lg p-6 border border-gray-200"
+        className="bg-card rounded-lg p-6 border border-border"
       >
-        <h1 className="text-2xl font-bold text-gray-900">
+        <h1 className="text-2xl font-bold text-foreground">
           {t('welcome', { name: user?.fullName || 'Seller' })}
         </h1>
-        <p className="text-gray-600 mt-2">
+        <p className="text-muted-foreground mt-2">
           {t('subtitle')}
         </p>
       </motion.div>
@@ -107,32 +107,32 @@ export default function OverviewView() {
         transition={{ delay: 0.2 }}
         className="grid grid-cols-1 lg:grid-cols-3 gap-6"
       >
-        <div className="lg:col-span-2 bg-white rounded-lg p-6 border border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-900 mb-6">
+        <div className="lg:col-span-2 bg-card rounded-lg p-6 border border-border">
+          <h3 className="text-lg font-semibold text-foreground mb-6">
             {t('salesChart.title')}
           </h3>
           {salesByDay.length === 0 ? (
-            <div className="h-40 flex items-center justify-center text-gray-400">
+            <div className="h-40 flex items-center justify-center text-muted-foreground">
               {t('salesChart.empty') || 'Sem dados no período selecionado'}
             </div>
           ) : (
             <div className="space-y-3">
               {salesByDay.slice(-7).map((day: any) => (
                 <div key={day.date} className="flex items-center justify-between text-sm">
-                  <span className="text-gray-500">{new Date(day.date).toLocaleDateString()}</span>
-                  <span className="font-semibold text-gray-900">AOA {day.revenue.toLocaleString()}</span>
+                  <span className="text-muted-foreground">{new Date(day.date).toLocaleDateString()}</span>
+                  <span className="font-semibold text-foreground">AOA {day.revenue.toLocaleString()}</span>
                 </div>
               ))}
             </div>
           )}
         </div>
 
-        <div className="bg-white rounded-lg p-6 border border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-900 mb-6">
+        <div className="bg-card rounded-lg p-6 border border-border">
+          <h3 className="text-lg font-semibold text-foreground mb-6">
             {t('topProducts.title')}
           </h3>
           {topProducts.length === 0 ? (
-            <div className="text-sm text-gray-500">Sem produtos no período</div>
+            <div className="text-sm text-muted-foreground">Sem produtos no período</div>
           ) : (
             <div className="space-y-4">
               {topProducts.map((product: any, index: number) => (
@@ -141,13 +141,13 @@ export default function OverviewView() {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
+                  className="flex items-center justify-between p-3 bg-muted rounded-lg"
                 >
                   <div>
-                    <p className="text-sm font-medium text-gray-900">
+                    <p className="text-sm font-medium text-foreground">
                       {product.name}
                     </p>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-muted-foreground">
                       {product.reviewCount} reviews
                     </p>
                   </div>

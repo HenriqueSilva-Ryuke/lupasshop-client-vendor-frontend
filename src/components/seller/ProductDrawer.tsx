@@ -42,7 +42,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
     return (
       <>
         <div className="fixed inset-0 bg-black/50 z-40" onClick={onClose} />
-        <div className="fixed right-0 top-0 h-full w-full sm:w-[500px] bg-white bg-card-dark z-50 shadow-2xl flex items-center justify-center">
+        <div className="fixed right-0 top-0 h-full w-full sm:w-[500px] bg-card bg-card-dark z-50 shadow-2xl flex items-center justify-center">
           <div className="text-center">
             <span className="material-symbols-outlined animate-spin text-4xl text-primary">progress_activity</span>
             <p className="mt-2 text-sm text-text-sub-light text-text-sub-dark">Carregando...</p>
@@ -57,16 +57,16 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
     return (
       <>
         <div className="fixed inset-0 bg-black/50 z-40" onClick={onClose} />
-        <div className="fixed right-0 top-0 h-full w-full sm:w-[500px] bg-white bg-card-dark z-50 shadow-2xl flex items-center justify-center">
+        <div className="fixed right-0 top-0 h-full w-full sm:w-[500px] bg-card bg-card-dark z-50 shadow-2xl flex items-center justify-center">
           <div className="text-center p-6">
             <span className="material-symbols-outlined text-6xl text-red-500">error</span>
-            <h3 className="mt-4 text-lg font-bold text-foreground text-white">Loja não encontrada</h3>
+            <h3 className="mt-4 text-lg font-bold text-foreground text-card-foreground">Loja não encontrada</h3>
             <p className="mt-2 text-sm text-text-sub-light text-text-sub-dark">
               Você precisa ter uma loja cadastrada para adicionar produtos.
             </p>
             <button
               onClick={onClose}
-              className="mt-6 h-12 px-6 rounded-lg bg-primary text-white font-bold"
+              className="mt-6 h-12 px-6 rounded-lg bg-primary text-card-foreground font-bold"
             >
               Fechar
             </button>
@@ -85,9 +85,9 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
       />
 
       {/* Drawer */}
-      <div className="fixed right-0 top-0 h-full w-full sm:w-[500px] bg-white bg-card-dark z-50 shadow-2xl overflow-y-auto">
+      <div className="fixed right-0 top-0 h-full w-full sm:w-[500px] bg-card bg-card-dark z-50 shadow-2xl overflow-y-auto">
         {/* Header */}
-        <div className="sticky top-0 bg-white bg-card-dark border-b border-gray-200 border-gray-700 px-6 py-4 z-10">
+        <div className="sticky top-0 bg-card bg-card-dark border-b border-border border-border px-6 py-4 z-10">
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-xl font-bold text-text-main-light text-text-main-dark">
@@ -99,7 +99,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
             </div>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-gray-100 hover:bg-gray-700 rounded-lg transition-colors"
+              className="p-2 hover:bg-muted hover:bg-gray-700 rounded-lg transition-colors"
             >
               <span className="material-symbols-outlined">close</span>
             </button>
@@ -125,7 +125,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
               id="name"
               placeholder="Ex: Tênis Nike Air Max"
               type="text"
-              className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-white bg-gray-800 text-foreground text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+              className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-card bg-gray-800 text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
             />
             {errors.name && (
               <span className="text-xs text-red-600 text-red-400">{errors.name.message}</span>
@@ -142,7 +142,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
               id="description"
               placeholder="Descreva as características e benefícios do produto"
               rows={4}
-              className="w-full px-4 py-3 rounded-lg border border-[#dbe1e6] border-gray-600 bg-white bg-gray-800 text-foreground text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all resize-none"
+              className="w-full px-4 py-3 rounded-lg border border-[#dbe1e6] border-gray-600 bg-card bg-gray-800 text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all resize-none"
             />
             {errors.description && (
               <span className="text-xs text-red-600 text-red-400">{errors.description.message}</span>
@@ -162,7 +162,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
                 type="number"
                 step="0.01"
                 min="0"
-                className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-white bg-gray-800 text-foreground text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-card bg-gray-800 text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
               />
               {errors.price && (
                 <span className="text-xs text-red-600 text-red-400">{errors.price.message}</span>
@@ -179,7 +179,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
                 placeholder="0"
                 type="number"
                 min="0"
-                className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-white bg-gray-800 text-foreground text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-card bg-gray-800 text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
               />
               {errors.stockQuantity && (
                 <span className="text-xs text-red-600 text-red-400">{errors.stockQuantity.message}</span>
@@ -198,7 +198,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
                 id="sku"
                 placeholder="SKU-1234"
                 type="text"
-                className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-white bg-gray-800 text-foreground text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-card bg-gray-800 text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
               />
               {errors.sku && (
                 <span className="text-xs text-red-600 text-red-400">{errors.sku.message}</span>
@@ -213,7 +213,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
                 <select
                   {...register('categoryId')}
                   id="categoryId"
-                  className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-white bg-gray-800 text-foreground text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all appearance-none"
+                  className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-card bg-gray-800 text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all appearance-none"
                 >
                   <option value="">Selecione</option>
                   {/* These should be fetched from the backend, but for now using placeholder values */}
@@ -270,12 +270,12 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
                     <img
                       src={url}
                       alt={`Preview ${index + 1}`}
-                      className="w-full h-24 object-cover rounded-lg border border-gray-200 border-gray-700"
+                      className="w-full h-24 object-cover rounded-lg border border-border border-border"
                     />
                     <button
                       type="button"
                       onClick={() => removeImage(index)}
-                      className="absolute top-1 right-1 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="absolute top-1 right-1 p-1 bg-red-500 text-card-foreground rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
                     >
                       <span className="material-symbols-outlined text-[16px]">close</span>
                     </button>
@@ -289,9 +289,9 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
           </div>
 
           {/* Active Toggle */}
-          <div className="flex items-center justify-between p-4 bg-gray-50 bg-gray-800 rounded-lg">
+          <div className="flex items-center justify-between p-4 bg-muted bg-gray-800 rounded-lg">
             <div>
-              <p className="text-sm font-medium text-foreground text-white">Produto Ativo</p>
+              <p className="text-sm font-medium text-foreground text-card-foreground">Produto Ativo</p>
               <p className="text-xs text-text-sub-light text-text-sub-dark mt-0.5">
                 O produto ficará visível na loja
               </p>
@@ -303,23 +303,23 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
                 className="sr-only peer"
                 defaultChecked
               />
-              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 peer-focus:ring-primary/40 rounded-full peer bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all border-gray-600 peer-checked:bg-primary"></div>
+              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 peer-focus:ring-primary/40 rounded-full peer bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-border after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:border-border after:border after:rounded-full after:h-5 after:w-5 after:transition-all border-gray-600 peer-checked:bg-primary"></div>
             </label>
           </div>
 
           {/* Actions */}
-          <div className="flex gap-3 pt-4 border-t border-gray-200 border-gray-700">
+          <div className="flex gap-3 pt-4 border-t border-border border-border">
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 h-12 rounded-lg border-2 border-gray-300 border-gray-600 text-foreground text-white font-medium hover:bg-gray-50 hover:bg-gray-700 transition-all"
+              className="flex-1 h-12 rounded-lg border-2 border-border border-gray-600 text-foreground text-card-foreground font-medium hover:bg-muted hover:bg-gray-700 transition-all"
               disabled={isLoading}
             >
               Cancelar
             </button>
             <button
               type="submit"
-              className="flex-1 h-12 rounded-lg bg-primary hover:bg-primary-dark text-white font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-primary/20"
+              className="flex-1 h-12 rounded-lg bg-primary hover:bg-primary-dark text-card-foreground font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-primary/20"
               disabled={isLoading}
             >
               {isLoading ? 'Criando...' : 'Criar Produto'}

@@ -14,12 +14,12 @@ export default function TrendingProductsWidget({ products, onViewTrending }: Tre
     const locale = useLocale();
 
     return (
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div className="bg-card rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
             <div className="p-4 border-b border-gray-100 flex items-center gap-2">
                 <div className="p-1.5 bg-rose-100 text-rose-600 rounded-lg">
                     <TrendingUp size={18} />
                 </div>
-                <h3 className="font-semibold text-gray-900">Trending Now</h3>
+                <h3 className="font-semibold text-foreground">Trending Now</h3>
             </div>
 
             <div className="divide-y divide-gray-50">
@@ -27,9 +27,9 @@ export default function TrendingProductsWidget({ products, onViewTrending }: Tre
                     <Link
                         key={product.id}
                         href={`/${locale}/product/${product.slug}`}
-                        className="flex items-center gap-3 p-3 hover:bg-gray-50 transition-colors group"
+                        className="flex items-center gap-3 p-3 hover:bg-muted transition-colors group"
                     >
-                        <div className="relative h-16 w-16 rounded-lg overflow-hidden bg-gray-100 shrink-0">
+                        <div className="relative h-16 w-16 rounded-lg overflow-hidden bg-muted shrink-0">
                             <Image
                                 src={product.images[0]}
                                 alt={product.name}
@@ -39,15 +39,15 @@ export default function TrendingProductsWidget({ products, onViewTrending }: Tre
                         </div>
 
                         <div className="flex-1 min-w-0">
-                            <h4 className="text-sm font-medium text-gray-900 line-clamp-2 group-hover:text-primary transition-colors">
+                            <h4 className="text-sm font-medium text-foreground line-clamp-2 group-hover:text-primary transition-colors">
                                 {product.name}
                             </h4>
                             <div className="flex items-center gap-2 mt-1">
-                                <span className="text-sm font-bold text-gray-900">
+                                <span className="text-sm font-bold text-foreground">
                                     {product.currency} {product.price.toLocaleString()}
                                 </span>
                                 {product.originalPrice && (
-                                    <span className="text-xs text-gray-400 line-through">
+                                    <span className="text-xs text-muted-foreground line-through">
                                         {product.originalPrice.toLocaleString()}
                                     </span>
                                 )}
@@ -61,14 +61,14 @@ export default function TrendingProductsWidget({ products, onViewTrending }: Tre
                 {onViewTrending ? (
                     <button
                         onClick={onViewTrending}
-                        className="block w-full py-2 text-center text-sm font-medium text-gray-600 hover:text-primary hover:bg-gray-50 rounded-lg transition-colors"
+                        className="block w-full py-2 text-center text-sm font-medium text-muted-foreground hover:text-primary hover:bg-muted rounded-lg transition-colors"
                     >
                         View All Trending
                     </button>
                 ) : (
                     <Link
                         href={`/${locale}/marketplace?sort=trending`}
-                        className="block w-full py-2 text-center text-sm font-medium text-gray-600 hover:text-primary hover:bg-gray-50 rounded-lg transition-colors"
+                        className="block w-full py-2 text-center text-sm font-medium text-muted-foreground hover:text-primary hover:bg-muted rounded-lg transition-colors"
                     >
                         View All Trending
                     </Link>

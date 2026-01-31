@@ -51,16 +51,16 @@ export default function OrdersList({
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           onClick={() => onViewDetails(order)}
-          className="p-4 border border-gray-200 rounded-lg hover:shadow-md cursor-pointer transition-shadow"
+          className="p-4 border border-border rounded-lg hover:shadow-md cursor-pointer transition-shadow"
         >
           <div className="flex items-start justify-between">
             <div className="flex-1">
-              <h3 className="font-semibold text-gray-900">{t('orders.orderNumber')}{order.number}</h3>
-              <p className="text-sm text-gray-600">{order.customer}</p>
-              <p className="text-sm text-gray-500">{order.date}</p>
+              <h3 className="font-semibold text-foreground">{t('orders.orderNumber')}{order.number}</h3>
+              <p className="text-sm text-muted-foreground">{order.customer}</p>
+              <p className="text-sm text-muted-foreground">{order.date}</p>
             </div>
             <div className="text-right">
-              <p className="font-semibold text-gray-900">AOA {order.amount.toFixed(2)}</p>
+              <p className="font-semibold text-foreground">AOA {order.amount.toFixed(2)}</p>
               <div className="flex items-center gap-1 mt-1">
                 <span className={`material-icons text-sm ${statusIcons[order.status].color}`}>
                   {statusIcons[order.status].icon}

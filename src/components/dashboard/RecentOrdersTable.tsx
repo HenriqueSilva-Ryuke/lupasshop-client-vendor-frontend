@@ -35,9 +35,9 @@ export default function RecentOrdersTable({ orders, isLoading }: { orders: Recen
   } as const;
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
-      <div className="p-6 border-b border-gray-200">
-        <h3 className="text-lg font-semibold text-gray-900">
+    <div className="bg-card rounded-lg border border-border overflow-hidden">
+      <div className="p-6 border-b border-border">
+        <h3 className="text-lg font-semibold text-foreground">
           {t('recentOrders.title')}
         </h3>
       </div>
@@ -45,27 +45,27 @@ export default function RecentOrdersTable({ orders, isLoading }: { orders: Recen
       {isLoading ? (
         <div className="p-6 space-y-4">
           {[1, 2, 3].map((i) => (
-            <div key={i} className="h-16 bg-gray-100 rounded animate-pulse" />
+            <div key={i} className="h-16 bg-muted rounded animate-pulse" />
           ))}
         </div>
       ) : (
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="bg-gray-50 border-b border-gray-200">
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600">
+              <tr className="bg-muted border-b border-border">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground">
                   {t('recentOrders.orderNumber')}
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground">
                   {t('recentOrders.customer')}
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-semibold text-gray-600">
+                <th className="px-6 py-3 text-right text-xs font-semibold text-muted-foreground">
                   {t('recentOrders.amount')}
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground">
                   {t('recentOrders.status')}
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground">
                   {t('recentOrders.date')}
                 </th>
               </tr>
@@ -77,17 +77,17 @@ export default function RecentOrdersTable({ orders, isLoading }: { orders: Recen
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  className="border-b border-gray-200 hover:bg-gray-50 transition-colors"
+                  className="border-b border-border hover:bg-muted transition-colors"
                 >
                   <td className="px-6 py-4">
-                    <span className="font-semibold text-gray-900">
+                    <span className="font-semibold text-foreground">
                       #{order.id.slice(0, 8)}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-gray-600">
+                  <td className="px-6 py-4 text-muted-foreground">
                     {order.customer?.name || '—'}
                   </td>
-                  <td className="px-6 py-4 text-right font-semibold text-gray-900">
+                  <td className="px-6 py-4 text-right font-semibold text-foreground">
                     AOA {order.amount.toLocaleString()}
                   </td>
                   <td className="px-6 py-4">
@@ -100,7 +100,7 @@ export default function RecentOrdersTable({ orders, isLoading }: { orders: Recen
                       </span>
                     </div>
                   </td>
-                  <td className="px-6 py-4 text-gray-600 text-sm">
+                  <td className="px-6 py-4 text-muted-foreground text-sm">
                     {new Date(order.date).toLocaleDateString()}
                   </td>
                 </motion.tr>
@@ -110,7 +110,7 @@ export default function RecentOrdersTable({ orders, isLoading }: { orders: Recen
         </div>
       )}
 
-      <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
+      <div className="px-6 py-4 bg-muted border-t border-border">
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}

@@ -53,7 +53,7 @@ export default function StoreFilterBar({ categories, defaultFilters }: StoreFilt
   };
 
   return (
-    <div className="bg-white p-4 rounded-lg border border-gray-200">
+    <div className="bg-card p-4 rounded-lg border border-border">
       <div className="flex gap-3">
         <input
           value={q}

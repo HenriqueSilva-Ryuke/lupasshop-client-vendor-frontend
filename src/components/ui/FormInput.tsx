@@ -24,7 +24,7 @@ export default function FormInput({
 }: FormInputProps) {
   return (
     <div className="space-y-2">
-      <label className="block text-sm font-medium text-gray-700">
+      <label className="block text-sm font-medium text-foreground">
         {label}
         {required && <span className="text-red-500">*</span>}
       </label>
@@ -35,14 +35,14 @@ export default function FormInput({
         className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 transition-colors ${
           error
             ? 'border-red-500 focus:ring-red-500'
-            : 'border-gray-300 focus:ring-primary'
+            : 'border-border focus:ring-primary'
         }`}
       />
       {error && (
         <p className="text-sm text-red-500">{error.message}</p>
       )}
       {helperText && !error && (
-        <p className="text-sm text-gray-500">{helperText}</p>
+        <p className="text-sm text-muted-foreground">{helperText}</p>
       )}
     </div>
   );

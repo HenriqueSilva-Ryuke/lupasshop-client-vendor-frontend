@@ -47,28 +47,28 @@ export default function SettingsView() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">{t('manage')}</h1>
-        <p className="text-gray-500">Configure your store preferences</p>
+        <h1 className="text-2xl font-bold text-foreground">{t('manage')}</h1>
+        <p className="text-muted-foreground">Configure your store preferences</p>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 max-w-2xl">
-        <h2 className="text-lg font-bold text-gray-900 mb-6">{t('profile')}</h2>
+      <div className="bg-card rounded-2xl border border-gray-100 shadow-sm p-6 max-w-2xl">
+        <h2 className="text-lg font-bold text-foreground mb-6">{t('profile')}</h2>
 
         <form className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Store Name</label>
+            <label className="block text-sm font-medium text-foreground mb-2">Store Name</label>
             <input
               type="text"
-              className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
+              className="w-full px-4 py-2 rounded-xl border border-border focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Description</label>
+            <label className="block text-sm font-medium text-foreground mb-2">Description</label>
             <textarea
-              className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all h-32"
+              className="w-full px-4 py-2 rounded-xl border border-border focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all h-32"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />

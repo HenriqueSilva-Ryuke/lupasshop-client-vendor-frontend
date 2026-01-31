@@ -46,12 +46,12 @@ export default function ReviewsList({
           key={review.id}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow"
+          className="p-4 border border-border rounded-lg hover:shadow-md transition-shadow"
         >
           <div className="flex items-start justify-between mb-3">
             <div>
-              <h3 className="font-semibold text-gray-900">{review.author}</h3>
-              <p className="text-sm text-gray-600">{review.product}</p>
+              <h3 className="font-semibold text-foreground">{review.author}</h3>
+              <p className="text-sm text-muted-foreground">{review.product}</p>
             </div>
             <div className="flex items-center gap-2">
               {Array.from({ length: review.rating }).map((_, i) => (
@@ -60,10 +60,10 @@ export default function ReviewsList({
             </div>
           </div>
 
-          <p className="text-gray-700 text-sm mb-3">{review.comment}</p>
+          <p className="text-foreground text-sm mb-3">{review.comment}</p>
 
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 text-xs text-gray-500">
+            <div className="flex items-center gap-2 text-xs text-muted-foreground">
               <span>{review.date}</span>
               <span className={`px-2 py-1 rounded ${
                 review.status === 'approved'

@@ -33,7 +33,7 @@ function ProductCard({ product }: ProductCardProps) {
 
   return (
     <Link href={`/products/${product.slug}`} className="group">
-      <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+      <div className="bg-card rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
         <div className="relative aspect-square">
           {Array.isArray(product.images) && product.images[0] ? (
             <Image
@@ -44,7 +44,7 @@ function ProductCard({ product }: ProductCardProps) {
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center text-gray-500 text-sm bg-gray-100">
+            <div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm bg-muted">
               Sem imagem
             </div>
           )}
@@ -61,13 +61,13 @@ function ProductCard({ product }: ProductCardProps) {
         </div>
         
         <div className="p-4">
-          <h3 className="font-semibold text-gray-900 line-clamp-2 mb-2">
+          <h3 className="font-semibold text-foreground line-clamp-2 mb-2">
             {product.name}
           </h3>
           
           <Link 
             href={`/stores/${product.store.slug}`}
-            className="text-sm text-gray-600 hover:text-blue-600 mb-2 block"
+            className="text-sm text-muted-foreground hover:text-blue-600 mb-2 block"
             onClick={(e) => e.stopPropagation()}
           >
             {product.store.name}
@@ -75,16 +75,16 @@ function ProductCard({ product }: ProductCardProps) {
           
           <div className="flex items-center gap-1 mb-2">
             <span className="text-yellow-400">★</span>
-            <span className="text-sm text-gray-700">{product.rating.toFixed(1)}</span>
-            <span className="text-sm text-gray-500">({product.reviewCount})</span>
+            <span className="text-sm text-foreground">{product.rating.toFixed(1)}</span>
+            <span className="text-sm text-muted-foreground">({product.reviewCount})</span>
           </div>
           
           <div className="flex items-center gap-2">
-            <span className="text-xl font-bold text-gray-900">
+            <span className="text-xl font-bold text-foreground">
               {product.price.toLocaleString('pt-AO', { style: 'currency', currency: 'AOA' })}
             </span>
             {product.originalPrice && (
-              <span className="text-sm text-gray-500 line-through">
+              <span className="text-sm text-muted-foreground line-through">
                 {product.originalPrice.toLocaleString('pt-AO', { style: 'currency', currency: 'AOA' })}
               </span>
             )}
@@ -103,7 +103,7 @@ function ProductsSkeleton() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       {[...Array(8)].map((_, i) => (
-        <div key={i} className="bg-white rounded-lg shadow-sm overflow-hidden animate-pulse">
+        <div key={i} className="bg-card rounded-lg shadow-sm overflow-hidden animate-pulse">
           <div className="aspect-square bg-gray-200"></div>
           <div className="p-4 space-y-3">
             <div className="h-4 bg-gray-200 rounded w-3/4"></div>
@@ -144,7 +144,7 @@ export function ProductGrid({ filters }: ProductGridProps) {
   if (!products || products.length === 0) {
     return (
       <div className="text-center py-12">
-        <p className="text-gray-600">Nenhum produto encontrado</p>
+        <p className="text-muted-foreground">Nenhum produto encontrado</p>
       </div>
     );
   }

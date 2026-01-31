@@ -24,7 +24,7 @@ export default function BottomNavigation({
       className="fixed bottom-0 left-0 right-0 z-30 bg-transparent lg:hidden"
     >
       <div className="flex justify-center p-4">
-        <div className="overflow-x-auto scrollbar-hide w-11/12 bg-white rounded-full px-2 py-2 border border-gray-200 shadow-lg">
+        <div className="overflow-x-auto scrollbar-hide w-11/12 bg-card rounded-full px-2 py-2 border border-border shadow-lg">
           <div className="inline-flex gap-2 w-full">
             {navItems.map((item) => (
               <button
@@ -33,7 +33,7 @@ export default function BottomNavigation({
                 className={`flex items-center gap-2 px-3 py-2 rounded-full transition-all whitespace-nowrap text-sm font-medium ${
                   currentView === item.id
                     ? 'bg-blue-600 text-black'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                 }`}
               >
                 <span className="material-icons text-sm">{item.icon}</span>

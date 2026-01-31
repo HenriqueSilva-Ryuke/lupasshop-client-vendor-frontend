@@ -13,7 +13,7 @@ export default function SuggestionsSidebar({ suggestions = [] }: SuggestionsSide
   return (
     <aside className="hidden lg:block w-80">
       <div className="sticky top-24 space-y-6">
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
+        <div className="bg-card rounded-lg border border-border p-6">
           <h4 className="text-base font-semibold mb-3">Suggestions</h4>
           <div className="space-y-3">
             {suggestions.map((s) => (
@@ -25,15 +25,15 @@ export default function SuggestionsSidebar({ suggestions = [] }: SuggestionsSide
                   <div className="h-12 w-12 rounded bg-gray-200" />
                 )}
                 <div className="flex-1">
-                  <Link href={`/${locale}/store/${s.slug}`} className="text-sm font-semibold text-gray-900">{s.name}</Link>
-                  <div className="text-xs text-gray-500">{s.productCount} products</div>
+                  <Link href={`/${locale}/store/${s.slug}`} className="text-sm font-semibold text-foreground">{s.name}</Link>
+                  <div className="text-xs text-muted-foreground">{s.productCount} products</div>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
+        <div className="bg-card rounded-lg border border-border p-6">
           <h4 className="text-sm font-semibold mb-2">Top categories</h4>
           <div className="flex flex-wrap gap-2">
             <span className="text-xs px-2 py-1 border rounded">Electronics</span>

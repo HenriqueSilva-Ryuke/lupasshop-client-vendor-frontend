@@ -32,8 +32,8 @@ export const FeatureItem = ({ feature, transforms, zIndex }: FeatureItemProps) =
           </div>
 
           <div>
-            <h3 className="text-4xl font-bold text-gray-900 mb-4">{feature.title}</h3>
-            <p className="text-xl text-gray-600">{feature.description}</p>
+            <h3 className="text-4xl font-bold text-foreground mb-4">{feature.title}</h3>
+            <p className="text-xl text-muted-foreground">{feature.description}</p>
           </div>
 
           <div className="grid grid-cols-2 gap-4 pt-4">
@@ -46,7 +46,7 @@ export const FeatureItem = ({ feature, transforms, zIndex }: FeatureItemProps) =
                 transition={{ delay: 0.3 + idx * 0.1 }}
               >
                 <span className="text-purple-600 mt-1">{detail.icon}</span>
-                <span className="text-gray-700">{detail.text}</span>
+                <span className="text-foreground">{detail.text}</span>
               </motion.div>
             ))}
           </div>

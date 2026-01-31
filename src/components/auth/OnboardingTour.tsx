@@ -18,10 +18,10 @@ export function OnboardingTour() {
   return (
     <div className="min-h-screen flex flex-col bg-background-light">
       {/* Top Navigation Bar */}
-      <header className="sticky top-0 z-50 w-full border-b border-[#e5e7eb] bg-white px-6 py-4">
+      <header className="sticky top-0 z-50 w-full border-b border-[#e5e7eb] bg-card px-6 py-4">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           <Link href={`/${locale}`} className="flex items-center gap-3 cursor-pointer">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-card-foreground">
               <span className="material-symbols-outlined text-[20px]">storefront</span>
             </div>
             <h2 className="text-xl font-bold tracking-tight text-primary">LupaShop</h2>
@@ -60,7 +60,7 @@ export function OnboardingTour() {
           </div>
 
           {/* Progress Bar */}
-          <div className="mb-12 bg-white p-6 rounded-xl border border-[#e5e7eb] shadow-sm">
+          <div className="mb-12 bg-card p-6 rounded-xl border border-[#e5e7eb] shadow-sm">
             <div className="flex flex-col gap-4">
               <div className="flex items-center justify-between">
                 <div>
@@ -87,10 +87,10 @@ export function OnboardingTour() {
                 key={step.id}
                 className={`group relative flex flex-col rounded-xl transition-all overflow-hidden ${
                   step.status === 'completed'
-                    ? 'border border-primary/20 bg-white shadow-sm hover:shadow-md'
+                    ? 'border border-primary/20 bg-card shadow-sm hover:shadow-md'
                     : step.status === 'active'
-                    ? 'border-2 border-primary bg-white shadow-lg ring-4 ring-primary/10'
-                    : 'border border-[#e5e7eb] bg-white opacity-80 shadow-sm hover:opacity-100 hover:border-gray-300'
+                    ? 'border-2 border-primary bg-card shadow-lg ring-4 ring-primary/10'
+                    : 'border border-[#e5e7eb] bg-card opacity-80 shadow-sm hover:opacity-100 hover:border-border'
                 }`}
               >
                 {/* Status Indicator */}
@@ -118,10 +118,10 @@ export function OnboardingTour() {
                   <div
                     className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg transition-colors duration-300 ${
                       step.status === 'completed'
-                        ? 'bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white'
+                        ? 'bg-primary/10 text-primary group-hover:bg-primary group-hover:text-card-foreground'
                         : step.status === 'active'
-                        ? 'bg-primary text-white shadow-md'
-                        : 'bg-gray-100 text-gray-500 group-hover:bg-primary/10 group-hover:text-primary'
+                        ? 'bg-primary text-card-foreground shadow-md'
+                        : 'bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary'
                     }`}
                   >
                     <span className="material-symbols-outlined text-[24px]">
@@ -155,10 +155,10 @@ export function OnboardingTour() {
                     disabled={step.status === 'locked'}
                     className={`inline-flex h-10 w-full items-center justify-center rounded-lg px-4 text-sm font-semibold transition-all ${
                       step.status === 'completed'
-                        ? 'border border-[#e5e7eb] bg-white text-[#374151] hover:bg-gray-50 hover:text-foreground'
+                        ? 'border border-[#e5e7eb] bg-card text-[#374151] hover:bg-muted hover:text-foreground'
                         : step.status === 'active'
-                        ? 'bg-primary text-white hover:bg-primary-dark shadow-sm hover:shadow active:scale-95'
-                        : 'border border-[#e5e7eb] bg-gray-50 text-[#9ca3af] hover:bg-gray-100 hover:text-[#6b7280] cursor-not-allowed'
+                        ? 'bg-primary text-card-foreground hover:bg-primary-dark shadow-sm hover:shadow active:scale-95'
+                        : 'border border-[#e5e7eb] bg-muted text-[#9ca3af] hover:bg-muted hover:text-[#6b7280] cursor-not-allowed'
                     }`}
                   >
                     {step.actionLabel}
@@ -184,14 +184,14 @@ export function OnboardingTour() {
             />
             <div className="relative flex flex-col items-center justify-between gap-6 px-8 py-10 text-center sm:flex-row sm:text-left sm:px-12">
               <div className="flex flex-col gap-2">
-                <h3 className="text-2xl font-bold text-white">
+                <h3 className="text-2xl font-bold text-card-foreground">
                   Precisa de ajuda com a configuração?
                 </h3>
                 <p className="text-primary-light/80 text-sm sm:text-base">
                   Nossa equipe de suporte preparou um guia completo para iniciantes.
                 </p>
               </div>
-              <button className="flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-bold text-primary transition-all hover:bg-gray-100 whitespace-nowrap shadow-lg">
+              <button className="flex items-center gap-2 rounded-lg bg-card px-6 py-3 text-sm font-bold text-primary transition-all hover:bg-muted whitespace-nowrap shadow-lg">
                 <span className="material-symbols-outlined text-[20px]">
                   help
                 </span>
@@ -203,7 +203,7 @@ export function OnboardingTour() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-[#e5e7eb] bg-white py-8">
+      <footer className="border-t border-[#e5e7eb] bg-card py-8">
         <div className="mx-auto max-w-7xl px-6 flex flex-col items-center justify-between gap-4 sm:flex-row">
           <p className="text-sm text-[#6b7280]">
             © 2024 LupaShop Inc. Todos os direitos reservados.

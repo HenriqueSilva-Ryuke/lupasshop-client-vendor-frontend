@@ -21,16 +21,16 @@ export default function FilterWidget({
     const t = useTranslations('marketplace');
 
     return (
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+        <div className="bg-card rounded-2xl shadow-sm border border-gray-100 p-4">
             <div className="flex items-center gap-2 mb-4">
-                <SlidersHorizontal size={18} className="text-gray-500" />
-                <h3 className="font-semibold text-gray-900">{t('filters')}</h3>
+                <SlidersHorizontal size={18} className="text-muted-foreground" />
+                <h3 className="font-semibold text-foreground">{t('filters')}</h3>
             </div>
 
             <div className="space-y-6">
                 {/* Price Range */}
                 <div>
-                    <label className="text-sm font-medium text-gray-700 mb-3 block">{t('priceRange')}</label>
+                    <label className="text-sm font-medium text-foreground mb-3 block">{t('priceRange')}</label>
                     <div className="px-2">
                         <input
                             type="range"
@@ -41,7 +41,7 @@ export default function FilterWidget({
                             onChange={(e) => onPriceChange(minPrice, Number(e.target.value))}
                             className="w-full accent-primary h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
                         />
-                        <div className="flex justify-between text-xs text-gray-500 mt-2 font-medium">
+                        <div className="flex justify-between text-xs text-muted-foreground mt-2 font-medium">
                             <span>0 AOA</span>
                             <span>{maxPrice.toLocaleString()} AOA</span>
                         </div>
@@ -50,7 +50,7 @@ export default function FilterWidget({
 
                 {/* Rating */}
                 <div>
-                    <label className="text-sm font-medium text-gray-700 mb-3 block">{t('rating')}</label>
+                    <label className="text-sm font-medium text-foreground mb-3 block">{t('rating')}</label>
                     <div className="space-y-3">
                         {[5, 4, 3, 2, 1].map(rating => (
                             <div key={rating} className="flex items-center space-x-2">
@@ -61,7 +61,7 @@ export default function FilterWidget({
                                 />
                                 <label
                                     htmlFor={`rating-${rating}`}
-                                    className="text-sm text-gray-600 cursor-pointer leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                    className="text-sm text-muted-foreground cursor-pointer leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                 >
                                     {rating} {rating === 1 ? t('stars').slice(0, -1) : t('stars')}
                                 </label>

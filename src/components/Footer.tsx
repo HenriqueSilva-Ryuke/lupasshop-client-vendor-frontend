@@ -86,17 +86,17 @@ export default function Footer() {
         { 
           name: t('facebook'), 
           href: "#",
-          icon: <FaFacebook className="text-white/70 group-hover:text-white text-lg" />
+          icon: <FaFacebook className="text-card-foreground/70 group-hover:text-card-foreground text-lg" />
         },
         { 
           name: t('instagram'), 
           href: "#",
-          icon: <FaInstagram className="text-white/70 group-hover:text-white text-lg" />
+          icon: <FaInstagram className="text-card-foreground/70 group-hover:text-card-foreground text-lg" />
         },
         { 
           name: t('linkedin'), 
           href: "#",
-          icon: <FaLinkedin className="text-white/70 group-hover:text-white text-lg" />
+          icon: <FaLinkedin className="text-card-foreground/70 group-hover:text-card-foreground text-lg" />
         }
       ]
     }

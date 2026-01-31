@@ -23,8 +23,8 @@ export default function ShopsView() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">My Shops</h1>
-          <p className="text-gray-500">Manage your stores and settings</p>
+          <h1 className="text-2xl font-bold text-foreground">My Shops</h1>
+          <p className="text-muted-foreground">Manage your stores and settings</p>
         </div>
         <button className="flex items-center gap-2 bg-primary text-black px-4 py-2 rounded-xl hover:bg-primary-dark transition-colors">
           <Plus size={20} />
@@ -34,8 +34,8 @@ export default function ShopsView() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         {shops.map((shop: any) => (
-          <div key={shop.id} className="bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 group">
-            <div className="relative h-32 bg-gray-100">
+          <div key={shop.id} className="bg-card rounded-2xl border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 group">
+            <div className="relative h-32 bg-muted">
               {shop.coverImageUrl ? (
                 <Image
                   src={shop.coverImageUrl}
@@ -44,7 +44,7 @@ export default function ShopsView() {
                   className="object-cover"
                 />
               ) : (
-                <div className="w-full h-full flex items-center justify-center text-gray-400 text-sm">
+                <div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm">
                   Sem imagem
                 </div>
               )}
@@ -61,8 +61,8 @@ export default function ShopsView() {
             </div>
 
             <div className="p-5 pt-12 relative">
-              <div className="absolute -top-10 left-5 p-1 bg-white rounded-xl shadow-sm">
-                <div className="relative h-20 w-20 rounded-lg overflow-hidden bg-gray-50 border border-gray-100">
+              <div className="absolute -top-10 left-5 p-1 bg-card rounded-xl shadow-sm">
+                <div className="relative h-20 w-20 rounded-lg overflow-hidden bg-muted border border-gray-100">
                   {shop.logoUrl ? (
                     <Image
                       src={shop.logoUrl}
@@ -71,7 +71,7 @@ export default function ShopsView() {
                       className="object-cover"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">
+                    <div className="w-full h-full flex items-center justify-center text-muted-foreground text-xs">
                       {shop.name.substring(0, 2).toUpperCase()}
                     </div>
                   )}
@@ -79,14 +79,14 @@ export default function ShopsView() {
               </div>
 
               <div className="absolute top-4 right-4">
-                <button className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+                <button className="p-2 text-muted-foreground hover:text-muted-foreground hover:bg-muted rounded-lg transition-colors">
                   <MoreVertical size={20} />
                 </button>
               </div>
 
               <div className="mb-4">
-                <h3 className="text-lg font-bold text-gray-900 mb-1">{shop.name}</h3>
-                <div className="flex items-center gap-4 text-sm text-gray-500">
+                <h3 className="text-lg font-bold text-foreground mb-1">{shop.name}</h3>
+                <div className="flex items-center gap-4 text-sm text-muted-foreground">
                   <div className="flex items-center gap-1">
                     <MapPin size={14} />
                     <span className="truncate max-w-[150px]">{shop.location || '—'}</span>
@@ -100,25 +100,25 @@ export default function ShopsView() {
 
               <div className="grid grid-cols-2 gap-4 py-4 border-t border-gray-100">
                 <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wider font-medium">Revenue</p>
-                  <p className="text-lg font-bold text-gray-900">
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Revenue</p>
+                  <p className="text-lg font-bold text-foreground">
                     {new Intl.NumberFormat('pt-AO', { style: 'currency', currency: 'AOA' }).format(shop.stats?.totalRevenue || 0)}
                   </p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wider font-medium">Orders</p>
-                  <p className="text-lg font-bold text-gray-900">{shop.stats?.totalOrders || 0}</p>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Orders</p>
+                  <p className="text-lg font-bold text-foreground">{shop.stats?.totalOrders || 0}</p>
                 </div>
               </div>
 
               <div className="flex items-center gap-2 mt-4 pt-4 border-t border-gray-100">
-                <button className="flex-1 flex items-center justify-center gap-2 py-2 px-4 bg-gray-50 text-gray-700 rounded-lg hover:bg-gray-100 transition-colors text-sm font-medium">
+                <button className="flex-1 flex items-center justify-center gap-2 py-2 px-4 bg-muted text-foreground rounded-lg hover:bg-muted transition-colors text-sm font-medium">
                   <Edit size={16} />
                   Edit
                 </button>
                 <Link
                   href={`/store/${shop.slug}`}
-                  className="flex items-center justify-center gap-2 py-2 px-4 bg-gray-50 text-gray-700 rounded-lg hover:bg-gray-100 transition-colors text-sm font-medium"
+                  className="flex items-center justify-center gap-2 py-2 px-4 bg-muted text-foreground rounded-lg hover:bg-muted transition-colors text-sm font-medium"
                 >
                   <ExternalLink size={16} />
                   Visit
@@ -129,7 +129,7 @@ export default function ShopsView() {
         ))}
 
         {!loading && shops.length === 0 && (
-          <div className="col-span-full p-12 text-center text-gray-500">Sem lojas cadastradas</div>
+          <div className="col-span-full p-12 text-center text-muted-foreground">Sem lojas cadastradas</div>
         )}
       </div>
     </div>

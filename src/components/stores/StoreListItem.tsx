@@ -18,7 +18,7 @@ export default function StoreListItem({ id, name, slug, logo, rating, productCou
   const locale = useLocale();
   const t = useTranslations('stores');
   return (
-    <div className="flex items-center bg-white rounded-lg border border-gray-200 px-4 py-3 shadow-sm space-x-4">
+    <div className="flex items-center bg-card rounded-lg border border-border px-4 py-3 shadow-sm space-x-4">
       {logo ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img src={logo} alt={`${name} logo`} className="h-20 w-20 rounded-full object-cover" />
@@ -27,9 +27,9 @@ export default function StoreListItem({ id, name, slug, logo, rating, productCou
       )}
 
       <div className="flex-1">
-        <h3 className="text-base font-semibold text-gray-900">{name}</h3>
-        <p className="text-xs text-gray-500">{productCount ?? 0} products</p>
-        <p className="text-sm text-gray-600 mt-2">{description}</p>
+        <h3 className="text-base font-semibold text-foreground">{name}</h3>
+        <p className="text-xs text-muted-foreground">{productCount ?? 0} products</p>
+        <p className="text-sm text-muted-foreground mt-2">{description}</p>
       </div>
 
       <div className="text-right">

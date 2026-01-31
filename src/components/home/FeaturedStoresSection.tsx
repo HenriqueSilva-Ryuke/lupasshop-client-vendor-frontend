@@ -26,7 +26,7 @@ export default function FeaturedStoresSection() {
   }, [featuredStoresData]);
 
   return (
-    <section className="relative py-24 bg-white ">
+    <section className="relative py-24 bg-card ">
       <div className="max-w-7xl mx-auto px-4">
         
         {/* Header Alinhado ao Hero */}
@@ -61,7 +61,7 @@ export default function FeaturedStoresSection() {
         {storesLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-zinc-200 border border-zinc-200">
             {[...Array(4)].map((_, i) => (
-              <div key={i} className="h-40 bg-white animate-pulse" />
+              <div key={i} className="h-40 bg-card animate-pulse" />
             ))} 
           </div>
         ) : (
@@ -74,7 +74,7 @@ export default function FeaturedStoresSection() {
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                className="group relative bg-white p-8 border-r border-b border-zinc-100 hover:z-10 transition-all"
+                className="group relative bg-card p-8 border-r border-b border-zinc-100 hover:z-10 transition-all"
               >
                 {/* Efeito Inset Background sutil no card inteiro */}
                 <div className="absolute inset-0 bg-primary/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
@@ -82,7 +82,7 @@ export default function FeaturedStoresSection() {
                 <Link href={`/${locale}/store/${store.slug}`} className="relative z-10 flex flex-col h-full">
                   <div className="flex justify-between items-start mb-8">
                     {/* Avatar Quadrado Técnico */}
-                    <div className="size-16 border-2 border-zinc-900 flex items-center justify-center text-xl font-black bg-white group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all duration-300">
+                    <div className="size-16 border-2 border-zinc-900 flex items-center justify-center text-xl font-black bg-card group-hover:bg-primary group-hover:text-card-foreground group-hover:border-primary transition-all duration-300">
                       {store.badge}
                     </div>
                     <ArrowUpRight className="w-5 h-5 text-zinc-300 group-hover:text-primary transition-colors" />

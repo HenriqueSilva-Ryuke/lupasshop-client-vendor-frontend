@@ -74,7 +74,7 @@ export default function BenefitsSection() {
   };
 
   return (
-    <section ref={sectionRef} className="relative py-32 overflow-hidden bg-white">
+    <section ref={sectionRef} className="relative py-32 overflow-hidden bg-card">
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-10 w-72 h-72 bg-[#412778] rounded-full blur-3xl"></div>
@@ -118,13 +118,13 @@ export default function BenefitsSection() {
           >
             {/* Floating Card */}
             <motion.div
-              className="absolute -top-6 -left-6 bg-[#412778] backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-white/20 z-20 text-black"
+              className="absolute -top-6 -left-6 bg-[#412778] backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-border/20 z-20 text-black"
               initial={{ opacity: 0, x: -20, rotate: -5 }}
               animate={isInView ? { opacity: 1, x: 0, rotate: 0 } : { opacity: 0, x: -20, rotate: -5 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
               <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-[#412778] text-lg">
+                <div className="w-12 h-12 bg-card rounded-xl flex items-center justify-center text-[#412778] text-lg">
                   <StoreIcon />
                 </div>
                 <div>
@@ -134,7 +134,7 @@ export default function BenefitsSection() {
               </div>
             </motion.div>
 
-            <div className="bg-white/60 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/30 mt-12">
+            <div className="bg-card/60 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-border/30 mt-12">
               <motion.h3 
                 className="text-3xl md:text-4xl font-bold mb-8 bg-linear-to-r from-[#412778] to-[#2e1a55] bg-clip-text text-transparent"
                 variants={itemVariants}
@@ -149,7 +149,7 @@ export default function BenefitsSection() {
                     variants={itemVariants}
                                         className={`group p-6 rounded-2xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
                       index % 2 === 0 
-                        ? 'bg-white border border-white/50 hover:border-[#412778]/50' 
+                        ? 'bg-card border border-border/50 hover:border-[#412778]/50' 
                         : 'bg-[#412778]/10 border border-[#412778]/20 hover:border-[#412778]/50'
                     }`}
                     whileHover={{ 
@@ -161,7 +161,7 @@ export default function BenefitsSection() {
                     <div className="flex items-start space-x-4">
                       <motion.div
                         className={`w-14 h-14 rounded-xl flex items-center justify-center text-xl shrink-0 shadow-lg ${
-                          index % 2 === 0 ? 'bg-[#412778] text-black' : 'bg-white text-[#412778]'
+                          index % 2 === 0 ? 'bg-[#412778] text-black' : 'bg-card text-[#412778]'
                         }`}
                         whileHover={{ 
                           scale: 1.1,
@@ -199,7 +199,7 @@ export default function BenefitsSection() {
           >
             {/* Floating Card */}
             <motion.div
-              className="absolute -top-6 -right-6 bg-white backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-white/20 z-20"
+              className="absolute -top-6 -right-6 bg-card backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-border/20 z-20"
               initial={{ opacity: 0, x: 20, rotate: 5 }}
               animate={isInView ? { opacity: 1, x: 0, rotate: 0 } : { opacity: 0, x: 20, rotate: 5 }}
               transition={{ duration: 0.6, delay: 0.6 }}
@@ -215,7 +215,7 @@ export default function BenefitsSection() {
               </div>
             </motion.div>
 
-            <div className="bg-white/60 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/30 mt-12">
+            <div className="bg-card/60 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-border/30 mt-12">
               <motion.h3 
                 className="text-3xl md:text-4xl font-bold mb-8 bg-linear-to-r from-[#412778] to-[#2e1a55] bg-clip-text text-transparent"
                 variants={itemVariants}
@@ -231,7 +231,7 @@ export default function BenefitsSection() {
                     className={`group p-6 rounded-2xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
                       index % 2 === 0 
                         ? 'bg-[#412778]/10 border border-[#412778]/20 hover:border-[#412778]/50' 
-                        : 'bg-white border border-white/50 hover:border-[#412778]/50'
+                        : 'bg-card border border-border/50 hover:border-[#412778]/50'
                     }`}
                     whileHover={{ 
                       scale: 1.02,
@@ -242,7 +242,7 @@ export default function BenefitsSection() {
                     <div className="flex items-start space-x-4">
                       <motion.div
                         className={`w-14 h-14 rounded-xl flex items-center justify-center text-xl shrink-0 shadow-lg ${
-                          index % 2 === 0 ? 'bg-white text-[#412778]' : 'bg-[#412778] text-black'
+                          index % 2 === 0 ? 'bg-card text-[#412778]' : 'bg-[#412778] text-black'
                         }`}
                         whileHover={{ 
                           scale: 1.1,
@@ -279,7 +279,7 @@ export default function BenefitsSection() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 1 }}
         >
-          <div className="bg-[#412778] backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/30 max-w-2xl mx-auto text-black">
+          <div className="bg-[#412778] backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-border/30 max-w-2xl mx-auto text-black">
             <h3 className="text-2xl md:text-3xl font-bold text-black mb-4">
               {t('shared.title')}
             </h3>
@@ -294,7 +294,7 @@ export default function BenefitsSection() {
             >
               <Button
                 variant="default"
-                className="bg-white text-[#412778] px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                className="bg-card text-[#412778] px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 {tCta('registerStore')}
               </Button>

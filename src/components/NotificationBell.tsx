@@ -69,11 +69,11 @@ export default function NotificationBell() {
       {/* Bell Icon */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative p-2 text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+        className="relative p-2 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-card-foreground"
       >
         <Bell className="h-6 w-6" />
         {unreadCount > 0 && (
-          <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full">
+          <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-card-foreground transform translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full">
             {unreadCount > 99 ? '99+' : unreadCount}
           </span>
         )}
@@ -89,10 +89,10 @@ export default function NotificationBell() {
           />
 
           {/* Notification Panel */}
-          <div className="absolute right-0 z-50 mt-2 w-80 sm:w-96 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 max-h-[80vh] flex flex-col">
+          <div className="absolute right-0 z-50 mt-2 w-80 sm:w-96 bg-card dark:bg-gray-800 rounded-lg shadow-xl border border-border dark:border-border max-h-[80vh] flex flex-col">
             {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+            <div className="flex items-center justify-between p-4 border-b border-border dark:border-border">
+              <h3 className="text-lg font-semibold text-foreground dark:text-card-foreground">
                 Notificações
               </h3>
               <div className="flex items-center gap-2">
@@ -113,7 +113,7 @@ export default function NotificationBell() {
                 )}
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="text-gray-400 hover:text-gray-600"
+                  className="text-muted-foreground hover:text-muted-foreground"
                 >
                   <X className="h-5 w-5" />
                 </button>
@@ -123,12 +123,12 @@ export default function NotificationBell() {
             {/* Notifications List */}
             <div className="flex-1 overflow-y-auto">
               {loading ? (
-                <div className="p-4 text-center text-gray-500">
+                <div className="p-4 text-center text-muted-foreground">
                   Carregando...
                 </div>
               ) : notifications.length === 0 ? (
-                <div className="p-8 text-center text-gray-500">
-                  <Bell className="h-12 w-12 mx-auto mb-2 text-gray-300" />
+                <div className="p-8 text-center text-muted-foreground">
+                  <Bell className="h-12 w-12 mx-auto mb-2 text-muted-foreground" />
                   <p>Nenhuma notificação</p>
                 </div>
               ) : (
@@ -145,7 +145,7 @@ export default function NotificationBell() {
             </div>
 
             {/* Footer */}
-            <div className="p-2 border-t border-gray-200 dark:border-gray-700">
+            <div className="p-2 border-t border-border dark:border-border">
               <Link
                 href="/notifications"
                 className="block w-full text-center text-sm text-blue-600 hover:text-blue-700 py-2"
@@ -172,7 +172,7 @@ function NotificationItem({
 
   const content = (
     <div
-      className={`p-4 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer transition-colors ${
+      className={`p-4 hover:bg-muted dark:hover:bg-gray-700 cursor-pointer transition-colors ${
         !notification.read ? 'bg-blue-50 dark:bg-blue-900/20' : ''
       }`}
       onClick={onClick}
@@ -180,17 +180,17 @@ function NotificationItem({
       <div className="flex items-start gap-3">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
-            <p className="text-sm font-medium text-gray-900 dark:text-white">
+            <p className="text-sm font-medium text-foreground dark:text-card-foreground">
               {notification.title}
             </p>
             {!notification.read && (
               <span className="flex-shrink-0 w-2 h-2 bg-blue-500 rounded-full" />
             )}
           </div>
-          <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
+          <p className="text-sm text-muted-foreground dark:text-muted-foreground mt-1">
             {notification.message}
           </p>
-          <p className="text-xs text-gray-400 mt-1">{timeAgo}</p>
+          <p className="text-xs text-muted-foreground mt-1">{timeAgo}</p>
         </div>
       </div>
     </div>

@@ -111,23 +111,23 @@ export default function MarketplaceShell({ categories, stores, products }: Marke
                     {/* Search Bar & Controls */}
                     <div className="flex flex-col gap-4 pt-4">
                         <div className="relative">
-                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" size={20} />
                             <input
                                 type="text"
                                 placeholder={t('searchPlaceholder')}
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full pl-12 pr-4 py-4 bg-white rounded-2xl border border-gray-100 shadow-sm focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none text-gray-900 placeholder-gray-400"
+                                className="w-full pl-12 pr-4 py-4 bg-card rounded-2xl border border-gray-100 shadow-sm focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none text-foreground placeholder-gray-400"
                             />
                         </div>
 
-                        <div className="flex items-center justify-between bg-white p-2 rounded-xl border border-gray-100 shadow-sm">
+                        <div className="flex items-center justify-between bg-card p-2 rounded-xl border border-gray-100 shadow-sm">
                             <div className="flex items-center gap-2 px-2">
-                                <span className="text-sm text-gray-500 font-medium hidden sm:inline">{t('sort.label')}:</span>
+                                <span className="text-sm text-muted-foreground font-medium hidden sm:inline">{t('sort.label')}:</span>
                                 <select
                                     value={sort}
                                     onChange={(e) => setSort(e.target.value)}
-                                    className="text-sm font-medium text-gray-900 bg-transparent border-none focus:ring-0 cursor-pointer"
+                                    className="text-sm font-medium text-foreground bg-transparent border-none focus:ring-0 cursor-pointer"
                                 >
                                     <option value="relevance">{t('sort.relevance')}</option>
                                     <option value="rating">{t('sort.rating')}</option>
@@ -136,17 +136,17 @@ export default function MarketplaceShell({ categories, stores, products }: Marke
                                 </select>
                             </div>
 
-                            <div className="flex items-center gap-1 bg-gray-100 p-1 rounded-lg">
+                            <div className="flex items-center gap-1 bg-muted p-1 rounded-lg">
                                 <button
                                     onClick={() => setViewMode('grid')}
-                                    className={`p-1.5 rounded-md transition-all ${viewMode === 'grid' ? 'bg-white shadow-sm text-primary' : 'text-gray-500 hover:text-gray-900'}`}
+                                    className={`p-1.5 rounded-md transition-all ${viewMode === 'grid' ? 'bg-card shadow-sm text-primary' : 'text-muted-foreground hover:text-foreground'}`}
                                     title={t('view.grid')}
                                 >
                                     <LayoutGrid size={18} />
                                 </button>
                                 <button
                                     onClick={() => setViewMode('list')}
-                                    className={`p-1.5 rounded-md transition-all ${viewMode === 'list' ? 'bg-white shadow-sm text-primary' : 'text-gray-500 hover:text-gray-900'}`}
+                                    className={`p-1.5 rounded-md transition-all ${viewMode === 'list' ? 'bg-card shadow-sm text-primary' : 'text-muted-foreground hover:text-foreground'}`}
                                     title={t('view.list')}
                                 >
                                     <ListIcon size={18} />
@@ -183,12 +183,12 @@ export default function MarketplaceShell({ categories, stores, products }: Marke
                             ))}
                         </div>
                     ) : (
-                        <div className="text-center py-12 bg-white rounded-2xl border border-dashed border-gray-200">
-                            <div className="mx-auto w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mb-4">
-                                <Search className="text-gray-400" size={24} />
+                        <div className="text-center py-12 bg-card rounded-2xl border border-dashed border-border">
+                            <div className="mx-auto w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-4">
+                                <Search className="text-muted-foreground" size={24} />
                             </div>
-                            <h3 className="text-lg font-medium text-gray-900">{t('noStoresFound')}</h3>
-                            <p className="text-gray-500 mt-1">{t('tryAdjusting')}</p>
+                            <h3 className="text-lg font-medium text-foreground">{t('noStoresFound')}</h3>
+                            <p className="text-muted-foreground mt-1">{t('tryAdjusting')}</p>
                             <button
                                 onClick={() => { setSelectedCategory(undefined); setSearchQuery(''); setSelectedRatings([]); }}
                                 className="mt-4 text-primary font-medium hover:underline"

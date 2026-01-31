@@ -20,13 +20,13 @@ export default function StoreCard({ id, name, slug, logo, featuredImage, rating,
   const locale = useLocale();
   const t = useTranslations('stores');
   return (
-    <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
-      <div className="h-64 w-full bg-gray-100 overflow-hidden">
+    <div className="bg-card rounded-lg border border-border shadow-sm overflow-hidden">
+      <div className="h-64 w-full bg-muted overflow-hidden">
         {featuredImage ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={featuredImage} alt={`${name} hero`} className="w-full h-full object-cover" />
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-gray-400">No image</div>
+          <div className="w-full h-full flex items-center justify-center text-muted-foreground">No image</div>
         )}
       </div>
 
@@ -40,14 +40,14 @@ export default function StoreCard({ id, name, slug, logo, featuredImage, rating,
               <div className="h-12 w-12 rounded-full bg-gray-200" />
             )}
               <div>
-              <h3 className="text-lg font-semibold text-gray-900">{name}</h3>
-              <div className="text-xs text-gray-500">{productCount ?? 0} products</div>
+              <h3 className="text-lg font-semibold text-foreground">{name}</h3>
+              <div className="text-xs text-muted-foreground">{productCount ?? 0} products</div>
             </div>
           </div>
           <div className="text-sm text-yellow-500">{rating ? rating.toFixed(1) : '—'}</div>
         </div>
 
-        <p className="mt-3 text-sm text-gray-600">{description}</p>
+        <p className="mt-3 text-sm text-muted-foreground">{description}</p>
 
         <div className="mt-5 flex justify-between items-center">
           <Link className="text-primary font-semibold text-sm" href={`/${locale}/store/${slug}`}>{t('viewStore') || 'Visit Store'}</Link>

@@ -8,9 +8,9 @@ interface PromotedStoreWidgetProps {
 }
 export default function PromotedStoreWidget({ store }: PromotedStoreWidgetProps) {
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden group">
+    <div className="bg-card rounded-2xl shadow-sm border border-gray-100 overflow-hidden group">
       <div className="p-4 border-b border-gray-100 flex items-center justify-between">
-        <h3 className="font-semibold text-gray-900">Featured Store</h3>
+        <h3 className="font-semibold text-foreground">Featured Store</h3>
         <span className="text-xs font-medium bg-amber-100 text-amber-700 px-2 py-1 rounded-full">
           Promoted
         </span>
@@ -26,7 +26,7 @@ export default function PromotedStoreWidget({ store }: PromotedStoreWidgetProps)
         <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
       </div>
       <div className="p-4 relative">
-        <div className="absolute -top-10 left-4 p-1 bg-white rounded-xl shadow-md">
+        <div className="absolute -top-10 left-4 p-1 bg-card rounded-xl shadow-md">
           <div className="relative h-16 w-16 rounded-lg overflow-hidden">
             <Image
               src={store.logo}
@@ -38,7 +38,7 @@ export default function PromotedStoreWidget({ store }: PromotedStoreWidgetProps)
         </div>
         <div className="mt-8">
           <div className="flex items-center gap-2 mb-1">
-            <h4 className="font-bold text-lg text-gray-900">{store.name}</h4>
+            <h4 className="font-bold text-lg text-foreground">{store.name}</h4>
             {store.isVerified && (
               <BadgeCheck className="w-5 h-5 text-blue-500" />
             )}
@@ -46,10 +46,10 @@ export default function PromotedStoreWidget({ store }: PromotedStoreWidgetProps)
           
           <div className="flex items-center gap-1 mb-3">
             <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
-            <span className="text-sm font-medium text-gray-900">{store.rating}</span>
-            <span className="text-sm text-gray-500">({store.reviewCount} reviews)</span>
+            <span className="text-sm font-medium text-foreground">{store.rating}</span>
+            <span className="text-sm text-muted-foreground">({store.reviewCount} reviews)</span>
           </div>
-          <p className="text-sm text-gray-600 line-clamp-2 mb-4">
+          <p className="text-sm text-muted-foreground line-clamp-2 mb-4">
             {store.description}
           </p>
           <Link 

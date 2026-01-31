@@ -67,7 +67,7 @@ export default function StoresShell({ initialData, categories, suggestions }: St
         </div>
 
         {shops.length === 0 ? (
-          <div className="text-gray-600">{t ? t('noStoresFound') : 'No stores found'}</div>
+          <div className="text-muted-foreground">{t ? t('noStoresFound') : 'No stores found'}</div>
         ) : (
           view === 'grid' ? <StoresGrid stores={shops} /> : <StoresList stores={shops} />
         )}
@@ -81,7 +81,7 @@ export default function StoresShell({ initialData, categories, suggestions }: St
           >
             Prev
           </button>
-          <div className="text-sm text-gray-600">Page {currentPage} of {totalPages}</div>
+          <div className="text-sm text-muted-foreground">Page {currentPage} of {totalPages}</div>
           <button
             onClick={() => router.push(`/${locale}/stores?page=${(currentPage ?? 1) + 1}`)}
             className="px-3 py-2 border rounded"

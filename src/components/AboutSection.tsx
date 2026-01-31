@@ -123,7 +123,7 @@ export default function AboutSection() {
             ].map((value, index) => (
               <motion.div
                 key={value.title}
-                className="bg-white p-8 rounded-xl shadow-sm text-center space-y-4"
+                className="bg-card p-8 rounded-xl shadow-sm text-center space-y-4"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
@@ -131,8 +131,8 @@ export default function AboutSection() {
                 whileHover={{ y: -5 }}
               >
                 <div className="text-4xl mb-4">{value.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-900">{value.title}</h3>
-                <p className="text-gray-600">{value.description}</p>
+                <h3 className="text-xl font-semibold text-foreground">{value.title}</h3>
+                <p className="text-muted-foreground">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -215,13 +215,13 @@ export default function AboutSection() {
           >
             <Link
               href={`/${locale}/stores/register`}
-              className="bg-white text-purple-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+              className="bg-card text-purple-900 px-8 py-3 rounded-lg font-semibold hover:bg-muted transition-colors"
             >
               {t('cta.joinStore')}
             </Link>
             <Link
               href={`/${locale}/products`}
-              className="border-2 border-black text-black px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-900 transition-colors"
+              className="border-2 border-black text-black px-8 py-3 rounded-lg font-semibold hover:bg-card hover:text-purple-900 transition-colors"
             >
               {t('cta.startShopping')}
             </Link>

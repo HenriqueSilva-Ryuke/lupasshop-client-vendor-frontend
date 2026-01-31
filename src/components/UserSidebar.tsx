@@ -39,10 +39,10 @@ export function UserSidebar() {
     const locale = useLocale();
 
     return (
-        <div className="w-full md:w-64 flex flex-col gap-2 bg-white rounded-xl shadow-sm border border-gray-100 p-4 h-fit">
+        <div className="w-full md:w-64 flex flex-col gap-2 bg-card rounded-xl shadow-sm border border-gray-100 p-4 h-fit">
 
             <div className="mb-4 px-2">
-                <h2 className="text-xs font-bold text-gray-400 uppercase tracking-wider">Minha Conta</h2>
+                <h2 className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Minha Conta</h2>
             </div>
 
             <nav className="flex flex-col gap-1">
@@ -58,10 +58,10 @@ export function UserSidebar() {
                                 "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
                                 isActive
                                     ? "bg-primary/10 text-primary"
-                                    : "text-gray-600 hover:bg-gray-50 hover:text-black"
+                                    : "text-muted-foreground hover:bg-muted hover:text-black"
                             )}
                         >
-                            <item.icon className={cn("w-4 h-4", isActive ? "text-primary" : "text-gray-400")} />
+                            <item.icon className={cn("w-4 h-4", isActive ? "text-primary" : "text-muted-foreground")} />
                             {item.label}
                         </Link>
                     );

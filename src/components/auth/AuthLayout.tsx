@@ -22,7 +22,7 @@ export default function AuthLayout({ children, title, subtitle }: AuthLayoutProp
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="w-full lg:w-1/2 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 bg-white"
+        className="w-full lg:w-1/2 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 bg-card"
       >
         <div className="w-full max-w-md">
           {/* Header */}
@@ -39,12 +39,12 @@ export default function AuthLayout({ children, title, subtitle }: AuthLayoutProp
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </div>
-              <span className="text-lg font-bold text-gray-900">LupaShop</span>
+              <span className="text-lg font-bold text-foreground">LupaShop</span>
             </Link>
 
             {/* Title & Subtitle */}
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">{title}</h1>
-            <p className="text-gray-600 text-sm">{subtitle}</p>
+            <h1 className="text-3xl font-bold text-foreground mb-2">{title}</h1>
+            <p className="text-muted-foreground text-sm">{subtitle}</p>
           </motion.div>
 
           {/* Form */}
@@ -61,7 +61,7 @@ export default function AuthLayout({ children, title, subtitle }: AuthLayoutProp
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-8 pt-8 border-t border-gray-200 text-center text-xs text-gray-500"
+            className="mt-8 pt-8 border-t border-border text-center text-xs text-muted-foreground"
           >
             <p>
               Ao continuar, você concorda com nossos{' '}

@@ -49,19 +49,19 @@ export default function OverviewStats() {
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {stats.map((stat, index) => (
-                <div key={index} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                <div key={index} className="bg-card p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
                     <div className="flex items-center justify-between mb-4">
                         <div className={`p-3 rounded-xl ${stat.bg}`}>
                             <stat.icon className={`w-6 h-6 ${stat.color}`} />
                         </div>
-                        <div className={`flex items-center gap-1 text-sm font-medium ${stat.trend === 'up' ? 'text-emerald-600' : stat.trend === 'down' ? 'text-red-600' : 'text-gray-500'
+                        <div className={`flex items-center gap-1 text-sm font-medium ${stat.trend === 'up' ? 'text-emerald-600' : stat.trend === 'down' ? 'text-red-600' : 'text-muted-foreground'
                             }`}>
                             {stat.trend === 'up' ? <TrendingUp size={16} /> : stat.trend === 'down' ? <TrendingDown size={16} /> : null}
                             {stat.change}
                         </div>
                     </div>
-                    <h3 className="text-gray-500 text-sm font-medium mb-1">{stat.label}</h3>
-                    <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+                    <h3 className="text-muted-foreground text-sm font-medium mb-1">{stat.label}</h3>
+                    <p className="text-2xl font-bold text-foreground">{stat.value}</p>
                 </div>
             ))}
         </div>

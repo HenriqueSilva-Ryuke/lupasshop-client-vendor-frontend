@@ -22,7 +22,7 @@ interface ShopsListProps {
 
 const statusColors = {
   active: 'bg-green-100 text-green-700',
-  inactive: 'bg-gray-100 text-gray-700',
+  inactive: 'bg-muted text-foreground',
   pending: 'bg-yellow-100 text-yellow-700',
 };
 
@@ -50,13 +50,13 @@ export default function ShopsList({
           key={shop.id}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow"
+          className="p-4 border border-border rounded-lg hover:shadow-md transition-shadow"
         >
           <div className="flex items-start justify-between">
             <div className="flex-1">
-              <h3 className="font-semibold text-gray-900">{shop.name}</h3>
-              <p className="text-sm text-gray-600">{shop.email}</p>
-              <p className="text-sm text-gray-600">{shop.phone}</p>
+              <h3 className="font-semibold text-foreground">{shop.name}</h3>
+              <p className="text-sm text-muted-foreground">{shop.email}</p>
+              <p className="text-sm text-muted-foreground">{shop.phone}</p>
             </div>
             <span className={`px-3 py-1 rounded-full text-xs font-medium ${statusColors[shop.status]}`}>
               {shop.status}

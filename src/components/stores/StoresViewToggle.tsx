@@ -22,8 +22,8 @@ export default function StoresViewToggle({ defaultView = 'grid', onChange }: Sto
 
   return (
     <div className="inline-flex items-center border rounded overflow-hidden">
-      <button onClick={() => setView('grid')} className={`px-3 py-2 ${view === 'grid' ? 'bg-gray-100' : ''}`}>Grid</button>
-      <button onClick={() => setView('list')} className={`px-3 py-2 ${view === 'list' ? 'bg-gray-100' : ''}`}>List</button>
+      <button onClick={() => setView('grid')} className={`px-3 py-2 ${view === 'grid' ? 'bg-muted' : ''}`}>Grid</button>
+      <button onClick={() => setView('list')} className={`px-3 py-2 ${view === 'list' ? 'bg-muted' : ''}`}>List</button>
     </div>
   );
 }

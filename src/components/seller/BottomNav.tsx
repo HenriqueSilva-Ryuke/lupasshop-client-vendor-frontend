@@ -13,16 +13,16 @@ export function BottomNav() {
   return (
     <>
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:flex w-64 flex-col border-r border-gray-200 bg-white border-gray-800 bg-card-dark">
+      <aside className="hidden lg:flex w-64 flex-col border-r border-border bg-card border-border bg-card-dark">
         <div className="flex flex-col justify-between h-full p-4">
           <div className="flex flex-col gap-6">
             {/* Logo */}
             <div className="flex items-center gap-3 px-2">
-              <div className="size-10 bg-primary text-white rounded-full flex items-center justify-center ring-2 ring-primary-light/20 ring-gray-700">
+              <div className="size-10 bg-primary text-card-foreground rounded-full flex items-center justify-center ring-2 ring-primary-light/20 ring-gray-700">
                 <span className="material-symbols-outlined text-[20px]">search</span>
               </div>
               <div className="flex flex-col">
-                <h1 className="text-base font-bold leading-normal text-primary text-white">LupaShop</h1>
+                <h1 className="text-base font-bold leading-normal text-primary text-card-foreground">LupaShop</h1>
                 <p className="text-sm font-normal text-text-sub-light text-text-sub-dark">Painel do Parceiro</p>
               </div>
             </div>
@@ -37,18 +37,18 @@ export function BottomNav() {
                     href={`/${locale}${item.href}`}
                     className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all ${
                       isActive
-                        ? 'bg-primary text-white shadow-md shadow-primary/20'
-                        : 'hover:bg-gray-100 hover:bg-gray-700/50 text-text-main-light text-text-main-dark'
+                        ? 'bg-primary text-card-foreground shadow-md shadow-primary/20'
+                        : 'hover:bg-muted hover:bg-gray-700/50 text-text-main-light text-text-main-dark'
                     }`}
                   >
                     <span className={`material-symbols-outlined text-[20px] ${
-                      isActive ? '' : 'text-gray-500 group-hover:text-primary text-gray-400'
+                      isActive ? '' : 'text-muted-foreground group-hover:text-primary text-muted-foreground'
                     }`}>
                       {item.icon}
                     </span>
                     <span className="text-sm font-medium leading-normal">{item.label}</span>
                     {item.badge && (
-                      <span className="ml-auto flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white">
+                      <span className="ml-auto flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-card-foreground">
                         {item.badge}
                       </span>
                     )}
@@ -59,10 +59,10 @@ export function BottomNav() {
           </div>
 
           {/* Bottom Links */}
-          <div className="flex flex-col gap-2 border-t border-gray-200 border-gray-800 pt-4">
+          <div className="flex flex-col gap-2 border-t border-border border-border pt-4">
             <Link
               href={`/${locale}/seller/help`}
-              className="group flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 hover:bg-gray-700/50 text-text-sub-light text-text-sub-dark transition-colors"
+              className="group flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-muted hover:bg-gray-700/50 text-text-sub-light text-text-sub-dark transition-colors"
             >
               <span className="material-symbols-outlined text-[20px]">help</span>
               <span className="text-sm font-medium leading-normal">Ajuda & Suporte</span>
@@ -83,7 +83,7 @@ export function BottomNav() {
 
       {/* Mobile Bottom Navigation - Pill Style */}
       <div className="lg:hidden fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-md">
-        <div className="bg-white bg-card-dark rounded-full shadow-2xl border border-gray-200 border-gray-700 px-2 py-2">
+        <div className="bg-card bg-card-dark rounded-full shadow-2xl border border-border border-border px-2 py-2">
           <nav className="flex items-center justify-around gap-1">
             {sellerNavigation.map((item) => {
               const isActive = pathname === `/${locale}${item.href}`;
@@ -93,13 +93,13 @@ export function BottomNav() {
                   href={`/${locale}${item.href}`}
                   className={`relative flex flex-col items-center justify-center p-2 rounded-full transition-all ${
                     isActive
-                      ? 'bg-primary text-white shadow-lg shadow-primary/30'
-                      : 'text-gray-500 text-gray-400 hover:bg-gray-100 hover:bg-gray-700'
+                      ? 'bg-primary text-card-foreground shadow-lg shadow-primary/30'
+                      : 'text-muted-foreground text-muted-foreground hover:bg-muted hover:bg-gray-700'
                   }`}
                 >
                   <span className="material-symbols-outlined text-[22px]">{item.icon}</span>
                   {item.badge && (
-                    <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[9px] font-bold text-white ring-2 ring-white ring-card-dark">
+                    <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[9px] font-bold text-card-foreground ring-2 ring-white ring-card-dark">
                       {item.badge}
                     </span>
                   )}

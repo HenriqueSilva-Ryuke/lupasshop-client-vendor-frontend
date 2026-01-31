@@ -79,7 +79,7 @@ export default function NavbarWithSearch() {
       <motion.nav
         className={`sticky top-4 z-50 transition-all duration-500 w-fit mx-auto left-0 right-0 ${
           isScrolled
-            ? 'bg-white/95 backdrop-blur-xl shadow-2xl rounded-full border border-white/20'
+            ? 'bg-card/95 backdrop-blur-xl shadow-2xl rounded-full border border-border/20'
             : 'bg-transparent'
         }`}
         initial={{ y: -100, opacity: 0 }}
@@ -100,12 +100,12 @@ export default function NavbarWithSearch() {
                     className={`relative p-3 rounded-full transition-all duration-500 ${
                       isScrolled
                         ? 'bg-primary shadow-lg'
-                        : 'bg-white/10 backdrop-blur-sm border border-white/20'
+                        : 'bg-card/10 backdrop-blur-sm border border-border/20'
                     }`}
                   >
                     <svg
                       className={`w-6 h-6 transition-all duration-500 ${
-                        isScrolled ? 'text-black' : 'text-gray-800'
+                        isScrolled ? 'text-black' : 'text-foreground'
                       }`}
                       fill="none"
                       stroke="currentColor"
@@ -120,7 +120,7 @@ export default function NavbarWithSearch() {
                     </svg>
                     <motion.div
                       className={`absolute inset-0 rounded-full border-2 ${
-                        isScrolled ? 'border-primary-light' : 'border-white/30'
+                        isScrolled ? 'border-primary-light' : 'border-border/30'
                       }`}
                       animate={{ scale: [1, 1.1, 1] }}
                       transition={{ duration: 2, repeat: Infinity }}
@@ -128,7 +128,7 @@ export default function NavbarWithSearch() {
                   </div>
                   <span
                     className={`text-lg font-bold transition-all duration-500 ${
-                      isScrolled ? 'text-gray-900' : 'text-black'
+                      isScrolled ? 'text-foreground' : 'text-black'
                     }`}
                   >
                     LupaShop
@@ -151,7 +151,7 @@ export default function NavbarWithSearch() {
                         isActiveLink(item.href)
                           ? 'bg-primary text-black shadow-lg'
                           : isScrolled
-                          ? 'text-gray-600 hover:text-black hover:bg-primary'
+                          ? 'text-muted-foreground hover:text-black hover:bg-primary'
                           : 'text-black/80 hover:text-black hover:bg-primary/80'
                       }`}
                     >
@@ -170,8 +170,8 @@ export default function NavbarWithSearch() {
                     onClick={handleSearchClick}
                     className={`p-2.5 rounded-full transition-all duration-300 ${
                       isScrolled
-                        ? 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                        : 'bg-white/20 text-black hover:bg-white/30'
+                        ? 'bg-muted text-foreground hover:bg-gray-200'
+                        : 'bg-card/20 text-black hover:bg-card/30'
                     }`}
                   >
                     <Search className="w-5 h-5" />
@@ -181,19 +181,19 @@ export default function NavbarWithSearch() {
                 <button
                   className={`relative p-2.5 rounded-full transition-all duration-300 ${
                     isScrolled
-                      ? 'text-gray-700 hover:bg-gray-100'
-                      : 'text-black hover:bg-white/20'
+                      ? 'text-foreground hover:bg-muted'
+                      : 'text-black hover:bg-card/20'
                   }`}
                 >
                   <Bell className="w-5 h-5" />
-                  <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+                  <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border-2 border-border"></span>
                 </button>
 
                 <button
                   className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-bold text-sm transition-all duration-300 ${
                     isScrolled
                       ? 'bg-primary text-black hover:bg-primary-dark shadow-lg'
-                      : 'bg-white/20 text-black hover:bg-white/30'
+                      : 'bg-card/20 text-black hover:bg-card/30'
                   }`}
                 >
                   <ShoppingCart className="w-5 h-5" />
@@ -206,8 +206,8 @@ export default function NavbarWithSearch() {
                     whileTap={{ scale: 0.98 }}
                     className={`px-4 py-2 text-sm font-medium rounded-full border transition-all duration-300 ${
                       isScrolled
-                        ? 'text-gray-600 border-gray-200 hover:border-gray-300 hover:text-gray-900'
-                        : 'text-black/80 border-white/30 hover:border-white/50 hover:text-black'
+                        ? 'text-muted-foreground border-border hover:border-border hover:text-foreground'
+                        : 'text-black/80 border-border/30 hover:border-border/50 hover:text-black'
                     }`}
                   >
                     {t('login')}
@@ -218,7 +218,7 @@ export default function NavbarWithSearch() {
                     className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
                       isScrolled
                         ? 'bg-primary text-black hover:bg-primary-dark shadow-lg'
-                        : 'bg-white/20 backdrop-blur-sm text-black border border-white/30 hover:bg-white/30'
+                        : 'bg-card/20 backdrop-blur-sm text-black border border-border/30 hover:bg-card/30'
                     }`}
                   >
                     {t('signup')}
@@ -230,21 +230,21 @@ export default function NavbarWithSearch() {
             // Search Mode
             <div className="flex items-center gap-3 py-1">
               <div className="flex-1 relative">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground w-5 h-5" />
                 <input
                   ref={searchInputRef}
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={tm('search.placeholder')}
-                  className="w-full pl-12 pr-4 py-3 bg-gray-50 bg-gray-800 rounded-full text-gray-900 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full pl-12 pr-4 py-3 bg-muted bg-gray-800 rounded-full text-foreground text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary"
                 />
               </div>
               <button
                 onClick={handleCloseSearch}
-                className="p-2.5 hover:bg-gray-100 hover:bg-gray-800 rounded-full transition-colors"
+                className="p-2.5 hover:bg-muted hover:bg-gray-800 rounded-full transition-colors"
               >
-                <X className="w-5 h-5 text-gray-600 text-gray-300" />
+                <X className="w-5 h-5 text-muted-foreground text-muted-foreground" />
               </button>
             </div>
           )}
@@ -260,18 +260,18 @@ export default function NavbarWithSearch() {
             exit={{ opacity: 0, y: -10 }}
             className="fixed left-1/2 -translate-x-1/2 top-24 w-full max-w-2xl z-40 px-4"
           >
-            <div className="bg-white bg-gray-100 rounded-2xl shadow-2xl border border-gray-200 border-gray-700 overflow-hidden">
+            <div className="bg-card bg-muted rounded-2xl shadow-2xl border border-border border-border overflow-hidden">
               {isLoading ? (
                 <div className="p-8 text-center">
                   <div className="animate-spin w-8 h-8 border-4 border-primary border-t-transparent rounded-full mx-auto"></div>
-                  <p className="text-sm text-gray-500 mt-3">{tm('search.searching')}</p>
+                  <p className="text-sm text-muted-foreground mt-3">{tm('search.searching')}</p>
                 </div>
               ) : searchResults && (searchResults.products.length > 0 || searchResults.stores.length > 0 || searchResults.categories.length > 0) ? (
                 <div className="max-h-[70vh] overflow-y-auto">
                   {/* Products */}
                   {searchResults.products.length > 0 && (
-                    <div className="p-4 border-b border-gray-100 border-gray-800">
-                      <div className="flex items-center gap-2 text-xs font-bold text-gray-500 uppercase mb-3">
+                    <div className="p-4 border-b border-gray-100 border-border">
+                      <div className="flex items-center gap-2 text-xs font-bold text-muted-foreground uppercase mb-3">
                         <Package className="w-4 h-4" />
                         {tm('search.products')}
                       </div>
@@ -279,18 +279,18 @@ export default function NavbarWithSearch() {
                         <button
                           key={product.id}
                           onClick={() => handleResultClick('product', product.slug)}
-                          className="w-full flex items-center gap-3 p-3 hover:bg-gray-50 hover:bg-gray-800 rounded-lg transition-colors text-left"
+                          className="w-full flex items-center gap-3 p-3 hover:bg-muted hover:bg-gray-800 rounded-lg transition-colors text-left"
                         >
-                          <div className="w-12 h-12 bg-gray-100 bg-gray-800 rounded flex-shrink-0 overflow-hidden">
+                          <div className="w-12 h-12 bg-muted bg-gray-800 rounded flex-shrink-0 overflow-hidden">
                             {product.images[0] && (
                               <img src={product.images[0]} alt={product.name} className="w-full h-full object-cover" />
                             )}
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p className="font-medium text-gray-900 text-black truncate">{product.name}</p>
+                            <p className="font-medium text-foreground text-black truncate">{product.name}</p>
                             <p className="text-sm text-primary font-bold">R$ {product.price.toFixed(2)}</p>
                           </div>
-                          <div className="flex items-center gap-1 text-xs text-gray-500">
+                          <div className="flex items-center gap-1 text-xs text-muted-foreground">
                             <span className="text-yellow-500">★</span>
                             {product.rating.toFixed(1)}
                           </div>
@@ -301,8 +301,8 @@ export default function NavbarWithSearch() {
 
                   {/* Stores */}
                   {searchResults.stores.length > 0 && (
-                    <div className="p-4 border-b border-gray-100 border-gray-800">
-                      <div className="flex items-center gap-2 text-xs font-bold text-gray-500 uppercase mb-3">
+                    <div className="p-4 border-b border-gray-100 border-border">
+                      <div className="flex items-center gap-2 text-xs font-bold text-muted-foreground uppercase mb-3">
                         <Store className="w-4 h-4" />
                         {tm('search.stores')}
                       </div>
@@ -310,21 +310,21 @@ export default function NavbarWithSearch() {
                         <button
                           key={store.id}
                           onClick={() => handleResultClick('store', store.slug)}
-                          className="w-full flex items-center gap-3 p-3 hover:bg-gray-50 hover:bg-gray-800 rounded-lg transition-colors text-left"
+                          className="w-full flex items-center gap-3 p-3 hover:bg-muted hover:bg-gray-800 rounded-lg transition-colors text-left"
                         >
-                          <div className="w-12 h-12 bg-gray-100 bg-gray-800 rounded flex-shrink-0 overflow-hidden">
+                          <div className="w-12 h-12 bg-muted bg-gray-800 rounded flex-shrink-0 overflow-hidden">
                             {store.logoUrl && (
                               <img src={store.logoUrl} alt={store.name} className="w-full h-full object-cover" />
                             )}
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p className="font-medium text-gray-900 text-black truncate flex items-center gap-2">
+                            <p className="font-medium text-foreground text-black truncate flex items-center gap-2">
                               {store.name}
                               {store.isVerified && (
                                 <span className="text-blue-500 text-xs">✓</span>
                               )}
                             </p>
-                            <div className="flex items-center gap-2 text-xs text-gray-500">
+                            <div className="flex items-center gap-2 text-xs text-muted-foreground">
                               <span className="text-yellow-500">★</span>
                               {store.rating.toFixed(1)}
                               <span>•</span>
@@ -339,7 +339,7 @@ export default function NavbarWithSearch() {
                   {/* Categories */}
                   {searchResults.categories.length > 0 && (
                     <div className="p-4">
-                      <div className="flex items-center gap-2 text-xs font-bold text-gray-500 uppercase mb-3">
+                      <div className="flex items-center gap-2 text-xs font-bold text-muted-foreground uppercase mb-3">
                         <Tag className="w-4 h-4" />
                         {tm('search.categories')}
                       </div>
@@ -360,7 +360,7 @@ export default function NavbarWithSearch() {
                 </div>
               ) : (
                 <div className="p-8 text-center">
-                  <p className="text-gray-500">{tm('search.noResults', { query: searchQuery })}</p>
+                  <p className="text-muted-foreground">{tm('search.noResults', { query: searchQuery })}</p>
                 </div>
               )}
             </div>

@@ -97,45 +97,45 @@ export default function Marketplace() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+      <header className="sticky top-0 z-50 bg-card border-b border-border shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center gap-2">
-              <Package className="w-6 h-6 text-[#412778]" />
-              <span className="text-xl font-bold text-[#412778]">LupaShop</span>
+              <Package className="w-6 h-6 text-primary" />
+              <span className="text-xl font-bold text-primary">LupaShop</span>
             </div>
 
             {/* Navigation - Desktop */}
             <nav className="hidden md:flex items-center gap-8 flex-1 ml-12">
-              <Link href="#" className="text-gray-700 hover:text-[#412778] transition">
+              <Link href="#" className="text-foreground hover:text-primary transition">
                 {tMarket('navbar.home')}
               </Link>
-              <Link href="#" className="text-gray-700 hover:text-[#412778] transition">
+              <Link href="#" className="text-foreground hover:text-primary transition">
                 {tMarket('navbar.products')}
               </Link>
-              <Link href="#" className="text-gray-700 hover:text-[#412778] transition">
+              <Link href="#" className="text-foreground hover:text-primary transition">
                 {tMarket('navbar.stores')}
               </Link>
-              <Link href="#" className="text-gray-700 hover:text-[#412778] transition">
+              <Link href="#" className="text-foreground hover:text-primary transition">
                 {tMarket('navbar.deals')}
               </Link>
             </nav>
 
             {/* Right side actions */}
             <div className="hidden md:flex items-center gap-4">
-              <button className="p-2 hover:bg-gray-100 rounded-lg transition">
-                <Heart className="w-6 h-6 text-gray-700" />
+              <button className="p-2 hover:bg-muted rounded-lg transition">
+                <Heart className="w-6 h-6 text-foreground" />
               </button>
-              <Link href="/cart" className="relative p-2 hover:bg-gray-100 rounded-lg transition">
-                <ShoppingCart className="w-6 h-6 text-gray-700" />
-                <span className="absolute top-1 right-1 w-5 h-5 bg-[#412778] text-white text-xs rounded-full flex items-center justify-center">
+              <Link href="/cart" className="relative p-2 hover:bg-muted rounded-lg transition">
+                <ShoppingCart className="w-6 h-6 text-foreground" />
+                <span className="absolute top-1 right-1 w-5 h-5 bg-primary text-primary-foreground text-xs rounded-full flex items-center justify-center">
                   0
                 </span>
               </Link>
-              <Link href="/auth/login" className="px-4 py-2 text-[#412778] border border-[#412778] rounded-lg hover:bg-[#412778] hover:text-white transition font-medium">
+              <Link href="/auth/login" className="px-4 py-2 text-primary border border-primary rounded-lg hover:bg-primary hover:text-primary-foreground transition font-medium">
                 {tMarket('navbar.login')}
               </Link>
             </div>
@@ -153,11 +153,11 @@ export default function Marketplace() {
 
         {/* Mobile menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-gray-50 border-t border-gray-200">
+          <div className="md:hidden bg-muted border-t border-border">
             <div className="px-4 py-4 space-y-3">
-              <Link href="#" className="block text-gray-700">Home</Link>
-              <Link href="#" className="block text-gray-700">Products</Link>
-              <Link href="#" className="block text-gray-700">Stores</Link>
+              <Link href="#" className="block text-foreground">Home</Link>
+              <Link href="#" className="block text-foreground">Products</Link>
+              <Link href="#" className="block text-foreground">Stores</Link>
               <Link href="/dashboard/auth/login" className="block text-[#412778] font-medium">Login</Link>
             </div>
           </div>
@@ -180,11 +180,11 @@ export default function Marketplace() {
                 placeholder="Search products..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-400"
+                className="w-full px-4 py-3 rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-purple-400"
               />
-              <Search className="absolute right-3 top-3.5 text-gray-400" size={20} />
+              <Search className="absolute right-3 top-3.5 text-muted-foreground" size={20} />
             </div>
-            <button className="px-6 py-3 bg-white text-[#412778] rounded-lg font-semibold hover:bg-gray-100 transition">
+            <button className="px-6 py-3 bg-card text-[#412778] rounded-lg font-semibold hover:bg-muted transition">
               Search
             </button>
           </div>
@@ -201,7 +201,7 @@ export default function Marketplace() {
               <h3 className="text-lg font-bold">Flash Sales</h3>
             </div>
             <p className="text-red-100 mb-4">Up to 60% off selected items</p>
-            <button className="bg-white text-red-500 px-4 py-2 rounded font-semibold hover:bg-red-50 transition">
+            <button className="bg-card text-red-500 px-4 py-2 rounded font-semibold hover:bg-red-50 transition">
               Shop Now
             </button>
           </div>
@@ -213,7 +213,7 @@ export default function Marketplace() {
               <h3 className="text-lg font-bold">New Collection</h3>
             </div>
             <p className="text-blue-100 mb-4">Latest trends just arrived</p>
-            <button className="bg-white text-blue-500 px-4 py-2 rounded font-semibold hover:bg-blue-50 transition">
+            <button className="bg-card text-blue-500 px-4 py-2 rounded font-semibold hover:bg-blue-50 transition">
               Explore
             </button>
           </div>
@@ -225,7 +225,7 @@ export default function Marketplace() {
               <h3 className="text-lg font-bold">Renew Your Home</h3>
             </div>
             <p className="text-green-100 mb-4">Home essentials on sale</p>
-            <button className="bg-white text-green-500 px-4 py-2 rounded font-semibold hover:bg-green-50 transition">
+            <button className="bg-card text-green-500 px-4 py-2 rounded font-semibold hover:bg-green-50 transition">
               Browse
             </button>
           </div>
@@ -234,7 +234,7 @@ export default function Marketplace() {
 
       {/* Categories */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h2 className="text-2xl font-bold mb-6 text-gray-900">Shop by Category</h2>
+        <h2 className="text-2xl font-bold mb-6 text-foreground">Shop by Category</h2>
         {categoriesLoading ? (
           <div className="flex justify-center py-8">
             <Loader className="w-6 h-6 animate-spin text-[#412778]" />
@@ -247,7 +247,7 @@ export default function Marketplace() {
                 onClick={() => setSelectedCategory(category.id)}
                 className={`p-4 rounded-lg text-center transition ${selectedCategory === category.id
                   ? 'bg-[#412778] text-black'
-                  : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
+                  : 'bg-muted text-foreground hover:bg-gray-200'
                   }`}
               >
                 <div className="text-3xl mb-2">{category.icon}</div>
@@ -262,7 +262,7 @@ export default function Marketplace() {
       {/* Flash Deals Products */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-gray-900">Flash Deals</h2>
+          <h2 className="text-2xl font-bold text-foreground">Flash Deals</h2>
           <Link href="#" className="text-[#412778] hover:text-purple-900 font-semibold flex items-center gap-2">
             View All
             <span>→</span>
@@ -274,13 +274,13 @@ export default function Marketplace() {
             <Loader className="w-8 h-8 animate-spin text-[#412778]" />
           </div>
         ) : displayProducts.length === 0 ? (
-          <div className="py-12 text-center text-gray-500">Sem produtos em destaque</div>
+          <div className="py-12 text-center text-muted-foreground">Sem produtos em destaque</div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {displayProducts.slice(0, 5).map((product) => (
               <div
                 key={product.id}
-                className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition border border-gray-200"
+                className="bg-card rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition border border-border"
               >
                 {/* Product Image */}
                 <div className="relative aspect-square bg-gray-200 overflow-hidden group">
@@ -292,7 +292,7 @@ export default function Marketplace() {
                       className="object-cover group-hover:scale-110 transition duration-300"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-gray-500 text-sm">
+                    <div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm">
                       Sem imagem
                     </div>
                   )}
@@ -303,12 +303,12 @@ export default function Marketplace() {
                   )}
                   <button
                     onClick={() => toggleFavorite(product.id)}
-                    className="absolute top-2 left-2 p-2 bg-white rounded-full hover:bg-gray-100 transition"
+                    className="absolute top-2 left-2 p-2 bg-card rounded-full hover:bg-muted transition"
                   >
                     <Heart
                       className={`w-5 h-5 ${favorites.has(product.id)
                         ? 'fill-red-500 text-red-500'
-                        : 'text-gray-600'
+                        : 'text-muted-foreground'
                         }`}
                     />
                   </button>
@@ -316,7 +316,7 @@ export default function Marketplace() {
 
                 {/* Product Info */}
                 <div className="p-4">
-                  <h3 className="font-semibold text-gray-900 line-clamp-2 mb-2">
+                  <h3 className="font-semibold text-foreground line-clamp-2 mb-2">
                     {product.name}
                   </h3>
 
@@ -331,7 +331,7 @@ export default function Marketplace() {
                         />
                       ))}
                     </div>
-                    <span className="text-xs text-gray-600">
+                    <span className="text-xs text-muted-foreground">
                       {product.rating} ({product.reviews})
                     </span>
                   </div>
@@ -339,11 +339,11 @@ export default function Marketplace() {
                   {/* Price */}
                   <div className="mb-3">
                     <div className="flex items-baseline gap-2">
-                      <span className="text-lg font-bold text-gray-900">
+                      <span className="text-lg font-bold text-foreground">
                         {new Intl.NumberFormat('pt-AO', { style: 'currency', currency: product.currency }).format(product.price)}
                       </span>
                       {product.originalPrice && (
-                        <span className="text-sm text-gray-500 line-through">
+                        <span className="text-sm text-muted-foreground line-through">
                           {new Intl.NumberFormat('pt-AO', { style: 'currency', currency: product.currency }).format(product.originalPrice)}
                         </span>
                       )}
@@ -351,7 +351,7 @@ export default function Marketplace() {
                   </div>
 
                   {/* Store Info */}
-                  <p className="text-xs text-gray-600 mb-3">
+                  <p className="text-xs text-muted-foreground mb-3">
                     by {product.store}
                   </p>
 
@@ -369,19 +369,19 @@ export default function Marketplace() {
 
       {/* Featured Stores */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h2 className="text-2xl font-bold mb-6 text-gray-900">Featured Stores</h2>
+        <h2 className="text-2xl font-bold mb-6 text-foreground">Featured Stores</h2>
         {storesLoading ? (
           <div className="flex justify-center py-8">
             <Loader className="w-6 h-6 animate-spin text-[#412778]" />
           </div>
         ) : displayStores.length === 0 ? (
-          <div className="py-8 text-center text-gray-500">Sem lojas em destaque</div>
+          <div className="py-8 text-center text-muted-foreground">Sem lojas em destaque</div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {displayStores.map((store) => (
               <div
                 key={store.id}
-                className="bg-white rounded-lg p-6 text-center shadow-sm hover:shadow-lg transition border border-gray-200"
+                className="bg-card rounded-lg p-6 text-center shadow-sm hover:shadow-lg transition border border-border"
               >
                 <div className="w-16 h-16 mx-auto rounded-full flex items-center justify-center font-bold text-2xl mb-4 overflow-hidden bg-[#412778] text-black">
                   {store.logo ? (
@@ -396,7 +396,7 @@ export default function Marketplace() {
                     <span>{store.name.substring(0, 2).toUpperCase()}</span>
                   )}
                 </div>
-                <h3 className="font-bold text-gray-900 mb-2">{store.name}</h3>
+                <h3 className="font-bold text-foreground mb-2">{store.name}</h3>
                 <div className="flex items-center justify-center gap-1 mb-2">
                   <div className="flex text-yellow-400">
                     {[...Array(5)].map((_, i) => (
@@ -407,11 +407,11 @@ export default function Marketplace() {
                       />
                     ))}
                   </div>
-                  <span className="text-xs text-gray-600 ml-1">
+                  <span className="text-xs text-muted-foreground ml-1">
                     {store.rating}
                   </span>
                 </div>
-                <p className="text-sm text-gray-600 mb-4">
+                <p className="text-sm text-muted-foreground mb-4">
                   {store.salesCount.toLocaleString()} sales
                 </p>
                 <button className="w-full border-2 border-[#412778] text-[#412778] hover:bg-[#412778] hover:text-black py-2 rounded-lg font-semibold transition">
@@ -424,7 +424,7 @@ export default function Marketplace() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-100 text-black mt-16">
+      <footer className="bg-muted text-black mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             {/* Company Info */}
@@ -433,18 +433,18 @@ export default function Marketplace() {
                 <Package className="w-6 h-6 text-[#412778]" />
                 <span className="text-xl font-bold">LupaShop</span>
               </div>
-              <p className="text-gray-400">{tMarket('tagline')}</p>
+              <p className="text-muted-foreground">{tMarket('tagline')}</p>
               <div className="flex gap-4 mt-4">
-                <a href="#" className="text-gray-400 hover:text-black">Facebook</a>
-                <a href="#" className="text-gray-400 hover:text-black">Twitter</a>
-                <a href="#" className="text-gray-400 hover:text-black">Instagram</a>
+                <a href="#" className="text-muted-foreground hover:text-black">Facebook</a>
+                <a href="#" className="text-muted-foreground hover:text-black">Twitter</a>
+                <a href="#" className="text-muted-foreground hover:text-black">Instagram</a>
               </div>
             </div>
 
             {/* Quick Links */}
             <div>
               <h4 className="font-bold mb-4">Company</h4>
-              <ul className="space-y-2 text-gray-400">
+              <ul className="space-y-2 text-muted-foreground">
                 <li><a href="#" className="hover:text-black">About Us</a></li>
                 <li><a href="#" className="hover:text-black">Careers</a></li>
                 <li><a href="#" className="hover:text-black">Blog</a></li>
@@ -455,7 +455,7 @@ export default function Marketplace() {
             {/* Support */}
             <div>
               <h4 className="font-bold mb-4">Support</h4>
-              <ul className="space-y-2 text-gray-400">
+              <ul className="space-y-2 text-muted-foreground">
                 <li><a href="#" className="hover:text-black">Help Center</a></li>
                 <li><a href="#" className="hover:text-black">Contact Us</a></li>
                 <li><a href="#" className="hover:text-black">Shipping Info</a></li>
@@ -466,7 +466,7 @@ export default function Marketplace() {
             {/* Legal */}
             <div>
               <h4 className="font-bold mb-4">Legal</h4>
-              <ul className="space-y-2 text-gray-400">
+              <ul className="space-y-2 text-muted-foreground">
                 <li><a href="#" className="hover:text-black">Privacy Policy</a></li>
                 <li><a href="#" className="hover:text-black">Terms of Service</a></li>
                 <li><a href="#" className="hover:text-black">Cookie Policy</a></li>
@@ -475,27 +475,27 @@ export default function Marketplace() {
             </div>
           </div>
 
-          <div className="border-t border-gray-800 pt-8">
+          <div className="border-t border-border pt-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
               <div className="text-center">
                 <div className="text-2xl font-bold text-[#412778]">100K+</div>
-                <p className="text-gray-400 text-sm">Products</p>
+                <p className="text-muted-foreground text-sm">Products</p>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-[#412778]">50K+</div>
-                <p className="text-gray-400 text-sm">Sellers</p>
+                <p className="text-muted-foreground text-sm">Sellers</p>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-[#412778]">1M+</div>
-                <p className="text-gray-400 text-sm">Happy Customers</p>
+                <p className="text-muted-foreground text-sm">Happy Customers</p>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-[#412778]">24/7</div>
-                <p className="text-gray-400 text-sm">Customer Support</p>
+                <p className="text-muted-foreground text-sm">Customer Support</p>
               </div>
             </div>
 
-            <div className="text-center text-gray-400 text-sm">
+            <div className="text-center text-muted-foreground text-sm">
               <p>&copy; 2024 LupaShop. All rights reserved.</p>
             </div>
           </div>

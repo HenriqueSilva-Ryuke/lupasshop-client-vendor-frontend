@@ -64,7 +64,7 @@ export default function MarketplaceProductListing() {
     <div className="min-h-screen bg-background-light bg-background-dark">
       <div className="max-w-[1440px] w-full mx-auto px-4 md:px-8 py-6">
         {/* Breadcrumb */}
-        <nav className="flex flex-wrap items-center gap-2 mb-6 text-sm text-gray-500 text-gray-400">
+        <nav className="flex flex-wrap items-center gap-2 mb-6 text-sm text-muted-foreground text-muted-foreground">
           <Link href={`/${locale}`} className="hover:text-primary transition-colors">
             {t('breadcrumb.home')}
           </Link>
@@ -79,10 +79,10 @@ export default function MarketplaceProductListing() {
               <h3 className="text-lg font-bold text-foreground text-black mb-4">{t('filter.title')}</h3>
 
               {/* Category Filter */}
-              <details className="group open:pb-4 border-b border-gray-100 border-gray-800" open>
+              <details className="group open:pb-4 border-b border-gray-100 border-border" open>
                 <summary className="flex cursor-pointer items-center justify-between py-3 list-none">
                   <span className="text-sm font-bold text-foreground text-black">{t('filter.category')}</span>
-                  <ChevronRight className="w-5 h-5 text-gray-400 group-open:rotate-90 transition-transform" />
+                  <ChevronRight className="w-5 h-5 text-muted-foreground group-open:rotate-90 transition-transform" />
                 </summary>
                 <div className="space-y-2 pt-1 pb-2 pl-1">
                   {categories.slice(0, 8).map((cat) => (
@@ -91,19 +91,19 @@ export default function MarketplaceProductListing() {
                         type="checkbox"
                         checked={selectedCategories.includes(cat.id)}
                         onChange={() => handleCategoryToggle(cat.id)}
-                        className="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary bg-white bg-[#2c3640] border-gray-600"
+                        className="w-4 h-4 rounded border-border text-primary focus:ring-primary bg-card bg-[#2c3640] border-gray-600"
                       />
-                      <span className="text-sm text-gray-600 text-gray-300">{cat.name}</span>
+                      <span className="text-sm text-muted-foreground text-muted-foreground">{cat.name}</span>
                     </label>
                   ))}
                 </div>
               </details>
 
               {/* Store Filter */}
-              <details className="group open:pb-4 border-b border-gray-100 border-gray-800" open>
+              <details className="group open:pb-4 border-b border-gray-100 border-border" open>
                 <summary className="flex cursor-pointer items-center justify-between py-3 list-none">
                   <span className="text-sm font-bold text-foreground text-black">{t('filter.store')}</span>
-                  <ChevronRight className="w-5 h-5 text-gray-400 group-open:rotate-90 transition-transform" />
+                  <ChevronRight className="w-5 h-5 text-muted-foreground group-open:rotate-90 transition-transform" />
                 </summary>
                 <div className="space-y-2 pt-1 pb-2 pl-1">
                   {stores.slice(0, 6).map((store) => (
@@ -112,9 +112,9 @@ export default function MarketplaceProductListing() {
                         type="checkbox"
                         checked={selectedStores.includes(store.id)}
                         onChange={() => handleStoreToggle(store.id)}
-                        className="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary bg-white bg-[#2c3640] border-gray-600"
+                        className="w-4 h-4 rounded border-border text-primary focus:ring-primary bg-card bg-[#2c3640] border-gray-600"
                       />
-                      <span className="text-sm text-gray-600 text-gray-300">{store.name}</span>
+                      <span className="text-sm text-muted-foreground text-muted-foreground">{store.name}</span>
                       {store.isVerified && <span className="text-blue-500 text-xs">✓</span>}
                     </label>
                   ))}
@@ -126,18 +126,18 @@ export default function MarketplaceProductListing() {
           {/* Main Products Area */}
           <main className="flex-1 min-w-0">
             {/* Header Bar */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 bg-white bg-[#1e2832] p-4 rounded-xl border border-gray-200 border-[#2e3a45] shadow-sm">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 bg-card bg-[#1e2832] p-4 rounded-xl border border-border border-[#2e3a45] shadow-sm">
               <div>
                 <h1 className="text-2xl font-bold text-foreground text-black">{t('products.title')}</h1>
-                <p className="text-sm text-gray-500 mt-1">{t('products.showing', { count: products.length })}</p>
+                <p className="text-sm text-muted-foreground mt-1">{t('products.showing', { count: products.length })}</p>
               </div>
 
               <div className="flex items-center gap-3">
-                <span className="text-sm font-medium text-gray-500 whitespace-nowrap hidden sm:block">{t('sorting.sortBy')}</span>
+                <span className="text-sm font-medium text-muted-foreground whitespace-nowrap hidden sm:block">{t('sorting.sortBy')}</span>
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="appearance-none bg-gray-50 bg-[#2c3640] border border-gray-200 border-gray-600 text-foreground text-black text-sm font-medium rounded-lg h-9 pl-4 pr-10 focus:ring-2 focus:ring-primary cursor-pointer focus:outline-none"
+                  className="appearance-none bg-muted bg-[#2c3640] border border-border border-gray-600 text-foreground text-black text-sm font-medium rounded-lg h-9 pl-4 pr-10 focus:ring-2 focus:ring-primary cursor-pointer focus:outline-none"
                 >
                   <option value="relevance">{t('sort.relevance')}</option>
                   <option value="price-asc">{t('sorting.priceLow')}</option>
@@ -151,7 +151,7 @@ export default function MarketplaceProductListing() {
             {productsLoading ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 {Array.from({ length: 8 }).map((_, i) => (
-                  <div key={i} className="bg-white bg-[#1e2832] rounded-xl border border-gray-200 border-[#2e3a45] overflow-hidden animate-pulse">
+                  <div key={i} className="bg-card bg-[#1e2832] rounded-xl border border-border border-[#2e3a45] overflow-hidden animate-pulse">
                     <div className="aspect-square bg-gray-200 bg-gray-800"></div>
                     <div className="p-4 space-y-3">
                       <div className="h-4 bg-gray-200 bg-gray-800 rounded"></div>
@@ -163,7 +163,7 @@ export default function MarketplaceProductListing() {
               </div>
             ) : products.length === 0 ? (
               <div className="text-center py-12">
-                <p className="text-gray-500 text-lg">{t('products.noProducts')}</p>
+                <p className="text-muted-foreground text-lg">{t('products.noProducts')}</p>
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -171,9 +171,9 @@ export default function MarketplaceProductListing() {
                   <Link
                     key={product.id}
                     href={`/${locale}/product/${product.slug}`}
-                    className="group flex flex-col bg-white bg-[#1e2832] rounded-xl border border-gray-200 border-[#2e3a45] overflow-hidden hover:shadow-lg hover:border-primary/50 transition-all duration-300"
+                    className="group flex flex-col bg-card bg-[#1e2832] rounded-xl border border-border border-[#2e3a45] overflow-hidden hover:shadow-lg hover:border-primary/50 transition-all duration-300"
                   >
-                    <div className="relative aspect-square bg-white bg-[#121212] overflow-hidden p-4 border-b border-gray-50 border-gray-800">
+                    <div className="relative aspect-square bg-card bg-[#121212] overflow-hidden p-4 border-b border-gray-50 border-border">
                       {product.images[0] && (
                         <Image
                           src={product.images[0]}
@@ -184,7 +184,7 @@ export default function MarketplaceProductListing() {
                       )}
                       <button 
                         onClick={(e) => e.preventDefault()}
-                        className="absolute top-3 right-3 p-2 rounded-full bg-white/90 bg-black/50 hover:bg-white text-gray-400 hover:text-red-500 shadow-sm transition-colors backdrop-blur-sm border border-gray-100 border-transparent"
+                        className="absolute top-3 right-3 p-2 rounded-full bg-card/90 bg-black/50 hover:bg-card text-muted-foreground hover:text-red-500 shadow-sm transition-colors backdrop-blur-sm border border-gray-100 border-transparent"
                       >
                         <Heart className="w-5 h-5" />
                       </button>
@@ -207,12 +207,12 @@ export default function MarketplaceProductListing() {
 
                       <div className="flex items-center gap-1 mb-3">
                         <div className="flex text-yellow-400">{renderStars(product.rating || 0)}</div>
-                        <span className="text-xs text-gray-400">({product.reviewCount || 0} {t('products.reviews')})</span>
+                        <span className="text-xs text-muted-foreground">({product.reviewCount || 0} {t('products.reviews')})</span>
                       </div>
 
                       <div className="mt-auto">
                         {product.originalPrice && product.originalPrice > product.price && (
-                          <p className="text-xs text-gray-400 line-through">R$ {product.originalPrice.toFixed(2)}</p>
+                          <p className="text-xs text-muted-foreground line-through">R$ {product.originalPrice.toFixed(2)}</p>
                         )}
                         <div className="flex items-baseline gap-2 mb-3">
                           <p className="text-xl font-bold text-primary">R$ {product.price.toFixed(2)}</p>
@@ -238,7 +238,7 @@ export default function MarketplaceProductListing() {
                 <button
                   disabled={currentPage === 1}
                   onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-                  className="p-2 rounded-lg text-gray-400 hover:bg-gray-100 hover:bg-white/5 disabled:opacity-50 transition-colors"
+                  className="p-2 rounded-lg text-muted-foreground hover:bg-muted hover:bg-card/5 disabled:opacity-50 transition-colors"
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
@@ -248,7 +248,7 @@ export default function MarketplaceProductListing() {
                   className={`w-10 h-10 rounded-lg font-bold text-sm transition-colors ${
                     currentPage === 1
                       ? 'bg-primary text-black shadow-sm'
-                      : 'text-foreground text-black hover:bg-gray-100 hover:bg-white/5'
+                      : 'text-foreground text-black hover:bg-muted hover:bg-card/5'
                   }`}
                 >
                   1
@@ -256,7 +256,7 @@ export default function MarketplaceProductListing() {
 
                 <button
                   onClick={() => setCurrentPage(p => p + 1)}
-                  className="p-2 rounded-lg text-gray-400 hover:bg-gray-100 hover:bg-white/5 transition-colors"
+                  className="p-2 rounded-lg text-muted-foreground hover:bg-muted hover:bg-card/5 transition-colors"
                 >
                   <ChevronRight className="w-5 h-5" />
                 </button>

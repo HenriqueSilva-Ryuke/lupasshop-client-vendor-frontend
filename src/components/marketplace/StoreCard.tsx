@@ -15,10 +15,10 @@ export default function StoreCard({ store }: StoreCardProps) {
     return (
         <Link
             href={`/store/${store.slug}`}
-            className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 transition-all duration-300 block h-full flex flex-col"
+            className="group bg-card rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 transition-all duration-300 block h-full flex flex-col"
         >
             {/* Cover Image */}
-            <div className="relative h-32 w-full bg-gray-100 overflow-hidden">
+            <div className="relative h-32 w-full bg-muted overflow-hidden">
                 <Image
                     src={store.coverImage}
                     alt={store.name}
@@ -30,8 +30,8 @@ export default function StoreCard({ store }: StoreCardProps) {
             {/* Content */}
             <div className="p-4 pt-12 relative flex-1 flex flex-col">
                 {/* Logo - Floating */}
-                <div className="absolute -top-8 left-4 p-1 bg-white rounded-xl shadow-sm group-hover:shadow-md transition-shadow">
-                    <div className="relative h-16 w-16 rounded-lg overflow-hidden bg-gray-50">
+                <div className="absolute -top-8 left-4 p-1 bg-card rounded-xl shadow-sm group-hover:shadow-md transition-shadow">
+                    <div className="relative h-16 w-16 rounded-lg overflow-hidden bg-muted">
                         <Image
                             src={store.logo}
                             alt={store.name}
@@ -44,7 +44,7 @@ export default function StoreCard({ store }: StoreCardProps) {
                 <div className="mb-3">
                     <div className="flex items-center justify-between mb-1">
                         <div className="flex items-center gap-1.5">
-                            <h3 className="font-bold text-gray-900 group-hover:text-primary transition-colors line-clamp-1">
+                            <h3 className="font-bold text-foreground group-hover:text-primary transition-colors line-clamp-1">
                                 {store.name}
                             </h3>
                             {store.isVerified && (
@@ -58,14 +58,14 @@ export default function StoreCard({ store }: StoreCardProps) {
                     </div>
 
                     {store.location && (
-                        <div className="flex items-center gap-1 text-gray-500 text-xs">
+                        <div className="flex items-center gap-1 text-muted-foreground text-xs">
                             <MapPin size={12} />
                             <span className="line-clamp-1">{store.location}</span>
                         </div>
                     )}
                 </div>
                 {/* Description */}
-                <p className="text-sm text-gray-600 line-clamp-2 mb-4 flex-1">
+                <p className="text-sm text-muted-foreground line-clamp-2 mb-4 flex-1">
                     {store.description}
                 </p>
                 {/* Tags */}
@@ -73,13 +73,13 @@ export default function StoreCard({ store }: StoreCardProps) {
                     {store.categories.slice(0, 2).map((cat) => (
                         <span
                             key={cat}
-                            className="text-xs px-2 py-1 bg-gray-50 text-gray-600 rounded-md font-medium uppercase tracking-wider"
+                            className="text-xs px-2 py-1 bg-muted text-muted-foreground rounded-md font-medium uppercase tracking-wider"
                         >
                             {t(`categories.${cat}`)}
                         </span>
                     ))}
                     {store.categories.length > 2 && (
-                        <span className="text-xs px-2 py-1 bg-gray-50 text-gray-400 rounded-md font-medium">
+                        <span className="text-xs px-2 py-1 bg-muted text-muted-foreground rounded-md font-medium">
                             +{store.categories.length - 2}
                         </span>
                     )}

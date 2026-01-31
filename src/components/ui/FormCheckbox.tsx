@@ -22,15 +22,15 @@ export default function FormCheckbox({
         <input
           type="checkbox"
           {...register}
-          className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+          className="h-4 w-4 rounded border-border text-primary focus:ring-primary"
         />
-        <label className="text-sm font-medium text-gray-700">{label}</label>
+        <label className="text-sm font-medium text-foreground">{label}</label>
       </div>
       {error && (
         <p className="text-sm text-red-500">{error.message}</p>
       )}
       {helperText && !error && (
-        <p className="text-sm text-gray-500">{helperText}</p>
+        <p className="text-sm text-muted-foreground">{helperText}</p>
       )}
     </div>
   );

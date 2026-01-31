@@ -19,7 +19,7 @@ export default function CTASection() {
       {/* Floating Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute top-20 left-10 w-6 h-6 bg-white/20 rounded-full"
+          className="absolute top-20 left-10 w-6 h-6 bg-card/20 rounded-full"
           animate={{
             y: [0, -20, 0],
             opacity: [0.3, 0.7, 0.3]
@@ -31,7 +31,7 @@ export default function CTASection() {
           }}
         />
         <motion.div
-          className="absolute top-40 right-20 w-4 h-4 bg-white/30 rounded-full"
+          className="absolute top-40 right-20 w-4 h-4 bg-card/30 rounded-full"
           animate={{
             y: [0, 15, 0],
             opacity: [0.4, 0.8, 0.4]
@@ -44,7 +44,7 @@ export default function CTASection() {
           }}
         />
         <motion.div
-          className="absolute bottom-32 left-20 w-8 h-8 bg-white/15 rounded-full"
+          className="absolute bottom-32 left-20 w-8 h-8 bg-card/15 rounded-full"
           animate={{
             y: [0, 25, 0],
             opacity: [0.2, 0.6, 0.2]
@@ -103,7 +103,7 @@ export default function CTASection() {
               key={stat.label}
               className={`text-center p-4 rounded-2xl backdrop-blur-sm border transition-all duration-300 ${
                 index % 2 === 0 
-                  ? 'bg-white/10 border-white/20 text-black' 
+                  ? 'bg-card/10 border-border/20 text-black' 
                   : 'bg-[#412778]/80 border-[#5a3491]/50 text-black'
               }`}
               whileHover={{ 
@@ -136,7 +136,7 @@ export default function CTASection() {
         >
           <Button
             variant="default"
-            className="group relative bg-white text-[#412778] px-10 py-4 rounded-full font-semibold text-lg overflow-hidden shadow-2xl"
+            className="group relative bg-card text-[#412778] px-10 py-4 rounded-full font-semibold text-lg overflow-hidden shadow-2xl"
           >
             <span className="relative z-10 flex items-center justify-center">
               <span className="material-icons mr-3">storefront</span>

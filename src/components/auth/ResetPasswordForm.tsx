@@ -26,8 +26,8 @@ export default function ResetPasswordForm({ token }: ResetPasswordFormProps) {
           </svg>
         </div>
         <div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">Sucesso!</h3>
-          <p className="text-gray-600 text-sm">{t('successMessage')}</p>
+          <h3 className="text-lg font-semibold text-foreground mb-2">Sucesso!</h3>
+          <p className="text-muted-foreground text-sm">{t('successMessage')}</p>
         </div>
       </motion.div>
     );
@@ -53,7 +53,7 @@ export default function ResetPasswordForm({ token }: ResetPasswordFormProps) {
 
       {/* Password Field */}
       <div>
-        <label className="block text-sm font-semibold text-gray-700 mb-2">
+        <label className="block text-sm font-semibold text-foreground mb-2">
           {t('password')}
         </label>
         <input
@@ -63,8 +63,8 @@ export default function ResetPasswordForm({ token }: ResetPasswordFormProps) {
           className={`w-full px-4 py-3 rounded-xl border-2 transition-colors duration-200 ${
             errors.password
               ? 'border-red-300 focus:border-red-500 focus:ring-red-100'
-              : 'border-gray-200 focus:border-primary focus:ring-primary/10'
-          } focus:outline-none focus:ring-4 bg-white`}
+              : 'border-border focus:border-primary focus:ring-primary/10'
+          } focus:outline-none focus:ring-4 bg-card`}
         />
         {errors.password && (
           <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>
@@ -73,7 +73,7 @@ export default function ResetPasswordForm({ token }: ResetPasswordFormProps) {
 
       {/* Confirm Password Field */}
       <div>
-        <label className="block text-sm font-semibold text-gray-700 mb-2">
+        <label className="block text-sm font-semibold text-foreground mb-2">
           {t('confirmPassword')}
         </label>
         <input
@@ -83,8 +83,8 @@ export default function ResetPasswordForm({ token }: ResetPasswordFormProps) {
           className={`w-full px-4 py-3 rounded-xl border-2 transition-colors duration-200 ${
             errors.confirmPassword
               ? 'border-red-300 focus:border-red-500 focus:ring-red-100'
-              : 'border-gray-200 focus:border-primary focus:ring-primary/10'
-          } focus:outline-none focus:ring-4 bg-white`}
+              : 'border-border focus:border-primary focus:ring-primary/10'
+          } focus:outline-none focus:ring-4 bg-card`}
         />
         {errors.confirmPassword && (
           <p className="text-red-500 text-xs mt-1">{errors.confirmPassword.message}</p>

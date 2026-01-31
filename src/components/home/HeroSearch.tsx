@@ -33,16 +33,16 @@ export default function HeroSearch() {
 
 
   return (
-    <section className="relative min-h-[100vh] flex flex-col items-center justify-center px-4 py-20 overflow-hidden bg-white bg-[#050505]">
+    <section className="relative min-h-[100vh] flex flex-col items-center justify-center px-4 py-20 overflow-hidden bg-background">
       
       {/* Background: Grid Pattern de Pontinhos */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 [background-image:radial-gradient(#000_1px,transparent_1px)] [background-image:radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)] opacity-20 animate-grid-fade" />
+        <div className="absolute inset-0 [background-image:radial-gradient(var(--foreground)_1px,transparent_1px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)] opacity-5 animate-grid-fade" />
       </div>
 
       <div className="relative z-10 w-full max-w-4xl text-center">
         {/* H1 Disruptivo com troca de palavras */}
-        <h1 className="text-4xl md:text-7xl font-black tracking-tighter text-zinc-900 text-white mb-8">
+        <h1 className="text-4xl md:text-7xl font-black tracking-tighter text-foreground mb-8">
           ENCONTRE OS MELHORES <br />
           <span className="relative inline-block text-primary">
             <AnimatePresence mode="wait">
@@ -75,16 +75,14 @@ export default function HeroSearch() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="O que você procura hoje?"
-                className="w-full h-12 pl-12 pr-4 bg-white bg-zinc-900 border-2 border-zinc-200 border-zinc-800 rounded-lg text-sm focus:border-primary focus:ring-0 transition-all outline-none"
+                className="w-full h-12 pl-12 pr-4 bg-card border-2 border-border rounded-lg text-foreground text-sm focus:border-primary focus:ring-0 transition-all outline-none"
               />
             </div>
 
             {/* Outline Button Chamativo */}
             <Button
-              variant="inset"
               type="submit"
-              className="w-full md:w-auto h-12 px-8 border-2 border-zinc-900 border-white text-zinc-900 text-white font-black text-sm uppercase tracking-widest transition-all rounded-lg flex items-center justify-center gap-2"
-              style={{ '--overlay': 'rgba(0,0,0,0.15)' } as React.CSSProperties}
+              className="w-full md:w-auto h-12 px-8 font-black text-sm uppercase tracking-widest"
             >
               Buscar <ArrowRight className="w-4 h-4" />
             </Button>
@@ -97,17 +95,17 @@ export default function HeroSearch() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
-                className="absolute w-full mt-2 text-left bg-white bg-zinc-900 border border-zinc-200 border-zinc-800 rounded-lg shadow-2xl z-50 overflow-hidden"
+                className="absolute w-full mt-2 text-left bg-card border border-border rounded-lg shadow-2xl z-50 overflow-hidden"
               >
                 <div className="max-h-[400px] overflow-y-auto">
-                  {searchLoading && <div className="p-4 text-xs animate-pulse">Buscando...</div>}
+                  {searchLoading && <div className="p-4 text-xs text-muted-foreground animate-pulse">Buscando...</div>}
                   
                   {/* Categorias Rápidas */}
                   <div className="p-2 border-b border-zinc-100 border-zinc-800 flex gap-2 overflow-x-auto no-scrollbar">
                     {searchResults?.categories?.map((c: any) => (
                       <button 
                         key={c.id}
-                        className="whitespace-nowrap px-3 py-1 rounded-md border border-zinc-200 border-zinc-700 text-[10px] font-bold uppercase hover:border-primary transition-colors"
+                        className="whitespace-nowrap px-3 py-1 rounded-md border border-border text-[10px] font-bold uppercase hover:border-primary hover:bg-primary/5 transition-colors"
                       >
                         {c.name}
                       </button>

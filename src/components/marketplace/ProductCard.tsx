@@ -15,10 +15,10 @@ export default function ProductCard({ product }: ProductCardProps) {
     return (
         <Link
             href={`/product/${product.slug}`}
-            className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 transition-all duration-300 block h-full flex flex-col"
+            className="group bg-card rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 transition-all duration-300 block h-full flex flex-col"
         >
             {/* Product Image */}
-            <div className="relative h-48 w-full bg-gray-100 overflow-hidden">
+            <div className="relative h-48 w-full bg-muted overflow-hidden">
                 <Image
                     src={product.images[0]}
                     alt={product.name}
@@ -43,21 +43,21 @@ export default function ProductCard({ product }: ProductCardProps) {
             {/* Content */}
             <div className="p-4 flex-1 flex flex-col">
                 <div className="mb-2">
-                    <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
                         {t(`categories.${product.category}`)}
                     </span>
-                    <h3 className="font-bold text-gray-900 group-hover:text-primary transition-colors line-clamp-2 mt-1">
+                    <h3 className="font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2 mt-1">
                         {product.name}
                     </h3>
                 </div>
 
                 {/* Store Info */}
                 <div className="flex items-center gap-2 mb-3">
-                    <div className="w-5 h-5 rounded-full bg-gray-100 relative overflow-hidden">
+                    <div className="w-5 h-5 rounded-full bg-muted relative overflow-hidden">
                         {/* Placeholder for store logo if we had it in product type, using generic icon for now or just text */}
                         <div className="absolute inset-0 bg-gray-200" />
                     </div>
-                    <span className="text-xs text-gray-600 font-medium truncate">
+                    <span className="text-xs text-muted-foreground font-medium truncate">
                         {product.storeName}
                     </span>
                 </div>
@@ -66,11 +66,11 @@ export default function ProductCard({ product }: ProductCardProps) {
                 <div className="mt-auto flex items-end justify-between">
                     <div>
                         <div className="flex items-center gap-2">
-                            <span className="text-lg font-bold text-gray-900">
+                            <span className="text-lg font-bold text-foreground">
                                 {product.currency} {product.price.toLocaleString()}
                             </span>
                             {product.originalPrice && (
-                                <span className="text-xs text-gray-400 line-through">
+                                <span className="text-xs text-muted-foreground line-through">
                                     {product.originalPrice.toLocaleString()}
                                 </span>
                             )}
@@ -78,13 +78,13 @@ export default function ProductCard({ product }: ProductCardProps) {
                         {product.rating && (
                             <div className="flex items-center gap-1 mt-1">
                                 <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-                                <span className="text-xs font-bold text-gray-700">{product.rating}</span>
-                                <span className="text-xs text-gray-400">({product.reviewCount})</span>
+                                <span className="text-xs font-bold text-foreground">{product.rating}</span>
+                                <span className="text-xs text-muted-foreground">({product.reviewCount})</span>
                             </div>
                         )}
                     </div>
 
-                    <button className="p-2 rounded-full bg-gray-50 text-gray-600 group-hover:bg-primary group-hover:text-black transition-colors">
+                    <button className="p-2 rounded-full bg-muted text-muted-foreground group-hover:bg-primary group-hover:text-black transition-colors">
                         <ShoppingCart size={18} />
                     </button>
                 </div>

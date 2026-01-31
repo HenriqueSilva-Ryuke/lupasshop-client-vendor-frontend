@@ -55,13 +55,13 @@ export default function Modal({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className={`fixed left-1/2 top-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 ${sizeClasses[size]} rounded-lg bg-white p-6 shadow-2xl`}
+            className={`fixed left-1/2 top-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 ${sizeClasses[size]} rounded-lg bg-card p-6 shadow-2xl`}
           >
             <div className="mb-6 flex items-center justify-between">
-              <h2 className="text-xl font-bold text-gray-900">{title}</h2>
+              <h2 className="text-xl font-bold text-foreground">{title}</h2>
               <button
                 onClick={onClose}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
+                className="text-muted-foreground hover:text-muted-foreground transition-colors"
               >
                 <span className="material-icons">close</span>
               </button>

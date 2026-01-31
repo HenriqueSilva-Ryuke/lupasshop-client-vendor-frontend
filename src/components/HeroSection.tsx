@@ -154,7 +154,7 @@ export default function HeroSection() {
           ].map((stat, index) => (
             <motion.div
               key={stat.label}
-              className="text-center p-4 rounded-2xl backdrop-blur-sm bg-white/5 border border-white/10"
+              className="text-center p-4 rounded-2xl backdrop-blur-sm bg-card/5 border border-border/10"
               whileHover={{ 
                 scale: 1.05,
                 backgroundColor: "rgba(255,255,255,0.1)"
@@ -178,7 +178,7 @@ export default function HeroSection() {
         >
           <Button
             variant="default"
-            className="group relative bg-white text-blue-600 px-10 py-4 rounded-full font-semibold text-lg overflow-hidden"
+            className="group relative bg-card text-blue-600 px-10 py-4 rounded-full font-semibold text-lg overflow-hidden"
           >
             <span className="relative z-10 flex items-center">
               {t('shopNow')}
@@ -224,12 +224,12 @@ export default function HeroSection() {
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center"
+            className="w-6 h-10 border-2 border-border/30 rounded-full flex justify-center"
           >
             <motion.div
               animate={{ y: [0, 12, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="w-1 h-3 bg-white/50 rounded-full mt-2"
+              className="w-1 h-3 bg-card/50 rounded-full mt-2"
             />
           </motion.div>
         </motion.div>

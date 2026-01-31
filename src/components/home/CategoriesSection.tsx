@@ -22,15 +22,15 @@ export default function CategoriesSection() {
   }, [categoriesData]);
 
   return (
-    <section className="relative py-20 overflow-hidden bg-white bg-[#050505]">
+    <section className="relative py-20 overflow-hidden bg-background">
       {/* Grid Pattern de Pontinhos - Identico ao Hero para continuidade */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 [background-image:radial-gradient(#000_1px,transparent_1px)] [background-image:radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px] [mask-image:linear-gradient(to_bottom,transparent,black,transparent)] opacity-10" />
+        <div className="absolute inset-0 [background-image:radial-gradient(var(--foreground)_1px,transparent_1px)] [background-size:24px_24px] [mask-image:linear-gradient(to_bottom,transparent,black,transparent)] opacity-5" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 w-full">
         {/* Header com a mesma tipografia disruptiva do Hero */}
-        <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6 border-b-2 border-zinc-900 border-white pb-8">
+        <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6 border-b-2 border-border pb-8">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -39,14 +39,13 @@ export default function CategoriesSection() {
             <span className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-3 block">
               Exploração / 02
             </span>
-            <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase text-white leading-[0.8]">
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase text-foreground leading-[0.8]">
               {t('categories.title')}
             </h2>
           </motion.div>
           
           <Button 
-            variant="inset" // Usando o efeito que segue o mouse
-            size="lg"
+            className="font-black text-sm uppercase"
             asChild
             className="hidden md:flex border-2"
           >

@@ -16,7 +16,7 @@ export default function FeaturesSection() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full bg-white backdrop-blur-sm"
+      className="relative w-full bg-card backdrop-blur-sm"
       style={{ height: `${totalHeight}vh` }}
     >
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
@@ -59,7 +59,7 @@ export default function FeaturesSection() {
             {t('ctaDescription')}
           </motion.p>
           <motion.button
-            className="px-8 py-4 bg-white text-purple-900 rounded-lg font-bold text-lg hover:bg-purple-50 transition-colors"
+            className="px-8 py-4 bg-card text-purple-900 rounded-lg font-bold text-lg hover:bg-purple-50 transition-colors"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}

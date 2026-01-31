@@ -26,7 +26,7 @@ interface StoreCardProps {
 function StoreCard({ store }: StoreCardProps) {
   return (
     <Link href={`/stores/${store.slug}`} className="group">
-      <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+      <div className="bg-card rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
         {/* Cover Image */}
         <div className="relative h-32 bg-gradient-to-r from-blue-500 to-purple-600">
           {store.coverImageUrl && (
@@ -43,7 +43,7 @@ function StoreCard({ store }: StoreCardProps) {
         {/* Logo */}
         <div className="relative px-4 pb-4">
           <div className="absolute -top-10 left-4">
-            <div className="relative w-20 h-20 rounded-full border-4 border-white bg-white overflow-hidden">
+            <div className="relative w-20 h-20 rounded-full border-4 border-border bg-card overflow-hidden">
               {store.logoUrl ? (
                 <Image
                   src={store.logoUrl}
@@ -53,7 +53,7 @@ function StoreCard({ store }: StoreCardProps) {
                   sizes="80px"
                 />
               ) : (
-                <div className="w-full h-full bg-gray-200 flex items-center justify-center text-2xl font-bold text-gray-500">
+                <div className="w-full h-full bg-gray-200 flex items-center justify-center text-2xl font-bold text-muted-foreground">
                   {store.name[0].toUpperCase()}
                 </div>
               )}
@@ -62,7 +62,7 @@ function StoreCard({ store }: StoreCardProps) {
           
           <div className="pt-12">
             <div className="flex items-center gap-2 mb-1">
-              <h3 className="font-semibold text-gray-900 text-lg">
+              <h3 className="font-semibold text-foreground text-lg">
                 {store.name}
               </h3>
               {store.isVerified && (
@@ -76,24 +76,24 @@ function StoreCard({ store }: StoreCardProps) {
             </div>
             
             {store.category && (
-              <p className="text-sm text-gray-600 mb-2">
+              <p className="text-sm text-muted-foreground mb-2">
                 {store.category.icon && <span className="mr-1">{store.category.icon}</span>}
                 {store.category.name}
               </p>
             )}
             
             {store.description && (
-              <p className="text-sm text-gray-600 line-clamp-2 mb-3">
+              <p className="text-sm text-muted-foreground line-clamp-2 mb-3">
                 {store.description}
               </p>
             )}
             
             <div className="flex items-center gap-1">
               <span className="text-yellow-400">★</span>
-              <span className="text-sm text-gray-700 font-medium">
+              <span className="text-sm text-foreground font-medium">
                 {store.rating.toFixed(1)}
               </span>
-              <span className="text-sm text-gray-500">
+              <span className="text-sm text-muted-foreground">
                 ({store.reviewCount} avaliações)
               </span>
             </div>
@@ -108,7 +108,7 @@ function StoresSkeleton() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {[...Array(6)].map((_, i) => (
-        <div key={i} className="bg-white rounded-lg shadow-sm overflow-hidden animate-pulse">
+        <div key={i} className="bg-card rounded-lg shadow-sm overflow-hidden animate-pulse">
           <div className="h-32 bg-gray-200"></div>
           <div className="p-4 space-y-3">
             <div className="h-6 bg-gray-200 rounded w-2/3"></div>
@@ -147,7 +147,7 @@ export function StoreGrid({ filters }: StoreGridProps) {
   if (!stores || stores.length === 0) {
     return (
       <div className="text-center py-12">
-        <p className="text-gray-600">Nenhuma loja encontrada</p>
+        <p className="text-muted-foreground">Nenhuma loja encontrada</p>
       </div>
     );
   }

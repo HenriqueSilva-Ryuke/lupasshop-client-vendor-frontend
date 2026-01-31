@@ -41,13 +41,13 @@ export default function ProductsList({
   return (
     <div className="overflow-x-auto">
       <table className="w-full text-sm">
-        <thead className="bg-gray-50 border-b">
+        <thead className="bg-muted border-b">
           <tr>
-            <th className="px-6 py-3 text-left font-medium text-gray-700">{t('products.name')}</th>
-            <th className="px-6 py-3 text-left font-medium text-gray-700">{t('products.category')}</th>
-            <th className="px-6 py-3 text-left font-medium text-gray-700">{t('products.price')}</th>
-            <th className="px-6 py-3 text-left font-medium text-gray-700">{t('products.stock')}</th>
-            <th className="px-6 py-3 text-left font-medium text-gray-700">{t('common.actions')}</th>
+            <th className="px-6 py-3 text-left font-medium text-foreground">{t('products.name')}</th>
+            <th className="px-6 py-3 text-left font-medium text-foreground">{t('products.category')}</th>
+            <th className="px-6 py-3 text-left font-medium text-foreground">{t('products.price')}</th>
+            <th className="px-6 py-3 text-left font-medium text-foreground">{t('products.stock')}</th>
+            <th className="px-6 py-3 text-left font-medium text-foreground">{t('common.actions')}</th>
           </tr>
         </thead>
         <tbody className="divide-y">
@@ -56,7 +56,7 @@ export default function ProductsList({
               key={product.id}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="hover:bg-gray-50 transition-colors"
+              className="hover:bg-muted transition-colors"
             >
               <td className="px-6 py-4">{product.name}</td>
               <td className="px-6 py-4">{product.category}</td>
