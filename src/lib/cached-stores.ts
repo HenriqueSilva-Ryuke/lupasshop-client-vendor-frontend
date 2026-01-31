@@ -1,4 +1,3 @@
-import { mockCategories, mockShops } from '@/data/mock-stores';
 import { unstable_cache } from 'next/cache';
 
 export interface ShopsFilters {
@@ -11,65 +10,192 @@ export interface ShopsFilters {
   maxPrice?: number;
 }
 
+export interface ShopItem {
+  id: string;
+  name: string;
+  slug: string;
+  logo?: string;
+  featuredImage?: string;
+  rating?: number;
+  productCount?: number;
+  categories?: string[];
+  description?: string;
+}
+
 export interface ShopsResponse {
-  data: typeof mockShops;
+  data: ShopItem[];
   total: number;
   page: number;
   limit: number;
 }
 
-// Cache categories with long TTL
-export const getShopCategories = unstable_cache(async () => mockCategories, ['stores-categories'], { revalidate: 3600 });
+const GRAPHQL_URL =
+  process.env.NEXT_PUBLIC_GRAPHQL_HTTP_URL ||
+  process.env.NEXT_PUBLIC_GRAPHQL_URL ||
+  'http://localhost:4000/graphql';
 
-// Cache shops for short TTL; filters are part of the cache key
+async function fetchGraphQL<T>(query: string, variables?: Record<string, any>): Promise<T> {
+  const response = await fetch(GRAPHQL_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query, variables }),
+    cache: 'no-store',
+  });
+
+  const json = await response.json();
+  if (json.errors?.length) {
+    throw new Error(json.errors[0].message || 'GraphQL error');
+  }
+  return json.data as T;
+}
+
+export const getShopCategories = unstable_cache(async () => {
+  const data = await fetchGraphQL<{ listCategories: Array<{ id: string; name: string; slug: string; icon?: string; productsCount: number }> }>(
+    `query ListCategories($type: CategoryType) {
+      listCategories(type: $type) {
+        id
+        name
+        slug
+        icon
+        productsCount
+      }
+    }`,
+    { type: 'STORE' }
+  );
+
+  return data.listCategories || [];
+}, ['stores-categories'], { revalidate: 3600 });
+
 export const getShopsList = (filters: ShopsFilters = {}) => unstable_cache(async (): Promise<ShopsResponse> => {
   const page = filters.page ?? 1;
   const limit = filters.limit ?? 12;
-  const q = (filters.q || '').toLowerCase().trim();
+  const offset = (page - 1) * limit;
 
-  // Filter
-  let filtered = mockShops.filter((s) => {
-    if (filters.category) {
-      if (!s.categories || !s.categories.includes(filters.category)) return false;
-    }
-    if (q) {
-      const matchName = s.name.toLowerCase().includes(q);
-      const matchDesc = s.description?.toLowerCase().includes(q);
-      if (!matchName && !matchDesc) return false;
-    }
-    // TODO: minPrice/maxPrice - would need product prices
-    return true;
-  });
-
-  // Sorting
-  switch (filters.sort) {
-    case 'rating':
-      filtered = filtered.sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0));
-      break;
-    case 'newest':
-      // Mock: keep as is
-      break;
-    case 'price_low':
-      // Mock sorting not implemented without product prices
-      break;
-    case 'price_high':
-      break;
-    default:
-      break;
+  let categoryId: string | undefined;
+  if (filters.category) {
+    const categories = await getShopCategories();
+    categoryId = categories.find((c: any) => c.slug === filters.category)?.id;
   }
 
-  const total = filtered.length;
-  const start = (page - 1) * limit;
-  const pageData = filtered.slice(start, start + limit);
+  const data = await fetchGraphQL<{
+    listStores: Array<any>;
+    countStores: number;
+  }>(
+    `query ListStores($categoryId: ID, $search: String, $limit: Int, $offset: Int) {
+      listStores(categoryId: $categoryId, search: $search, limit: $limit, offset: $offset) {
+        id
+        name
+        slug
+        description
+        logoUrl
+        coverImageUrl
+        bannerUrl
+        location
+        rating
+        reviewCount
+        category { slug }
+        stats { totalProducts }
+      }
+      countStores(categoryId: $categoryId, search: $search)
+    }`,
+    {
+      categoryId,
+      search: filters.q,
+      limit,
+      offset,
+    }
+  );
+
+  const shops: ShopItem[] = (data.listStores || []).map((store: any) => ({
+    id: store.id,
+    name: store.name,
+    slug: store.slug,
+    logo: store.logoUrl || undefined,
+    featuredImage: store.coverImageUrl || store.bannerUrl || undefined,
+    rating: store.rating || 0,
+    productCount: store.stats?.totalProducts || 0,
+    categories: store.category?.slug ? [store.category.slug] : [],
+    description: store.description || undefined,
+  }));
 
   return {
-    data: pageData,
-    total,
+    data: shops,
+    total: data.countStores || 0,
     page,
     limit,
   };
 }, ['stores', JSON.stringify(filters)], { revalidate: 60 })();
 
-export const getShopById = (id: string) => unstable_cache(async () => mockShops.find((s) => s.id === id) ?? null, ['stores', id], { revalidate: 3600 })();
+export const getShopById = (id: string) => unstable_cache(async () => {
+  const data = await fetchGraphQL<{ getStore: any }>(
+    `query GetStore($id: ID!) {
+      getStore(id: $id) {
+        id
+        name
+        slug
+        description
+        logoUrl
+        coverImageUrl
+        bannerUrl
+        location
+        rating
+        reviewCount
+        category { slug }
+        stats { totalProducts }
+      }
+    }`,
+    { id }
+  );
 
-export const getShopBySlug = (slug: string) => unstable_cache(async () => mockShops.find((s) => s.slug === slug) ?? null, ['stores', slug], { revalidate: 3600 })();
+  const store = data.getStore;
+  if (!store) return null;
+
+  return {
+    id: store.id,
+    name: store.name,
+    slug: store.slug,
+    logo: store.logoUrl || undefined,
+    featuredImage: store.coverImageUrl || store.bannerUrl || undefined,
+    rating: store.rating || 0,
+    productCount: store.stats?.totalProducts || 0,
+    categories: store.category?.slug ? [store.category.slug] : [],
+    description: store.description || undefined,
+  } as ShopItem;
+}, ['stores', id], { revalidate: 3600 })();
+
+export const getShopBySlug = (slug: string) => unstable_cache(async () => {
+  const data = await fetchGraphQL<{ getStoreBySlug: any }>(
+    `query GetStoreBySlug($slug: String!) {
+      getStoreBySlug(slug: $slug) {
+        id
+        name
+        slug
+        description
+        logoUrl
+        coverImageUrl
+        bannerUrl
+        location
+        rating
+        reviewCount
+        category { slug }
+        stats { totalProducts }
+      }
+    }`,
+    { slug }
+  );
+
+  const store = data.getStoreBySlug;
+  if (!store) return null;
+
+  return {
+    id: store.id,
+    name: store.name,
+    slug: store.slug,
+    logo: store.logoUrl || undefined,
+    featuredImage: store.coverImageUrl || store.bannerUrl || undefined,
+    rating: store.rating || 0,
+    productCount: store.stats?.totalProducts || 0,
+    categories: store.category?.slug ? [store.category.slug] : [],
+    description: store.description || undefined,
+  } as ShopItem;
+}, ['stores', slug], { revalidate: 3600 })();

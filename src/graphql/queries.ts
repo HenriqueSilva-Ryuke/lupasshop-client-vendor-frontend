@@ -112,6 +112,12 @@ export const LIST_STORES = gql`
       isVerified
       isPromoted
       isPremium
+      stats {
+        totalRevenue
+        totalOrders
+        totalProducts
+        activeProducts
+      }
       instagramUrl
       facebookUrl
       whatsappNumber
@@ -217,10 +223,21 @@ export const GET_ORDER = gql`
     getOrder(id: $id) {
       id
       userId
+      user {
+        id
+        fullName
+        email
+      }
       storeId
+      store {
+        id
+        name
+        slug
+      }
       totalAmount
       status
       createdAt
+      shippingAddress
       orderItems {
         id
         productId
@@ -259,6 +276,11 @@ export const LIST_ORDERS = gql`
       orders {
         id
         userId
+        user {
+          id
+          fullName
+          email
+        }
         storeId
         totalAmount
         status
@@ -267,6 +289,73 @@ export const LIST_ORDERS = gql`
           id
           quantity
           priceAtPurchase
+        }
+      }
+      total
+      hasMore
+    }
+  }
+`;
+
+export const GET_SELLER_DASHBOARD = gql`
+  query GetSellerDashboard($days: Int, $recentLimit: Int, $topLimit: Int) {
+    getSellerDashboard(days: $days, recentLimit: $recentLimit, topLimit: $topLimit) {
+      stats {
+        totalSales
+        totalOrders
+        totalProducts
+        activeProducts
+        averageRating
+      }
+      recentOrders {
+        id
+        totalAmount
+        status
+        createdAt
+        user {
+          id
+          fullName
+          email
+        }
+      }
+      topProducts {
+        id
+        name
+        images
+        rating
+        reviewCount
+      }
+      salesByDay {
+        date
+        revenue
+        orders
+      }
+    }
+  }
+`;
+
+export const SELLER_PRODUCTS = gql`
+  query SellerProducts($limit: Int, $offset: Int, $search: String, $categoryId: ID, $isActive: Boolean) {
+    sellerProducts(limit: $limit, offset: $offset, search: $search, categoryId: $categoryId, isActive: $isActive) {
+      products {
+        id
+        name
+        slug
+        price
+        originalPrice
+        currency
+        images
+        rating
+        reviewCount
+        stockQuantity
+        isActive
+        category {
+          id
+          name
+        }
+        store {
+          id
+          name
         }
       }
       total

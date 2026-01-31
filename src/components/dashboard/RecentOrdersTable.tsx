@@ -1,52 +1,38 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
-import { fetchRecentOrders } from '@/lib/dashboard';
 
-interface Order {
+export interface RecentOrderItem {
   id: string;
-  orderNumber: string;
-  customer: string;
   amount: number;
-  status: 'pending' | 'confirmed' | 'shipped' | 'delivered';
+  status: 'PENDING' | 'PAID' | 'SHIPPED' | 'DELIVERED' | 'CANCELLED';
   date: string;
+  customer?: {
+    name: string;
+    email: string;
+  };
 }
 
-export default function RecentOrdersTable() {
+export default function RecentOrdersTable({ orders, isLoading }: { orders: RecentOrderItem[]; isLoading: boolean }) {
   const t = useTranslations('dashboard');
-  const [orders, setOrders] = useState<Order[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const loadOrders = async () => {
-      try {
-        const data = await fetchRecentOrders();
-        setOrders(data);
-      } catch (error) {
-        console.error('Failed to load recent orders:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    loadOrders();
-  }, []);
 
   const statusConfig = {
-    pending: { label: 'Pending', color: 'bg-yellow-100 text-yellow-800' },
-    confirmed: { label: 'Confirmed', color: 'bg-blue-100 text-blue-800' },
-    shipped: { label: 'Shipped', color: 'bg-purple-100 text-purple-800' },
-    delivered: { label: 'Delivered', color: 'bg-green-100 text-green-800' },
-  };
+    PENDING: { label: 'Pending', color: 'bg-yellow-100 text-yellow-800' },
+    PAID: { label: 'Paid', color: 'bg-blue-100 text-blue-800' },
+    SHIPPED: { label: 'Shipped', color: 'bg-purple-100 text-purple-800' },
+    DELIVERED: { label: 'Delivered', color: 'bg-green-100 text-green-800' },
+    CANCELLED: { label: 'Cancelled', color: 'bg-red-100 text-red-800' },
+  } as const;
 
   const statusIcons = {
-    pending: 'schedule',
-    confirmed: 'check_circle',
-    shipped: 'local_shipping',
-    delivered: 'done_all',
-  };
+    PENDING: 'schedule',
+    PAID: 'check_circle',
+    SHIPPED: 'local_shipping',
+    DELIVERED: 'done_all',
+    CANCELLED: 'cancel',
+  } as const;
 
   return (
     <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
@@ -95,25 +81,21 @@ export default function RecentOrdersTable() {
                 >
                   <td className="px-6 py-4">
                     <span className="font-semibold text-gray-900">
-                      {order.orderNumber}
+                      #{order.id.slice(0, 8)}
                     </span>
                   </td>
                   <td className="px-6 py-4 text-gray-600">
-                    {order.customer}
+                    {order.customer?.name || '—'}
                   </td>
                   <td className="px-6 py-4 text-right font-semibold text-gray-900">
                     AOA {order.amount.toLocaleString()}
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center space-x-2">
-                      <span className={`material-icons text-sm ${
-                        statusConfig[order.status].color
-                      }`}>
+                      <span className={`material-icons text-sm ${statusConfig[order.status].color}`}>
                         {statusIcons[order.status]}
                       </span>
-                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                        statusConfig[order.status].color
-                      }`}>
+                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${statusConfig[order.status].color}`}>
                         {statusConfig[order.status].label}
                       </span>
                     </div>
@@ -128,7 +110,6 @@ export default function RecentOrdersTable() {
         </div>
       )}
 
-      {/* Footer */}
       <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
         <motion.button
           whileHover={{ scale: 1.02 }}

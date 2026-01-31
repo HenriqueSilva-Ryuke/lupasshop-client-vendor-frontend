@@ -8,6 +8,7 @@ interface Category {
   slug: string;
   icon?: string | null;
   type: 'STORE' | 'PRODUCT';
+  productsCount: number;
 }
 
 const CATEGORIES_QUERY = gql`
@@ -18,6 +19,7 @@ const CATEGORIES_QUERY = gql`
       slug
       icon
       type
+      productsCount
     }
   }
 `;

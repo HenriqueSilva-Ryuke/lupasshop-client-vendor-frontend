@@ -5,8 +5,8 @@ import { createClient } from 'graphql-ws';
 import { onError } from '@apollo/client/link/error';
 
 // Environment variables with fallbacks
-const HTTP_URL = process.env.NEXT_PUBLIC_GRAPHQL_HTTP_URL || 'http://localhost:3000/graphql';
-const WS_URL = process.env.NEXT_PUBLIC_GRAPHQL_WS_URL || 'ws://localhost:3000/graphql';
+const HTTP_URL = process.env.NEXT_PUBLIC_GRAPHQL_HTTP_URL || 'http://localhost:4000/graphql';
+const WS_URL = process.env.NEXT_PUBLIC_GRAPHQL_WS_URL || 'ws://localhost:4000/graphql';
 
 // HTTP Link for queries and mutations
 // credentials: 'include' is crucial for HttpOnly cookies

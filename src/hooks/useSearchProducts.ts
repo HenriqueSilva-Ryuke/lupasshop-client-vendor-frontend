@@ -8,9 +8,9 @@ interface Product {
   description: string;
   price: number;
   originalPrice?: number | null;
-  image: string;
+  images: string[];
   rating?: number;
-  reviewsCount?: number;
+  reviewCount?: number;
   store: {
     id: string;
     name: string;
@@ -18,27 +18,27 @@ interface Product {
 }
 
 interface SearchProductsResponse {
-  products: Product[];
-  productsCount: number;
+  listProducts: Product[];
+  countProducts: number;
 }
 
 const SEARCH_PRODUCTS_QUERY = gql`
   query SearchProducts($query: String, $limit: Int!, $offset: Int!) {
-    products(search: $query, limit: $limit, offset: $offset) {
+    listProducts(search: $query, limit: $limit, offset: $offset) {
       id
       name
       description
       price
       originalPrice
-      image
+      images
       rating
-      reviewsCount
+      reviewCount
       store {
         id
         name
       }
     }
-    productsCount(search: $query)
+    countProducts(search: $query)
   }
 `;
 
@@ -58,8 +58,8 @@ export function useSearchProducts(
         variables: { query: query || null, limit, offset },
       });
       return {
-        products: data?.products ?? [],
-        total: data?.productsCount ?? 0,
+        products: data?.listProducts ?? [],
+        total: data?.countProducts ?? 0,
       };
     },
     enabled: query.trim().length > 0,

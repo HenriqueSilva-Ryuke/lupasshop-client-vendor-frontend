@@ -79,40 +79,7 @@ export default function UserFinancesPage() {
     transactions: [],
   };
 
-  const mockTransactions: Transaction[] = [
-    {
-      id: '1',
-      type: 'DEBIT',
-      amount: 245.90,
-      description: 'Venda #ORD-7382',
-      orderId: 'ORD-7382',
-      createdAt: new Date().toISOString(),
-    },
-    {
-      id: '2',
-      type: 'DEBIT',
-      amount: 1250.00,
-      description: 'Venda #ORD-7381',
-      orderId: 'ORD-7381',
-      createdAt: new Date(Date.now() - 3600000).toISOString(),
-    },
-    {
-      id: '3',
-      type: 'CREDIT',
-      amount: 5000.00,
-      description: 'Reembolso #REF-9921',
-      createdAt: new Date(Date.now() - 86400000).toISOString(),
-    },
-    {
-      id: '4',
-      type: 'DEBIT',
-      amount: 149.90,
-      description: 'Taxa de Plataforma',
-      createdAt: new Date(Date.now() - 86400000 * 2).toISOString(),
-    },
-  ];
-
-  const transactions = finances.transactions.length > 0 ? finances.transactions : mockTransactions;
+  const transactions = finances.transactions;
 
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('pt-BR', {

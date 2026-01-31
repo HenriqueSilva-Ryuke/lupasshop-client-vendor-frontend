@@ -1,17 +1,26 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Plus, Store, MapPin, Star, MoreVertical, Edit, Trash2, ExternalLink } from 'lucide-react';
-import { mockShops, DashboardShop } from '@/lib/mock-data';
+import React from 'react';
+import { Plus, MapPin, Star, MoreVertical, Edit, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useQuery } from '@apollo/client/react';
+import { GET_CURRENT_USER, LIST_STORES } from '@/graphql/queries';
 
 export default function ShopsView() {
-  const [shops, setShops] = useState<DashboardShop[]>(mockShops);
+  const { data: userData } = useQuery(GET_CURRENT_USER);
+  const ownerId = userData?.me?.id;
+
+  const { data: storesData, loading } = useQuery(LIST_STORES, {
+    variables: { ownerId },
+    skip: !ownerId,
+    fetchPolicy: 'cache-and-network',
+  });
+
+  const shops = storesData?.listStores || [];
 
   return (
     <div className="space-y-6">
-      {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">My Shops</h1>
@@ -23,46 +32,52 @@ export default function ShopsView() {
         </button>
       </div>
 
-      {/* Shops Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-        {shops.map((shop) => (
+        {shops.map((shop: any) => (
           <div key={shop.id} className="bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 group">
-            {/* Cover Image */}
             <div className="relative h-32 bg-gray-100">
-              <Image
-                src={shop.coverImage}
-                alt={shop.name}
-                fill
-                className="object-cover"
-              />
+              {shop.coverImageUrl ? (
+                <Image
+                  src={shop.coverImageUrl}
+                  alt={shop.name}
+                  fill
+                  className="object-cover"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-gray-400 text-sm">
+                  Sem imagem
+                </div>
+              )}
               <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
 
-              {/* Status Badge */}
               <div className="absolute top-3 right-3">
-                <span className={`px-2 py-1 rounded-lg text-xs font-bold ${shop.status === 'active' ? 'bg-green-500 text-black' :
-                    shop.status === 'pending' ? 'bg-amber-500 text-black' :
+                <span className={`px-2 py-1 rounded-lg text-xs font-bold ${shop.approvalStatus === 'APPROVED' ? 'bg-green-500 text-black' :
+                    shop.approvalStatus === 'PENDING' ? 'bg-amber-500 text-black' :
                       'bg-red-500 text-black'
                   }`}>
-                  {shop.status.toUpperCase()}
+                  {shop.approvalStatus}
                 </span>
               </div>
             </div>
 
-            {/* Content */}
             <div className="p-5 pt-12 relative">
-              {/* Logo */}
               <div className="absolute -top-10 left-5 p-1 bg-white rounded-xl shadow-sm">
                 <div className="relative h-20 w-20 rounded-lg overflow-hidden bg-gray-50 border border-gray-100">
-                  <Image
-                    src={shop.logo}
-                    alt={shop.name}
-                    fill
-                    className="object-cover"
-                  />
+                  {shop.logoUrl ? (
+                    <Image
+                      src={shop.logoUrl}
+                      alt={shop.name}
+                      fill
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">
+                      {shop.name.substring(0, 2).toUpperCase()}
+                    </div>
+                  )}
                 </div>
               </div>
 
-              {/* Actions Menu (Mock) */}
               <div className="absolute top-4 right-4">
                 <button className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
                   <MoreVertical size={20} />
@@ -74,7 +89,7 @@ export default function ShopsView() {
                 <div className="flex items-center gap-4 text-sm text-gray-500">
                   <div className="flex items-center gap-1">
                     <MapPin size={14} />
-                    <span className="truncate max-w-[150px]">{shop.location}</span>
+                    <span className="truncate max-w-[150px]">{shop.location || '—'}</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <Star size={14} className="text-amber-400 fill-amber-400" />
@@ -83,21 +98,19 @@ export default function ShopsView() {
                 </div>
               </div>
 
-              {/* Stats */}
               <div className="grid grid-cols-2 gap-4 py-4 border-t border-gray-100">
                 <div>
                   <p className="text-xs text-gray-500 uppercase tracking-wider font-medium">Revenue</p>
                   <p className="text-lg font-bold text-gray-900">
-                    {new Intl.NumberFormat('pt-AO', { style: 'currency', currency: 'AOA' }).format(shop.revenue)}
+                    {new Intl.NumberFormat('pt-AO', { style: 'currency', currency: 'AOA' }).format(shop.stats?.totalRevenue || 0)}
                   </p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 uppercase tracking-wider font-medium">Orders</p>
-                  <p className="text-lg font-bold text-gray-900">{shop.totalOrders}</p>
+                  <p className="text-lg font-bold text-gray-900">{shop.stats?.totalOrders || 0}</p>
                 </div>
               </div>
 
-              {/* Actions */}
               <div className="flex items-center gap-2 mt-4 pt-4 border-t border-gray-100">
                 <button className="flex-1 flex items-center justify-center gap-2 py-2 px-4 bg-gray-50 text-gray-700 rounded-lg hover:bg-gray-100 transition-colors text-sm font-medium">
                   <Edit size={16} />
@@ -115,14 +128,9 @@ export default function ShopsView() {
           </div>
         ))}
 
-        {/* Add New Shop Card (Empty State) */}
-        <button className="flex flex-col items-center justify-center h-full min-h-[300px] bg-gray-50 rounded-2xl border-2 border-dashed border-gray-200 hover:border-primary/50 hover:bg-primary/5 transition-all group">
-          <div className="p-4 bg-white rounded-full shadow-sm mb-4 group-hover:scale-110 transition-transform">
-            <Plus size={32} className="text-primary" />
-          </div>
-          <h3 className="text-lg font-bold text-gray-900">Add New Shop</h3>
-          <p className="text-gray-500 text-sm mt-1">Expand your business</p>
-        </button>
+        {!loading && shops.length === 0 && (
+          <div className="col-span-full p-12 text-center text-gray-500">Sem lojas cadastradas</div>
+        )}
       </div>
     </div>
   );

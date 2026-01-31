@@ -35,13 +35,19 @@ function ProductCard({ product }: ProductCardProps) {
     <Link href={`/products/${product.slug}`} className="group">
       <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
         <div className="relative aspect-square">
-          <Image
-            src={Array.isArray(product.images) ? product.images[0] : 'https://via.placeholder.com/300'}
-            alt={product.name}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
+          {Array.isArray(product.images) && product.images[0] ? (
+            <Image
+              src={product.images[0]}
+              alt={product.name}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-gray-500 text-sm bg-gray-100">
+              Sem imagem
+            </div>
+          )}
           {product.isNew && (
             <span className="absolute top-2 left-2 bg-blue-500 text-black text-xs px-2 py-1 rounded">
               Novo

@@ -38,6 +38,7 @@ export default function SellerOrderDetailPage({ params }: { params: Promise<{ id
     if (error) return <div className="text-red-500">Erro: {error.message}</div>;
 
     const order = data?.getOrder;
+    const shippingAddress = order?.shippingAddress || {};
 
     if (!order) return <div>Pedido não encontrado</div>;
 
@@ -60,7 +61,7 @@ export default function SellerOrderDetailPage({ params }: { params: Promise<{ id
                             {order.status}
                         </span>
                     </h1>
-                    <p className="text-gray-500 text-sm">{new Date(parseInt(order.createdAt)).toLocaleString()}</p>
+                    <p className="text-gray-500 text-sm">{new Date(order.createdAt).toLocaleString()}</p>
                 </div>
                 <div className="ml-auto flex gap-2">
                     <Button variant="outline" className="gap-2">
@@ -154,9 +155,11 @@ export default function SellerOrderDetailPage({ params }: { params: Promise<{ id
                             <User className="w-4 h-4 text-gray-400" />
                             Cliente
                         </h3>
-                        <p className="font-medium">João Silva (Mock)</p>
-                        <p className="text-sm text-gray-500">joao.silva@example.com</p>
-                        <p className="text-sm text-gray-500">+244 923 456 789</p>
+                        <p className="font-medium">{order.user?.fullName || '—'}</p>
+                        <p className="text-sm text-gray-500">{order.user?.email || '—'}</p>
+                        {shippingAddress.phone && (
+                          <p className="text-sm text-gray-500">{shippingAddress.phone}</p>
+                        )}
                     </div>
 
                     <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
@@ -165,13 +168,13 @@ export default function SellerOrderDetailPage({ params }: { params: Promise<{ id
                             Endereço de Entrega
                         </h3>
                         <p className="text-sm text-gray-600">
-                            Rua das Flores, 123<br />
-                            Luanda, Angola<br />
-                            CEP: 1000
+                            {(shippingAddress.street || '—')}{shippingAddress.number ? `, ${shippingAddress.number}` : ''}<br />
+                            {(shippingAddress.neighborhood ? `${shippingAddress.neighborhood} - ` : '') + (shippingAddress.city || '')}{shippingAddress.state ? `, ${shippingAddress.state}` : ''}<br />
+                            {shippingAddress.zipCode ? `CEP: ${shippingAddress.zipCode}` : ''}
                         </p>
                         <div className="mt-4 pt-4 border-t border-gray-100">
                             <h4 className="text-xs font-bold text-gray-400 uppercase mb-2">Método de Envio</h4>
-                            <p className="text-sm font-medium">Correios (Expresso)</p>
+                            <p className="text-sm font-medium">{order.shipment?.carrier?.name || '—'}</p>
                         </div>
                     </div>
                 </div>

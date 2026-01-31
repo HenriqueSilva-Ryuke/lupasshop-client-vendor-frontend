@@ -16,6 +16,7 @@ interface Product {
   image: string;
   price: number;
   originalPrice?: number;
+  currency: string;
   rating: number;
   reviews: number;
   store: string;
@@ -36,85 +37,6 @@ interface Category {
   count: number;
 }
 
-// Mock data - será substituído por dados do backend
-const mockProducts: Product[] = [
-  {
-    id: '1',
-    name: 'Premium Wireless Headphones',
-    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop',
-    price: 299.99,
-    originalPrice: 499.99,
-    rating: 4.8,
-    reviews: 2341,
-    store: 'TechHub Store'
-  },
-  {
-    id: '2',
-    name: 'Professional Camera',
-    image: 'https://images.unsplash.com/photo-1516035069371-29a083244fa7?w=400&h=400&fit=crop',
-    price: 1299.99,
-    originalPrice: 1799.99,
-    rating: 4.9,
-    reviews: 1205,
-    store: 'PhotoPro'
-  },
-  {
-    id: '3',
-    name: 'Elegant Wristwatch',
-    image: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=400&h=400&fit=crop',
-    price: 199.99,
-    originalPrice: 349.99,
-    rating: 4.7,
-    reviews: 856,
-    store: 'Luxury Watch Co'
-  },
-  {
-    id: '4',
-    name: 'Running Shoes Pro',
-    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop',
-    price: 129.99,
-    originalPrice: 199.99,
-    rating: 4.6,
-    reviews: 3412,
-    store: 'SportsGear'
-  },
-  {
-    id: '5',
-    name: 'Smart Home Hub',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop',
-    price: 89.99,
-    originalPrice: 149.99,
-    rating: 4.5,
-    reviews: 1923,
-    store: 'TechHub Store'
-  },
-  {
-    id: '6',
-    name: 'Portable Speaker',
-    image: 'https://images.unsplash.com/photo-1589003077984-894e133814c9?w=400&h=400&fit=crop',
-    price: 79.99,
-    originalPrice: 129.99,
-    rating: 4.7,
-    reviews: 2156,
-    store: 'AudioMax'
-  },
-];
-
-const mockStores: Store[] = [
-  { id: '1', name: 'TechHub Store', logo: 'TH', rating: 4.8, salesCount: 12543 },
-  { id: '2', name: 'Fashion Forward', logo: 'FF', rating: 4.7, salesCount: 8934 },
-  { id: '3', name: 'Home Essentials', logo: 'HE', rating: 4.6, salesCount: 6421 },
-  { id: '4', name: 'Beauty & Care', logo: 'BC', rating: 4.9, salesCount: 9876 },
-];
-
-const defaultCategories: Category[] = [
-  { id: '1', name: 'Electronics', icon: '📱', count: 1543 },
-  { id: '2', name: 'Fashion', icon: '👕', count: 3421 },
-  { id: '3', name: 'Home & Garden', icon: '🏠', count: 2156 },
-  { id: '4', name: 'Beauty', icon: '💄', count: 1834 },
-  { id: '5', name: 'Sports', icon: '⚽', count: 912 },
-  { id: '6', name: 'Books & Toys', icon: '📚', count: 1543 },
-];
 
 export default function Marketplace() {
   const tHome = useTranslations('home');
@@ -130,34 +52,32 @@ export default function Marketplace() {
   const { data: backendCategories = [], isLoading: categoriesLoading } = useCategories();
   const { data: searchData } = useSearchProducts(searchQuery, 5);
 
-  // Use backend categories if available, otherwise use defaults
-  const categories = backendCategories.length > 0 ? backendCategories.map((cat: any) => ({
+  const categories = backendCategories.map((cat: any) => ({
     id: cat.id,
     name: cat.name,
     icon: cat.icon || '📦',
     count: cat.productsCount || 0,
-  })) : defaultCategories;
+  }));
 
-  // Use featured products or mock data as fallback
-  const displayProducts = featuredProducts.length > 0 ? featuredProducts.map((prod: any) => ({
+  const displayProducts = featuredProducts.map((prod: any) => ({
     id: prod.id,
     name: prod.name,
-    image: prod.image || 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop',
+    image: prod.images?.[0] || '',
     price: prod.price,
     originalPrice: prod.originalPrice,
-    rating: prod.rating || 4.5,
-    reviews: prod.reviewsCount || 0,
-    store: prod.store?.name || 'Unknown Store',
-  })) : mockProducts;
+    currency: prod.currency || 'AOA',
+    rating: prod.rating || 0,
+    reviews: prod.reviewCount || 0,
+    store: prod.store?.name || '',
+  }));
 
-  // Use featured stores or mock data as fallback
-  const displayStores = featuredStores.length > 0 ? featuredStores.map((store: any) => ({
+  const displayStores = featuredStores.map((store: any) => ({
     id: store.id,
     name: store.name,
-    logo: store.logo || store.name.substring(0, 2).toUpperCase(),
-    rating: store.rating,
-    salesCount: store.salesCount,
-  })) : mockStores;
+    logo: store.logoUrl || '',
+    rating: store.rating || 0,
+    salesCount: store.reviewCount || 0,
+  }));
 
   const toggleFavorite = (productId: string) => {
     setFavorites(prev => {
@@ -353,6 +273,8 @@ export default function Marketplace() {
           <div className="flex justify-center py-12">
             <Loader className="w-8 h-8 animate-spin text-[#412778]" />
           </div>
+        ) : displayProducts.length === 0 ? (
+          <div className="py-12 text-center text-gray-500">Sem produtos em destaque</div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {displayProducts.slice(0, 5).map((product) => (
@@ -362,12 +284,18 @@ export default function Marketplace() {
               >
                 {/* Product Image */}
                 <div className="relative aspect-square bg-gray-200 overflow-hidden group">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition duration-300"
-                  />
+                  {product.image ? (
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      className="object-cover group-hover:scale-110 transition duration-300"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-gray-500 text-sm">
+                      Sem imagem
+                    </div>
+                  )}
                   {product.originalPrice && (
                     <div className="absolute top-2 right-2 bg-red-500 text-black px-3 py-1 rounded-full text-sm font-bold">
                       -{getDiscountPercent(product.price, product.originalPrice)}%
@@ -412,11 +340,11 @@ export default function Marketplace() {
                   <div className="mb-3">
                     <div className="flex items-baseline gap-2">
                       <span className="text-lg font-bold text-gray-900">
-                        ${product.price.toFixed(2)}
+                        {new Intl.NumberFormat('pt-AO', { style: 'currency', currency: product.currency }).format(product.price)}
                       </span>
                       {product.originalPrice && (
                         <span className="text-sm text-gray-500 line-through">
-                          ${product.originalPrice.toFixed(2)}
+                          {new Intl.NumberFormat('pt-AO', { style: 'currency', currency: product.currency }).format(product.originalPrice)}
                         </span>
                       )}
                     </div>
@@ -446,6 +374,8 @@ export default function Marketplace() {
           <div className="flex justify-center py-8">
             <Loader className="w-6 h-6 animate-spin text-[#412778]" />
           </div>
+        ) : displayStores.length === 0 ? (
+          <div className="py-8 text-center text-gray-500">Sem lojas em destaque</div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {displayStores.map((store) => (
@@ -453,8 +383,18 @@ export default function Marketplace() {
                 key={store.id}
                 className="bg-white rounded-lg p-6 text-center shadow-sm hover:shadow-lg transition border border-gray-200"
               >
-                <div className="w-16 h-16 mx-auto bg-[#412778] text-black rounded-full flex items-center justify-center font-bold text-2xl mb-4">
-                  {store.logo}
+                <div className="w-16 h-16 mx-auto rounded-full flex items-center justify-center font-bold text-2xl mb-4 overflow-hidden bg-[#412778] text-black">
+                  {store.logo ? (
+                    <Image
+                      src={store.logo}
+                      alt={store.name}
+                      width={64}
+                      height={64}
+                      className="object-cover"
+                    />
+                  ) : (
+                    <span>{store.name.substring(0, 2).toUpperCase()}</span>
+                  )}
                 </div>
                 <h3 className="font-bold text-gray-900 mb-2">{store.name}</h3>
                 <div className="flex items-center justify-center gap-1 mb-2">
