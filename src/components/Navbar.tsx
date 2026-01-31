@@ -84,13 +84,13 @@ export default function Navbar() {
 
           {/* Action Buttons - Outline Style */}
           <div className="hidden md:flex items-center gap-4">
-            <button className="text-xs font-black uppercase tracking-widest text-zinc-500 hover:text-zinc-900 transition-colors">
+            <button className="text-xs font-black uppercase tracking-widest text-zinc-500 hover:text-foreground transition-colors">
               {t('login')}
             </button>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-5 py-2 text-xs font-black uppercase tracking-widest border-2 border-zinc-900 text-card-foreground rounded-lg hover:bg-zinc-900 hover:text-primary transition-all"
+              className="px-5 py-2 text-xs font-black uppercase tracking-widest border-2 border-border text-card-foreground rounded-lg hover:bg-card hover:text-primary transition-all"
             >
               {t('signup')}
             </motion.button>
@@ -118,7 +118,7 @@ export default function Navbar() {
           >
             <div className="flex justify-between items-center mb-12">
               <span className="text-2xl font-black tracking-tighter uppercase">Menu</span>
-              <button onClick={() => setIsMenuOpen(false)} className="p-2 border-2 border-zinc-900 border-border rounded-full">
+              <button onClick={() => setIsMenuOpen(false)} className="p-2 border-2 border-border border-border rounded-full">
                 <X className="text-card-foreground"/>
               </button>
             </div>
@@ -137,10 +137,10 @@ export default function Navbar() {
             </nav>
 
             <div className="mt-auto flex flex-col gap-4">
-              <button className="w-full py-4 text-sm font-black uppercase tracking-widest border-2 border-zinc-900 border-border text-card-foreground rounded-xl">
+              <button className="w-full py-4 text-sm font-black uppercase tracking-widest border-2 border-border border-border text-card-foreground rounded-xl">
                 {t('login')}
               </button>
-              <button className="w-full py-4 text-sm font-black uppercase tracking-widest bg-zinc-900 text-card-foreground bg-card text-black rounded-xl">
+              <button className="w-full py-4 text-sm font-black uppercase tracking-widest bg-card text-card-foreground bg-card text-black rounded-xl">
                 {t('signup')}
               </button>
             </div>

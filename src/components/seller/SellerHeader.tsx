@@ -33,7 +33,7 @@ export function SellerHeader() {
                 className="relative p-2 rounded-full hover:bg-muted hover:bg-gray-700 text-text-sub-light text-text-sub-dark transition-colors"
               >
                 <span className="material-symbols-outlined">notifications</span>
-                <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-red-500 ring-2 ring-white ring-card-dark"></span>
+                <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-destructive/100 ring-2 ring-white ring-card-dark"></span>
               </button>
 
               {/* Notifications Dropdown */}
@@ -149,7 +149,7 @@ export function SellerHeader() {
                         localStorage.removeItem('authToken');
                         window.location.href = `/${locale}`;
                       }}
-                      className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-red-50 hover:bg-red-900/10 text-red-600 text-red-400 transition-colors"
+                      className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-destructive/10 hover:bg-red-900/10 text-destructive text-red-400 transition-colors"
                     >
                       <span className="material-symbols-outlined text-[20px]">logout</span>
                       <span className="text-sm font-medium">Sair</span>

@@ -24,7 +24,7 @@ export function SignupForm() {
             placeholder="Seu nome completo"
           />
           {errors.fullName && (
-            <p className="mt-1 text-sm text-red-600">{errors.fullName.message}</p>
+            <p className="mt-1 text-sm text-destructive">{errors.fullName.message}</p>
           )}
         </div>
 
@@ -40,7 +40,7 @@ export function SignupForm() {
             placeholder="seu@email.com"
           />
           {errors.email && (
-            <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+            <p className="mt-1 text-sm text-destructive">{errors.email.message}</p>
           )}
         </div>
 
@@ -56,7 +56,7 @@ export function SignupForm() {
             placeholder="••••••••"
           />
           {errors.password && (
-            <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>
+            <p className="mt-1 text-sm text-destructive">{errors.password.message}</p>
           )}
         </div>
 
@@ -73,12 +73,12 @@ export function SignupForm() {
             <option value="SELLER">Vendedor</option>
           </select>
           {errors.role && (
-            <p className="mt-1 text-sm text-red-600">{errors.role.message}</p>
+            <p className="mt-1 text-sm text-destructive">{errors.role.message}</p>
           )}
         </div>
 
         {error && (
-          <div className="p-3 bg-red-50 border border-red-200 rounded-md">
+          <div className="p-3 bg-destructive/10 border border-destructive rounded-md">
             <p className="text-sm text-red-800">
               {typeof error === 'string' ? error : 'Erro ao criar conta'}
             </p>

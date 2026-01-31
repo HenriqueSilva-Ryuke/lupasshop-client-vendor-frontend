@@ -63,7 +63,7 @@ export function SellerMultiStepRegisterForm() {
 
       {/* Error Message */}
       {error && (
-        <div className="p-4 bg-red-50 bg-red-900/20 border border-red-200 border-red-800 rounded-lg">
+        <div className="p-4 bg-destructive/10 bg-red-900/20 border border-destructive border-red-800 rounded-lg">
           <p className="text-sm text-red-700 text-red-400">{error}</p>
         </div>
       )}
@@ -94,7 +94,7 @@ export function SellerMultiStepRegisterForm() {
               className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-card bg-gray-800 text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
             />
             {errors.fullName && (
-              <span className="text-xs text-red-600 text-red-400">{errors.fullName.message}</span>
+              <span className="text-xs text-destructive text-red-400">{errors.fullName.message}</span>
             )}
           </div>
 
@@ -111,7 +111,7 @@ export function SellerMultiStepRegisterForm() {
               className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-card bg-gray-800 text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
             />
             {errors.email && (
-              <span className="text-xs text-red-600 text-red-400">{errors.email.message}</span>
+              <span className="text-xs text-destructive text-red-400">{errors.email.message}</span>
             )}
           </div>
 
@@ -139,7 +139,7 @@ export function SellerMultiStepRegisterForm() {
               </button>
             </div>
             {errors.password && (
-              <span className="text-xs text-red-600 text-red-400">{errors.password.message}</span>
+              <span className="text-xs text-destructive text-red-400">{errors.password.message}</span>
             )}
           </div>
 
@@ -167,7 +167,7 @@ export function SellerMultiStepRegisterForm() {
               </button>
             </div>
             {errors.confirmPassword && (
-              <span className="text-xs text-red-600 text-red-400">{errors.confirmPassword.message}</span>
+              <span className="text-xs text-destructive text-red-400">{errors.confirmPassword.message}</span>
             )}
           </div>
         </div>
@@ -199,7 +199,7 @@ export function SellerMultiStepRegisterForm() {
               className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-card bg-gray-800 text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
             />
             {errors.nif && (
-              <span className="text-xs text-red-600 text-red-400">{errors.nif.message}</span>
+              <span className="text-xs text-destructive text-red-400">{errors.nif.message}</span>
             )}
           </div>
 
@@ -216,7 +216,7 @@ export function SellerMultiStepRegisterForm() {
               className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-card bg-gray-800 text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
             />
             {errors.razaoSocial && (
-              <span className="text-xs text-red-600 text-red-400">{errors.razaoSocial.message}</span>
+              <span className="text-xs text-destructive text-red-400">{errors.razaoSocial.message}</span>
             )}
           </div>
 
@@ -233,7 +233,7 @@ export function SellerMultiStepRegisterForm() {
               className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-card bg-gray-800 text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
             />
             {errors.nomeFantasia && (
-              <span className="text-xs text-red-600 text-red-400">{errors.nomeFantasia.message}</span>
+              <span className="text-xs text-destructive text-red-400">{errors.nomeFantasia.message}</span>
             )}
           </div>
 
@@ -262,7 +262,7 @@ export function SellerMultiStepRegisterForm() {
               </div>
             </div>
             {errors.category && (
-              <span className="text-xs text-red-600 text-red-400">{errors.category.message}</span>
+              <span className="text-xs text-destructive text-red-400">{errors.category.message}</span>
             )}
           </div>
         </div>
@@ -306,7 +306,7 @@ export function SellerMultiStepRegisterForm() {
               {uploadedFiles.alvaraComercial && uploadedFiles.alvaraComercial instanceof File ? uploadedFiles.alvaraComercial.name : 'Selecione arquivo'}
             </button>
             {errors.alvaraComercial && (
-              <span className="text-xs text-red-600 text-red-400">{errors.alvaraComercial.message as string}</span>
+              <span className="text-xs text-destructive text-red-400">{errors.alvaraComercial.message as string}</span>
             )}
           </div>
 
@@ -335,7 +335,7 @@ export function SellerMultiStepRegisterForm() {
               {uploadedFiles.licencaVenda && uploadedFiles.licencaVenda instanceof File ? uploadedFiles.licencaVenda.name : 'Selecione arquivo'}
             </button>
             {errors.licencaVenda && (
-              <span className="text-xs text-red-600 text-red-400">{errors.licencaVenda.message as string}</span>
+              <span className="text-xs text-destructive text-red-400">{errors.licencaVenda.message as string}</span>
             )}
           </div>
 
@@ -364,7 +364,7 @@ export function SellerMultiStepRegisterForm() {
               {uploadedFiles.localizacaoFisica && uploadedFiles.localizacaoFisica instanceof File ? uploadedFiles.localizacaoFisica.name : 'Selecione arquivo'}
             </button>
             {errors.localizacaoFisica && (
-              <span className="text-xs text-red-600 text-red-400">{errors.localizacaoFisica.message as string}</span>
+              <span className="text-xs text-destructive text-red-400">{errors.localizacaoFisica.message as string}</span>
             )}
           </div>
         </div>
@@ -408,7 +408,7 @@ export function SellerMultiStepRegisterForm() {
               {uploadedFiles.logotipo && uploadedFiles.logotipo instanceof File ? uploadedFiles.logotipo.name : 'Selecione arquivo'}
             </button>
             {errors.logotipo && (
-              <span className="text-xs text-red-600 text-red-400">{errors.logotipo.message as string}</span>
+              <span className="text-xs text-destructive text-red-400">{errors.logotipo.message as string}</span>
             )}
           </div>
 
@@ -437,7 +437,7 @@ export function SellerMultiStepRegisterForm() {
               {uploadedFiles.imagemCapa && uploadedFiles.imagemCapa instanceof File ? uploadedFiles.imagemCapa.name : 'Selecione arquivo'}
             </button>
             {errors.imagemCapa && (
-              <span className="text-xs text-red-600 text-red-400">{errors.imagemCapa.message as string}</span>
+              <span className="text-xs text-destructive text-red-400">{errors.imagemCapa.message as string}</span>
             )}
           </div>
 
@@ -469,7 +469,7 @@ export function SellerMultiStepRegisterForm() {
                 : 'Selecione arquivos'}
             </button>
             {errors.fotosEspaco && (
-              <span className="text-xs text-red-600 text-red-400">{errors.fotosEspaco.message as string}</span>
+              <span className="text-xs text-destructive text-red-400">{errors.fotosEspaco.message as string}</span>
             )}
           </div>
         </div>

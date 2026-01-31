@@ -76,7 +76,7 @@ export default function WishlistPage() {
                 </button>
                 <button
                   onClick={() => handleRemove(item.product.id)}
-                  className="px-4 py-2 border border-red-500 text-red-500 rounded-lg hover:bg-red-50 flex items-center justify-center"
+                  className="px-4 py-2 border border-red-500 text-red-500 rounded-lg hover:bg-destructive/10 flex items-center justify-center"
                 >
                   <Trash2 className="w-4 h-4" />
                 </button>

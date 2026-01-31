@@ -109,7 +109,7 @@ export default function ProductsView() {
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-2">
-                      <div className={`w-2 h-2 rounded-full ${product.stockQuantity > 10 ? 'bg-green-500' : product.stockQuantity > 0 ? 'bg-amber-500' : 'bg-red-500'}`} />
+                      <div className={`w-2 h-2 rounded-full ${product.stockQuantity > 10 ? 'bg-green-500' : product.stockQuantity > 0 ? 'bg-amber-500' : 'bg-destructive/100'}`} />
                       <span className="text-sm text-muted-foreground">{product.stockQuantity} in stock</span>
                     </div>
                   </td>
@@ -126,7 +126,7 @@ export default function ProductsView() {
                       <button className="p-2 text-muted-foreground hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="Edit">
                         <Edit size={18} />
                       </button>
-                      <button className="p-2 text-muted-foreground hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors" title="Delete">
+                      <button className="p-2 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded-lg transition-colors" title="Delete">
                         <Trash2 size={18} />
                       </button>
                     </div>

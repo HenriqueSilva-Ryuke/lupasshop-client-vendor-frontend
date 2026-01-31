@@ -63,7 +63,7 @@ export default function UserFinancesPage() {
     return (
       <main className="flex-1 overflow-y-auto h-full bg-background-light bg-background-dark">
         <div className="flex items-center justify-center h-full">
-          <div className="text-red-600 text-red-400">Erro ao carregar finanças</div>
+          <div className="text-destructive text-red-400">Erro ao carregar finanças</div>
         </div>
       </main>
     );
@@ -230,7 +230,7 @@ export default function UserFinancesPage() {
                       </td>
                       <td className="p-4 text-sm">
                         {transaction.type === 'DEBIT' && (
-                          <span className="inline-flex items-center gap-1 text-red-600 text-red-400">
+                          <span className="inline-flex items-center gap-1 text-destructive text-red-400">
                             <span className="material-symbols-outlined text-[16px]">
                               remove_circle
                             </span>
@@ -256,7 +256,7 @@ export default function UserFinancesPage() {
                       </td>
                       <td className="p-4 text-sm font-bold text-right">
                         {transaction.type === 'DEBIT' && (
-                          <span className="text-red-600 text-red-400">
+                          <span className="text-destructive text-red-400">
                             - {formatCurrency(transaction.amount)}
                           </span>
                         )}

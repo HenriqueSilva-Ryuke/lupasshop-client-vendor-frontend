@@ -110,7 +110,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
         <form onSubmit={handleSubmit} className="p-6 flex flex-col gap-6">
           {/* Error Message */}
           {error && (
-            <div className="p-4 bg-red-50 bg-red-900/20 border border-red-200 border-red-800 rounded-lg">
+            <div className="p-4 bg-destructive/10 bg-red-900/20 border border-destructive border-red-800 rounded-lg">
               <p className="text-sm text-red-700 text-red-400">{error}</p>
             </div>
           )}
@@ -128,7 +128,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
               className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-card bg-gray-800 text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
             />
             {errors.name && (
-              <span className="text-xs text-red-600 text-red-400">{errors.name.message}</span>
+              <span className="text-xs text-destructive text-red-400">{errors.name.message}</span>
             )}
           </div>
 
@@ -145,7 +145,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
               className="w-full px-4 py-3 rounded-lg border border-[#dbe1e6] border-gray-600 bg-card bg-gray-800 text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all resize-none"
             />
             {errors.description && (
-              <span className="text-xs text-red-600 text-red-400">{errors.description.message}</span>
+              <span className="text-xs text-destructive text-red-400">{errors.description.message}</span>
             )}
           </div>
 
@@ -165,7 +165,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
                 className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-card bg-gray-800 text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
               />
               {errors.price && (
-                <span className="text-xs text-red-600 text-red-400">{errors.price.message}</span>
+                <span className="text-xs text-destructive text-red-400">{errors.price.message}</span>
               )}
             </div>
 
@@ -182,7 +182,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
                 className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-card bg-gray-800 text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
               />
               {errors.stockQuantity && (
-                <span className="text-xs text-red-600 text-red-400">{errors.stockQuantity.message}</span>
+                <span className="text-xs text-destructive text-red-400">{errors.stockQuantity.message}</span>
               )}
             </div>
           </div>
@@ -201,7 +201,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
                 className="w-full h-12 px-4 rounded-lg border border-[#dbe1e6] border-gray-600 bg-card bg-gray-800 text-foreground text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
               />
               {errors.sku && (
-                <span className="text-xs text-red-600 text-red-400">{errors.sku.message}</span>
+                <span className="text-xs text-destructive text-red-400">{errors.sku.message}</span>
               )}
             </div>
 
@@ -230,7 +230,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
                 </div>
               </div>
               {errors.categoryId && (
-                <span className="text-xs text-red-600 text-red-400">{errors.categoryId.message}</span>
+                <span className="text-xs text-destructive text-red-400">{errors.categoryId.message}</span>
               )}
             </div>
           </div>
@@ -275,7 +275,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
                     <button
                       type="button"
                       onClick={() => removeImage(index)}
-                      className="absolute top-1 right-1 p-1 bg-red-500 text-card-foreground rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="absolute top-1 right-1 p-1 bg-destructive/100 text-card-foreground rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
                     >
                       <span className="material-symbols-outlined text-[16px]">close</span>
                     </button>
@@ -284,7 +284,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
               </div>
             )}
             {errors.images && (
-              <span className="text-xs text-red-600 text-red-400">{errors.images.message}</span>
+              <span className="text-xs text-destructive text-red-400">{errors.images.message}</span>
             )}
           </div>
 

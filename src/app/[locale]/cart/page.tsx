@@ -175,7 +175,7 @@ export default function CartPage() {
                               {item.stockQuantity > 0 ? (
                                 <p className="text-green-600 text-xs font-medium">Em estoque</p>
                               ) : (
-                                <p className="text-red-600 text-xs font-medium">Fora de estoque</p>
+                                <p className="text-destructive text-xs font-medium">Fora de estoque</p>
                               )}
                             </div>
                             <Button

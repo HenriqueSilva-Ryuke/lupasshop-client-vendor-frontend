@@ -32,7 +32,7 @@ function CartItem({ item }: { item: any }) {
       <div className="flex flex-col items-end justify-between">
         <button
           onClick={() => removeItem(item.id)}
-          className="text-muted-foreground hover:text-red-600 transition-colors"
+          className="text-muted-foreground hover:text-destructive transition-colors"
         >
           <X size={20} />
         </button>
@@ -128,7 +128,7 @@ export function CartDrawer() {
             
             <button
               onClick={clearCart}
-              className="block w-full py-2 text-red-600 hover:text-red-700 text-center font-medium transition-colors"
+              className="block w-full py-2 text-destructive hover:text-red-700 text-center font-medium transition-colors"
             >
               Limpar Carrinho
             </button>

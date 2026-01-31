@@ -82,7 +82,7 @@ export default function DashboardNavigation({
             <motion.span
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"
+              className="absolute top-1 right-1 w-2 h-2 bg-destructive/100 rounded-full"
             />
           </motion.button>
 
@@ -120,7 +120,7 @@ export default function DashboardNavigation({
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleLogout}
-            className="p-2 text-muted-foreground hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors"
+            className="p-2 text-muted-foreground hover:bg-destructive/10 hover:text-destructive rounded-lg transition-colors"
             title="Logout"
           >
             <span className="material-icons">logout</span>

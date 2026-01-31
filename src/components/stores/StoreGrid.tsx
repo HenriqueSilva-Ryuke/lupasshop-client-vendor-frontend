@@ -139,7 +139,7 @@ export function StoreGrid({ filters }: StoreGridProps) {
   if (error) {
     return (
       <div className="text-center py-12">
-        <p className="text-red-600">Erro ao carregar lojas</p>
+        <p className="text-destructive">Erro ao carregar lojas</p>
       </div>
     );
   }

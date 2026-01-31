@@ -15,7 +15,7 @@ export default function ResetPasswordPage() {
   if (!token) {
     return (
       <AuthLayout title="Erro" subtitle="Token de recuperação não foi fornecido">
-        <div className="text-center text-red-600">
+        <div className="text-center text-destructive">
           Link de recuperação inválido. Por favor, solicit um novo link.
         </div>
       </AuthLayout>

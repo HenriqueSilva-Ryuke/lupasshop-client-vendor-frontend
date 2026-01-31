@@ -48,7 +48,7 @@ export default function RootError({ error, reset }: ErrorProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="bg-red-50 border border-red-200 rounded p-3 text-left"
+              className="bg-destructive/10 border border-destructive rounded p-3 text-left"
             >
               <p className="text-xs font-mono text-red-700 wrap-break-word">
                 {error.message}

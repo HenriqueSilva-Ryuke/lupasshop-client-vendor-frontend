@@ -132,7 +132,7 @@ export default function SellerProductsPage({ params }: { params: Promise<{ local
                         </Link>
                         <Button
                           variant="outline"
-                          className="h-8 w-8 p-0 hover:bg-red-50 hover:border-red-200"
+                          className="h-8 w-8 p-0 hover:bg-destructive/10 hover:border-destructive"
                           onClick={() => handleDelete(product.id)}
                         >
                           <Trash2 className="w-4 h-4 text-red-500" />

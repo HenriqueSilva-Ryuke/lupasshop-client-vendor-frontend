@@ -71,7 +71,7 @@ export default function ProductsList({
                 </button>
                 <button
                   onClick={() => onDelete(product.id)}
-                  className="text-red-600 hover:text-red-700 transition-colors"
+                  className="text-destructive hover:text-red-700 transition-colors"
                 >
                   <span className="material-icons text-sm">delete</span>
                 </button>

@@ -71,7 +71,7 @@ export default function ShopsList({
             </button>
             <button
               onClick={() => onDelete(shop.id)}
-              className="px-3 py-1 text-sm bg-red-50 text-red-600 rounded hover:bg-red-100 transition-colors"
+              className="px-3 py-1 text-sm bg-destructive/10 text-destructive rounded hover:bg-red-100 transition-colors"
             >
               {t('common.delete')}
             </button>

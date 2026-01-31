@@ -101,7 +101,7 @@ export default function DashboardLayout({
 
                     {/* User Profile & Logout */}
                     <div className="p-4 border-t border-gray-100">
-                        <button className="flex items-center gap-3 w-full px-4 py-3 text-muted-foreground hover:bg-red-50 hover:text-red-600 rounded-xl transition-colors">
+                        <button className="flex items-center gap-3 w-full px-4 py-3 text-muted-foreground hover:bg-destructive/10 hover:text-destructive rounded-xl transition-colors">
                             <LogOut size={20} />
                             <span className="font-medium">{t('common.logout')}</span>
                         </button>
@@ -123,7 +123,7 @@ export default function DashboardLayout({
                     <div className="flex items-center gap-4 ml-auto">
                         <button className="p-2 text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-full transition-colors relative">
                             <Bell size={20} />
-                            <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-border"></span>
+                            <span className="absolute top-2 right-2 w-2 h-2 bg-destructive/100 rounded-full border-2 border-border"></span>
                         </button>
                         <div className="flex items-center gap-3 pl-4 border-l border-gray-100">
                             <div className="text-right hidden sm:block">

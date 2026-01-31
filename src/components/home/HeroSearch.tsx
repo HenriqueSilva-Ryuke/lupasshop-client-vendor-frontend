@@ -67,7 +67,7 @@ export default function HeroSearch() {
           >
             {/* Input Menor e Minimalista */}
             <div className="relative flex-1 w-full">
-              <div className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 group-focus-within:text-primary transition-colors">
+              <div className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within:text-primary transition-colors">
                 <Search className="w-5 h-5" />
               </div>
               <input
@@ -101,7 +101,7 @@ export default function HeroSearch() {
                   {searchLoading && <div className="p-4 text-xs text-muted-foreground animate-pulse">Buscando...</div>}
                   
                   {/* Categorias Rápidas */}
-                  <div className="p-2 border-b border-zinc-100 border-zinc-800 flex gap-2 overflow-x-auto no-scrollbar">
+                  <div className="p-2 border-b border-border border-border flex gap-2 overflow-x-auto no-scrollbar">
                     {searchResults?.categories?.map((c: any) => (
                       <button 
                         key={c.id}
@@ -118,12 +118,12 @@ export default function HeroSearch() {
                       <button 
                         key={p.id}
                         onClick={() => router.push(`/${locale}/product/${p.slug}`)}
-                        className="w-full flex items-center gap-3 p-2 hover:bg-zinc-50 hover:bg-zinc-800 rounded-md transition-colors group/item"
+                        className="w-full flex items-center gap-3 p-2 hover:bg-zinc-50 hover:bg-card rounded-md transition-colors group/item"
                       >
-                        <div className="w-8 h-8 bg-zinc-100 bg-zinc-700 rounded overflow-hidden">
+                        <div className="w-8 h-8 bg-muted bg-zinc-700 rounded overflow-hidden">
                           {p.images?.[0] && <img src={p.images[0]} className="w-full h-full object-cover" />}
                         </div>
-                        <span className="text-sm font-medium text-zinc-700 text-zinc-300 group-hover/item:text-primary">{p.name}</span>
+                        <span className="text-sm font-medium text-foreground text-zinc-300 group-hover/item:text-primary">{p.name}</span>
                       </button>
                     ))}
                   </div>

@@ -64,7 +64,7 @@ export default function ProductList() {
                                         <button className="p-2 text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-colors">
                                             <Edit size={18} />
                                         </button>
-                                        <button className="p-2 text-muted-foreground hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors">
+                                        <button className="p-2 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded-lg transition-colors">
                                             <Trash2 size={18} />
                                         </button>
                                     </div>

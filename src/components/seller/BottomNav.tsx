@@ -48,7 +48,7 @@ export function BottomNav() {
                     </span>
                     <span className="text-sm font-medium leading-normal">{item.label}</span>
                     {item.badge && (
-                      <span className="ml-auto flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-card-foreground">
+                      <span className="ml-auto flex h-5 w-5 items-center justify-center rounded-full bg-destructive/100 text-[10px] font-bold text-card-foreground">
                         {item.badge}
                       </span>
                     )}
@@ -72,7 +72,7 @@ export function BottomNav() {
                 localStorage.removeItem('authToken');
                 window.location.href = `/${locale}`;
               }}
-              className="group flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-red-50 hover:bg-red-900/10 text-red-600 text-red-400 transition-colors"
+              className="group flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-destructive/10 hover:bg-red-900/10 text-destructive text-red-400 transition-colors"
             >
               <span className="material-symbols-outlined text-[20px]">logout</span>
               <span className="text-sm font-medium leading-normal">Sair</span>
@@ -99,7 +99,7 @@ export function BottomNav() {
                 >
                   <span className="material-symbols-outlined text-[22px]">{item.icon}</span>
                   {item.badge && (
-                    <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[9px] font-bold text-card-foreground ring-2 ring-white ring-card-dark">
+                    <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-destructive/100 text-[9px] font-bold text-card-foreground ring-2 ring-white ring-card-dark">
                       {item.badge}
                     </span>
                   )}

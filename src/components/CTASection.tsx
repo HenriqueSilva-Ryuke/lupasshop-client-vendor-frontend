@@ -8,11 +8,11 @@ export default function CTASection() {
   const t = useTranslations('cta');
 
   return (
-    <section className="relative py-32 overflow-hidden bg-gradient-to-br from-[#412778] via-[#4a2d85] to-[#2e1a55] text-black">
+    <section className="relative py-32 overflow-hidden bg-gradient-to-br from-primary via-[#4a2d85] to-[#2e1a55] text-black">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-72 h-72 bg-[#5a3491] rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#412778] rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary rounded-full blur-3xl"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#5a3491] rounded-full blur-3xl"></div>
       </div>
 
@@ -104,7 +104,7 @@ export default function CTASection() {
               className={`text-center p-4 rounded-2xl backdrop-blur-sm border transition-all duration-300 ${
                 index % 2 === 0 
                   ? 'bg-card/10 border-border/20 text-black' 
-                  : 'bg-[#412778]/80 border-[#5a3491]/50 text-black'
+                  : 'bg-primary/80 border-[#5a3491]/50 text-black'
               }`}
               whileHover={{ 
                 scale: 1.05,
@@ -136,7 +136,7 @@ export default function CTASection() {
         >
           <Button
             variant="default"
-            className="group relative bg-card text-[#412778] px-10 py-4 rounded-full font-semibold text-lg overflow-hidden shadow-2xl"
+            className="group relative bg-card text-primary px-10 py-4 rounded-full font-semibold text-lg overflow-hidden shadow-2xl"
           >
             <span className="relative z-10 flex items-center justify-center">
               <span className="material-icons mr-3">storefront</span>

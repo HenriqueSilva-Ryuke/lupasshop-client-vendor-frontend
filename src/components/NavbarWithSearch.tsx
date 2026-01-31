@@ -186,7 +186,7 @@ export default function NavbarWithSearch() {
                   }`}
                 >
                   <Bell className="w-5 h-5" />
-                  <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border-2 border-border"></span>
+                  <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-destructive/100 rounded-full border-2 border-border"></span>
                 </button>
 
                 <button

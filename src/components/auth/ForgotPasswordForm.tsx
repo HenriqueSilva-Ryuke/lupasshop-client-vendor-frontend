@@ -50,7 +50,7 @@ export default function ForgotPasswordForm() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 text-sm"
+          className="p-4 bg-destructive/10 border border-destructive rounded-xl text-destructive text-sm"
         >
           {error}
         </motion.div>

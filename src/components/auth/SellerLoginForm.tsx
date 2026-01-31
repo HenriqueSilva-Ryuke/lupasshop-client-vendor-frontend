@@ -11,7 +11,7 @@ export default function SellerLoginForm() {
     <form onSubmit={onSubmit} className="flex flex-col gap-6">
       {/* Error Alert */}
       {error && (
-        <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
+        <div className="p-4 bg-destructive/10 border border-destructive rounded-lg text-destructive text-sm">
           {error}
         </div>
       )}

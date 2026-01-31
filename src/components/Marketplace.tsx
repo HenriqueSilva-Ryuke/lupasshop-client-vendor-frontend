@@ -158,14 +158,14 @@ export default function Marketplace() {
               <Link href="#" className="block text-foreground">Home</Link>
               <Link href="#" className="block text-foreground">Products</Link>
               <Link href="#" className="block text-foreground">Stores</Link>
-              <Link href="/dashboard/auth/login" className="block text-[#412778] font-medium">Login</Link>
+              <Link href="/dashboard/auth/login" className="block text-primary font-medium">Login</Link>
             </div>
           </div>
         )}
       </header>
 
       {/* Hero / Search Section */}
-      <section className="bg-gradient-to-br from-[#412778] to-purple-900 text-black py-12 md:py-16">
+      <section className="bg-gradient-to-br from-primary to-purple-900 text-black py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-3">{tHome('hero.title')}</h1>
@@ -184,7 +184,7 @@ export default function Marketplace() {
               />
               <Search className="absolute right-3 top-3.5 text-muted-foreground" size={20} />
             </div>
-            <button className="px-6 py-3 bg-card text-[#412778] rounded-lg font-semibold hover:bg-muted transition">
+            <button className="px-6 py-3 bg-card text-primary rounded-lg font-semibold hover:bg-muted transition">
               Search
             </button>
           </div>
@@ -201,7 +201,7 @@ export default function Marketplace() {
               <h3 className="text-lg font-bold">Flash Sales</h3>
             </div>
             <p className="text-red-100 mb-4">Up to 60% off selected items</p>
-            <button className="bg-card text-red-500 px-4 py-2 rounded font-semibold hover:bg-red-50 transition">
+            <button className="bg-card text-red-500 px-4 py-2 rounded font-semibold hover:bg-destructive/10 transition">
               Shop Now
             </button>
           </div>
@@ -237,7 +237,7 @@ export default function Marketplace() {
         <h2 className="text-2xl font-bold mb-6 text-foreground">Shop by Category</h2>
         {categoriesLoading ? (
           <div className="flex justify-center py-8">
-            <Loader className="w-6 h-6 animate-spin text-[#412778]" />
+            <Loader className="w-6 h-6 animate-spin text-primary" />
           </div>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -246,7 +246,7 @@ export default function Marketplace() {
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
                 className={`p-4 rounded-lg text-center transition ${selectedCategory === category.id
-                  ? 'bg-[#412778] text-black'
+                  ? 'bg-primary text-black'
                   : 'bg-muted text-foreground hover:bg-gray-200'
                   }`}
               >
@@ -263,7 +263,7 @@ export default function Marketplace() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-bold text-foreground">Flash Deals</h2>
-          <Link href="#" className="text-[#412778] hover:text-purple-900 font-semibold flex items-center gap-2">
+          <Link href="#" className="text-primary hover:text-purple-900 font-semibold flex items-center gap-2">
             View All
             <span>→</span>
           </Link>
@@ -271,7 +271,7 @@ export default function Marketplace() {
 
         {productsLoading ? (
           <div className="flex justify-center py-12">
-            <Loader className="w-8 h-8 animate-spin text-[#412778]" />
+            <Loader className="w-8 h-8 animate-spin text-primary" />
           </div>
         ) : displayProducts.length === 0 ? (
           <div className="py-12 text-center text-muted-foreground">Sem produtos em destaque</div>
@@ -297,7 +297,7 @@ export default function Marketplace() {
                     </div>
                   )}
                   {product.originalPrice && (
-                    <div className="absolute top-2 right-2 bg-red-500 text-black px-3 py-1 rounded-full text-sm font-bold">
+                    <div className="absolute top-2 right-2 bg-destructive/100 text-black px-3 py-1 rounded-full text-sm font-bold">
                       -{getDiscountPercent(product.price, product.originalPrice)}%
                     </div>
                   )}
@@ -356,7 +356,7 @@ export default function Marketplace() {
                   </p>
 
                   {/* Add to Cart Button */}
-                  <button className="w-full bg-[#412778] hover:bg-purple-900 text-black py-2 rounded-lg font-semibold transition flex items-center justify-center gap-2">
+                  <button className="w-full bg-primary hover:bg-purple-900 text-black py-2 rounded-lg font-semibold transition flex items-center justify-center gap-2">
                     <ShoppingCart size={16} />
                     Add to Cart
                   </button>
@@ -372,7 +372,7 @@ export default function Marketplace() {
         <h2 className="text-2xl font-bold mb-6 text-foreground">Featured Stores</h2>
         {storesLoading ? (
           <div className="flex justify-center py-8">
-            <Loader className="w-6 h-6 animate-spin text-[#412778]" />
+            <Loader className="w-6 h-6 animate-spin text-primary" />
           </div>
         ) : displayStores.length === 0 ? (
           <div className="py-8 text-center text-muted-foreground">Sem lojas em destaque</div>
@@ -383,7 +383,7 @@ export default function Marketplace() {
                 key={store.id}
                 className="bg-card rounded-lg p-6 text-center shadow-sm hover:shadow-lg transition border border-border"
               >
-                <div className="w-16 h-16 mx-auto rounded-full flex items-center justify-center font-bold text-2xl mb-4 overflow-hidden bg-[#412778] text-black">
+                <div className="w-16 h-16 mx-auto rounded-full flex items-center justify-center font-bold text-2xl mb-4 overflow-hidden bg-primary text-black">
                   {store.logo ? (
                     <Image
                       src={store.logo}
@@ -414,7 +414,7 @@ export default function Marketplace() {
                 <p className="text-sm text-muted-foreground mb-4">
                   {store.salesCount.toLocaleString()} sales
                 </p>
-                <button className="w-full border-2 border-[#412778] text-[#412778] hover:bg-[#412778] hover:text-black py-2 rounded-lg font-semibold transition">
+                <button className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-black py-2 rounded-lg font-semibold transition">
                   {tMarket('visitStore')}
                 </button>
               </div>
@@ -430,7 +430,7 @@ export default function Marketplace() {
             {/* Company Info */}
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <Package className="w-6 h-6 text-[#412778]" />
+                <Package className="w-6 h-6 text-primary" />
                 <span className="text-xl font-bold">LupaShop</span>
               </div>
               <p className="text-muted-foreground">{tMarket('tagline')}</p>
@@ -478,19 +478,19 @@ export default function Marketplace() {
           <div className="border-t border-border pt-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
               <div className="text-center">
-                <div className="text-2xl font-bold text-[#412778]">100K+</div>
+                <div className="text-2xl font-bold text-primary">100K+</div>
                 <p className="text-muted-foreground text-sm">Products</p>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-[#412778]">50K+</div>
+                <div className="text-2xl font-bold text-primary">50K+</div>
                 <p className="text-muted-foreground text-sm">Sellers</p>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-[#412778]">1M+</div>
+                <div className="text-2xl font-bold text-primary">1M+</div>
                 <p className="text-muted-foreground text-sm">Happy Customers</p>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-[#412778]">24/7</div>
+                <div className="text-2xl font-bold text-primary">24/7</div>
                 <p className="text-muted-foreground text-sm">Customer Support</p>
               </div>
             </div>

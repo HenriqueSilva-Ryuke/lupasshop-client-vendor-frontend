@@ -86,7 +86,7 @@ export default function ReviewsList({
                 </button>
                 <button
                   onClick={() => onReject?.(review.id)}
-                  className="px-3 py-1 text-xs bg-red-50 text-red-600 rounded hover:bg-red-100 transition-colors"
+                  className="px-3 py-1 text-xs bg-destructive/10 text-destructive rounded hover:bg-red-100 transition-colors"
                 >
                   {t('reviews.reject')}
                 </button>

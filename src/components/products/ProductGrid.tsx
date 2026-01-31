@@ -54,7 +54,7 @@ function ProductCard({ product }: ProductCardProps) {
             </span>
           )}
           {discount > 0 && (
-            <span className="absolute top-2 right-2 bg-red-500 text-black text-xs px-2 py-1 rounded">
+            <span className="absolute top-2 right-2 bg-destructive/100 text-black text-xs px-2 py-1 rounded">
               -{discount}%
             </span>
           )}
@@ -91,7 +91,7 @@ function ProductCard({ product }: ProductCardProps) {
           </div>
           
           {product.stockQuantity === 0 && (
-            <p className="text-sm text-red-600 mt-2">Esgotado</p>
+            <p className="text-sm text-destructive mt-2">Esgotado</p>
           )}
         </div>
       </div>
@@ -136,7 +136,7 @@ export function ProductGrid({ filters }: ProductGridProps) {
   if (error) {
     return (
       <div className="text-center py-12">
-        <p className="text-red-600">Erro ao carregar produtos</p>
+        <p className="text-destructive">Erro ao carregar produtos</p>
       </div>
     );
   }

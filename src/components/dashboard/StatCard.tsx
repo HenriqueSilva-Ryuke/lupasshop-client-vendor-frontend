@@ -37,7 +37,7 @@ export default function StatCard({
               <p className="text-2xl font-bold text-foreground">{value}</p>
             )}
           </div>
-          <p className={`text-xs mt-2 ${isPositive ? 'text-green-600' : 'text-red-600'}`}>
+          <p className={`text-xs mt-2 ${isPositive ? 'text-green-600' : 'text-destructive'}`}>
             {change}
           </p>
         </div>

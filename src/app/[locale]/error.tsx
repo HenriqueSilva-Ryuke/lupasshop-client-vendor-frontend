@@ -67,11 +67,11 @@ export default function Error({ error, reset }: ErrorProps) {
               <p className="text-sm font-mono text-red-800 mb-2">
                 <strong>Erro:</strong>
               </p>
-              <p className="text-xs font-mono text-red-700 wrap-break-word overflow-auto max-h-32 bg-red-50 p-2 rounded">
+              <p className="text-xs font-mono text-red-700 wrap-break-word overflow-auto max-h-32 bg-destructive/10 p-2 rounded">
                 {error.message}
               </p>
               {error.digest && (
-                <p className="text-xs text-red-600 mt-2">
+                <p className="text-xs text-destructive mt-2">
                   <strong>Digest:</strong> {error.digest}
                 </p>
               )}

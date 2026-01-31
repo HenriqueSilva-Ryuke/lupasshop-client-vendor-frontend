@@ -70,7 +70,7 @@ export function UserSidebar() {
                 <div className="my-2 border-t border-gray-100" />
 
                 <button
-                    className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-red-600 hover:bg-red-50 transition-colors w-full text-left"
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-destructive hover:bg-destructive/10 transition-colors w-full text-left"
                     onClick={() => console.log('Logout')}
                 >
                     <LogOut className="w-4 h-4" />
