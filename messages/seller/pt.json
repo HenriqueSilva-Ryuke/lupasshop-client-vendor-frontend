@@ -1,0 +1,15 @@
+{
+  "dashboard": "Painel de Controle",
+  "products": "Produtos",
+  "orders": "Pedidos",
+  "analytics": "Análises",
+  "settings": "Configurações",
+  "profile": "Perfil",
+  "logout": "Sair",
+  "store": "Loja",
+  "addProduct": "Adicionar Produto",
+  "editProduct": "Editar Produto",
+  "deleteProduct": "Deletar Produto",
+  "sales": "Vendas",
+  "revenue": "Receita"
+}

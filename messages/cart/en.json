@@ -1,0 +1,16 @@
+{
+  "yourCart": "Your Cart",
+  "emptyCart": "Your cart is empty",
+  "continueShopping": "Continue Shopping",
+  "remove": "Remove",
+  "quantity": "Quantity",
+  "price": "Price",
+  "subtotal": "Subtotal",
+  "total": "Total",
+  "discount": "Discount",
+  "coupon": "Coupon",
+  "applyCoupon": "Apply Coupon",
+  "checkout": "Checkout",
+  "items": "Items",
+  "orderSummary": "Order Summary"
+}

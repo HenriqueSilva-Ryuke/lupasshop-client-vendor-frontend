@@ -99,16 +99,18 @@ export default function Navbar() {
  </motion.span>
  )}
  </Link>
- <button className="text-xs font-black uppercase tracking-widest text-zinc-500 hover:text-foreground transition-colors">
+ <Link 
+ href={`/${locale}/auth/login`}
+ className="text-xs font-black uppercase tracking-widest text-zinc-500 hover:text-foreground transition-colors"
+ >
  {t('login')}
- </button>
- <motion.button
- whileHover={{ scale: 1.05 }}
- whileTap={{ scale: 0.95 }}
- className="px-5 py-2 text-xs font-black uppercase tracking-widest border-2 border-border text-card-foreground rounded-lg hover:bg-card hover:text-primary transition-all"
+ </Link>
+ <Link 
+ href={`/${locale}/auth/register`}
+ className="px-5 py-2 text-xs font-black uppercase tracking-widest border-2 border-border text-card-foreground rounded-lg hover:bg-card hover:text-primary transition-all inline-block"
  >
  {t('signup')}
- </motion.button>
+ </Link>
  </div>
 
  {/* Mobile Toggle */}
@@ -163,12 +165,20 @@ export default function Navbar() {
  </nav>
 
  <div className="mt-auto flex flex-col gap-4">
- <button className="w-full py-4 text-sm font-black uppercase tracking-widest border-2 border-border border-border text-card-foreground rounded-xl">
+ <Link 
+ href={`/${locale}/auth/login`}
+ className="w-full py-4 text-sm font-black uppercase tracking-widest border-2 border-border text-card-foreground rounded-xl text-center"
+ onClick={() => setIsMenuOpen(false)}
+ >
  {t('login')}
- </button>
- <button className="w-full py-4 text-sm font-black uppercase tracking-widest bg-card text-card-foreground bg-card text-black rounded-xl">
+ </Link>
+ <Link 
+ href={`/${locale}/auth/register`}
+ className="w-full py-4 text-sm font-black uppercase tracking-widest bg-card text-black rounded-xl text-center"
+ onClick={() => setIsMenuOpen(false)}
+ >
  {t('signup')}
- </button>
+ </Link>
  </div>
  </motion.div>
  )}

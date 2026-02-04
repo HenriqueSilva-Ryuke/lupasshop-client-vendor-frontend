@@ -3,6 +3,9 @@
   "stores": "Stores",
   "products": "Products",
   "about": "About",
+  "marketplace": "Marketplace",
+  "cart": "Cart",
+  "menu": "Menu",
   "login": "Login",
   "signup": "Sign Up",
   "search": "Search products..."

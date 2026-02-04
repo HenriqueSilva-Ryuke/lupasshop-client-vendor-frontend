@@ -1,0 +1,15 @@
+{
+  "dashboard": "Dashboard",
+  "products": "Products",
+  "orders": "Orders",
+  "analytics": "Analytics",
+  "settings": "Settings",
+  "profile": "Profile",
+  "logout": "Logout",
+  "store": "Store",
+  "addProduct": "Add Product",
+  "editProduct": "Edit Product",
+  "deleteProduct": "Delete Product",
+  "sales": "Sales",
+  "revenue": "Revenue"
+}

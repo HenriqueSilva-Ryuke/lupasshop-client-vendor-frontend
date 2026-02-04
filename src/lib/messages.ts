@@ -28,7 +28,10 @@ export async function loadMessages(locale: string) {
     'dashboard',
     'auth',
     'stores',
-    'marketplace'
+    'marketplace',
+    'cart',
+    'user',
+    'seller'
   ];
 
   const messages: Record<string, any> = {};

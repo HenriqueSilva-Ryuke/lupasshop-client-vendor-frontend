@@ -3,6 +3,9 @@
   "stores": "Lojas",
   "products": "Produtos",
   "about": "Sobre",
+  "marketplace": "Loja Online",
+  "cart": "Carrinho",
+  "menu": "Menu",
   "login": "Entrar",
   "signup": "Registrar",
   "search": "Buscar produtos..."

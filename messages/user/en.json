@@ -1,0 +1,11 @@
+{
+  "profile": "Profile",
+  "settings": "Settings",
+  "orders": "Orders",
+  "logout": "Logout",
+  "myAccount": "My Account",
+  "addresses": "Addresses",
+  "paymentMethods": "Payment Methods",
+  "wishlist": "Wishlist",
+  "notifications": "Notifications"
+}

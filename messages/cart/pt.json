@@ -1,0 +1,16 @@
+{
+  "yourCart": "Seu Carrinho",
+  "emptyCart": "Seu carrinho está vazio",
+  "continueShopping": "Continuar Comprando",
+  "remove": "Remover",
+  "quantity": "Quantidade",
+  "price": "Preço",
+  "subtotal": "Subtotal",
+  "total": "Total",
+  "discount": "Desconto",
+  "coupon": "Cupom",
+  "applyCoupon": "Aplicar Cupom",
+  "checkout": "Finalizar Compra",
+  "items": "Itens",
+  "orderSummary": "Resumo do Pedido"
+}
