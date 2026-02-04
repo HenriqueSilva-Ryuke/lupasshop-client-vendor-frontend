@@ -2,7 +2,7 @@
 
 import React, { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'motion/react';
 import {
  Trash2,
@@ -25,6 +25,7 @@ import PageTransition from '@/components/PageTransition';
 
 export default function CartPage() {
  const locale = useLocale();
+ const t = useTranslations('cart');
  const router = useRouter();
  const { items, removeItem, updateQuantity } = useCartStore();
  const [couponCode, setCouponCode] = useState('');
@@ -71,13 +72,13 @@ export default function CartPage() {
  } else if (couponCode.toUpperCase() === 'DESCONTO20') {
  setAppliedCoupon({ code: couponCode, discount: 20 });
  } else {
- alert('Cupom inválido');
+ alert(t('invalidCoupon'));
  }
  };
 
  const handleCheckout = () => {
  if (items.length === 0) {
- alert('Seu carrinho está vazio');
+ alert(t('emptyCartWarning'));
  return;
  }
  router.push(`/${locale}/checkout`);
@@ -90,15 +91,15 @@ export default function CartPage() {
  <Navbar />
  <div className="flex-1 flex flex-col items-center justify-center px-4">
  <ShoppingBag className="w-16 h-16 mb-4" />
- <h1 className="text-3xl font-bold mb-2">Carrinho Vazio</h1>
- <p className="text-gray-600 mb-8">Você ainda não adicionou nenhum produto ao seu carrinho.</p>
+ <h1 className="text-3xl font-bold mb-2">{t('empty')}</h1>
+ <p className="text-gray-600 mb-8">{t('emptyDescription')}</p>
  <Button
  variant="default"
  onClick={() => router.push(`/${locale}/marketplace`)}
  className="px-8 py-3 bg-primary rounded-lg font-bold hover:bg-primary-dark transition-colors flex items-center gap-2"
  >
  <ArrowLeft className="w-4 h-4" />
- Voltar ao Marketplace
+ {t('backToMarketplace')}
  </Button>
  </div>
  <Footer />
@@ -116,9 +117,9 @@ export default function CartPage() {
  {/* Header */}
  <div className="flex flex-wrap justify-between items-end gap-3 pb-6 border-b mb-8">
  <div className="flex min-w-72 flex-col gap-2">
- <h1 className="text-3xl md:text-4xl font-black leading-tight">Carrinho de Compras</h1>
+ <h1 className="text-3xl md:text-4xl font-black leading-tight">{t('title')}</h1>
  <p className="text-gray-500 text-base font-normal">
- Você tem {items.length} itens de {itemsByStore.length} loja{itemsByStore.length > 1 ? 's' : ''} diferente{itemsByStore.length > 1 ? 's' : ''}
+ {t('itemsFrom', { count: items.length, stores: itemsByStore.length, plural: itemsByStore.length > 1 ? 's' : '' })}
  </p>
  </div>
  <Button
@@ -127,7 +128,7 @@ export default function CartPage() {
  className="text-primary font-bold text-sm hover:underline flex items-center gap-1"
  >
  <ArrowLeft className="w-4 h-4" />
- Continuar comprando
+ {t('continueShopping')}
  </Button>
  </div>
 
@@ -148,7 +149,7 @@ export default function CartPage() {
  <h3 className="text-black text-sm font-bold leading-tight uppercase">{storeName}</h3>
  </div>
  <span className="text-xs font-bold bg-green-100 text-green-700 px-2.5 py-1 rounded-full">
- Frete Grátis
+ {t('freeShipping')}
  </span>
  </div>
 
@@ -170,12 +171,12 @@ export default function CartPage() {
  <div>
  <p className="text-black text-base font-bold leading-snug mb-1">{item.name}</p>
  <p className="text-gray-500 text-sm font-normal leading-normal mb-2">
- Quantidade: {item.quantity}
+ {t('quantity')}: {item.quantity}
  </p>
  {item.stockQuantity > 0 ? (
- <p className="text-primary text-xs font-medium">Em estoque</p>
+ <p className="text-primary text-xs font-medium">{t('inStock')}</p>
  ) : (
- <p className="text-destructive text-xs font-medium">Fora de estoque</p>
+ <p className="text-destructive text-xs font-medium">{t('outOfStock')}</p>
  )}
  </div>
  <Button
@@ -184,7 +185,7 @@ export default function CartPage() {
  className="text-red-500 hover:text-red-700 text-sm font-medium flex items-center gap-1 mt-2 w-fit transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
  >
  <Trash2 className="w-4 h-4" />
- Remover
+ {t('remove')}
  </Button>
  </div>
  </div>
@@ -196,7 +197,7 @@ export default function CartPage() {
  </p>
  <div className="flex items-center gap-1 text-black border rounded-lg p-1 bg-white">
  <Button
- variant="icon"
+ variant="ghost"
  onClick={() => handleUpdateQuantity(item.id, item.quantity - 1)}
  className="flex h-7 w-7 items-center justify-center rounded hover:bg-accent100 cursor-pointer transition-colors text-gray-500"
  >
@@ -209,7 +210,7 @@ export default function CartPage() {
  className="text-sm font-semibold w-8 p-0 text-center bg-transparent focus:outline-0 focus:ring-0 border-none text-black"
  />
  <Button
- variant="icon"
+ variant="ghost"
  onClick={() => handleUpdateQuantity(item.id, item.quantity + 1)}
  disabled={item.quantity >= item.stockQuantity}
  className="flex h-7 w-7 items-center justify-center rounded hover:bg-accent100 cursor-pointer transition-colors text-primary disabled:opacity-50"
@@ -224,7 +225,7 @@ export default function CartPage() {
  {/* Store Subtotal */}
  <div className="bg-gray-50 px-6 py-4 border-t flex justify-end items-center gap-3">
  <span className="text-sm text-gray-600">
- Subtotal da loja ({storeItems.length} itens):
+ {t('storeSubtotal', { count: storeItems.length })}:
  </span>
  <span className="text-xl font-bold text-black">R$ {storeTotal.toFixed(2)}</span>
  </div>
@@ -241,17 +242,17 @@ export default function CartPage() {
  animate={{ opacity: 1, y: 0 }}
  className="bg-white rounded-xl p-6 shadow-lg border border-gray-200"
  >
- <h3 className="text-black text-xl font-bold leading-tight mb-6">Resumo do Pedido</h3>
+ <h3 className="text-black text-xl font-bold leading-tight mb-6">{t('orderSummary')}</h3>
 
  {/* Shipping CEP */}
  <div className="mb-6">
- <label className="block text-sm font-bold text-black mb-2">Calcular Frete e Prazos</label>
+ <label className="block text-sm font-bold text-black mb-2">{t('calculateShipping')}</label>
  <div className="flex gap-2">
  <input
  type="text"
  value={shippingCep}
  onChange={(e) => setShippingCep(e.target.value)}
- placeholder="Digite seu CEP"
+ placeholder={t('enterCep')}
  className="flex-1 rounded-lg border bg-white px-3 py-2 text-sm text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
  />
  <motion.button
@@ -259,7 +260,7 @@ export default function CartPage() {
  whileTap={{ scale: 0.98 }}
  className="bg-primary/10 hover:bg-primary/20 text-primary font-bold px-4 py-2 rounded-lg text-sm transition-colors"
  >
- Calcular
+ {t('calculate')}
  </motion.button>
  </div>
  <a
@@ -274,14 +275,14 @@ export default function CartPage() {
 
  {/* Coupon */}
  <div className="mb-6 border-b pb-6">
- <label className="block text-sm font-bold text-black mb-2">Cupom de Desconto</label>
+ <label className="block text-sm font-bold text-black mb-2">{t('couponCode')}</label>
  <div className="flex gap-2">
  <div className="relative flex-1">
  <input
  type="text"
  value={couponCode}
  onChange={(e) => setCouponCode(e.target.value)}
- placeholder="Adicionar código"
+ placeholder={t('enterCoupon')}
  className="w-full rounded-lg border bg-white pl-9 pr-3 py-2 text-sm text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
  />
  </div>
@@ -291,7 +292,7 @@ export default function CartPage() {
  onClick={handleApplyCoupon}
  className="bg-primary/10 hover:bg-primary/20 text-primary font-bold px-4 py-2 rounded-lg text-sm transition-colors"
  >
- Aplicar
+ {t('apply')}
  </motion.button>
  </div>
  {appliedCoupon && (
@@ -302,16 +303,16 @@ export default function CartPage() {
  {/* Price Breakdown */}
  <div className="space-y-3 mb-6">
  <div className="flex justify-between text-sm">
- <span className="text-gray-500">Subtotal ({items.length} itens)</span>
+ <span className="text-gray-500">{t('subtotal')} ({items.length} itens)</span>
  <span className="text-black font-medium">R$ {subtotal.toFixed(2)}</span>
  </div>
  <div className="flex justify-between text-sm">
- <span className="text-gray-500">Frete Total</span>
+ <span className="text-gray-500">{t('shipping')}</span>
  <span className="text-black font-medium">R$ {shippingTotal.toFixed(2)}</span>
  </div>
  {appliedCoupon && (
  <div className="flex justify-between text-sm text-primary">
- <span>Desconto ({appliedCoupon.discount}%)</span>
+ <span>{t('discount')} ({appliedCoupon.discount}%)</span>
  <span className="font-medium">- R$ {discountAmount.toFixed(2)}</span>
  </div>
  )}
@@ -320,11 +321,11 @@ export default function CartPage() {
  {/* Total */}
  <div className="border-t pt-4 mb-6">
  <div className="flex justify-between items-center mb-1">
- <span className="text-lg font-bold text-black">Total</span>
+ <span className="text-lg font-bold text-black">{t('total')}</span>
  <span className="text-2xl font-black text-black">R$ {total.toFixed(2)}</span>
  </div>
  <p className="text-xs text-right">
- em até {installments}x de R$ {installmentValue.toFixed(2)} sem juros
+ {t('installments', { count: installments, value: installmentValue.toFixed(2) })}
  </p>
  </div>
 
@@ -335,7 +336,7 @@ export default function CartPage() {
  onClick={handleCheckout}
  className="w-full bg-primary hover:bg-primary-dark font-bold text-lg py-4 rounded-lg shadow-lg shadow-primary/25 transition-all flex items-center justify-center gap-2 mb-3"
  >
- Finalizar Compra
+ {t('proceedToCheckout')}
  <ArrowRight className="w-5 h-5" />
  </motion.button>
 

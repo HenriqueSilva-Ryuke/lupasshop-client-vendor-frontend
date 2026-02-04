@@ -2,51 +2,52 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { LayoutDashboard, Package, ShoppingCart, Settings, Users, LogOut, PlusCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Button from './ui/Button';
 
-const sellerItems = [
+export function SellerSidebar() {
+ const pathname = usePathname();
+ const locale = useLocale();
+ const t = useTranslations('seller');
+
+ const sellerItems = [
  {
  icon: LayoutDashboard,
- label: 'Visão Geral',
+ label: t('overview'),
  href: '/seller/dashboard',
  },
  {
  icon: Package,
- label: 'Meus Produtos',
+ label: t('myProducts'),
  href: '/seller/products',
  },
  {
  icon: ShoppingCart,
- label: 'Pedidos',
+ label: t('orders'),
  href: '/seller/orders',
  },
  {
  icon: Settings,
- label: 'Configurações da Loja',
+ label: t('storeSettings'),
  href: '/seller/settings',
  },
-];
-
-export function SellerSidebar() {
- const pathname = usePathname();
- const locale = useLocale();
+ ];
 
  return (
  <div className="w-full md:w-64 flex flex-col gap-2 bg-card text-card-foreground border-r border-border h-screen sticky top-0 md:h-auto md:min-h-screen p-4">
 
  <div className="mb-8 px-2 pt-4">
  <h2 className="text-xl font-black tracking-tight text-foreground">Lupa<span className="text-primary">Seller</span></h2>
- <p className="text-xs text-muted-foreground mt-1">Painel do Parceiro</p>
+ <p className="text-xs text-muted-foreground mt-1">{t('sellerPanel')}</p>
  </div>
 
  <div className="px-2 mb-6">
  <Link href={`/${locale}/seller/products/new`}>
  <Button className="w-full justify-start gap-2">
  <PlusCircle className="w-4 h-4" />
- Novo Produto
+ {t('newProduct')}
  </Button>
  </Link>
  </div>

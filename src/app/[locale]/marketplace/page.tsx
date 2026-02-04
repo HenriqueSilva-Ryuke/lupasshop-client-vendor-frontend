@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import NavbarWithSearch from '@/components/NavbarWithSearch';
+import Navbar from '@/components/Navbar';
 import MarketplaceProductListing from '@/components/marketplace/MarketplaceProductListing';
 import JsonLd from '@/components/JsonLd';
 
@@ -14,7 +14,7 @@ export default function MarketplacePage() {
 
  return (
  <>
- <NavbarWithSearch />
+ <Navbar />
  <MarketplaceProductListing />
  <JsonLd data={metaData} />
  </>

@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { usePathname } from 'next/navigation';
 import { Search, Menu, X, User, ShoppingBag } from 'lucide-react';
+import { useCartStore } from '@/stores/cartStore';
 
 export default function Navbar() {
  const t = useTranslations('navbar');
@@ -13,6 +14,7 @@ export default function Navbar() {
  const pathname = usePathname();
  const [isMenuOpen, setIsMenuOpen] = useState(false);
  const [isScrolled, setIsScrolled] = useState(false);
+ const totalItems = useCartStore((state) => state.getTotalItems());
 
  useEffect(() => {
  const handleScroll = () => {
@@ -32,7 +34,7 @@ export default function Navbar() {
 
  const navItems = [
  { href: `/${locale}`, label: t('home') },
- { href: `/${locale}/marketplace`, label: 'Marketplace' },
+ { href: `/${locale}/marketplace`, label: t('marketplace') },
  { href: `/${locale}/about`, label: t('about') }
  ];
 
@@ -82,6 +84,21 @@ export default function Navbar() {
 
  {/* Action Buttons - Outline Style */}
  <div className="hidden md:flex items-center gap-4">
+ <Link 
+ href={`/${locale}/cart`}
+ className="relative p-2 text-muted-foreground hover:text-foreground transition-colors"
+ >
+ <ShoppingBag className="w-5 h-5" />
+ {totalItems > 0 && (
+ <motion.span
+ initial={{ scale: 0 }}
+ animate={{ scale: 1 }}
+ className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center"
+ >
+ {totalItems}
+ </motion.span>
+ )}
+ </Link>
  <button className="text-xs font-black uppercase tracking-widest text-zinc-500 hover:text-foreground transition-colors">
  {t('login')}
  </button>
@@ -114,7 +131,7 @@ export default function Navbar() {
  className="fixed inset-0 z-[60] bg-card flex flex-col p-8 lg:hidden"
  >
  <div className="flex justify-between items-center mb-12">
- <span className="text-2xl font-black tracking-tighter uppercase">Menu</span>
+ <span className="text-2xl font-black tracking-tighter uppercase">{t('menu')}</span>
  <button onClick={() => setIsMenuOpen(false)} className="p-2 border-2 border-border border-border rounded-full">
  <X className="text-card-foreground"/>
  </button>
@@ -131,6 +148,18 @@ export default function Navbar() {
  {item.label}
  </Link>
  ))}
+ <Link
+ href={`/${locale}/cart`}
+ onClick={() => setIsMenuOpen(false)}
+ className="text-4xl font-black uppercase tracking-tighter hover:text-primary transition-colors text-card-foreground flex items-center gap-4"
+ >
+ {t('cart')}
+ {totalItems > 0 && (
+ <span className="bg-primary text-primary-foreground text-lg font-bold rounded-full w-10 h-10 flex items-center justify-center">
+ {totalItems}
+ </span>
+ )}
+ </Link>
  </nav>
 
  <div className="mt-auto flex flex-col gap-4">

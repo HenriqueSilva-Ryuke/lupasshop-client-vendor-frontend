@@ -4,6 +4,9 @@
     "stores": "Stores",
     "products": "Products",
     "about": "About",
+    "marketplace": "Marketplace",
+    "cart": "Cart",
+    "menu": "Menu",
     "login": "Login",
     "signup": "Sign Up",
     "search": "Search products..."
@@ -96,5 +99,54 @@
       "success": "Password reset successfully",
       "error": "Failed to reset password"
     }
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Empty Cart",
+    "emptyDescription": "You haven't added any products to your cart yet.",
+    "backToMarketplace": "Back to Marketplace",
+    "continueShopping": "Continue shopping",
+    "itemsFrom": "You have {count} items from {stores} different store{plural}",
+    "freeShipping": "Free Shipping",
+    "quantity": "Quantity",
+    "inStock": "In stock",
+    "outOfStock": "Out of stock",
+    "remove": "Remove",
+    "storeSubtotal": "Store subtotal ({count} items)",
+    "orderSummary": "Order Summary",
+    "calculateShipping": "Calculate Shipping & Delivery",
+    "enterCep": "Enter ZIP code",
+    "calculate": "Calculate",
+    "couponCode": "Coupon Code",
+    "enterCoupon": "Enter coupon",
+    "apply": "Apply",
+    "couponApplied": "Coupon Applied",
+    "remove": "Remove",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "discount": "Discount",
+    "total": "Total",
+    "installments": "or {count}x of R$ {value} interest-free",
+    "proceedToCheckout": "Proceed to Checkout",
+    "emptyCartWarning": "Your cart is empty",
+    "invalidCoupon": "Invalid coupon"
+  },
+  "user": {
+    "myAccount": "My Account",
+    "myProfile": "My Profile",
+    "myOrders": "My Orders",
+    "addresses": "Addresses",
+    "wishlist": "Wishlist",
+    "cardsPayments": "Cards & Payments",
+    "logout": "Logout"
+  },
+  "seller": {
+    "overview": "Overview",
+    "myProducts": "My Products",
+    "orders": "Orders",
+    "storeSettings": "Store Settings",
+    "newProduct": "New Product",
+    "sellerPanel": "Seller Panel",
+    "logout": "Logout"
   }
 }

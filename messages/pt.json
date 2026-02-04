@@ -4,6 +4,9 @@
     "stores": "Lojas",
     "products": "Produtos",
     "about": "Sobre",
+    "marketplace": "Marketplace",
+    "cart": "Carrinho",
+    "menu": "Menu",
     "login": "Login",
     "signup": "Registrar",
     "search": "Pesquisar produtos..."
@@ -96,5 +99,54 @@
       "success": "Senha redefinida com sucesso",
       "error": "Falha ao redefinir a senha"
     }
+  },
+  "cart": {
+    "title": "Carrinho de Compras",
+    "empty": "Carrinho Vazio",
+    "emptyDescription": "Você ainda não adicionou nenhum produto ao seu carrinho.",
+    "backToMarketplace": "Voltar ao Marketplace",
+    "continueShopping": "Continuar comprando",
+    "itemsFrom": "Você tem {count} itens de {stores} loja{plural} diferente{plural}",
+    "freeShipping": "Frete Grátis",
+    "quantity": "Quantidade",
+    "inStock": "Em estoque",
+    "outOfStock": "Fora de estoque",
+    "remove": "Remover",
+    "storeSubtotal": "Subtotal da loja ({count} itens)",
+    "orderSummary": "Resumo do Pedido",
+    "calculateShipping": "Calcular Frete e Prazos",
+    "enterCep": "Digite o CEP",
+    "calculate": "Calcular",
+    "couponCode": "Código do Cupom",
+    "enterCoupon": "Digite o cupom",
+    "apply": "Aplicar",
+    "couponApplied": "Cupom Aplicado",
+    "remove": "Remover",
+    "subtotal": "Subtotal",
+    "shipping": "Frete",
+    "discount": "Desconto",
+    "total": "Total",
+    "installments": "ou {count}x de R$ {value} sem juros",
+    "proceedToCheckout": "Finalizar Compra",
+    "emptyCartWarning": "Seu carrinho está vazio",
+    "invalidCoupon": "Cupom inválido"
+  },
+  "user": {
+    "myAccount": "Minha Conta",
+    "myProfile": "Meu Perfil",
+    "myOrders": "Meus Pedidos",
+    "addresses": "Endereços",
+    "wishlist": "Lista de Desejos",
+    "cardsPayments": "Cartões e Pagamentos",
+    "logout": "Sair"
+  },
+  "seller": {
+    "overview": "Visão Geral",
+    "myProducts": "Meus Produtos",
+    "orders": "Pedidos",
+    "storeSettings": "Configurações da Loja",
+    "newProduct": "Novo Produto",
+    "sellerPanel": "Painel do Parceiro",
+    "logout": "Sair"
   }
 }

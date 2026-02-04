@@ -2,47 +2,48 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { User, ShoppingBag, MapPin, Heart, CreditCard, LogOut } from 'lucide-react';
 import { cn } from '@/lib/utils';
-
-const sidebarItems = [
- {
- icon: User,
- label: 'Meu Perfil',
- href: '/user/profile',
- },
- {
- icon: ShoppingBag,
- label: 'Meus Pedidos',
- href: '/user/orders',
- },
- {
- icon: MapPin,
- label: 'Endereços',
- href: '/user/addresses',
- },
- {
- icon: Heart,
- label: 'Lista de Desejos',
- href: '/user/wishlist',
- },
- {
- icon: CreditCard,
- label: 'Cartões e Pagamentos',
- href: '/user/finances',
- },
-];
 
 export function UserSidebar() {
  const pathname = usePathname();
  const locale = useLocale();
+ const t = useTranslations('user');
+
+ const sidebarItems = [
+ {
+ icon: User,
+ label: t('myProfile'),
+ href: '/user/profile',
+ },
+ {
+ icon: ShoppingBag,
+ label: t('myOrders'),
+ href: '/user/orders',
+ },
+ {
+ icon: MapPin,
+ label: t('addresses'),
+ href: '/user/addresses',
+ },
+ {
+ icon: Heart,
+ label: t('wishlist'),
+ href: '/user/wishlist',
+ },
+ {
+ icon: CreditCard,
+ label: t('cardsPayments'),
+ href: '/user/finances',
+ },
+ ];
 
  return (
  <div className="w-full md:w-64 flex flex-col gap-2 bg-card rounded-xl shadow-sm border p-4 h-fit">
 
  <div className="mb-4 px-2">
- <h2 className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Minha Conta</h2>
+ <h2 className="text-xs font-bold text-muted-foreground uppercase tracking-wider">{t('myAccount')}</h2>
  </div>
 
  <nav className="flex flex-col gap-1">
@@ -74,7 +75,7 @@ export function UserSidebar() {
  onClick={() => console.log('Logout')}
  >
  <LogOut className="w-4 h-4" />
- Sair
+ {t('logout')}
  </button>
  </nav>
  </div>
