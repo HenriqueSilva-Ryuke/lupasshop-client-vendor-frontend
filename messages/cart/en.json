@@ -1,6 +1,9 @@
 {
   "yourCart": "Your Cart",
   "emptyCart": "Your cart is empty",
+  "empty": "Your cart is empty",
+  "emptyDescription": "You haven't added any products to your cart yet",
+  "backToMarketplace": "Back to Marketplace",
   "continueShopping": "Continue Shopping",
   "remove": "Remove",
   "quantity": "Quantity",

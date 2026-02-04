@@ -1,6 +1,9 @@
 {
   "yourCart": "Seu Carrinho",
   "emptyCart": "Seu carrinho está vazio",
+  "empty": "Seu carrinho está vazio",
+  "emptyDescription": "Você ainda não adicionou nenhum produto ao seu carrinho",
+  "backToMarketplace": "Voltar para o Marketplace",
   "continueShopping": "Continuar Comprando",
   "remove": "Remover",
   "quantity": "Quantidade",
