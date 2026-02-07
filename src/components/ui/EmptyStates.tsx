@@ -2,10 +2,10 @@
 
 import React from 'react';
 import { ShoppingCart, Package, Heart, Store, Search, FileText, CreditCard, MapPin } from 'lucide-react';
-import { EmptyState } from './ErrorIllustration';
 import { Button } from '@lupa/design-system';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
+import { EmptyState } from '../ErrorIllustration';
 
 /**
  * Empty state illustrations for different contexts

@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { usePathname } from 'next/navigation';
 import { Search, Menu, X, User, ShoppingBag } from 'lucide-react';
 import { useCartStore } from '@/stores/cartStore';
+import { useAuth } from '@/hooks/useAuth';
 
 export default function Navbar() {
  const t = useTranslations('navbar');
@@ -15,6 +16,20 @@ export default function Navbar() {
  const [isMenuOpen, setIsMenuOpen] = useState(false);
  const [isScrolled, setIsScrolled] = useState(false);
  const totalItems = useCartStore((state) => state.getTotalItems());
+ const { user, isAuthenticated } = useAuth();
+
+ const getDashboardUrl = () => {
+  if (!user) return `/${locale}/user/dashboard`;
+  switch (user.role) {
+   case 'SELLER':
+    return `/${locale}/seller/dashboard`;
+   case 'ADMIN':
+    return '/admin';
+   case 'BUYER':
+   default:
+    return `/${locale}/user/dashboard`;
+  }
+ };
 
  useEffect(() => {
  const handleScroll = () => {
@@ -99,18 +114,31 @@ export default function Navbar() {
  </motion.span>
  )}
  </Link>
- <Link 
- href={`/${locale}/auth/login`}
- className="text-xs font-black uppercase tracking-widest text-zinc-500 hover:text-foreground transition-colors"
- >
- {t('login')}
- </Link>
- <Link 
- href={`/${locale}/auth/register`}
- className="px-5 py-2 text-xs font-black uppercase tracking-widest border-2 border-border text-card-foreground rounded-lg hover:bg-card hover:text-primary transition-all inline-block"
- >
- {t('signup')}
- </Link>
+ 
+ {isAuthenticated && user ? (
+  <Link
+   href={getDashboardUrl()}
+   className="flex items-center gap-2 px-4 py-2 text-xs font-black uppercase tracking-widest text-foreground hover:text-primary transition-colors border-2 border-border rounded-lg hover:bg-card"
+  >
+   <User className="w-4 h-4" />
+   <span className="max-w-[120px] truncate">{user.fullName || user.email}</span>
+  </Link>
+ ) : (
+  <>
+   <Link 
+    href={`/${locale}/auth/login`}
+    className="text-xs font-black uppercase tracking-widest text-zinc-500 hover:text-foreground transition-colors"
+   >
+    {t('login')}
+   </Link>
+   <Link 
+    href={`/${locale}/auth/register`}
+    className="px-5 py-2 text-xs font-black uppercase tracking-widest border-2 border-border text-card-foreground rounded-lg hover:bg-card hover:text-primary transition-all inline-block"
+   >
+    {t('signup')}
+   </Link>
+  </>
+ )}
  </div>
 
  {/* Mobile Toggle */}
@@ -165,20 +193,33 @@ export default function Navbar() {
  </nav>
 
  <div className="mt-auto flex flex-col gap-4">
- <Link 
- href={`/${locale}/auth/login`}
- className="w-full py-4 text-sm font-black uppercase tracking-widest border-2 border-border text-card-foreground rounded-xl text-center"
- onClick={() => setIsMenuOpen(false)}
- >
- {t('login')}
- </Link>
- <Link 
- href={`/${locale}/auth/register`}
- className="w-full py-4 text-sm font-black uppercase tracking-widest bg-card text-black rounded-xl text-center"
- onClick={() => setIsMenuOpen(false)}
- >
- {t('signup')}
- </Link>
+ {isAuthenticated && user ? (
+  <Link 
+   href={getDashboardUrl()}
+   className="w-full py-4 text-sm font-black uppercase tracking-widest border-2 border-primary bg-primary/10 text-primary rounded-xl text-center flex items-center justify-center gap-3"
+   onClick={() => setIsMenuOpen(false)}
+  >
+   <User className="w-5 h-5" />
+   <span className="truncate max-w-[200px]">{user.fullName || user.email}</span>
+  </Link>
+ ) : (
+  <>
+   <Link 
+    href={`/${locale}/auth/login`}
+    className="w-full py-4 text-sm font-black uppercase tracking-widest border-2 border-border text-card-foreground rounded-xl text-center"
+    onClick={() => setIsMenuOpen(false)}
+   >
+    {t('login')}
+   </Link>
+   <Link 
+    href={`/${locale}/auth/register`}
+    className="w-full py-4 text-sm font-black uppercase tracking-widest bg-card text-black rounded-xl text-center"
+    onClick={() => setIsMenuOpen(false)}
+   >
+    {t('signup')}
+   </Link>
+  </>
+ )}
  </div>
  </motion.div>
  )}
