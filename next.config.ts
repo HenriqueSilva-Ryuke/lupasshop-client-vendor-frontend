@@ -5,10 +5,33 @@ import { nextConfigRedirects } from './src/config/redirects';
 
 const withNextIntl = createNextIntlPlugin();
 
+const ADMIN_URL = process.env.ADMIN_URL || 'http://localhost:3002';
+
 const nextConfig: NextConfig = {
   // Security
   productionBrowserSourceMaps: false,
   enablePrerenderSourceMaps: false,
+
+  // =============================================
+  // MULTI-ZONE: Admin backoffice runs as separate zone
+  // =============================================
+  async rewrites() {
+    return {
+      beforeFiles: [
+        // Proxy /admin/* to the admin-backoffice app
+        {
+          source: '/admin',
+          destination: `${ADMIN_URL}/admin`,
+        },
+        {
+          source: '/admin/:path*',
+          destination: `${ADMIN_URL}/admin/:path*`,
+        },
+      ],
+      afterFiles: [],
+      fallback: [],
+    };
+  },
   
   // Headers de segurança
   async headers() {
@@ -44,6 +67,9 @@ const nextConfig: NextConfig = {
 
   // Compressão
   compress: true,
+
+  // Transpile shared packages
+  transpilePackages: ['@lupa/design-system'],
 
   // Webpack otimização
   webpack: (config, { dev, isServer }) => {

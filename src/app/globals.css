@@ -1,122 +1,55 @@
 @import "tailwindcss";
+@import "@lupa/design-system/styles";
 
-@theme {
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
+/* ==========================================================================
+   FRONTPLATAFORM — Extends shared design system
+   Backward-compat layer: maps old variable names to new --lupa- prefixed ones
+   ========================================================================== */
 
-  --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
-  
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
-
-  @keyframes accordion-down {
-    from { height: 0; }
-    to { height: var(--radix-accordion-content-height); }
-  }
-  @keyframes accordion-up {
-    from { height: var(--radix-accordion-content-height); }
-    to { height: 0; }
-  }
-}
-
+/* Legacy variable mappings (for existing components not yet migrated) */
 :root {
-  --background: #ffffff;
-  --foreground: #09090b;
-
-  /* Primary: Violet/Deep Purple */
-  --primary: #412778;
-  --primary-foreground: #ffffff;
-
-  /* Secondary: Neutral slate */
-  --secondary: #f4f4f5;
-  --secondary-foreground: #18181b;
-
-  /* Muted: Lighter gray */
-  --muted: #f4f4f5;
-  --muted-foreground: #71717a;
-
-  /* Accent: For hover states, list items */
-  --accent: #f4f4f5;
-  --accent-foreground: #18181b;
-
-  /* Destructive */
-  --destructive: #ef4444;
-  --destructive-foreground: #ffffff;
-
-  /* Borders & Inputs */
-  --border: #e4e4e7;
-  --input: #e4e4e7;
-  --ring: #412778;
-
-  /* Cards & Popovers */
-  --card: #ffffff;
-  --card-foreground: #09090b;
-  --popover: #ffffff;
-  --popover-foreground: #09090b;
-
-  --radius: 0.5rem;
+  --background: var(--lupa-background);
+  --foreground: var(--lupa-foreground);
+  --primary: var(--lupa-primary);
+  --primary-foreground: var(--lupa-primary-foreground);
+  --secondary: var(--lupa-secondary);
+  --secondary-foreground: var(--lupa-secondary-foreground);
+  --muted: var(--lupa-muted);
+  --muted-foreground: var(--lupa-muted-foreground);
+  --accent: var(--lupa-accent);
+  --accent-foreground: var(--lupa-accent-foreground);
+  --destructive: var(--lupa-destructive);
+  --destructive-foreground: var(--lupa-destructive-foreground);
+  --border: var(--lupa-border);
+  --input: var(--lupa-input);
+  --ring: var(--lupa-ring);
+  --card: var(--lupa-card);
+  --card-foreground: var(--lupa-card-foreground);
+  --popover: var(--lupa-popover);
+  --popover-foreground: var(--lupa-popover-foreground);
+  --radius: var(--lupa-radius);
 }
 
 .dark {
-  --background: #09090b;
-  --foreground: #fafafa;
-
-  --primary: #5a3491;
-  --primary-foreground: #ffffff;
-
-  --secondary: #27272a;
-  --secondary-foreground: #fafafa;
-
-  --muted: #27272a;
-  --muted-foreground: #a1a1aa;
-
-  --accent: #27272a;
-  --accent-foreground: #fafafa;
-
-  --destructive: #7f1d1d;
-  --destructive-foreground: #fafafa;
-
-  --border: #27272a;
-  --input: #27272a;
-  --ring: #5a3491;
-
-  --card: #09090b;
-  --card-foreground: #fafafa;
-  --popover: #09090b;
-  --popover-foreground: #fafafa;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Hide scrollbar while allowing scroll */
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  --background: var(--lupa-background);
+  --foreground: var(--lupa-foreground);
+  --primary: var(--lupa-primary);
+  --primary-foreground: var(--lupa-primary-foreground);
+  --secondary: var(--lupa-secondary);
+  --secondary-foreground: var(--lupa-secondary-foreground);
+  --muted: var(--lupa-muted);
+  --muted-foreground: var(--lupa-muted-foreground);
+  --accent: var(--lupa-accent);
+  --accent-foreground: var(--lupa-accent-foreground);
+  --destructive: var(--lupa-destructive);
+  --destructive-foreground: var(--lupa-destructive-foreground);
+  --border: var(--lupa-border);
+  --input: var(--lupa-input);
+  --ring: var(--lupa-ring);
+  --card: var(--lupa-card);
+  --card-foreground: var(--lupa-card-foreground);
+  --popover: var(--lupa-popover);
+  --popover-foreground: var(--lupa-popover-foreground);
 }
 
 .scrollbar-hide::-webkit-scrollbar {
