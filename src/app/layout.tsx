@@ -4,7 +4,6 @@ import { DEFAULT_SEO } from "@/lib/seo";
 import { generateOrganizationSchema, generateWebsiteSchema } from "@/lib/structured-data";
 import JsonLd from "@/components/JsonLd";
 import { ThirdPartyScripts } from "@/components/ThirdPartyScripts";
-import { ClientProviders } from "@/components/ClientProviders";
 import { inter, roboto } from "@/config/fonts";
 
 // Disable static rendering
@@ -95,9 +94,7 @@ export default function RootLayout({
  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
  </head>
  <body className="antialiased">
- <ClientProviders>
  {children}
- </ClientProviders>
  <ThirdPartyScripts
  googleAnalyticsId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}
  facebookPixelId={process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID}

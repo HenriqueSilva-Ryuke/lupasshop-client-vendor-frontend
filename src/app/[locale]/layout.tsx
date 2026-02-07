@@ -5,6 +5,7 @@ import PageTransition from '../../components/PageTransition';
 import { DEFAULT_SEO } from '@/lib/seo';
 import JsonLd from '@/components/JsonLd';
 import { generateBreadcrumbSchema } from '@/lib/structured-data';
+import { ClientProviders } from '@/components/ClientProviders';
 
 // Disable static rendering
 export const dynamic = 'force-dynamic';
@@ -70,11 +71,13 @@ export default async function LocaleLayout({
  ]);
 
  return (
+ <ClientProviders>
  <IntlProviderClient locale={locale || 'en'} messages={messages}>
  <JsonLd data={breadcrumbSchema} />
  <PageTransition>
  {children}
  </PageTransition>
  </IntlProviderClient>
+ </ClientProviders>
  );
 }
