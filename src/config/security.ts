@@ -31,7 +31,7 @@ export const cspConfig = {
   ],
   'connect-src': [
     "'self'",
-    process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000',
+    process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000',
     'https://www.google-analytics.com',
   ],
   'frame-src': [

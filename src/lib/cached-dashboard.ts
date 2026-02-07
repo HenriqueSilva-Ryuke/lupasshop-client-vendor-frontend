@@ -19,7 +19,7 @@ export interface RecentOrder {
 const GRAPHQL_URL =
   process.env.NEXT_PUBLIC_GRAPHQL_HTTP_URL ||
   process.env.NEXT_PUBLIC_GRAPHQL_URL ||
-  'http://localhost:4000/graphql';
+  'http://localhost:3000/graphql';
 
 async function fetchGraphQL<T>(query: string, variables?: Record<string, any>): Promise<T> {
   const response = await fetch(GRAPHQL_URL, {
