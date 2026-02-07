@@ -1,7 +1,9 @@
 /**
  * Review hooks — re-exported from @lupa/api-client
  */
-export { useReviews } from '@lupa/api-client/hooks';
+import { useReviews } from '@lupa/api-client/hooks';
+
+export { useReviews };
 
 // Legacy aliases
 export const useReviewsQuery = useReviews;

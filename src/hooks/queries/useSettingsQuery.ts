@@ -1,7 +1,9 @@
 /**
  * Settings hooks — re-exported from @lupa/api-client
  */
-export { useCurrentUser } from '@lupa/api-client/hooks';
+import { useCurrentUser } from '@lupa/api-client/hooks';
+
+export { useCurrentUser };
 
 // Legacy alias
 export const useUserProfileQuery = useCurrentUser;

@@ -1,11 +1,9 @@
 /**
  * Product hooks — re-exported from @lupa/api-client
  */
-export {
-  useProducts,
-  useProduct,
-  useSellerProducts,
-} from '@lupa/api-client/hooks';
+import { useProducts, useProduct, useSellerProducts } from '@lupa/api-client/hooks';
+
+export { useProducts, useProduct, useSellerProducts };
 
 // Legacy aliases
 export const useProductsQuery = useProducts;

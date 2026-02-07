@@ -1,7 +1,9 @@
 /**
  * Store hooks — re-exported from @lupa/api-client
  */
-export { useSellerStore, useStore, useStores } from '@lupa/api-client/hooks';
+import { useSellerStore, useStore, useStores } from '@lupa/api-client/hooks';
+
+export { useSellerStore, useStore, useStores };
 
 // Legacy aliases
 export const useMyShopsQuery = useSellerStore;

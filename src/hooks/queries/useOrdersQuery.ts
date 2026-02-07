@@ -1,7 +1,9 @@
 /**
  * Order hooks — re-exported from @lupa/api-client
  */
-export { useOrders, useOrder } from '@lupa/api-client/hooks';
+import { useOrders, useOrder } from '@lupa/api-client/hooks';
+
+export { useOrders, useOrder };
 
 // Legacy aliases
 export const useOrdersQuery = useOrders;
