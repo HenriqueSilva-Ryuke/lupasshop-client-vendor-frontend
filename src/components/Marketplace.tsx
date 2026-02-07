@@ -158,7 +158,7 @@ export default function Marketplace() {
  <Link href="#" className="block text-foreground">Home</Link>
  <Link href="#" className="block text-foreground">Products</Link>
  <Link href="#" className="block text-foreground">Stores</Link>
- <Link href="/dashboard/auth/login" className="block text-primary font-medium">Login</Link>
+ <Link href="/auth/login" className="block text-primary font-medium">Login</Link>
  </div>
  </div>
  )}

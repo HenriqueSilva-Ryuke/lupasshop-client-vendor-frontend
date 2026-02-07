@@ -1,11 +1,14 @@
 {
   "profile": "Profile",
+  "myProfile": "My Profile",
   "settings": "Settings",
   "orders": "Orders",
+  "myOrders": "My Orders",
   "logout": "Logout",
   "myAccount": "My Account",
   "addresses": "Addresses",
   "paymentMethods": "Payment Methods",
+  "cardsPayments": "Cards & Payments",
   "wishlist": "Wishlist",
   "notifications": "Notifications"
 }

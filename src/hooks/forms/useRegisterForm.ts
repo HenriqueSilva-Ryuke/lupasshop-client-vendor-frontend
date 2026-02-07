@@ -88,7 +88,7 @@ export function useRegisterForm() {
 
       // Redirecionar para dashboard
       setTimeout(() => {
-        router.push(`/${locale}/dashboard`);
+        router.push(`/${locale}/user`);
       }, 500);
     },
     onError: (err) => {

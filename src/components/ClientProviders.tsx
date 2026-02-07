@@ -1,7 +1,7 @@
 'use client';
 
 import { ApiProvider } from "@lupa/api-client/provider";
-import { QueryProvider, queryClient } from "@/providers/QueryProvider";
+import { queryClient } from "@/providers/QueryProvider";
 
 const apiConfig = {
   httpUrl: process.env.NEXT_PUBLIC_GRAPHQL_URL || 'http://localhost:3000/graphql',
@@ -15,10 +15,8 @@ const apiConfig = {
 
 export function ClientProviders({ children }: { children: React.ReactNode }) {
   return (
-    <QueryProvider>
-      <ApiProvider config={apiConfig} queryClient={queryClient}>
-        {children}
-      </ApiProvider>
-    </QueryProvider>
+    <ApiProvider config={apiConfig} queryClient={queryClient}>
+      {children}
+    </ApiProvider>
   );
 }
