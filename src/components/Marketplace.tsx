@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Heart, ShoppingCart, Search, Menu, X, Star, MapPin, TrendingUp, Package, Loader } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -41,6 +41,7 @@ interface Category {
 export default function Marketplace() {
  const tHome = useTranslations('home');
  const tMarket = useTranslations('marketplace');
+ const locale = useLocale();
  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
  const [searchQuery, setSearchQuery] = useState('');
  const [favorites, setFavorites] = useState<Set<string>>(new Set());
@@ -135,7 +136,7 @@ export default function Marketplace() {
  0
  </span>
  </Link>
- <Link href="/auth/login" className="px-4 py-2 text-primary border border-primary rounded-lg hover:bg-primary hover:text-primary-foreground transition font-medium">
+ <Link href="/${locale}/auth/login" className="px-4 py-2 text-primary border border-primary rounded-lg hover:bg-primary hover:text-primary-foreground transition font-medium">
  {tMarket('navbar.login')}
  </Link>
  </div>
@@ -158,7 +159,7 @@ export default function Marketplace() {
  <Link href="#" className="block text-foreground">Home</Link>
  <Link href="#" className="block text-foreground">Products</Link>
  <Link href="#" className="block text-foreground">Stores</Link>
- <Link href="/auth/login" className="block text-primary font-medium">Login</Link>
+ <Link href="/${locale}/auth/login" className="block text-primary font-medium">Login</Link>
  </div>
  </div>
  )}

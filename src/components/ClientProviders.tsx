@@ -8,7 +8,9 @@ const apiConfig = {
   wsUrl: process.env.NEXT_PUBLIC_GRAPHQL_WS_URL || 'ws://localhost:3000/graphql',
   onAuthError: () => {
     if (typeof window !== 'undefined' && !window.location.pathname.includes('/auth/login')) {
-      window.location.href = '/auth/login';
+      // Extract locale from current path or default to 'en'
+      const locale = window.location.pathname.match(/^\/(en|pt)\//)?.[1] || 'en';
+      window.location.href = `/${locale}/auth/login`;
     }
   },
 };

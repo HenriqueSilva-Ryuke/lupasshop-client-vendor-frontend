@@ -70,13 +70,7 @@ export function useSellerLoginForm() {
     onSuccess: (data, variables) => {
       setError(null);
       
-      // Salvar token
-      if (data.token) {
-        setToken(data.token);
-        localStorage.setItem('authToken', data.token);
-      }
-
-      // Salvar dados do usuário
+      // Salvar dados do usuário (token is in HTTP-only cookie now)
       if (data.user) {
         setUser({
           id: data.user.id,

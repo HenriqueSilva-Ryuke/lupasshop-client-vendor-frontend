@@ -80,11 +80,7 @@ export function useSellerMultiStepRegisterForm() {
     onSuccess: (data) => {
       setError(null);
       
-      if (data.token) {
-        setToken(data.token);
-        localStorage.setItem('authToken', data.token);
-      }
-
+      // Salvar dados do usuário (token is in HTTP-only cookie now)
       if (data.user) {
         setUser({
           id: data.user.id,
