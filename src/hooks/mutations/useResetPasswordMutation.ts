@@ -1,22 +1,11 @@
 'use client';
-
 import { useMutation } from '@tanstack/react-query';
-import { authService, type ResetPasswordRequest } from '@/services/auth';
-import { useTranslations } from 'next-intl';
 
+// TODO: Implement when backend supports resetPassword mutation
 export function useResetPasswordMutation() {
-  const t = useTranslations('auth');
-
   return useMutation({
-    mutationFn: async (data: ResetPasswordRequest) => {
-      const response = await authService.resetPassword(data);
-      if (!response) {
-        throw new Error(t('errors.resetPasswordFailed') || 'Failed to reset password');
-      }
-      return response;
+    mutationFn: async (_data: { token: string; password: string }) => {
+      throw new Error('Not implemented');
     },
-    onError: (error: Error) => {
-      console.error('Reset password mutation error:', error);
-    }
   });
 }

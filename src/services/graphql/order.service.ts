@@ -1,76 +1,31 @@
-// src/services/graphql/order.service.ts
-import { apolloClient } from '@/lib/graphql-client';
-import { GET_ORDER, LIST_ORDERS } from '@/graphql/queries';
-import { CREATE_ORDER, CREATE_ORDER_ITEM, UPDATE_ORDER_STATUS } from '@/graphql/mutations';
-import type { Order, OrderItem, CreateOrderInput, CreateOrderItemInput, UpdateOrderStatusInput } from '@/graphql/types';
+/**
+ * @deprecated — Use hooks from '@lupa/api-client/hooks' instead
+ */
+import { getApiClient } from '@lupa/api-client/client';
+import { GET_ORDER, LIST_ORDERS } from '@lupa/api-client/queries';
+import { CREATE_ORDER, CREATE_ORDER_ITEM, UPDATE_ORDER_STATUS } from '@lupa/api-client/mutations';
+import type { Order, CreateOrderInput, CreateOrderItemInput, UpdateOrderStatusInput } from '@lupa/types';
 
 export const orderService = {
-    async getOrder(id: string): Promise<Order | null> {
-        try {
-            const result = await apolloClient.query<{ getOrder: Order }>({
-                query: GET_ORDER,
-                variables: { id },
-                fetchPolicy: 'network-only',
-            });
-            return result?.data?.getOrder ?? null;
-        } catch (error) {
-            console.error('GraphQL getOrder error:', error);
-            return null;
-        }
-    },
-
-    async listOrders(filters: { userId?: string; storeId?: string; status?: string } = {}): Promise<Order[] | null> {
-        try {
-            const result = await apolloClient.query<{ listOrders: Order[] }>({
-                query: LIST_ORDERS,
-                variables: filters,
-                fetchPolicy: 'network-only',
-            });
-            return result?.data?.listOrders ?? null;
-        } catch (error) {
-            console.error('GraphQL listOrders error:', error);
-            return null;
-        }
-    },
-
-    async createOrder(input: CreateOrderInput): Promise<Order | null> {
-        try {
-            const result = await apolloClient.mutate<{ createOrder: Order }>({
-                mutation: CREATE_ORDER,
-                variables: { input },
-            });
-            return result?.data?.createOrder ?? null;
-        } catch (error) {
-            console.error('GraphQL createOrder error:', error);
-            return null;
-        }
-    },
-
-    async createOrderItem(input: CreateOrderItemInput): Promise<any | null> {
-        try {
-            const result = await apolloClient.mutate<{ createOrderItem: OrderItem }>({
-                mutation: CREATE_ORDER_ITEM,
-                variables: { input },
-            });
-            return result?.data?.createOrderItem ?? null;
-        } catch (error) {
-            console.error('GraphQL createOrderItem error:', error);
-            return null;
-        }
-    },
-
-    async updateOrderStatus(id: string, input: UpdateOrderStatusInput): Promise<any | null> {
-        try {
-            const result = await apolloClient.mutate<{ updateOrderStatus: Order }>({
-                mutation: UPDATE_ORDER_STATUS,
-                variables: { id, input },
-            });
-            return result?.data?.updateOrderStatus ?? null;
-        } catch (error) {
-            console.error('GraphQL updateOrderStatus error:', error);
-            return null;
-        }
-    },
+  async getOrder(id: string) {
+    const { data } = await getApiClient().query<{ getOrder: Order }>({ query: GET_ORDER, variables: { id } });
+    return data?.getOrder ?? null;
+  },
+  async listOrders(filters = {}) {
+    const { data } = await getApiClient().query<{ listOrders: Order[] }>({ query: LIST_ORDERS, variables: filters });
+    return data?.listOrders ?? null;
+  },
+  async createOrder(input: CreateOrderInput) {
+    const { data } = await getApiClient().mutate<{ createOrder: Order }>({ mutation: CREATE_ORDER, variables: { input } });
+    return data?.createOrder ?? null;
+  },
+  async createOrderItem(input: CreateOrderItemInput) {
+    const { data } = await getApiClient().mutate<{ createOrderItem: unknown }>({ mutation: CREATE_ORDER_ITEM, variables: { input } });
+    return data?.createOrderItem ?? null;
+  },
+  async updateOrderStatus(id: string, input: UpdateOrderStatusInput) {
+    const { data } = await getApiClient().mutate<{ updateOrderStatus: Order }>({ mutation: UPDATE_ORDER_STATUS, variables: { id, input } });
+    return data?.updateOrderStatus ?? null;
+  },
 };
-
 export type { Order, CreateOrderInput, CreateOrderItemInput, UpdateOrderStatusInput };

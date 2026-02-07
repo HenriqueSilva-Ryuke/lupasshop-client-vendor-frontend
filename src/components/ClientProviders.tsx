@@ -1,18 +1,21 @@
 'use client';
 
-import { QueryProvider } from "@/providers/QueryProvider";
-import { ApolloProvider } from "@apollo/client/react";
-import { apolloClient } from "@/lib/graphql-client";
-import { AuthInitializer } from "@/components/AuthInitializer";
+import { ApiProvider } from "@lupa/api-client/provider";
+
+const apiConfig = {
+  httpUrl: process.env.NEXT_PUBLIC_GRAPHQL_URL || 'http://localhost:4000/graphql',
+  wsUrl: process.env.NEXT_PUBLIC_GRAPHQL_WS_URL || 'ws://localhost:4000/graphql',
+  onAuthError: () => {
+    if (typeof window !== 'undefined' && !window.location.pathname.includes('/auth/login')) {
+      window.location.href = '/auth/login';
+    }
+  },
+};
 
 export function ClientProviders({ children }: { children: React.ReactNode }) {
- return (
- <ApolloProvider client={apolloClient}>
- <QueryProvider>
- <AuthInitializer>
- {children}
- </AuthInitializer>
- </QueryProvider>
- </ApolloProvider>
- );
+  return (
+    <ApiProvider config={apiConfig}>
+      {children}
+    </ApiProvider>
+  );
 }

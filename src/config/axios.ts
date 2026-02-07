@@ -1,47 +1,26 @@
-import axios, { AxiosInstance, AxiosError, InternalAxiosRequestConfig } from 'axios';
-import { API_BASE_URL } from './api';
-import { useAuthStore } from '@/stores/authStore';
+/**
+ * @deprecated — Axios has been removed. Use @lupa/api-client instead.
+ *
+ * All API calls now go through GraphQL via the unified Apollo client.
+ * Import hooks from '@lupa/api-client/hooks' for data fetching.
+ *
+ * This file is kept only for backward compatibility of imports.
+ * It exports a minimal stub that will throw errors if used.
+ */
 
-// Create axios instance with base configuration
-const apiClient: AxiosInstance = axios.create({
-  baseURL: API_BASE_URL,
-  timeout: 10000,
-  headers: {
-    'Content-Type': 'application/json'
-  }
-});
+const deprecationWarning = () => {
+  console.warn(
+    '[@lupa/api-client] Axios has been removed. ' +
+    'Use hooks from @lupa/api-client/hooks instead of direct API calls.'
+  );
+};
 
-// Request interceptor to add auth token
-apiClient.interceptors.request.use(
-  (config: InternalAxiosRequestConfig) => {
-    const { token } = useAuthStore.getState();
-    
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    
-    return config;
-  },
-  (error: AxiosError) => {
-    return Promise.reject(error);
-  }
-);
-
-// Response interceptor for error handling
-apiClient.interceptors.response.use(
-  (response) => response,
-  (error: AxiosError) => {
-    // If token is expired or unauthorized, clear auth state
-    if (error.response?.status === 401) {
-      useAuthStore.getState().logout();
-      // Redirect to login if not already there
-      if (typeof window !== 'undefined' && !window.location.pathname.includes('/auth/login')) {
-        window.location.href = '/auth/login';
-      }
-    }
-    
-    return Promise.reject(error);
-  }
-);
+const apiClient = {
+  get: () => { deprecationWarning(); return Promise.reject(new Error('Axios removed')); },
+  post: () => { deprecationWarning(); return Promise.reject(new Error('Axios removed')); },
+  put: () => { deprecationWarning(); return Promise.reject(new Error('Axios removed')); },
+  patch: () => { deprecationWarning(); return Promise.reject(new Error('Axios removed')); },
+  delete: () => { deprecationWarning(); return Promise.reject(new Error('Axios removed')); },
+} as any;
 
 export default apiClient;

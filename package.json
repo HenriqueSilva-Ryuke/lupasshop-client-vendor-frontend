@@ -10,11 +10,12 @@
   "dependencies": {
     "@apollo/client": "^4.0.9",
     "@hookform/resolvers": "^5.2.2",
+    "@lupa/api-client": "workspace:*",
     "@lupa/design-system": "workspace:*",
+    "@lupa/types": "workspace:*",
     "@radix-ui/react-checkbox": "^1.3.3",
     "@radix-ui/react-slot": "^1.2.4",
     "@tanstack/react-query": "^5.90.6",
-    "axios": "^1.13.1",
     "clsx": "^2.1.1",
     "graphql": "^16.12.0",
     "graphql-ws": "^6.0.6",
