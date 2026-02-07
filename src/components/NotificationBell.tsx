@@ -173,7 +173,7 @@ function NotificationItem({
  const content = (
  <div
  className={`p-4 hover:bg-muted cursor-pointer transition-colors ${
- !notification.read ? 'bg-primary50 : ''
+ !notification.read ? 'bg-primary/50' : ''
  }`}
  onClick={onClick}
  >
@@ -184,7 +184,7 @@ function NotificationItem({
  {notification.title}
  </p>
  {!notification.read && (
- <span className="flex-shrink-0 w-2 h-2 bg-primary500 rounded-full" />
+ <span className="flex-shrink-0 w-2 h-2 bg-primary/50 rounded-full" />
  )}
  </div>
  <p className="text-sm text-muted-foreground mt-1">

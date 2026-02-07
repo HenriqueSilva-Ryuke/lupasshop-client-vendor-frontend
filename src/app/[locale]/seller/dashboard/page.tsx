@@ -121,7 +121,3 @@ function StatCard({ title, value, trend, icon: Icon }: any) {
  </Card>
  );
 }
- </div>
- </div>
- );
-}
