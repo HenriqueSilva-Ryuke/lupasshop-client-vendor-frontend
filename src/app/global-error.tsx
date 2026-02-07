@@ -1,7 +1,37 @@
 'use client';
 
 import { useEffect } from 'react';
-import { Button } from '@lupa/design-system';
+
+/**
+ * Inline SVG illustration for global-error — can't import components here
+ * because global-error.tsx replaces the entire <html>, so no providers or
+ * design-system context is available.
+ */
+function InlineErrorIllustration() {
+  return (
+    <svg viewBox="0 0 280 220" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-56 h-auto mx-auto" aria-hidden="true">
+      <ellipse cx="140" cy="180" rx="120" ry="28" fill="#f5f0ff" />
+      <rect x="88" y="80" width="104" height="100" rx="12" fill="#ede5ff" stroke="#c4a8ff" strokeWidth="2.5" />
+      <path d="M118 80V64a22 22 0 0 1 44 0v16" stroke="#a775ff" strokeWidth="3" strokeLinecap="round" fill="none" />
+      <circle cx="124" cy="120" r="4" fill="#8b46f5" />
+      <circle cx="156" cy="120" r="4" fill="#8b46f5" />
+      <path d="M126 146c4-6 18-6 22 0" stroke="#8b46f5" strokeWidth="2.5" strokeLinecap="round" fill="none" transform="rotate(180 137 146)" />
+      <g transform="translate(170, 30) rotate(25)">
+        <circle cx="0" cy="0" r="28" stroke="#412778" strokeWidth="4" fill="#f5f0ff" fillOpacity="0.7" />
+        <path d="M-6 -12 L2 0 L-4 10" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" fill="none" />
+        <path d="M2 0 L10 -4" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" fill="none" />
+        <line x1="20" y1="20" x2="40" y2="40" stroke="#412778" strokeWidth="5" strokeLinecap="round" />
+      </g>
+      <circle cx="60" cy="50" r="16" fill="#ef4444" opacity="0.12" />
+      <circle cx="60" cy="50" r="12" fill="#ef4444" opacity="0.2" />
+      <text x="60" y="56" textAnchor="middle" fontSize="18" fontWeight="bold" fill="#ef4444">!</text>
+      <circle cx="50" cy="160" r="3" fill="#ddd0ff" />
+      <circle cx="230" cy="150" r="4" fill="#ddd0ff" />
+      <circle cx="210" cy="170" r="2.5" fill="#c4a8ff" />
+      <circle cx="70" cy="175" r="2" fill="#c4a8ff" />
+    </svg>
+  );
+}
 
 export default function GlobalError({
   error,
@@ -14,82 +44,92 @@ export default function GlobalError({
     console.error('Global error:', error);
   }, [error]);
 
+  const isDev = process.env.NODE_ENV === 'development';
+
   return (
     <html>
-      <body>
-        <div className="min-h-screen flex items-center justify-center bg-background px-4">
-          <div className="max-w-md w-full space-y-6 text-center">
-            {/* Icon */}
-            <div className="flex justify-center">
-              <div className="rounded-full bg-destructive/10 p-4">
-                <svg
-                  className="h-12 w-12 text-destructive"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                  />
-                </svg>
-              </div>
-            </div>
+      <body style={{ margin: 0, fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}>
+        <div style={{
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '2rem',
+          background: '#fafafa',
+        }}>
+          <div style={{ maxWidth: 480, width: '100%', textAlign: 'center' }}>
+            <InlineErrorIllustration />
 
-            {/* Title */}
-            <div className="space-y-2">
-              <h1 className="text-3xl font-bold text-foreground">
-                Algo deu errado
-              </h1>
-              <p className="text-muted-foreground">
-                Ocorreu um erro inesperado. Nossa equipe foi notificada e está trabalhando para resolver o problema.
-              </p>
-            </div>
+            <h1 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#09090b', margin: '1.5rem 0 0.5rem' }}>
+              Ops! Algo deu errado
+            </h1>
+            <p style={{ color: '#71717a', fontSize: '0.95rem', lineHeight: 1.6, margin: '0 0 1.5rem' }}>
+              {isDev
+                ? error.message
+                : 'Encontramos um problema inesperado. Por favor, recarregue a página ou volte ao início.'}
+            </p>
 
-            {/* Error details (only in dev) */}
-            {process.env.NODE_ENV === 'development' && (
-              <div className="bg-muted/50 rounded-lg p-4 text-left">
-                <p className="text-xs font-mono text-muted-foreground break-all">
+            {/* Dev-only error details */}
+            {isDev && (
+              <div style={{
+                background: '#f4f4f5',
+                border: '1px solid #e4e4e7',
+                borderRadius: 12,
+                padding: '1rem',
+                textAlign: 'left',
+                marginBottom: '1.5rem',
+              }}>
+                <p style={{ fontSize: 11, fontFamily: 'monospace', color: '#ef4444', wordBreak: 'break-all', margin: 0 }}>
                   {error.message}
                 </p>
                 {error.digest && (
-                  <p className="text-xs text-muted-foreground mt-2">
-                    ID: {error.digest}
+                  <p style={{ fontSize: 11, fontFamily: 'monospace', color: '#71717a', marginTop: 8, marginBottom: 0 }}>
+                    Digest: {error.digest}
                   </p>
                 )}
               </div>
             )}
 
-            {/* Actions */}
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button
+            <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+              <button
                 onClick={reset}
-                variant="default"
-                className="w-full sm:w-auto"
+                style={{
+                  height: 44,
+                  padding: '0 2rem',
+                  borderRadius: 8,
+                  border: 'none',
+                  background: '#412778',
+                  color: '#fff',
+                  fontWeight: 600,
+                  fontSize: 14,
+                  cursor: 'pointer',
+                  transition: 'background 0.2s',
+                }}
+                onMouseOver={(e) => (e.currentTarget.style.background = '#35206a')}
+                onMouseOut={(e) => (e.currentTarget.style.background = '#412778')}
               >
                 Tentar novamente
-              </Button>
-              <Button
-                onClick={() => window.location.href = '/'}
-                variant="outline"
-                className="w-full sm:w-auto"
+              </button>
+              <button
+                onClick={() => (window.location.href = '/')}
+                style={{
+                  height: 44,
+                  padding: '0 2rem',
+                  borderRadius: 8,
+                  border: '1.5px solid #e4e4e7',
+                  background: '#fff',
+                  color: '#18181b',
+                  fontWeight: 600,
+                  fontSize: 14,
+                  cursor: 'pointer',
+                  transition: 'background 0.2s',
+                }}
+                onMouseOver={(e) => (e.currentTarget.style.background = '#f4f4f5')}
+                onMouseOut={(e) => (e.currentTarget.style.background = '#fff')}
               >
                 Voltar ao início
-              </Button>
+              </button>
             </div>
-
-            {/* Help text */}
-            <p className="text-sm text-muted-foreground">
-              Se o problema persistir, entre em contato com o{' '}
-              <a
-                href="mailto:suporte@lupashop.com"
-                className="text-primary hover:underline"
-              >
-                suporte
-              </a>
-            </p>
           </div>
         </div>
       </body>
