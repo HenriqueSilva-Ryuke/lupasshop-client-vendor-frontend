@@ -85,6 +85,4 @@ export default function SellerLoginForm() {
  </LoadingButton>
  </form>
  );
- </form>
- );
 }

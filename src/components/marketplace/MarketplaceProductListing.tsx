@@ -9,18 +9,27 @@ import { useStores } from '@/hooks/useStores';
 import { useCategories } from '@/hooks/useCategories';
 import { useLocale, useTranslations } from 'next-intl';
 import type { Product, Store, Category } from '@/graphql/types';
+import { SkeletonProductCard } from '@/components/ui/SkeletonLoaders';
+import { EmptySearchResults } from '@/components/ui/EmptyStates';
+import { useToast } from '@/components/ui/Toast';
+import { LoadingButton } from '@/components/ui/LoadingButton';
+import { useCartStore } from '@/stores/cartStore';
 
 export default function MarketplaceProductListing() {
     const locale = useLocale();
     const t = useTranslations('marketplace');
-    const [currentPage, setCurrentPage] = useState(1);
-    const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-    const [sortBy, setSortBy] = useState('relevance');
-    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-    const [selectedStores, setSelectedStores] = useState<string[]>([]);
+ const toast = useToast();
+ const { addItem } = useCartStore();
+ const [currentPage, setCurrentPage] = useState(1);
+ const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+ const [sortBy, setSortBy] = useState('relevance');
+ const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+ const [selectedStores, setSelectedStores] = useState<string[]>([]);
+ const [wishlistItems, setWishlistItems] = useState<Set<string>>(new Set());
+ const [loadingCartItems, setLoadingCartItems] = useState<Set<string>>(new Set());
     const limit = 12;
     const offset = (currentPage - 1) * limit;
-
+    
     // Fetch data from backend
     const { data: products = [], isLoading: productsLoading } = useProducts({
         limit,
@@ -57,6 +66,58 @@ export default function MarketplaceProductListing() {
         );
         setCurrentPage(1);
     };
+
+ const handleWishlistToggle = (productId: string, productName: string) => {
+ const isInWishlist = wishlistItems.has(productId);
+
+ if (isInWishlist) {
+ // Remove from wishlist
+ setWishlistItems(prev => {
+ const next = new Set(prev);
+ next.delete(productId);
+ return next;
+ });
+
+ toast.undo(
+ `${productName} removido dos favoritos`,
+ () => {
+ // Undo: add back to wishlist
+ setWishlistItems(prev => new Set(prev).add(productId));
+ },
+ { duration: 7000 }
+ );
+ } else {
+ // Add to wishlist
+ setWishlistItems(prev => new Set(prev).add(productId));
+ toast.success(`${productName} adicionado aos favoritos ❤️`);
+ }
+ };
+
+ const handleAddToCart = (product: Product) => {
+ setLoadingCartItems(prev => new Set(prev).add(product.id));
+
+ // Simulate API call
+ setTimeout(() => {
+ addItem({
+ productId: product.id,
+ storeId: product.storeId || 'unknown',
+ storeName: 'Store',
+ name: product.name,
+ price: product.price,
+ quantity: 1,
+ image: product.images[0] || '',
+ stockQuantity: product.stockQuantity || 0,
+ });
+
+ setLoadingCartItems(prev => {
+ const next = new Set(prev);
+ next.delete(product.id);
+ return next;
+ });
+
+ toast.success(`${product.name} adicionado ao carrinho 🛍️`);
+ }, 500);
+ };
 
     return (
         <div className="min-h-screen pt-20 bg-background-light bg-background-dark">
@@ -148,21 +209,12 @@ export default function MarketplaceProductListing() {
                         {/* Product Grid */}
                         {productsLoading ? (
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                                {Array.from({ length: 8 }).map((_, i) => (
-                                    <div key={i} className="bg-card bg-[#1e2832] rounded-xl border border-border border-[#2e3a45] overflow-hidden animate-pulse">
-                                        <div className="aspect-square"></div>
-                                        <div className="p-4 space-y-3">
-                                            <div className="h-4 rounded"></div>
-                                            <div className="h-4 rounded w-2/3"></div>
-                                            <div className="h-6 rounded w-1/2"></div>
-                                        </div>
-                                    </div>
+                                {Array.from({ length: 12 }).map((_, i) => (
+                                    <SkeletonProductCard key={i} />
                                 ))}
                             </div>
                         ) : products.length === 0 ? (
-                            <div className="text-center py-12">
-                                <p className="text-muted-foreground text-lg">{t('products.noProducts')}</p>
-                            </div>
+                            <EmptySearchResults query="" />
                         ) : (
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                                 {products.map((product) => (
@@ -180,10 +232,18 @@ export default function MarketplaceProductListing() {
                                                     className="object-contain transform group-hover:scale-105 transition-transform duration-300"
                                                 />
                                             )}
-                                            <button onClick={(e) => e.preventDefault()}
-                                                className="absolute top-3 right-3 p-2 rounded-full bg-card/90 bg-black/50 hover:bg-card text-muted-foreground hover:text-red-500 shadow-sm transition-colors backdrop-blur-sm border border-transparent"
+                                            <button
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    handleWishlistToggle(product.id, product.name);
+                                                }}
+                                                className={`absolute top-3 right-3 p-2 rounded-full shadow-sm transition-all backdrop-blur-sm border ${
+                                                    wishlistItems.has(product.id)
+                                                        ? 'bg-red-500/90 text-white border-red-500'
+                                                        : 'bg-card/90 bg-black/50 hover:bg-card text-muted-foreground hover:text-red-500 border-transparent'
+                                                }`}
                                             >
-                                                <Heart className="w-5 h-5" />
+                                                <Heart className={`w-5 h-5 ${wishlistItems.has(product.id) ? 'fill-current' : ''}`} />
                                             </button>
                                             {product.isNew && (
                                                 <span className="absolute top-3 left-3 text-black text-[10px] font-bold px-2 py-1 rounded bg-green-600">
@@ -215,12 +275,20 @@ export default function MarketplaceProductListing() {
                                                     <p className="text-xl font-bold text-primary">R$ {product.price.toFixed(2)}</p>
                                                 </div>
 
-                                                <button onClick={(e) => e.preventDefault()}
-                                                    className="w-full h-9 flex items-center justify-center gap-2 rounded-lg bg-primary text-black font-bold text-sm hover:bg-primary-light transition-all shadow-sm"
+                                                <LoadingButton
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        handleAddToCart(product);
+                                                    }}
+                                                    loading={loadingCartItems.has(product.id)}
                                                     disabled={product.stockQuantity === 0}
+                                                    variant="default"
+                                                    size="sm"
+                                                    leftIcon={<ShoppingCart className="h-4 w-4" />}
+                                                    className="w-full"
                                                 >
                                                     {product.stockQuantity === 0 ? t('products.outOfStock') : t('products.addToCart')}
-                                                </button>
+                                                </LoadingButton>
                                             </div>
                                         </div>
                                     </Link>
