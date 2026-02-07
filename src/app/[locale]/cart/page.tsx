@@ -22,12 +22,15 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useCartStore } from '@/stores/cartStore';
 import PageTransition from '@/components/PageTransition';
+import { EmptyCart } from '@/components/ui/EmptyStates';
+import { useToast } from '@/components/ui/Toast';
 
 export default function CartPage() {
  const locale = useLocale();
  const t = useTranslations('cart');
  const router = useRouter();
  const { items, removeItem, updateQuantity } = useCartStore();
+ const { undo } = useToast();
  const [couponCode, setCouponCode] = useState('');
  const [shippingCep, setShippingCep] = useState('');
  const [appliedCoupon, setAppliedCoupon] = useState<{ code: string; discount: number } | null>(null);
@@ -55,8 +58,20 @@ export default function CartPage() {
  const installments = 12;
  const installmentValue = total / installments;
 
- const handleRemoveItem = (id: string) => {
+ const handleRemoveItem = (id: string, itemName: string) => {
+ // Optimistic UI + Undo pattern
+ const removedItem = items.find(item => item.id === id);
  removeItem(id);
+ 
+ undo(
+ `${itemName} removido do carrinho`,
+ () => {
+ // Undo: restore item
+ if (removedItem) {
+ updateQuantity(id, removedItem.quantity);
+ }
+ }
+ );
  };
 
  const handleUpdateQuantity = (id: string, quantity: number) => {
@@ -89,18 +104,8 @@ export default function CartPage() {
  <PageTransition>
  <div className="min-h-screen text-black flex flex-col">
  <Navbar />
- <div className="flex-1 flex flex-col items-center justify-center px-4">
- <ShoppingBag className="w-16 h-16 mb-4" />
- <h1 className="text-3xl font-bold mb-2">{t('empty')}</h1>
- <p className="text-gray-600 mb-8">{t('emptyDescription')}</p>
- <Button
- variant="default"
- onClick={() => router.push(`/${locale}/marketplace`)}
- className="px-8 py-3 bg-primary rounded-lg font-bold hover:bg-primary-dark transition-colors flex items-center gap-2"
- >
- <ArrowLeft className="w-4 h-4" />
- {t('backToMarketplace')}
- </Button>
+ <div className="flex-1 flex items-center justify-center px-4 py-16">
+ <EmptyCart />
  </div>
  <Footer />
  </div>
@@ -181,7 +186,7 @@ export default function CartPage() {
  </div>
  <Button
  variant="default"
- onClick={() => handleRemoveItem(item.id)}
+ onClick={() => handleRemoveItem(item.id, item.name)}
  className="text-red-500 hover:text-red-700 text-sm font-medium flex items-center gap-1 mt-2 w-fit transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
  >
  <Trash2 className="w-4 h-4" />

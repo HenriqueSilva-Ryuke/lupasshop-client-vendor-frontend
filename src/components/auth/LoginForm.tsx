@@ -2,110 +2,96 @@
 
 import React from 'react';
 import { useLoginForm } from '@/hooks/forms/useLoginForm';
+import { InlineInput } from '@/components/ui/InlineInput';
+import { LoadingButton } from '@/components/ui/LoadingButton';
+import { AnimatedCheckbox } from '@/components/ui/AnimatedCheckbox';
+import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
+import Link from 'next/link';
+import { useLocale } from 'next-intl';
 
 export default function LoginForm() {
+ const locale = useLocale();
  const { form, onSubmit, showPassword, togglePasswordVisibility, isLoading, error } = useLoginForm();
- const { register, formState: { errors } } = form;
+ const { register, formState: { errors }, watch } = form;
+ 
+ const emailValue = watch('email');
+ const passwordValue = watch('password');
 
  return (
  <form onSubmit={onSubmit} className="flex flex-col gap-5">
- {/* Error Alert */}
+ {/* Error Alert - contextual and clear */}
  {error && (
- <div className="p-4 bg-destructive/10 border border-destructive rounded-lg text-destructive text-sm">
- {error}
+ <div className="p-4 bg-destructive/10 border border-destructive rounded-lg text-destructive text-sm flex items-start gap-2">
+ <div className="flex-shrink-0 mt-0.5">⚠️</div>
+ <div>
+ <p className="font-semibold">Não foi possível fazer login</p>
+ <p className="text-xs mt-1 opacity-90">{error}</p>
+ </div>
  </div>
  )}
 
- {/* Email Input */}
- <label className="flex flex-col w-full">
- <p className="text-text-main text-sm font-semibold leading-normal pb-2">E-mail ou Usuário</p>
- <div className="relative">
- <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-[#617989]">
- mail
- </span>
- <input
+ {/* Email Input with inline validation */}
+ <InlineInput
  {...register('email')}
- className={`form-input flex w-full rounded-lg text-text-main focus:outline-0 focus:ring-2 focus:ring-primary/20 border bg-card focus:border-primary h-12 pl-12 pr-4 text-base font-normal placeholder:text-[#9aaebc] transition-all ${
- errors.email ? 'border-red-500' : ''
- }`}
+ type="email"
+ label="E-mail ou Usuário"
  placeholder="exemplo@email.com"
- type="text"
+ leftIcon={<Mail className="h-4 w-4" />}
+ error={errors.email?.message}
  disabled={isLoading}
+ autoComplete="email"
  />
- {errors.email && (
- <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
- )}
- </div>
- </label>
 
- {/* Password Input */}
- <label className="flex flex-col w-full">
- <div className="flex justify-between items-center pb-2">
- <p className="text-text-main text-sm font-semibold leading-normal">Senha</p>
- </div>
- <div className="relative flex w-full items-center">
- <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-[#617989]">
- lock
- </span>
- <input
+ {/* Password Input with inline validation */}
+ <div>
+ <InlineInput
  {...register('password')}
- className={`form-input flex w-full rounded-lg text-text-main focus:outline-0 focus:ring-2 focus:ring-primary/20 border bg-card focus:border-primary h-12 pl-12 pr-12 text-base font-normal placeholder:text-[#9aaebc] transition-all ${
- errors.password ? 'border-red-500' : ''
- }`}
- placeholder="Digite sua senha"
  type={showPassword ? 'text' : 'password'}
- disabled={isLoading}
- />
+ label="Senha"
+ placeholder="Digite sua senha"
+ leftIcon={<Lock className="h-4 w-4" />}
+ rightIcon={
  <button
  onClick={togglePasswordVisibility}
  type="button"
- className="absolute right-0 h-full px-4 text-[#617989] hover:text-primary transition-colors flex items-center justify-center focus:outline-none"
+ className="hover:text-primary transition-colors"
  tabIndex={-1}
  >
- <span className="material-symbols-outlined text-[20px]">
- {showPassword ? 'visibility' : 'visibility_off'}
- </span>
+ {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
  </button>
- {errors.password && (
- <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>
- )}
+ }
+ error={errors.password?.message}
+ disabled={isLoading}
+ autoComplete="current-password"
+ hint="Mínimo 6 caracteres"
+ />
  </div>
- </label>
 
  {/* Options Row */}
  <div className="flex items-center justify-between">
- <label className="inline-flex items-center cursor-pointer group">
- <div className="relative flex items-center">
- <input
+ <AnimatedCheckbox
  {...register('rememberMe')}
- className="peer h-5 w-5 cursor-pointer appearance-none rounded border checked:border-primary checked:bg-primary transition-all"
- type="checkbox"
+ label="Lembrar-me"
  disabled={isLoading}
  />
- <span className="material-symbols-outlined absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-card-foreground text-[16px] opacity-0 peer-checked:opacity-100 pointer-events-none font-bold">
- check
- </span>
- </div>
- <span className="ml-2 text-sm text-[#617989] group-hover:text-text-main transition-colors">
- Lembrar-me
- </span>
- </label>
- <a
- className="text-sm font-semibold text-primary hover:text-primary-dark hover:underline transition-colors"
- href="#"
+ <Link
+ href={`/${locale}/auth/forgot-password`}
+ className="text-sm font-semibold text-primary hover:text-primary/80 hover:underline transition-colors"
  >
  Esqueci minha senha
- </a>
+ </Link>
  </div>
 
- {/* Login Button */}
- <button
+ {/* Login Button with loading state */}
+ <LoadingButton
  type="submit"
- disabled={isLoading}
- className="flex w-full cursor-pointer items-center justify-center rounded-lg h-12 px-4 bg-primary hover:bg-primary-dark active:scale-[0.98] transition-all text-card-foreground text-base font-bold shadow-md shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed"
+ loading={isLoading}
+ variant="default"
+ size="lg"
+ className="w-full shadow-md shadow-primary/20"
  >
- {isLoading ? 'Entrando...' : 'Entrar'}
- </button>
+ Entrar
+ </LoadingButton>
  </form>
  );
 }

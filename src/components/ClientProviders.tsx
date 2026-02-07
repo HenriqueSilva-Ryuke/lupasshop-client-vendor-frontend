@@ -2,6 +2,7 @@
 
 import { ApiProvider } from "@lupa/api-client/provider";
 import { queryClient } from "@/providers/QueryProvider";
+import { ToastProvider } from "@/components/ui/Toast";
 
 const apiConfig = {
   httpUrl: process.env.NEXT_PUBLIC_GRAPHQL_URL || 'http://localhost:3000/graphql',
@@ -18,7 +19,9 @@ const apiConfig = {
 export function ClientProviders({ children }: { children: React.ReactNode }) {
   return (
     <ApiProvider config={apiConfig} queryClient={queryClient}>
-      {children}
+      <ToastProvider>
+        {children}
+      </ToastProvider>
     </ApiProvider>
   );
 }
