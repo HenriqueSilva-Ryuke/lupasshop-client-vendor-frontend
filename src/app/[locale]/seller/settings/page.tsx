@@ -7,7 +7,7 @@ import { useClientAuth } from '@/hooks/useClientAuth';
 import { useSellerStore } from '@/hooks/useSellerStore';
 import { useMutation } from '@tanstack/react-query';
 import { apolloClient } from '@/lib/graphql-client';
-import { UPDATE_STORE_SETTINGS } from '@/graphql/mutations';
+import { UPDATE_STORE as UPDATE_STORE_SETTINGS } from '@/graphql/mutations';
 import { useRouter } from 'next/navigation';
 
 interface ShippingMethod {
