@@ -40,13 +40,13 @@ export default function NotificationBell() {
  const [isOpen, setIsOpen] = useState(false);
  const [showUnreadOnly, setShowUnreadOnly] = useState(false);
 
- const { data, loading, refetch } = useQuery(GET_NOTIFICATIONS, {
+ const { data, loading, refetch } = useQuery<any>(GET_NOTIFICATIONS, {
  variables: { limit: 20, unreadOnly: showUnreadOnly },
  pollInterval: 30000, // Poll every 30 seconds
  });
 
- const [markAsRead] = useMutation(MARK_AS_READ);
- const [markAllAsRead] = useMutation(MARK_ALL_AS_READ);
+ const [markAsRead] = useMutation<any>(MARK_AS_READ);
+ const [markAllAsRead] = useMutation<any>(MARK_ALL_AS_READ);
 
  const notifications = data?.notifications || [];
  const unreadCount = data?.unreadNotificationsCount || 0;

@@ -33,13 +33,13 @@ export default function NewProductPage({ params }: { params: Promise<any> }) {
 
  // In Next.js 15+, params are a promise
  // const resolvedParams = use(params); 
- const { data: userData } = useQuery(gql`
+ const { data: userData } = useQuery<any>(gql`
  query MeAndStore {
  me { id }
  }
  `) as any;
 
- const { data: storeData } = useQuery(gql`
+ const { data: storeData } = useQuery<any>(gql`
  query MyStores($ownerId: ID!) {
  listStores(ownerId: $ownerId) {
  id
@@ -53,7 +53,7 @@ export default function NewProductPage({ params }: { params: Promise<any> }) {
 
  const storeId = storeData?.listStores?.[0]?.id;
 
- const [createProduct, { loading: creating }] = useMutation(CREATE_PRODUCT) as any;
+ const [createProduct, { loading: creating }] = useMutation<any>(CREATE_PRODUCT) as any;
 
  const {
  register,

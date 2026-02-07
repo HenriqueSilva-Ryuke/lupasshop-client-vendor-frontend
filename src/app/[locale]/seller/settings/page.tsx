@@ -98,7 +98,7 @@ export default function SettingsPage() {
  }
  }, [store]);
 
- const updateSettingsMutation = useMutation({
+ const updateSettingsMutation = useMutation<any>({
  mutationFn: async (data: any) => {
  const result = await apolloClient.mutate<{ updateStore: any }>({
  mutation: UPDATE_STORE_SETTINGS,

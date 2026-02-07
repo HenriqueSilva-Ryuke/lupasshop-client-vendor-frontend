@@ -8,17 +8,17 @@ import { GET_CURRENT_USER, LIST_STORES, LIST_REVIEWS } from '@/graphql/queries';
 export default function ReviewsView() {
  const t = useTranslations('dashboard.reviews');
 
- const { data: userData } = useQuery(GET_CURRENT_USER);
+ const { data: userData } = useQuery<any>(GET_CURRENT_USER);
  const ownerId = userData?.me?.id;
 
- const { data: storesData } = useQuery(LIST_STORES, {
+ const { data: storesData } = useQuery<any>(LIST_STORES, {
  variables: { ownerId },
  skip: !ownerId,
  });
 
  const storeId = storesData?.listStores?.[0]?.id;
 
- const { data: reviewsData, loading } = useQuery(LIST_REVIEWS, {
+ const { data: reviewsData, loading } = useQuery<any>(LIST_REVIEWS, {
  variables: { storeId },
  skip: !storeId,
  fetchPolicy: 'cache-and-network',

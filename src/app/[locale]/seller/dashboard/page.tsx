@@ -6,7 +6,7 @@ import { GET_SELLER_DASHBOARD } from '@/graphql/queries';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 
 export default function SellerDashboardPage({ params }: { params: Promise<{ locale: string }> }) {
- const { data, loading } = useQuery(GET_SELLER_DASHBOARD, {
+ const { data, loading } = useQuery<any>(GET_SELLER_DASHBOARD, {
  variables: { days: 30, recentLimit: 5, topLimit: 5 },
  fetchPolicy: 'cache-and-network',
  });

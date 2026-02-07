@@ -13,11 +13,11 @@ import { cn } from '@/lib/utils';
 export default function SellerOrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
  const { id } = use(params);
  const router = useRouter();
- const { data, loading, error, refetch } = useQuery(GET_ORDER, {
+ const { data, loading, error, refetch } = useQuery<any>(GET_ORDER, {
  variables: { id }
  }) as any;
 
- const [updateStatus, { loading: updating }] = useMutation(UPDATE_ORDER_STATUS);
+ const [updateStatus, { loading: updating }] = useMutation<any>(UPDATE_ORDER_STATUS);
 
  const handleStatusChange = async (newStatus: string) => {
  try {

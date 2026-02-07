@@ -12,7 +12,7 @@ export default function ProductsView() {
 
  const isActiveFilter = statusFilter === 'active' ? true : statusFilter === 'archived' ? false : undefined;
 
- const { data, loading } = useQuery(SELLER_PRODUCTS, {
+ const { data, loading } = useQuery<any>(SELLER_PRODUCTS, {
  variables: { limit: 50, offset: 0, search: searchQuery || undefined, isActive: isActiveFilter },
  fetchPolicy: 'cache-and-network',
  });

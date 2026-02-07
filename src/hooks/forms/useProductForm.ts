@@ -38,7 +38,7 @@ export function useProductForm(storeId: string, onSuccess?: () => void) {
   const [error, setError] = useState<string | null>(null);
   const [uploadedImages, setUploadedImages] = useState<string[]>([]);
 
-  const createProductMutation = useMutation({
+  const createProductMutation = useMutation<any>({
     mutationFn: async (data: ProductFormData) => {
       const { data: response } = await apolloClient.mutate<CreateProductResponse>({
         mutation: CREATE_PRODUCT,

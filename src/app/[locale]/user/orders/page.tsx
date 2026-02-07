@@ -12,7 +12,7 @@ import { use } from 'react';
 export default function OrdersPage({ params }: { params: Promise<{ locale: string }> }) {
  const { locale } = use(params);
  // We assume the user ID is extracted from the token context in the backend resolver
- const { data, loading, error } = useQuery(LIST_ORDERS, {
+ const { data, loading, error } = useQuery<any>(LIST_ORDERS, {
  variables: { limit: 10, offset: 0 },
  }) as any;
 

@@ -9,17 +9,17 @@ export default function OrdersView() {
  const [searchQuery, setSearchQuery] = useState('');
  const [statusFilter, setStatusFilter] = useState<string>('all');
 
- const { data: userData } = useQuery(GET_CURRENT_USER);
+ const { data: userData } = useQuery<any>(GET_CURRENT_USER);
  const ownerId = userData?.me?.id;
 
- const { data: storesData } = useQuery(LIST_STORES, {
+ const { data: storesData } = useQuery<any>(LIST_STORES, {
  variables: { ownerId },
  skip: !ownerId,
  });
 
  const storeId = storesData?.listStores?.[0]?.id;
 
- const { data: ordersData, loading } = useQuery(LIST_ORDERS, {
+ const { data: ordersData, loading } = useQuery<any>(LIST_ORDERS, {
  variables: {
  storeId,
  status: statusFilter === 'all' ? undefined : statusFilter,

@@ -9,10 +9,10 @@ import { UPDATE_STORE } from '@/graphql/mutations';
 export default function SettingsView() {
  const t = useTranslations('dashboard.settings');
 
- const { data: userData } = useQuery(GET_CURRENT_USER);
+ const { data: userData } = useQuery<any>(GET_CURRENT_USER);
  const ownerId = userData?.me?.id;
 
- const { data: storesData } = useQuery(LIST_STORES, {
+ const { data: storesData } = useQuery<any>(LIST_STORES, {
  variables: { ownerId },
  skip: !ownerId,
  });
@@ -29,7 +29,7 @@ export default function SettingsView() {
  }
  }, [store]);
 
- const [updateStore, { loading }] = useMutation(UPDATE_STORE);
+ const [updateStore, { loading }] = useMutation<any>(UPDATE_STORE);
 
  const handleSave = async () => {
  if (!store?.id) return;

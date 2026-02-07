@@ -21,8 +21,8 @@ import { use } from 'react';
 
 export default function ProfilePage({ params }: { params: Promise<{ locale: string }> }) {
  // const { locale } = use(params);
- const { data, loading } = useQuery(GET_CURRENT_USER) as any;
- const [updateUser, { loading: updating }] = useMutation(UPDATE_USER);
+ const { data, loading } = useQuery<any>(GET_CURRENT_USER) as any;
+ const [updateUser, { loading: updating }] = useMutation<any>(UPDATE_USER);
 
  const {
  register,

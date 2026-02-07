@@ -8,10 +8,10 @@ import { useQuery } from '@apollo/client/react';
 import { GET_CURRENT_USER, LIST_STORES } from '@/graphql/queries';
 
 export default function ShopsView() {
- const { data: userData } = useQuery(GET_CURRENT_USER);
+ const { data: userData } = useQuery<any>(GET_CURRENT_USER);
  const ownerId = userData?.me?.id;
 
- const { data: storesData, loading } = useQuery(LIST_STORES, {
+ const { data: storesData, loading } = useQuery<any>(LIST_STORES, {
  variables: { ownerId },
  skip: !ownerId,
  fetchPolicy: 'cache-and-network',

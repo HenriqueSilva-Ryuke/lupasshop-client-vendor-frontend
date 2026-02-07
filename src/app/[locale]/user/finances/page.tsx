@@ -32,7 +32,7 @@ export default function UserFinancesPage() {
  const router = useRouter();
  const { user, isClient } = useClientAuth();
 
- const { data, isLoading, error } = useQuery({
+ const { data, isLoading, error } = useQuery<any>({
  queryKey: ['getUserFinances', user?.id],
  queryFn: async () => {
  const result = await apolloClient.query<{ getUserFinances: UserFinance }>({

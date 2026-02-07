@@ -22,8 +22,8 @@ export function usePushNotifications() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const [subscribeMutation] = useMutation(SUBSCRIBE_PUSH);
-  const [unsubscribeMutation] = useMutation(UNSUBSCRIBE_PUSH);
+  const [subscribeMutation] = useMutation<any>(SUBSCRIBE_PUSH);
+  const [unsubscribeMutation] = useMutation<any>(UNSUBSCRIBE_PUSH);
 
   useEffect(() => {
     // Check if service workers and push notifications are supported

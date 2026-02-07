@@ -35,8 +35,8 @@ import { use } from 'react';
 
 export default function SellerProductsPage({ params }: { params: Promise<{ locale: string }> }) {
  const { locale } = use(params);
- const { data, loading, error, refetch } = useQuery(SELLER_PRODUCTS_QUERY) as any;
- const [deleteProduct] = useMutation(DELETE_PRODUCT_MUTATION);
+ const { data, loading, error, refetch } = useQuery<any>(SELLER_PRODUCTS_QUERY) as any;
+ const [deleteProduct] = useMutation<any>(DELETE_PRODUCT_MUTATION);
 
  const handleDelete = async (id: string) => {
  if (!confirm('Tem certeza que deseja excluir este produto?')) return;

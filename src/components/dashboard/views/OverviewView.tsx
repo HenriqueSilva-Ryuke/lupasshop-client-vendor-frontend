@@ -13,7 +13,7 @@ export default function OverviewView() {
  const t = useTranslations('dashboard');
  const { user } = useClientAuth();
 
- const { data, loading } = useQuery(GET_SELLER_DASHBOARD, {
+ const { data, loading } = useQuery<any>(GET_SELLER_DASHBOARD, {
  variables: { days: 30, recentLimit: 6, topLimit: 5 },
  fetchPolicy: 'cache-and-network',
  });

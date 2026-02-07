@@ -8,23 +8,23 @@ import { GET_CURRENT_USER, LIST_STORES, GET_STORE_BALANCE, LIST_PAYOUTS } from '
 export default function FinancesView() {
  const t = useTranslations('dashboard.finances');
 
- const { data: userData } = useQuery(GET_CURRENT_USER);
+ const { data: userData } = useQuery<any>(GET_CURRENT_USER);
  const ownerId = userData?.me?.id;
 
- const { data: storesData } = useQuery(LIST_STORES, {
+ const { data: storesData } = useQuery<any>(LIST_STORES, {
  variables: { ownerId },
  skip: !ownerId,
  });
 
  const storeId = storesData?.listStores?.[0]?.id;
 
- const { data: balanceData, loading: balanceLoading } = useQuery(GET_STORE_BALANCE, {
+ const { data: balanceData, loading: balanceLoading } = useQuery<any>(GET_STORE_BALANCE, {
  variables: { storeId },
  skip: !storeId,
  fetchPolicy: 'cache-and-network',
  });
 
- const { data: payoutsData, loading: payoutsLoading } = useQuery(LIST_PAYOUTS, {
+ const { data: payoutsData, loading: payoutsLoading } = useQuery<any>(LIST_PAYOUTS, {
  variables: { storeId },
  skip: !storeId,
  fetchPolicy: 'cache-and-network',

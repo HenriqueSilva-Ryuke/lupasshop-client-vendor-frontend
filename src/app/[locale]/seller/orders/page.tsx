@@ -33,7 +33,7 @@ import { use } from 'react';
 export default function SellerOrdersPage({ params }: { params: Promise<{ locale: string }> }) {
  const { locale } = use(params);
  // Fetch orders. The backend resolver automatically filters by the seller's store if storeId is omitted
- const { data, loading, error } = useQuery(LIST_ORDERS, {
+ const { data, loading, error } = useQuery<any>(LIST_ORDERS, {
  variables: { limit: 20, offset: 0 },
  fetchPolicy: 'network-only' // Ensure fresh data
  }) as any;
