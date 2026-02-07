@@ -44,7 +44,7 @@ export function useSellerLoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const loginMutation = useMutation<any>({
+  const loginMutation = useMutation({
     mutationFn: async (data: SellerLoginFormData) => {
       const { data: response } = await apolloClient.mutate<LoginResponse>({
         mutation: LOGIN,

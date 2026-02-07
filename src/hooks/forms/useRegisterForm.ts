@@ -47,7 +47,7 @@ export function useRegisterForm() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const registerMutation = useMutation<any>({
+  const registerMutation = useMutation({
     mutationFn: async (data: RegisterFormData) => {
       const { data: response } = await apolloClient.mutate<SignupResponse>({
         mutation: SIGNUP,

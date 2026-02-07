@@ -55,7 +55,7 @@ export function useSellerMultiStepRegisterForm() {
   const [error, setError] = useState<string | null>(null);
   const [uploadedFiles, setUploadedFiles] = useState<Record<string, File | File[]>>({});
 
-  const registerMutation = useMutation<any>({
+  const registerMutation = useMutation({
     mutationFn: async (data: SellerMultiStepFormData) => {
       // Aqui você implementaria upload de arquivos para um serviço de storage
       // Por enquanto, vamos apenas prosseguir com a autenticação

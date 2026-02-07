@@ -1,11 +1,13 @@
 /**
  * Product mutations — re-exported from @lupa/api-client
  */
-export {
+import {
   useCreateProduct,
   useUpdateProduct,
   useDeleteProduct,
 } from '@lupa/api-client/hooks';
+
+export { useCreateProduct, useUpdateProduct, useDeleteProduct };
 
 // Legacy aliases
 export const useCreateProductMutation = useCreateProduct;
