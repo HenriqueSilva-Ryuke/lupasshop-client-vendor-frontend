@@ -1,12 +1,13 @@
 'use client';
 
 import React from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Edit, Trash2, MoreVertical, Plus } from 'lucide-react';
 import Link from 'next/link';
 
 export default function ProductList() {
  const t = useTranslations('dashboard.products');
+ const locale = useLocale();
 
  // Mock Data
  const products = [
@@ -21,7 +22,7 @@ export default function ProductList() {
  <div className="p-6 border-b flex items-center justify-between">
  <h2 className="text-lg font-bold text-foreground">{t('manage')}</h2>
  <Link
- href="/dashboard/products/new"
+ href={`/${locale}/seller/products/new`}
  className="flex items-center gap-2 bg-primary text-black px-4 py-2 rounded-xl hover:bg-primary-dark transition-colors text-sm font-medium"
  >
  <Plus size={18} />

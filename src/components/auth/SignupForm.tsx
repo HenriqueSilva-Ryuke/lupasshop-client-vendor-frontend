@@ -2,8 +2,10 @@
 
 import { useSignupForm } from '@/hooks/forms/useSignupForm';
 import Link from 'next/link';
+import { useLocale } from 'next-intl';
 
 export function SignupForm() {
+ const locale = useLocale();
  const { form, onSubmit, isLoading, error } = useSignupForm();
  const { register, formState: { errors } } = form;
 
@@ -96,7 +98,7 @@ export function SignupForm() {
  <div className="mt-6 text-center">
  <p className="text-sm text-muted-foreground">
  Já tem uma conta?{' '}
- <Link href="/auth/login" className="text-primary hover:text-blue-700 font-medium">
+ <Link href={`/${locale}/auth/login`} className="text-primary hover:text-blue-700 font-medium">
  Faça login
  </Link>
  </p>

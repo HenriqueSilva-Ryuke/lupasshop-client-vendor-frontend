@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { Button } from '@lupa/design-system';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { ErrorIllustration, EmptyState } from '@/components/ErrorIllustration';
 
 interface ErrorProps {
@@ -12,6 +13,7 @@ interface ErrorProps {
 
 export default function Error({ error, reset }: ErrorProps) {
   const router = useRouter();
+  const t = useTranslations('error.error');
 
   useEffect(() => {
     console.error('Page error:', error);
@@ -23,11 +25,11 @@ export default function Error({ error, reset }: ErrorProps) {
     <div className="min-h-[70vh] flex items-center justify-center px-4 py-16">
       <EmptyState
         illustration={<ErrorIllustration className="w-64 h-auto" />}
-        title="Ops! Algo deu errado"
+        title={t('title')}
         description={
           isDev
             ? error.message
-            : 'Encontramos um problema inesperado. Por favor, tente novamente ou volte para a página anterior.'
+            : t('description')
         }
       >
         {/* Dev-only error details */}
@@ -38,7 +40,7 @@ export default function Error({ error, reset }: ErrorProps) {
             </p>
             {error.digest && (
               <p className="text-[11px] text-muted-foreground mt-2 font-mono">
-                Digest: {error.digest}
+                {t('digest')}: {error.digest}
               </p>
             )}
             {error.stack && (
@@ -52,10 +54,10 @@ export default function Error({ error, reset }: ErrorProps) {
         {/* Actions */}
         <div className="flex flex-col sm:flex-row gap-3">
           <Button onClick={reset} variant="default" size="lg">
-            Tentar novamente
+            {t('tryAgain')}
           </Button>
           <Button onClick={() => router.back()} variant="outline" size="lg">
-            Voltar
+            {t('goBack')}
           </Button>
         </div>
       </EmptyState>

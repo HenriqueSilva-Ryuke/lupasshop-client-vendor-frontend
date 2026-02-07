@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 /**
  * Inline SVG illustration for global-error — can't import components here
@@ -9,7 +9,7 @@ import { useEffect } from 'react';
  */
 function InlineErrorIllustration() {
   return (
-    <svg viewBox="0 0 280 220" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-56 h-auto mx-auto" aria-hidden="true">
+    <svg viewBox="0 0 280 220" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: 224, height: 'auto', margin: '0 auto', display: 'block' }} aria-hidden="true">
       <ellipse cx="140" cy="180" rx="120" ry="28" fill="#f5f0ff" />
       <rect x="88" y="80" width="104" height="100" rx="12" fill="#ede5ff" stroke="#c4a8ff" strokeWidth="2.5" />
       <path d="M118 80V64a22 22 0 0 1 44 0v16" stroke="#a775ff" strokeWidth="3" strokeLinecap="round" fill="none" />
@@ -33,6 +33,30 @@ function InlineErrorIllustration() {
   );
 }
 
+const translations = {
+  pt: {
+    title: 'Ops! Algo deu errado',
+    description: 'Encontramos um problema inesperado. Por favor, recarregue a página ou volte ao início.',
+    tryAgain: 'Tentar novamente',
+    goHome: 'Voltar ao início',
+  },
+  en: {
+    title: 'Oops! Something went wrong',
+    description: 'We encountered an unexpected problem. Please reload the page or go back to the home page.',
+    tryAgain: 'Try again',
+    goHome: 'Go to home',
+  },
+} as const;
+
+function detectLocale(): 'pt' | 'en' {
+  if (typeof window === 'undefined') return 'pt';
+  const pathMatch = window.location.pathname.match(/^\/(en|pt)/);
+  if (pathMatch) return pathMatch[1] as 'pt' | 'en';
+  const navLang = navigator.language?.toLowerCase() || '';
+  if (navLang.startsWith('en')) return 'en';
+  return 'pt';
+}
+
 export default function GlobalError({
   error,
   reset,
@@ -40,11 +64,18 @@ export default function GlobalError({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  const [locale, setLocale] = useState<'pt' | 'en'>('pt');
+
+  useEffect(() => {
+    setLocale(detectLocale());
+  }, []);
+
   useEffect(() => {
     console.error('Global error:', error);
   }, [error]);
 
   const isDev = process.env.NODE_ENV === 'development';
+  const t = translations[locale];
 
   return (
     <html>
@@ -61,12 +92,12 @@ export default function GlobalError({
             <InlineErrorIllustration />
 
             <h1 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#09090b', margin: '1.5rem 0 0.5rem' }}>
-              Ops! Algo deu errado
+              {t.title}
             </h1>
             <p style={{ color: '#71717a', fontSize: '0.95rem', lineHeight: 1.6, margin: '0 0 1.5rem' }}>
               {isDev
                 ? error.message
-                : 'Encontramos um problema inesperado. Por favor, recarregue a página ou volte ao início.'}
+                : t.description}
             </p>
 
             {/* Dev-only error details */}
@@ -108,10 +139,12 @@ export default function GlobalError({
                 onMouseOver={(e) => (e.currentTarget.style.background = '#35206a')}
                 onMouseOut={(e) => (e.currentTarget.style.background = '#412778')}
               >
-                Tentar novamente
+                {t.tryAgain}
               </button>
               <button
-                onClick={() => (window.location.href = '/')}
+                onClick={() => {
+                  window.location.href = `/${locale}`;
+                }}
                 style={{
                   height: 44,
                   padding: '0 2rem',
@@ -127,7 +160,7 @@ export default function GlobalError({
                 onMouseOver={(e) => (e.currentTarget.style.background = '#f4f4f5')}
                 onMouseOut={(e) => (e.currentTarget.style.background = '#fff')}
               >
-                Voltar ao início
+                {t.goHome}
               </button>
             </div>
           </div>

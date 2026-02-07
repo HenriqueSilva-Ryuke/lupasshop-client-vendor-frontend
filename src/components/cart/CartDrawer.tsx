@@ -5,6 +5,7 @@ import { useUIStore } from '@/stores/uiStore';
 import Image from 'next/image';
 import Link from 'next/link';
 import { X, Minus, Plus, ShoppingBag } from 'lucide-react';
+import { useLocale } from 'next-intl';
 
 function CartItem({ item }: { item: any }) {
  const { updateQuantity, removeItem } = useCartStore();
@@ -57,6 +58,7 @@ function CartItem({ item }: { item: any }) {
 }
 
 export function CartDrawer() {
+ const locale = useLocale();
  const { isCartDrawerOpen, closeCartDrawer } = useUIStore();
  const { items, getTotalItems, getTotalPrice, clearCart } = useCartStore();
 
@@ -111,7 +113,7 @@ export function CartDrawer() {
  </span>
  </div>
   <Link
- href="/checkout"
+ href={`/${locale}/cart/checkout`}
  onClick={closeCartDrawer}
  className="block w-full py-3 bg-primary600 hover:bg-primary700 text-black text-center font-medium rounded-lg transition-colors"
  >

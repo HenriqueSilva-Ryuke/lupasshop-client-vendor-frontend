@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'motion/react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Button from '@/components/ui/Button';
 
 interface ErrorProps {
@@ -9,11 +9,41 @@ interface ErrorProps {
  reset: () => void;
 }
 
+const translations = {
+  pt: {
+    title: 'Erro Crítico',
+    description: 'Algo deu muito errado. Por favor, tente recarregar a página.',
+    tryAgain: 'Tentar Novamente',
+    goHome: 'Home',
+  },
+  en: {
+    title: 'Critical Error',
+    description: 'Something went very wrong. Please try reloading the page.',
+    tryAgain: 'Try Again',
+    goHome: 'Home',
+  },
+} as const;
+
+function detectLocale(): 'pt' | 'en' {
+  if (typeof window === 'undefined') return 'pt';
+  const pathMatch = window.location.pathname.match(/^\/(en|pt)/);
+  if (pathMatch) return pathMatch[1] as 'pt' | 'en';
+  return 'pt';
+}
+
 export default function RootError({ error, reset }: ErrorProps) {
- useEffect(() => {
- // Log error to monitoring service
- console.error('Root error:', error);
- }, [error]);
+  const [locale, setLocale] = useState<'pt' | 'en'>('pt');
+
+  useEffect(() => {
+    setLocale(detectLocale());
+  }, []);
+
+  useEffect(() => {
+    // Log error to monitoring service
+    console.error('Root error:', error);
+  }, [error]);
+
+  const t = translations[locale];
 
  return (
  <div className="bg-linear-to-br from-red-900 to-orange-900 min-h-screen flex items-center justify-center">
@@ -36,10 +66,10 @@ export default function RootError({ error, reset }: ErrorProps) {
  className="text-center space-y-4"
  >
  <h1 className="text-2xl font-bold text-gray-900">
- Erro Crítico
+ {t.title}
  </h1>
  <p className="text-gray-600">
- Algo deu muito errado. Por favor, tente recarregar a página.
+ {t.description}
  </p>
 
  {/* Error Details */}
@@ -63,16 +93,17 @@ export default function RootError({ error, reset }: ErrorProps) {
  onClick={reset}
  className="px-6 py-2 bg-orange-600 text-black rounded-lg font-semibold hover:bg-orange-700 transition-colors"
  >
- Tentar Novamente
+ {t.tryAgain}
  </Button>
  <Button
  variant="default"
- onClick={() => (window.location.href = '/')}
+ onClick={() => {
+ window.location.href = `/${locale}`;
+ }}
  className="px-6 py-2 text-gray-800 rounded-lg font-semibold hover:bg-accent300 transition-colors"
  >
- Home
+ {t.goHome}
  </Button>
- </div>
  </motion.div>
  </div>
  </div>

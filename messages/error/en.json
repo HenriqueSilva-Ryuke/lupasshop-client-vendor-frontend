@@ -1,0 +1,23 @@
+{
+  "notFound": {
+    "title": "Page not found",
+    "description": "Sorry, the page you're looking for doesn't exist or has been moved.",
+    "goHome": "Go to Home",
+    "goBack": "Go back",
+    "errorCode": "Error code"
+  },
+  "error": {
+    "title": "Oops! Something went wrong",
+    "description": "We encountered an unexpected problem. Please try again or go back to the previous page.",
+    "tryAgain": "Try again",
+    "goBack": "Go back",
+    "goHome": "Home",
+    "digest": "Digest"
+  },
+  "globalError": {
+    "title": "Oops! Something went wrong",
+    "description": "We encountered an unexpected problem. Please reload the page or go back to the home page.",
+    "tryAgain": "Try again",
+    "goHome": "Go to home"
+  }
+}

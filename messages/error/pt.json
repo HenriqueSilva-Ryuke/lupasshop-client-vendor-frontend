@@ -1,0 +1,23 @@
+{
+  "notFound": {
+    "title": "Página não encontrada",
+    "description": "Desculpe, a página que você está procurando não existe ou foi movida.",
+    "goHome": "Ir para Home",
+    "goBack": "Voltar",
+    "errorCode": "Código do erro"
+  },
+  "error": {
+    "title": "Ops! Algo deu errado",
+    "description": "Encontramos um problema inesperado. Por favor, tente novamente ou volte para a página anterior.",
+    "tryAgain": "Tentar novamente",
+    "goBack": "Voltar",
+    "goHome": "Home",
+    "digest": "Digest"
+  },
+  "globalError": {
+    "title": "Ops! Algo deu errado",
+    "description": "Encontramos um problema inesperado. Por favor, recarregue a página ou volte ao início.",
+    "tryAgain": "Tentar novamente",
+    "goHome": "Voltar ao início"
+  }
+}

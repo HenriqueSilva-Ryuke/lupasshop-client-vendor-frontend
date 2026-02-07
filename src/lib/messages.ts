@@ -31,7 +31,8 @@ export async function loadMessages(locale: string) {
     'marketplace',
     'cart',
     'user',
-    'seller'
+    'seller',
+    'error'
   ];
 
   const messages: Record<string, any> = {};
