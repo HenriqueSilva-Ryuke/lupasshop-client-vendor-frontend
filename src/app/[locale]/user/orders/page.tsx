@@ -6,7 +6,8 @@ import { useLocale } from 'next-intl';
 import Link from 'next/link';
 import { Package, ChevronRight, Calendar, CreditCard } from 'lucide-react';
 import { cn } from '@/lib/utils';
-
+import { SkeletonOrderItem } from '@/components/ui/SkeletonLoaders';
+import { EmptyOrders } from '@/components/ui/EmptyStates';
 import { use } from 'react';
 
 export default function OrdersPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -16,25 +17,25 @@ export default function OrdersPage({ params }: { params: Promise<{ locale: strin
  variables: { limit: 10, offset: 0 },
  }) as any;
 
- if (loading) return <div className="p-8 text-center text-gray-500">Carregando pedidos...</div>;
- if (error) return <div className="p-8 text-center text-red-500">Erro ao carregar pedidos.</div>;
+ if (loading) {
+ return (
+ <div className="space-y-6">
+ <h1 className="text-2xl font-bold">Meus Pedidos</h1>
+ <div className="flex flex-col gap-4">
+ {[...Array(3)].map((_, i) => (
+ <SkeletonOrderItem key={i} />
+ ))}
+ </div>
+ </div>
+ );
+ }
+ 
+ if (error) return <div className="p-8 text-center text-red-500">Erro ao carregar pedidos: {error.message}</div>;
 
  const orders = data?.listOrders?.orders || [];
 
  if (orders.length === 0) {
- return (
- <div className="bg-white rounded-xl shadow-sm border p-8 text-center">
- <Package className="w-12 h-12 mx-auto mb-4" />
- <h2 className="text-xl font-bold mb-2">Nenhum pedido encontrado</h2>
- <p className="text-gray-500 mb-6">Você ainda não fez nenhuma compra.</p>
- <Link
- href={`/${locale}/marketplace`}
- className="inline-flex h-10 items-center justify-center rounded-lg bg-primary px-8 text-sm font-medium transition-colors hover:bg-primary/90"
- >
- Ir às compras
- </Link>
- </div>
- );
+ return <EmptyOrders />;
  }
 
  return (

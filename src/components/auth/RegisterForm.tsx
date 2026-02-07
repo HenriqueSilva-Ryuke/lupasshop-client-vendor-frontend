@@ -4,6 +4,10 @@ import React from 'react';
 import { useRegisterForm } from '@/hooks/forms/useRegisterForm';
 import { useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
+import { InlineInput } from '@/components/ui/InlineInput';
+import { LoadingButton } from '@/components/ui/LoadingButton';
+import { AnimatedCheckbox } from '@/components/ui/AnimatedCheckbox';
+import { User, Mail, Lock, Eye, EyeOff } from 'lucide-react';
 
 export default function RegisterForm() {
  const locale = useLocale();
@@ -24,159 +28,107 @@ export default function RegisterForm() {
  <form onSubmit={onSubmit} className="flex flex-col gap-5">
  {/* Error Alert */}
  {error && (
- <div className="p-4 bg-destructive/10 border border-destructive rounded-lg text-destructive text-sm">
- {error}
+ <div className="p-4 bg-destructive/10 border border-destructive rounded-lg text-destructive text-sm flex items-start gap-2">
+ <div className="flex-shrink-0 mt-0.5">⚠️</div>
+ <div>
+ <p className="font-semibold">Erro ao criar conta</p>
+ <p className="text-xs mt-1 opacity-90">{error}</p>
+ </div>
  </div>
  )}
 
- {/* Full Name Input */}
- <div className="flex flex-col gap-1.5">
- <label className="text-text-main text-sm font-medium leading-normal">Nome Completo</label>
- <div className="relative">
- <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">
- person
- </span>
- <input
+ <InlineInput
  {...register('fullName')}
- className={`form-input w-full rounded-xl border bg-slate-50 text-text-main placeholder:text-slate-400 focus:border-primary focus:ring-primary h-12 pl-11 pr-4 text-base transition-shadow ${
- errors.fullName ? 'border-red-500' : 'border-slate-200'
- }`}
- placeholder="Seu nome completo"
  type="text"
+ label="Nome Completo"
+ placeholder="Seu nome completo"
+ leftIcon={<User className="h-4 w-4" />}
+ error={errors.fullName?.message}
  disabled={isLoading}
+ autoComplete="name"
  />
- {errors.fullName && (
- <p className="text-red-500 text-xs mt-1">{errors.fullName.message}</p>
- )}
- </div>
- </div>
 
- {/* Email Input */}
- <div className="flex flex-col gap-1.5">
- <label className="text-text-main text-sm font-medium leading-normal">E-mail</label>
- <div className="relative">
- <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">
- mail
- </span>
- <input
+ <InlineInput
  {...register('email')}
- className={`form-input w-full rounded-xl border bg-slate-50 text-text-main placeholder:text-slate-400 focus:border-primary focus:ring-primary h-12 pl-11 pr-4 text-base transition-shadow ${
- errors.email ? 'border-red-500' : 'border-slate-200'
- }`}
- placeholder="seu@email.com"
  type="email"
+ label="E-mail"
+ placeholder="seu@email.com"
+ leftIcon={<Mail className="h-4 w-4" />}
+ error={errors.email?.message}
  disabled={isLoading}
+ autoComplete="email"
  />
- {errors.email && (
- <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
- )}
- </div>
- </div>
 
- {/* Password Group */}
  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
- {/* Password */}
- <div className="flex flex-col gap-1.5">
- <label className="text-text-main text-sm font-medium leading-normal">Senha</label>
- <div className="relative group">
- <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">
- lock
- </span>
- <input
+ <InlineInput
  {...register('password')}
- className={`form-input w-full rounded-xl border bg-slate-50 text-text-main placeholder:text-slate-400 focus:border-primary focus:ring-primary h-12 pl-11 pr-10 text-base transition-shadow ${
- errors.password ? 'border-red-500' : 'border-slate-200'
- }`}
- placeholder="******"
  type={showPassword ? 'text' : 'password'}
- disabled={isLoading}
- />
+ label="Senha"
+ placeholder="••••••"
+ leftIcon={<Lock className="h-4 w-4" />}
+ rightIcon={
  <button
  onClick={togglePasswordVisibility}
- className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-primary transition-colors"
  type="button"
+ className="hover:text-primary transition-colors"
  tabIndex={-1}
  >
- <span className="material-symbols-outlined text-[20px]">
- {showPassword ? 'visibility' : 'visibility_off'}
- </span>
+ {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
  </button>
- {errors.password && (
- <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>
- )}
- </div>
- </div>
-
- {/* Confirm Password */}
- <div className="flex flex-col gap-1.5">
- <label className="text-text-main text-sm font-medium leading-normal">Confirmar Senha</label>
- <div className="relative group">
- <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">
- lock_reset
- </span>
- <input
- {...register('confirmPassword')}
- className={`form-input w-full rounded-xl border bg-slate-50 text-text-main placeholder:text-slate-400 focus:border-primary focus:ring-primary h-12 pl-11 pr-10 text-base transition-shadow ${
- errors.confirmPassword ? 'border-red-500' : 'border-slate-200'
- }`}
- placeholder="******"
- type={showConfirmPassword ? 'text' : 'password'}
+ }
+ error={errors.password?.message}
  disabled={isLoading}
+ autoComplete="new-password"
  />
+
+ <InlineInput
+ {...register('confirmPassword')}
+ type={showConfirmPassword ? 'text' : 'password'}
+ label="Confirmar Senha"
+ placeholder="••••••"
+ leftIcon={<Lock className="h-4 w-4" />}
+ rightIcon={
  <button
  onClick={toggleConfirmPasswordVisibility}
- className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-primary transition-colors"
  type="button"
+ className="hover:text-primary transition-colors"
  tabIndex={-1}
  >
- <span className="material-symbols-outlined text-[20px]">
- {showConfirmPassword ? 'visibility' : 'visibility_off'}
- </span>
+ {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
  </button>
- {errors.confirmPassword && (
- <p className="text-red-500 text-xs mt-1">{errors.confirmPassword.message}</p>
- )}
- </div>
- </div>
- </div>
-
- {/* Privacy Checkbox */}
- <div className="flex items-start gap-3 mt-2">
- <div className="flex h-6 items-center">
- <input
- {...register('terms')}
- className="h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary"
- id="terms"
- type="checkbox"
+ }
+ error={errors.confirmPassword?.message}
  disabled={isLoading}
+ autoComplete="new-password"
  />
  </div>
- <div className="text-sm leading-6">
- <label className="font-normal text-slate-500" htmlFor="terms">
- Concordo com os{' '}
- <a className="font-semibold text-primary hover:text-primary-dark hover:underline" href="#">
- Termos de Uso
- </a>{' '}
- e a{' '}
- <a className="font-semibold text-primary hover:text-primary-dark hover:underline" href="#">
- Política de Privacidade
- </a>{' '}
- da LupaShop.
- </label>
- {errors.terms && (
- <p className="text-red-500 text-xs mt-1">{errors.terms.message}</p>
- )}
- </div>
- </div>
 
- {/* Submit Button */}
- <button
- type="submit"
+ <AnimatedCheckbox
+ {...register('terms')}
+ label={
+ <span className="text-sm text-muted-foreground">
+ Concordo com os{' '}
+ <a href="#" className="font-semibold text-primary hover:underline">Termos de Uso</a>
+ {' '}e a{' '}
+ <a href="#" className="font-semibold text-primary hover:underline">Política de Privacidade</a>
+ {' '}da LupaShop.
+ </span>
+ }
  disabled={isLoading}
- className="mt-4 flex w-full cursor-pointer items-center justify-center rounded-xl h-12 px-6 bg-primary hover:bg-primary-dark text-card-foreground text-base font-bold leading-normal tracking-[0.015em] transition-all shadow-lg shadow-primary/30 hover:shadow-primary/50 disabled:opacity-50 disabled:cursor-not-allowed"
+ />
+ {errors.terms && (
+ <p className="text-destructive text-xs mt-1 -mt-3">{errors.terms.message}</p>
+ )}
+
+ <LoadingButton
+ type="submit"
+ loading={isLoading}
+ variant="default"
+ size="lg"
+ className="w-full shadow-lg shadow-primary/20 mt-2"
  >
- <span className="truncate">{isLoading ? 'Criando conta...' : 'Criar minha conta'}</span>
- </button>
+ Criar minha conta
+ </LoadingButton>
  </form>
  );
 }

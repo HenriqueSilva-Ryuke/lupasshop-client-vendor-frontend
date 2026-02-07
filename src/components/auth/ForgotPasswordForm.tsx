@@ -5,6 +5,9 @@ import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
 import { useForgotPasswordForm } from '@/hooks/forms/useForgotPasswordForm';
+import { InlineInput } from '@/components/ui/InlineInput';
+import { LoadingButton } from '@/components/ui/LoadingButton';
+import { Mail, CheckCircle } from 'lucide-react';
 
 export default function ForgotPasswordForm() {
  const t = useTranslations('auth.forgotPassword');
@@ -19,10 +22,8 @@ export default function ForgotPasswordForm() {
  animate={{ opacity: 1, y: 0 }}
  className="text-center space-y-6"
  >
- <div className="w-16 h-16 mx-auto bg-green-100 rounded-full flex items-center justify-center">
- <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
- <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
- </svg>
+ <div className="w-16 h-16 mx-auto bg-success/10 rounded-full flex items-center justify-center">
+ <CheckCircle className="w-8 h-8 text-success" />
  </div>
  <div>
  <h3 className="text-lg font-semibold text-foreground mb-2">Email enviado!</h3>
@@ -30,7 +31,7 @@ export default function ForgotPasswordForm() {
  </div>
  <Link
  href={`/${locale}/auth/login`}
- className="inline-block px-6 py-2 bg-primary text-black rounded-xl font-semibold hover:bg-primary/90 transition-colors"
+ className="inline-block px-6 py-3 bg-primary text-card-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors shadow-sm"
  >
  {t('backToLogin')}
  </Link>
@@ -50,47 +51,40 @@ export default function ForgotPasswordForm() {
  <motion.div
  initial={{ opacity: 0 }}
  animate={{ opacity: 1 }}
- className="p-4 bg-destructive/10 border border-destructive rounded-xl text-destructive text-sm"
+ className="p-4 bg-destructive/10 border border-destructive rounded-lg text-destructive text-sm flex items-start gap-2"
  >
- {error}
+ <div className="flex-shrink-0 mt-0.5">⚠️</div>
+ <div>
+ <p className="font-semibold">Erro ao enviar email</p>
+ <p className="text-xs mt-1 opacity-90">{error}</p>
+ </div>
  </motion.div>
  )}
 
- {/* Email Field */}
- <div>
- <label className="block text-sm font-semibold text-foreground mb-2">
- {t('email')}
- </label>
- <input
+ <InlineInput
  {...register('email')}
  type="email"
+ label={t('email')}
  placeholder="seu@email.com"
- className={`w-full px-4 py-3 rounded-xl border-2 transition-colors duration-200 ${
- errors.email
- ? 'border-red-300 focus:border-red-500 focus:ring-red-100'
- : 'border-border focus:border-primary focus:ring-primary/10'
- } focus:outline-none focus:ring-4 bg-card`}
- />
- {errors.email && (
- <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
- )}
- </div>
-
- {/* Submit Button */}
- <motion.button
- whileHover={{ scale: 1.02 }}
- whileTap={{ scale: 0.98 }}
- type="submit"
+ leftIcon={<Mail className="h-4 w-4" />}
+ error={errors.email?.message}
  disabled={isLoading}
- className="w-full py-3 px-4 bg-primary text-black rounded-xl font-semibold hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
- >
- {isLoading ? 'Enviando...' : t('button')}
- </motion.button>
+ autoComplete="email"
+ />
 
- {/* Back to Login */}
+ <LoadingButton
+ type="submit"
+ loading={isLoading}
+ variant="default"
+ size="lg"
+ className="w-full shadow-lg shadow-primary/20"
+ >
+ {t('button')}
+ </LoadingButton>
+
  <Link
  href={`/${locale}/auth/login`}
- className="block text-center text-sm text-primary hover:text-primary/80 transition-colors font-semibold"
+ className="block text-center text-sm text-primary hover:text-primary/80 hover:underline transition-colors font-semibold"
  >
  {t('backToLogin')}
  </Link>

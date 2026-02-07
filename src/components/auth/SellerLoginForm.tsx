@@ -2,102 +2,89 @@
 
 import React from 'react';
 import { useSellerLoginForm } from '@/hooks/forms/useSellerLoginForm';
+import { InlineInput } from '@/components/ui/InlineInput';
+import { LoadingButton } from '@/components/ui/LoadingButton';
+import { AnimatedCheckbox } from '@/components/ui/AnimatedCheckbox';
+import { Mail, Lock, Eye, EyeOff, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
+import { useLocale } from 'next-intl';
 
 export default function SellerLoginForm() {
+ const locale = useLocale();
  const { form, onSubmit, showPassword, togglePasswordVisibility, isLoading, error } = useSellerLoginForm();
  const { register, formState: { errors } } = form;
 
  return (
- <form onSubmit={onSubmit} className="flex flex-col gap-6">
+ <form onSubmit={onSubmit} className="flex flex-col gap-5">
  {/* Error Alert */}
  {error && (
- <div className="p-4 bg-destructive/10 border border-destructive rounded-lg text-destructive text-sm">
- {error}
+ <div className="p-4 bg-destructive/10 border border-destructive rounded-lg text-destructive text-sm flex items-start gap-2">
+ <div className="flex-shrink-0 mt-0.5">⚠️</div>
+ <div>
+ <p className="font-semibold">Falha no acesso</p>
+ <p className="text-xs mt-1 opacity-90">{error}</p>
+ </div>
  </div>
  )}
 
- {/* Email Field */}
- <div className="flex flex-col gap-2">
- <label className="text-sm font-semibold text-foreground" htmlFor="email">
- E-mail corporativo
- </label>
- <div className="relative flex items-center">
- <input
+ <InlineInput
  {...register('email')}
- className={`w-full rounded-xl border bg-muted p-4 text-base text-foreground outline-none ring-offset-2 placeholder:text-muted-foreground focus:bg-card focus:ring-2 focus:ring-primary/20 transition-all ${
- errors.email ? 'border-red-500 focus:border-red-500' : 'border-border focus:border-primary'
- }`}
- id="email"
- placeholder="seuemail@loja.com"
  type="email"
+ label="E-mail corporativo"
+ placeholder="seuemail@loja.com"
+ leftIcon={<Mail className="h-4 w-4" />}
+ error={errors.email?.message}
  disabled={isLoading}
+ autoComplete="email"
  />
- <div className="pointer-events-none absolute right-4 flex text-muted-foreground">
- <span className="material-symbols-outlined">mail</span>
- </div>
- {errors.email && (
- <p className="text-red-500 text-xs mt-1 absolute -bottom-6">{errors.email.message}</p>
- )}
- </div>
- </div>
 
- {/* Password Field */}
- <div className="flex flex-col gap-2">
- <label className="text-sm font-semibold text-foreground" htmlFor="password">
- Senha
- </label>
- <div className="relative flex items-center">
- <input
+ <InlineInput
  {...register('password')}
- className={`w-full rounded-xl border bg-muted p-4 pr-12 text-base text-foreground outline-none ring-offset-2 placeholder:text-muted-foreground focus:bg-card focus:ring-2 focus:ring-primary/20 transition-all ${
- errors.password ? 'border-red-500 focus:border-red-500' : 'border-border focus:border-primary'
- }`}
- id="password"
- placeholder="••••••••"
  type={showPassword ? 'text' : 'password'}
- disabled={isLoading}
- />
+ label="Senha"
+ placeholder="••••••••"
+ leftIcon={<Lock className="h-4 w-4" />}
+ rightIcon={
  <button
  onClick={togglePasswordVisibility}
- className="absolute right-4 flex text-muted-foreground hover:text-foreground transition-colors"
  type="button"
+ className="hover:text-primary transition-colors"
  tabIndex={-1}
  >
- <span className="material-symbols-outlined">
- {showPassword ? 'visibility' : 'visibility_off'}
- </span>
+ {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
  </button>
- {errors.password && (
- <p className="text-red-500 text-xs mt-1 absolute -bottom-6">{errors.password.message}</p>
- )}
- </div>
- </div>
+ }
+ error={errors.password?.message}
+ disabled={isLoading}
+ autoComplete="current-password"
+ />
 
- {/* Forgot Password & Remember Me */}
- <div className="flex flex-wrap items-center justify-between gap-4 mt-2">
- <label className="flex items-center gap-2 cursor-pointer">
- <input
+ <div className="flex items-center justify-between">
+ <AnimatedCheckbox
  {...register('rememberMe')}
- className="h-4 w-4 rounded border-border text-primary focus:ring-primary"
- type="checkbox"
+ label="Lembrar-me"
  disabled={isLoading}
  />
- <span className="text-sm text-muted-foreground">Lembrar-me</span>
- </label>
- <a className="text-sm font-bold text-primary-light hover:text-primary hover:underline" href="#">
+ <Link
+ href={`/${locale}/auth/forgot-password`}
+ className="text-sm font-semibold text-primary hover:text-primary/80 hover:underline transition-colors"
+ >
  Esqueci minha senha
- </a>
+ </Link>
  </div>
 
- {/* Submit Button */}
- <button
+ <LoadingButton
  type="submit"
- disabled={isLoading}
- className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-8 py-4 text-base font-bold text-card-foreground shadow-lg shadow-primary/20 transition-all hover:bg-primary-dark hover:shadow-primary/30 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+ loading={isLoading}
+ variant="default"
+ size="lg"
+ className="w-full shadow-lg shadow-primary/20"
+ rightIcon={<ArrowRight className="h-4 w-4" />}
  >
- {isLoading ? 'Acessando...' : 'Acessar Painel'}
- <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
- </button>
+ Acessar Painel
+ </LoadingButton>
+ </form>
+ );
  </form>
  );
 }

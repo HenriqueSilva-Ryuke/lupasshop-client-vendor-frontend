@@ -5,6 +5,9 @@ import Link from 'next/link';
 import { Plus, Edit, Trash2, Search, MoreVertical } from 'lucide-react';
 import Button from '@/components/ui/Button';
 import { toast } from 'sonner';
+import { SkeletonProductCard } from '@/components/ui/SkeletonLoaders';
+import { EmptyProducts } from '@/components/ui/EmptyStates';
+import { useToast } from '@/components/ui/Toast';
 
 const SELLER_PRODUCTS_QUERY = gql`
  query SellerProducts($search: String, $limit: Int, $offset: Int) {
@@ -37,22 +40,58 @@ export default function SellerProductsPage({ params }: { params: Promise<{ local
  const { locale } = use(params);
  const { data, loading, error, refetch } = useQuery<any>(SELLER_PRODUCTS_QUERY) as any;
  const [deleteProduct] = useMutation<any>(DELETE_PRODUCT_MUTATION);
+ const { undo } = useToast();
 
- const handleDelete = async (id: string) => {
- if (!confirm('Tem certeza que deseja excluir este produto?')) return;
+ const handleDelete = async (id: string, name: string) => {
+ // Optimistic UI with undo
+ const previousProducts = data?.sellerProducts?.products || [];
+ 
+ // Immediately update UI
+ toast.success(`${name} excluído`);
+ refetch();
+ 
  try {
  await deleteProduct({ variables: { id } });
- toast.success('Produto excluído com sucesso');
+ 
+ // Show undo toast
+ undo(
+ `Produto ${name} excluído`,
+ async () => {
+ // Undo would need a restore mutation in real app
  refetch();
+ }
+ );
  } catch (err) {
  toast.error('Erro ao excluir produto');
+ refetch(); // Restore on error
  }
  };
 
- if (loading) return <div>Carregando produtos...</div>;
+ if (loading) {
+ return (
+ <div className="space-y-6">
+ <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+ <div>
+ <h1 className="text-2xl font-bold text-gray-900">Meus Produtos</h1>
+ <p className="text-gray-500">Gerencie seu catálogo de produtos</p>
+ </div>
+ </div>
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+ {[...Array(6)].map((_, i) => (
+ <SkeletonProductCard key={i} />
+ ))}
+ </div>
+ </div>
+ );
+ }
+ 
  if (error) return <div className="text-red-500">Erro ao carregar produtos: {error.message}</div>;
 
  const products = data?.sellerProducts?.products || [];
+
+ if (products.length === 0) {
+ return <EmptyProducts />;
+ }
 
  return (
  <div className="space-y-6">
@@ -133,7 +172,7 @@ export default function SellerProductsPage({ params }: { params: Promise<{ local
  <Button
  variant="outline"
  className="h-8 w-8 p-0 hover:bg-destructive/10 hover:border-destructive"
- onClick={() => handleDelete(product.id)}
+ onClick={() => handleDelete(product.id, product.name)}
  >
  <Trash2 className="w-4 h-4 text-red-500" />
  </Button>

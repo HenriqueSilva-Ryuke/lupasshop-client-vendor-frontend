@@ -1,9 +1,13 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Heart, ShoppingCart, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 import Image from 'next/image';
+import { EmptyWishlist } from '@/components/ui/EmptyStates';
+import { LoadingButton } from '@/components/ui/LoadingButton';
+import { useToast } from '@/components/ui/Toast';
+import { useCartStore } from '@/stores/cartStore';
 
 interface WishlistItem {
  id: string;
@@ -18,28 +22,63 @@ interface WishlistItem {
 
 export default function WishlistPage() {
  const t = useTranslations('customer.wishlist');
+ const locale = useLocale();
  const [wishlist, setWishlist] = useState<WishlistItem[]>([]);
+ const [loadingItems, setLoadingItems] = useState<Set<string>>(new Set());
+ const { undo, success } = useToast();
+ const { addItem } = useCartStore();
 
- const handleRemove = async (productId: string) => {
- // Call GraphQL mutation to remove from wishlist
- setWishlist(wishlist.filter(item => item.product.id !== productId));
+ const handleRemove = async (productId: string, productName: string) => {
+ // Optimistic UI with undo
+ const item = wishlist.find(i => i.product.id === productId);
+ setWishlist(wishlist.filter(i => i.product.id !== productId));
+ 
+ undo(
+ `${productName} removido da lista de desejos`,
+ () => {
+ // Restore item
+ if (item) {
+ setWishlist(prev => [...prev, item]);
+ }
+ }
+ );
  };
 
- const handleAddToCart = async (productId: string) => {
- // Call GraphQL mutation to add to cart
- console.log('Adding to cart:', productId);
+ const handleAddToCart = async (productId: string, productName: string) => {
+ setLoadingItems(prev => new Set(prev).add(productId));
+ 
+ try {
+ // Simulate API call - replace with actual GraphQL mutation
+ await new Promise(resolve => setTimeout(resolve, 500));
+ 
+ const product = wishlist.find(i => i.product.id === productId)?.product;
+ if (product) {
+ addItem({
+ id: product.id,
+ name: product.name,
+ price: product.price,
+ quantity: 1,
+ image: product.images[0],
+ stockQuantity: product.stockQuantity,
+ storeId: 'store-1', // Would come from product data
+ storeName: 'Loja'
+ });
+ }
+ 
+ success(`${productName} adicionado ao carrinho!`);
+ } catch (error) {
+ console.error('Error adding to cart:', error);
+ } finally {
+ setLoadingItems(prev => {
+ const next = new Set(prev);
+ next.delete(productId);
+ return next;
+ });
+ }
  };
 
  if (wishlist.length === 0) {
- return (
- <div className="container mx-auto px-4 py-12">
- <h1 className="text-3xl font-bold mb-8">{t('title')}</h1>
- <div className="flex flex-col items-center justify-center py-12 text-gray-500">
- <Heart className="w-16 h-16 mb-4" />
- <p className="text-lg">{t('empty')}</p>
- </div>
- </div>
- );
+ return <EmptyWishlist />;
  }
 
  return (
@@ -66,17 +105,20 @@ export default function WishlistPage() {
  {item.product.price.toFixed(2)} AKZ
  </p>
  <div className="flex gap-2">
- <button
- onClick={() => handleAddToCart(item.product.id)}
+ <LoadingButton
+ onClick={() => handleAddToCart(item.product.id, item.product.name)}
+ loading={loadingItems.has(item.product.id)}
  disabled={item.product.stockQuantity === 0}
- className="flex-1 bg-primary px-4 py-2 rounded-lg hover:bg-primary/90 disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+ variant="default"
+ size="default"
+ className="flex-1"
+ leftIcon={<ShoppingCart className="w-4 h-4" />}
  >
- <ShoppingCart className="w-4 h-4" />
  {t('addToCart')}
- </button>
+ </LoadingButton>
  <button
- onClick={() => handleRemove(item.product.id)}
- className="px-4 py-2 border border-red-500 text-red-500 rounded-lg hover:bg-destructive/10 flex items-center justify-center"
+ onClick={() => handleRemove(item.product.id, item.product.name)}
+ className="px-4 py-2 border border-red-500 text-red-500 rounded-lg hover:bg-destructive/10 flex items-center justify-center transition-colors"
  >
  <Trash2 className="w-4 h-4" />
  </button>

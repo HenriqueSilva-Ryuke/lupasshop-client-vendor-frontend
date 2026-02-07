@@ -3,6 +3,10 @@
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
 import { useResetPasswordForm } from '@/hooks/forms/useResetPasswordForm';
+import { InlineInput } from '@/components/ui/InlineInput';
+import { LoadingButton } from '@/components/ui/LoadingButton';
+import { Lock, Eye, EyeOff, CheckCircle } from 'lucide-react';
+import { useState } from 'react';
 
 interface ResetPasswordFormProps {
  token: string;
@@ -12,6 +16,8 @@ export default function ResetPasswordForm({ token }: ResetPasswordFormProps) {
  const t = useTranslations('auth.resetPassword');
  const { form, onSubmit, error, success, isLoading } = useResetPasswordForm(token);
  const { register, handleSubmit, formState: { errors } } = form;
+ const [showPassword, setShowPassword] = useState(false);
+ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
  if (success) {
  return (
@@ -20,10 +26,8 @@ export default function ResetPasswordForm({ token }: ResetPasswordFormProps) {
  animate={{ opacity: 1, y: 0 }}
  className="text-center space-y-6"
  >
- <div className="w-16 h-16 mx-auto bg-green-100 rounded-full flex items-center justify-center">
- <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
- <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
- </svg>
+ <div className="w-16 h-16 mx-auto bg-success/10 rounded-full flex items-center justify-center">
+ <CheckCircle className="w-8 h-8 text-success" />
  </div>
  <div>
  <h3 className="text-lg font-semibold text-foreground mb-2">Sucesso!</h3>
@@ -45,62 +49,67 @@ export default function ResetPasswordForm({ token }: ResetPasswordFormProps) {
  <motion.div
  initial={{ opacity: 0 }}
  animate={{ opacity: 1 }}
- className="p-4 bg-destructive/10 border border-destructive rounded-xl text-destructive text-sm"
+ className="p-4 bg-destructive/10 border border-destructive rounded-lg text-destructive text-sm flex items-start gap-2"
  >
- {error}
+ <div className="flex-shrink-0 mt-0.5">⚠️</div>
+ <div>
+ <p className="font-semibold">Erro ao redefinir senha</p>
+ <p className="text-xs mt-1 opacity-90">{error}</p>
+ </div>
  </motion.div>
  )}
 
- {/* Password Field */}
- <div>
- <label className="block text-sm font-semibold text-foreground mb-2">
- {t('password')}
- </label>
- <input
+ <InlineInput
  {...register('password')}
- type="password"
+ type={showPassword ? 'text' : 'password'}
+ label={t('password')}
  placeholder="••••••••"
- className={`w-full px-4 py-3 rounded-xl border-2 transition-colors duration-200 ${
- errors.password
- ? 'border-red-300 focus:border-red-500 focus:ring-red-100'
- : 'border-border focus:border-primary focus:ring-primary/10'
- } focus:outline-none focus:ring-4 bg-card`}
- />
- {errors.password && (
- <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>
- )}
- </div>
-
- {/* Confirm Password Field */}
- <div>
- <label className="block text-sm font-semibold text-foreground mb-2">
- {t('confirmPassword')}
- </label>
- <input
- {...register('confirmPassword')}
- type="password"
- placeholder="••••••••"
- className={`w-full px-4 py-3 rounded-xl border-2 transition-colors duration-200 ${
- errors.confirmPassword
- ? 'border-red-300 focus:border-red-500 focus:ring-red-100'
- : 'border-border focus:border-primary focus:ring-primary/10'
- } focus:outline-none focus:ring-4 bg-card`}
- />
- {errors.confirmPassword && (
- <p className="text-red-500 text-xs mt-1">{errors.confirmPassword.message}</p>
- )}
- </div>
-
- {/* Submit Button */}
- <motion.button
- whileHover={{ scale: 1.02 }}
- whileTap={{ scale: 0.98 }}
- type="submit"
- disabled={isLoading}
- className="w-full py-3 px-4 bg-primary text-black rounded-xl font-semibold hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+ leftIcon={<Lock className="h-4 w-4" />}
+ rightIcon={
+ <button
+ onClick={() => setShowPassword(!showPassword)}
+ type="button"
+ className="hover:text-primary transition-colors"
+ tabIndex={-1}
  >
- {isLoading ? 'Redefinindo...' : t('button')}
- </motion.button>
+ {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+ </button>
+ }
+ error={errors.password?.message}
+ disabled={isLoading}
+ autoComplete="new-password"
+ />
+
+ <InlineInput
+ {...register('confirmPassword')}
+ type={showConfirmPassword ? 'text' : 'password'}
+ label={t('confirmPassword')}
+ placeholder="••••••••"
+ leftIcon={<Lock className="h-4 w-4" />}
+ rightIcon={
+ <button
+ onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+ type="button"
+ className="hover:text-primary transition-colors"
+ tabIndex={-1}
+ >
+ {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+ </button>
+ }
+ error={errors.confirmPassword?.message}
+ disabled={isLoading}
+ autoComplete="new-password"
+ />
+
+ <LoadingButton
+ type="submit"
+ loading={isLoading}
+ variant="default"
+ size="lg"
+ className="w-full shadow-lg shadow-primary/20"
+ >
+ {t('button')}
+ </LoadingButton>
  </motion.form>
  );
 }
