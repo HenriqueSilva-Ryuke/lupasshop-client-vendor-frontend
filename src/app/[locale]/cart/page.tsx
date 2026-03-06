@@ -24,6 +24,7 @@ import { useCartStore } from '@/stores/cartStore';
 import PageTransition from '@/components/PageTransition';
 import { EmptyCart } from '@/components/ui/EmptyStates';
 import { useToast } from '@/components/ui/Toast';
+import { useValidateCoupon } from '@lupa/api-client/hooks';
 
 export default function CartPage() {
  const locale = useLocale();
@@ -33,7 +34,9 @@ export default function CartPage() {
  const { undo } = useToast();
  const [couponCode, setCouponCode] = useState('');
  const [shippingCep, setShippingCep] = useState('');
- const [appliedCoupon, setAppliedCoupon] = useState<{ code: string; discount: number } | null>(null);
+ const [appliedCoupon, setAppliedCoupon] = useState<{ code: string; discountAmount: number } | null>(null);
+ const [couponError, setCouponError] = useState('');
+ const validateCoupon = useValidateCoupon();
 
  // Agrupar itens por loja
  const itemsByStore = useMemo(() => {
@@ -53,7 +56,7 @@ export default function CartPage() {
  }, [items]);
 
  const shippingTotal = 25; // Simplificado - em produção viria da API
- const discountAmount = appliedCoupon ? (subtotal * appliedCoupon.discount) / 100 : 0;
+ const discountAmount = appliedCoupon ? appliedCoupon.discountAmount : 0;
  const total = subtotal + shippingTotal - discountAmount;
  const installments = 12;
  const installmentValue = total / installments;
@@ -81,22 +84,29 @@ export default function CartPage() {
  };
 
  const handleApplyCoupon = () => {
- // Simula aplicação de cupom
- if (couponCode.toUpperCase() === 'DESCONTO10') {
- setAppliedCoupon({ code: couponCode, discount: 10 });
- } else if (couponCode.toUpperCase() === 'DESCONTO20') {
- setAppliedCoupon({ code: couponCode, discount: 20 });
- } else {
- alert(t('invalidCoupon'));
- }
+   if (!couponCode.trim()) return;
+   setCouponError('');
+   validateCoupon.mutate(
+     { code: couponCode, purchaseAmount: subtotal },
+     {
+       onSuccess: (result) => {
+         if (result?.isValid && result.coupon) {
+           setAppliedCoupon({ code: result.coupon.code, discountAmount: result.discountAmount ?? 0 });
+         } else {
+           setCouponError(result?.message ?? t('invalidCoupon'));
+         }
+       },
+       onError: () => setCouponError(t('invalidCoupon')),
+     }
+   );
  };
 
  const handleCheckout = () => {
- if (items.length === 0) {
- alert(t('emptyCartWarning'));
- return;
- }
- router.push(`/${locale}/checkout`);
+   if (items.length === 0) {
+     alert(t('emptyCartWarning'));
+     return;
+   }
+   router.push(`/${locale}/cart/checkout`);
  };
 
  if (items.length === 0) {
@@ -291,17 +301,21 @@ export default function CartPage() {
  className="w-full rounded-lg border bg-white pl-9 pr-3 py-2 text-sm text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
  />
  </div>
- <motion.button
- whileHover={{ scale: 1.02 }}
- whileTap={{ scale: 0.98 }}
- onClick={handleApplyCoupon}
- className="bg-primary/10 hover:bg-primary/20 text-primary font-bold px-4 py-2 rounded-lg text-sm transition-colors"
- >
- {t('apply')}
- </motion.button>
+         <motion.button
+                 whileHover={{ scale: 1.02 }}
+                 whileTap={{ scale: 0.98 }}
+                 onClick={handleApplyCoupon}
+                 disabled={validateCoupon.isPending}
+                 className="bg-primary/10 hover:bg-primary/20 text-primary font-bold px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50"
+               >
+                 {validateCoupon.isPending ? '...' : t('apply')}
+               </motion.button>
  </div>
  {appliedCoupon && (
  <p className="text-xs text-primary mt-2">✓ Cupom {appliedCoupon.code} aplicado!</p>
+ )}
+ {couponError && (
+ <p className="text-xs text-destructive mt-2">{couponError}</p>
  )}
  </div>
 
@@ -317,7 +331,7 @@ export default function CartPage() {
  </div>
  {appliedCoupon && (
  <div className="flex justify-between text-sm text-primary">
- <span>{t('discount')} ({appliedCoupon.discount}%)</span>
+ <span>{t('discount')} ({appliedCoupon.code})</span>
  <span className="font-medium">- R$ {discountAmount.toFixed(2)}</span>
  </div>
  )}

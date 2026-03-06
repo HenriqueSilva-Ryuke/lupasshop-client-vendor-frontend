@@ -1,9 +1,12 @@
+'use client';
+
 import React from 'react';
 import { MarketplaceProduct } from '@/types/marketplace';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Star, ShoppingCart } from 'lucide-react';
+import { Star, ShoppingCart, Heart } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { useCurrentUser, useWishlist, useAddToWishlist, useRemoveFromWishlist } from '@lupa/api-client/hooks';
 
 interface ProductCardProps {
  product: MarketplaceProduct;
@@ -11,6 +14,22 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
  const t = useTranslations('marketplace');
+ const { data: user } = useCurrentUser();
+ const { data: wishlist = [] } = useWishlist(!!user);
+ const addToWishlist = useAddToWishlist();
+ const removeFromWishlist = useRemoveFromWishlist();
+
+ const isInWishlist = wishlist.some((item) => item.product?.id === product.id || item.productId === product.id);
+
+ const handleWishlistToggle = (e: React.MouseEvent) => {
+  e.preventDefault();
+  e.stopPropagation();
+  if (isInWishlist) {
+   removeFromWishlist.mutate(product.id);
+  } else {
+   addToWishlist.mutate(product.id);
+  }
+ };
 
  return (
  <Link
@@ -38,6 +57,19 @@ export default function ProductCard({ product }: ProductCardProps) {
  </span>
  )}
  </div>
+ {/* Wishlist button — only for authenticated users */}
+ {user && (
+  <button
+   onClick={handleWishlistToggle}
+   disabled={addToWishlist.isPending || removeFromWishlist.isPending}
+   className="absolute top-3 right-3 p-1.5 rounded-full bg-white/80 hover:bg-white shadow-sm transition-all disabled:opacity-50"
+   aria-label={isInWishlist ? 'Remover da lista de desejos' : 'Adicionar à lista de desejos'}
+  >
+   <Heart
+    className={`w-4 h-4 transition-colors ${isInWishlist ? 'text-red-500 fill-red-500' : 'text-gray-400'}`}
+   />
+  </button>
+ )}
  </div>
 
  {/* Content */}
