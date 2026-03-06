@@ -8,6 +8,9 @@ import { useMutation, useQuery } from '@apollo/client/react';
 import { GET_CURRENT_USER } from '@/graphql/queries';
 import { UPDATE_USER } from '@/graphql/mutations';
 import Button from '@/components/ui/Button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
+import { errorTextClass, inputBaseClass, inputErrorClass, labelClass } from '@/components/ui/primitives';
+import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
 
 const profileSchema = z.object({
@@ -16,8 +19,6 @@ const profileSchema = z.object({
 });
 
 type ProfileFormValues = z.infer<typeof profileSchema>;
-
-import { use } from 'react';
 
 export default function ProfilePage({ params }: { params: Promise<{ locale: string }> }) {
  // const { locale } = use(params);
@@ -62,33 +63,36 @@ export default function ProfilePage({ params }: { params: Promise<{ locale: stri
  if (loading) return <div>Carregando...</div>;
 
  return (
- <div className="bg-white rounded-xl shadow-sm border p-6">
- <h1 className="text-2xl font-bold mb-6">Meu Perfil</h1>
-
+ <Card>
+ <CardHeader>
+ <CardTitle>Meu Perfil</CardTitle>
+ </CardHeader>
+ <CardContent>
  <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 max-w-md">
  <div>
- <label className="block text-sm font-medium mb-1">Nome Completo</label>
+ <label className={`${labelClass} mb-1`}>Nome Completo</label>
  <input
  {...register('fullName')}
- className="w-full rounded-lg border px-3 py-2 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
+ className={cn(inputBaseClass, errors.fullName && inputErrorClass)}
  />
- {errors.fullName && <p className="text-red-500 text-xs mt-1">{errors.fullName.message}</p>}
+ {errors.fullName && <p className={`${errorTextClass} mt-1`}>{errors.fullName.message}</p>}
  </div>
 
  <div>
- <label className="block text-sm font-medium mb-1">Email</label>
+ <label className={`${labelClass} mb-1`}>Email</label>
  <input
  {...register('email')}
  disabled // Often email is immutable without re-verification
- className="w-full rounded-lg border bg-gray-50 px-3 py-2 cursor-not-allowed"
+ className={cn(inputBaseClass, 'bg-muted cursor-not-allowed', errors.email && inputErrorClass)}
  />
- {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
+ {errors.email && <p className={`${errorTextClass} mt-1`}>{errors.email.message}</p>}
  </div>
 
- <Button type="submit" disabled={updating} className="w-full bg-primary text-white">
+ <Button type="submit" disabled={updating} className="w-full h-12">
  {updating ? 'Salvando...' : 'Salvar Alterações'}
  </Button>
  </form>
- </div>
+ </CardContent>
+ </Card>
  );
 }

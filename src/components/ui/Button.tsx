@@ -4,24 +4,29 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cn } from "@/lib/utils";
 
-// Simple variant logic instead of cva to avoid dependency issues if not installed
 const getButtonClasses = (variant: string, size: string, className?: string) => {
- const base = "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50";
+ const base =
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-semibold ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.99]";
   const variants: Record<string, string> = {
- default: "bg-primary text-primary-foreground hover:bg-primary/90",
- destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
- outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
- secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+ default: "bg-primary text-primary-foreground shadow-sm hover:bg-primary/90",
+ destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
+ outline: "border-2 border-border bg-card text-foreground hover:border-primary hover:text-primary",
+ secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
  ghost: "hover:bg-accent hover:text-accent-foreground",
  link: "text-primary underline-offset-4 hover:underline",
- // Mapping old variants to new ones roughly
- inset: "bg-primary text-primary-foreground hover:bg-primary/90",  slide: "bg-primary text-primary-foreground hover:bg-primary/90",
+ icon: "border border-border bg-card text-foreground hover:border-primary hover:text-primary",
+ inset: "bg-primary text-primary-foreground shadow-sm hover:bg-primary/90",
+ slide: "border-2 border-border bg-card text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary",
+ landing: "h-12 px-6 rounded-lg border-2 border-border bg-card text-foreground font-black uppercase tracking-[0.12em] hover:border-primary hover:text-primary",
+ "landing-primary": "h-12 px-6 rounded-lg bg-primary text-primary-foreground font-black uppercase tracking-[0.12em] hover:bg-primary/90",
  };
 
  const sizes: Record<string, string> = {
- default: "h-10 px-4 py-2",
- sm: "h-9 rounded-md px-3",
- lg: "h-11 rounded-md px-8",
+ default: "h-10 px-4",
+ sm: "h-9 px-3 text-xs",
+ md: "h-10 px-4 text-sm",
+ lg: "h-11 px-8",
+ xl: "h-12 px-10 text-base",
  icon: "h-10 w-10",
  };
 
@@ -31,8 +36,8 @@ const getButtonClasses = (variant: string, size: string, className?: string) => 
 export interface ButtonProps
  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
  asChild?: boolean;
- variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | "inset" | "slide";
- size?: "default" | "sm" | "lg" | "icon";
+ variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | "icon" | "inset" | "slide" | "landing" | "landing-primary";
+ size?: "default" | "sm" | "md" | "lg" | "xl" | "icon";
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(

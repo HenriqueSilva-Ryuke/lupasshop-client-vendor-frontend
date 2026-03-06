@@ -2,6 +2,8 @@
 
 import React from 'react';
 import { UseFormRegisterReturn, FieldError } from 'react-hook-form';
+import { cn } from '@/lib/utils';
+import { errorTextClass, helperTextClass, inputBaseClass, inputErrorClass, labelClass } from './primitives';
 
 interface FormInputProps {
  label: string;
@@ -24,25 +26,21 @@ export default function FormInput({
 }: FormInputProps) {
  return (
  <div className="space-y-2">
- <label className="block text-sm font-medium text-foreground">
+ <label className={labelClass}>
  {label}
- {required && <span className="text-red-500">*</span>}
+ {required && <span className="text-destructive">*</span>}
  </label>
  <input
  type={type}
  placeholder={placeholder}
  {...register}
- className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 transition-colors ${
- error
- ? 'border-red-500 focus:ring-red-500'
- : 'border-border focus:ring-primary'
- }`}
+ className={cn(inputBaseClass, error && inputErrorClass)}
  />
  {error && (
- <p className="text-sm text-red-500">{error.message}</p>
+ <p className={errorTextClass}>{error.message}</p>
  )}
  {helperText && !error && (
- <p className="text-sm text-muted-foreground">{helperText}</p>
+ <p className={helperTextClass}>{helperText}</p>
  )}
  </div>
  );

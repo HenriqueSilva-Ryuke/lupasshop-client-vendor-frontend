@@ -2,6 +2,8 @@
 
 import React from 'react';
 import { UseFormRegisterReturn, FieldError } from 'react-hook-form';
+import { cn } from '@/lib/utils';
+import { errorTextClass, inputBaseClass, inputErrorClass, labelClass } from './primitives';
 
 interface Option {
  value: string | number;
@@ -27,17 +29,13 @@ export default function FormSelect({
 }: FormSelectProps) {
  return (
  <div className="space-y-2">
- <label className="block text-sm font-medium text-foreground">
+ <label className={labelClass}>
  {label}
- {required && <span className="text-red-500">*</span>}
+ {required && <span className="text-destructive">*</span>}
  </label>
  <select
  {...register}
- className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 transition-colors ${
- error
- ? 'border-red-500 focus:ring-red-500'
- : 'border-border focus:ring-primary'
- }`}
+ className={cn(inputBaseClass, error && inputErrorClass)}
  >
  <option value="">{placeholder}</option>
  {options.map((option) => (
@@ -47,7 +45,7 @@ export default function FormSelect({
  ))}
  </select>
  {error && (
- <p className="text-sm text-red-500">{error.message}</p>
+ <p className={errorTextClass}>{error.message}</p>
  )}
  </div>
  );

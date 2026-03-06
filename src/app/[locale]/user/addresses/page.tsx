@@ -12,6 +12,9 @@ import {
   useCurrentUser,
 } from '@lupa/api-client/hooks';
 import type { CreateAddressInput } from '@lupa/types';
+import Button from '@/components/ui/Button';
+import { Card, CardContent } from '@/components/ui/Card';
+import { inputBaseClass, labelClass, pageContainerClass, sectionTitleClass, surfaceClass } from '@/components/ui/primitives';
 
 const emptyForm: CreateAddressInput = {
   label: '',
@@ -94,120 +97,121 @@ export default function AddressesPage() {
   const isMutating = createAddress.isPending || updateAddress.isPending;
 
   const AddressForm = () => (
-    <div className="bg-white p-6 rounded-lg border mb-6">
+    <div className={`${surfaceClass} p-6 mb-6`}>
       <h3 className="text-xl font-semibold mb-4">
         {editingId ? t('form.edit') : t('addNew')}
       </h3>
       <form className="grid grid-cols-1 md:grid-cols-2 gap-4" onSubmit={handleSubmit}>
         <div className="md:col-span-2">
-          <label className="block text-sm font-medium mb-2">{t('form.label')}</label>
+          <label className={`${labelClass} mb-2`}>{t('form.label')}</label>
           <input
             type="text"
             value={formData.label ?? ''}
             onChange={(e) => setFormData((prev) => ({ ...prev, label: e.target.value }))}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+            className={inputBaseClass}
             placeholder={t('form.label')}
           />
         </div>
         <div className="md:col-span-2">
-          <label className="block text-sm font-medium mb-2">{t('form.fullName')}</label>
+          <label className={`${labelClass} mb-2`}>{t('form.fullName')}</label>
           <input
             type="text"
             required
             value={formData.fullName}
             onChange={(e) => setFormData((prev) => ({ ...prev, fullName: e.target.value }))}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+            className={inputBaseClass}
             placeholder={t('form.fullName')}
           />
         </div>
         <div className="md:col-span-2">
-          <label className="block text-sm font-medium mb-2">{t('form.street')}</label>
+          <label className={`${labelClass} mb-2`}>{t('form.street')}</label>
           <input
             type="text"
             required
             value={formData.street}
             onChange={(e) => setFormData((prev) => ({ ...prev, street: e.target.value }))}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+            className={inputBaseClass}
             placeholder={t('form.street')}
           />
         </div>
         <div>
-          <label className="block text-sm font-medium mb-2">{t('form.city')}</label>
+          <label className={`${labelClass} mb-2`}>{t('form.city')}</label>
           <input
             type="text"
             required
             value={formData.city}
             onChange={(e) => setFormData((prev) => ({ ...prev, city: e.target.value }))}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+            className={inputBaseClass}
             placeholder={t('form.city')}
           />
         </div>
         <div>
-          <label className="block text-sm font-medium mb-2">{t('form.state')}</label>
+          <label className={`${labelClass} mb-2`}>{t('form.state')}</label>
           <input
             type="text"
             required
             value={formData.state}
             onChange={(e) => setFormData((prev) => ({ ...prev, state: e.target.value }))}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+            className={inputBaseClass}
             placeholder={t('form.state')}
           />
         </div>
         <div>
-          <label className="block text-sm font-medium mb-2">{t('form.postalCode')}</label>
+          <label className={`${labelClass} mb-2`}>{t('form.postalCode')}</label>
           <input
             type="text"
             required
             value={formData.postalCode}
             onChange={(e) => setFormData((prev) => ({ ...prev, postalCode: e.target.value }))}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+            className={inputBaseClass}
             placeholder={t('form.postalCode')}
           />
         </div>
         <div>
-          <label className="block text-sm font-medium mb-2">{t('form.phone')}</label>
+          <label className={`${labelClass} mb-2`}>{t('form.phone')}</label>
           <input
             type="tel"
             required
             value={formData.phone}
             onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+            className={inputBaseClass}
             placeholder={t('form.phone')}
           />
         </div>
         <div className="md:col-span-2 flex gap-4">
-          <button
+          <Button
             type="submit"
             disabled={isMutating}
-            className="flex items-center gap-2 px-6 py-2 bg-primary rounded-lg hover:bg-primary/90 disabled:opacity-50"
+            className="h-11 px-6"
           >
             {isMutating && <Loader2 className="w-4 h-4 animate-spin" />}
             {t('form.save')}
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
             onClick={handleCancel}
-            className="px-6 py-2 border rounded-lg hover:bg-accent50"
+            variant="outline"
+            className="h-11 px-6"
           >
             {t('form.cancel')}
-          </button>
+          </Button>
         </div>
       </form>
     </div>
   );
 
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className={pageContainerClass}>
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold">{t('title')}</h1>
+        <h1 className={sectionTitleClass}>{t('title')}</h1>
         {!showForm && (
-          <button
+          <Button
             onClick={() => setShowForm(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-primary rounded-lg hover:bg-primary/90"
+            className="h-11 px-4"
           >
             <Plus className="w-5 h-5" />
             {t('addNew')}
-          </button>
+          </Button>
         )}
       </div>
 
@@ -218,47 +222,46 @@ export default function AddressesPage() {
           <Loader2 className="w-8 h-8 animate-spin text-primary" />
         </div>
       ) : addresses.length === 0 && !showForm ? (
-        <div className="flex flex-col items-center justify-center py-12 text-gray-500">
+        <div className="flex flex-col items-center justify-center py-12 text-muted-foreground">
           <MapPin className="w-16 h-16 mb-4" />
           <p className="text-lg">{t('noAddresses')}</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {addresses.map((address) => (
-            <div
-              key={address.id}
-              className={`border rounded-lg p-6 ${
-                address.isDefault ? 'border-primary bg-primary/5' : ''
-              }`}
-            >
+            <Card key={address.id} className={address.isDefault ? 'border-primary bg-primary/5' : ''}>
+              <CardContent className="p-6">
               <div className="flex justify-between items-start mb-4">
                 <div>
                   {address.label && (
                     <span className="text-sm font-semibold text-primary">{address.label}</span>
                   )}
                   {address.isDefault && (
-                    <span className="ml-2 text-xs bg-primary px-2 py-1 rounded">
+                    <span className="ml-2 text-xs bg-primary text-primary-foreground px-2 py-1 rounded">
                       {t('default')}
                     </span>
                   )}
                 </div>
                 <div className="flex gap-2">
-                  <button
+                  <Button
                     onClick={() => handleEdit(address)}
-                    className="text-gray-600 hover:text-primary"
+                    variant="ghost"
+                    size="icon"
                   >
                     <Edit className="w-5 h-5" />
-                  </button>
-                  <button
+                  </Button>
+                  <Button
                     onClick={() => handleDelete(address.id)}
                     disabled={deleteAddress.isPending}
-                    className="text-gray-600 hover:text-red-500 disabled:opacity-50"
+                    variant="ghost"
+                    size="icon"
+                    className="text-destructive hover:text-destructive"
                   >
                     <Trash2 className="w-5 h-5" />
-                  </button>
+                  </Button>
                 </div>
               </div>
-              <div className="text-gray-700">
+              <div className="text-foreground">
                 <p className="font-semibold">{address.fullName}</p>
                 <p>{address.street}</p>
                 <p>
@@ -268,15 +271,17 @@ export default function AddressesPage() {
                 <p className="mt-2">{address.phone}</p>
               </div>
               {!address.isDefault && (
-                <button
+                <Button
                   onClick={() => handleSetDefault(address.id)}
                   disabled={setDefaultAddress.isPending}
-                  className="mt-4 text-sm text-primary hover:underline disabled:opacity-50"
+                  variant="link"
+                  className="mt-4 px-0"
                 >
                   {t('setDefault')}
-                </button>
+                </Button>
               )}
-            </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
       )}

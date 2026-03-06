@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { ShoppingCart, Trash2 } from 'lucide-react';
 import Image from 'next/image';
 import { EmptyWishlist } from '@/components/ui/EmptyStates';
@@ -8,10 +8,12 @@ import { LoadingButton } from '@/components/ui/LoadingButton';
 import { useToast } from '@/components/ui/Toast';
 import { useCartStore } from '@/stores/cartStore';
 import { useWishlist, useRemoveFromWishlist, useAddToWishlist, useCurrentUser } from '@lupa/api-client/hooks';
+import Button from '@/components/ui/Button';
+import { Card, CardContent } from '@/components/ui/Card';
+import { pageContainerClass, sectionTitleClass } from '@/components/ui/primitives';
 
 export default function WishlistPage() {
   const t = useTranslations('customer.wishlist');
-  const locale = useLocale();
   const { success } = useToast();
   const { addItem } = useCartStore();
   const { data: user } = useCurrentUser();
@@ -26,7 +28,6 @@ export default function WishlistPage() {
   const handleAddToCart = (item: (typeof wishlist)[0]) => {
     const product = item.product;
     addItem({
-      id: `${product.id}-${Date.now()}`,
       productId: product.id,
       name: product.name,
       price: product.price,
@@ -41,14 +42,14 @@ export default function WishlistPage() {
 
   if (isLoading) {
     return (
-      <div className="container mx-auto px-4 py-12">
+      <div className={pageContainerClass}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[1, 2, 3].map((i) => (
-            <div key={i} className="border rounded-lg overflow-hidden animate-pulse">
-              <div className="h-48 bg-gray-200" />
+            <div key={i} className="border border-border rounded-xl overflow-hidden animate-pulse">
+              <div className="h-48 bg-muted" />
               <div className="p-4 space-y-3">
-                <div className="h-4 bg-gray-200 rounded w-3/4" />
-                <div className="h-6 bg-gray-200 rounded w-1/2" />
+                <div className="h-4 bg-muted rounded w-3/4" />
+                <div className="h-6 bg-muted rounded w-1/2" />
               </div>
             </div>
           ))}
@@ -62,15 +63,15 @@ export default function WishlistPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className={pageContainerClass}>
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold">{t('title')}</h1>
-        <span className="text-gray-600">{t('itemsCount', { count: wishlist.length })}</span>
+        <h1 className={sectionTitleClass}>{t('title')}</h1>
+        <span className="text-muted-foreground">{t('itemsCount', { count: wishlist.length })}</span>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {wishlist.map((item) => (
-          <div key={item.id} className="border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+          <Card key={item.id} className="overflow-hidden hover:shadow-lg transition-shadow">
             <div className="relative h-48">
               <Image
                 src={item.product.images[0] || '/placeholder.jpg'}
@@ -79,10 +80,10 @@ export default function WishlistPage() {
                 className="object-cover"
               />
             </div>
-            <div className="p-4">
+            <CardContent className="p-4">
               <h3 className="font-semibold text-lg mb-1">{item.product.name}</h3>
               {item.product.store && (
-                <p className="text-xs text-gray-500 mb-2">{item.product.store.name}</p>
+                <p className="text-xs text-muted-foreground mb-2">{item.product.store.name}</p>
               )}
               <p className="text-2xl font-bold text-primary mb-4">
                 {item.product.price.toFixed(2)} AKZ
@@ -99,16 +100,17 @@ export default function WishlistPage() {
                 >
                   {t('addToCart')}
                 </LoadingButton>
-                <button
+                <Button
                   onClick={() => handleRemove(item.product.id)}
                   disabled={removeFromWishlist.isPending}
-                  className="px-4 py-2 border border-red-500 text-red-500 rounded-lg hover:bg-destructive/10 flex items-center justify-center transition-colors disabled:opacity-50"
+                  variant="outline"
+                  className="px-4 border-destructive text-destructive hover:bg-destructive/10 hover:text-destructive"
                 >
                   <Trash2 className="w-4 h-4" />
-                </button>
+                </Button>
               </div>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
         ))}
       </div>
     </div>
