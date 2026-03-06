@@ -11,15 +11,15 @@ import Button from '@/components/ui/Button';
 // Status Badge Component
 function StatusBadge({ status }: { status: string }) {
  const styles = {
- PENDING: "bg-yellow-100 text-yellow-800",
- PAID: "bg-primary100 text-blue-800",
- SHIPPED: "bg-primary100 text-primary800",
- DELIVERED: "bg-green-100 text-green-800",
- CANCELLED: "bg-red-100 text-red-800"
- };
+PENDING: "bg-accent text-accent-foreground",
+  PAID: "bg-primary/10 text-primary",
+  SHIPPED: "bg-primary/15 text-primary",
+  DELIVERED: "bg-primary/10 text-primary",
+  CANCELLED: "bg-destructive/10 text-destructive"
+  };
 
- // @ts-ignore
- const style = styles[status] || "bg-gray-100 text-gray-800";
+  // @ts-ignore
+  const style = styles[status] || "bg-muted text-muted-foreground";
 
  return (
  <span className={cn("inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium", style)}>
@@ -38,8 +38,8 @@ export default function SellerOrdersPage({ params }: { params: Promise<{ locale:
  fetchPolicy: 'network-only' // Ensure fresh data
  }) as any;
 
- if (loading) return <div>Carregando pedidos...</div>;
- if (error) return <div className="text-red-500">Erro ao carregar pedidos: {error.message}</div>;
+if (loading) return <div className="text-muted-foreground">Carregando pedidos...</div>;
+  if (error) return <div className="text-destructive">Erro ao carregar pedidos: {error.message}</div>;
 
  const orders = data?.listOrders?.orders || [];
 
@@ -47,16 +47,16 @@ export default function SellerOrdersPage({ params }: { params: Promise<{ locale:
  <div className="space-y-6">
  <div className="flex justify-between items-center">
  <div>
- <h1 className="text-2xl font-bold text-gray-900">Pedidos</h1>
- <p className="text-gray-500">Gerencie e envie seus pedidos</p>
+ <h1 className="text-2xl font-bold text-foreground">Pedidos</h1>
+ <p className="text-muted-foreground">Gerencie e envie seus pedidos</p>
  </div>
  </div>
 
- <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
+ <div className="rounded-xl border border-border bg-card shadow-sm overflow-hidden">
  <div className="overflow-x-auto">
  <table className="w-full text-left border-collapse">
  <thead>
- <tr className="bg-gray-50 border-b text-xs uppercase">
+ <tr className="bg-muted/50 border-b text-xs uppercase">
  <th className="px-6 py-4 font-semibold">Pedido ID</th>
  <th className="px-6 py-4 font-semibold">Data</th>
  <th className="px-6 py-4 font-semibold">Cliente</th>
@@ -68,7 +68,7 @@ export default function SellerOrdersPage({ params }: { params: Promise<{ locale:
  <tbody>
  {orders.length === 0 ? (
  <tr>
- <td colSpan={6} className="px-6 py-12 text-center text-gray-500">
+ <td colSpan={6} className="px-6 py-12 text-center text-muted-foreground">
  Nenhum pedido recebido ainda.
  </td>
  </tr>
@@ -76,7 +76,7 @@ export default function SellerOrdersPage({ params }: { params: Promise<{ locale:
  orders.map((order: any) => (
  <tr key={order.id} className="border-b hover:bg-accent50/50 transition-colors">
  <td className="px-6 py-4 font-mono text-sm">#{order.id.slice(0, 8)}...</td>
- <td className="px-6 py-4 text-sm text-gray-600">
+ <td className="px-6 py-4 text-sm text-muted-foreground">
  {new Date(parseInt(order.createdAt)).toLocaleDateString()}
  </td>
  <td className="px-6 py-4 text-sm">
@@ -89,7 +89,7 @@ export default function SellerOrdersPage({ params }: { params: Promise<{ locale:
  </td>
  <td className="px-6 py-4 text-right">
  <Link href={`/${locale}/seller/orders/${order.id}`}>
- <Button variant="outline" size="sm" className="bg-white hover:bg-accent50">
+ <Button variant="outline" size="sm" className="bg-card hover:bg-muted/50">
  Detalhes
  <ChevronRight className="w-3 h-3 ml-1" />
  </Button>

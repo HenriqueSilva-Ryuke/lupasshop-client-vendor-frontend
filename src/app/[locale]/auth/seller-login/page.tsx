@@ -28,7 +28,7 @@ export default function SellerLoginPage() {
  <h1 className="mb-3 text-3xl font-black leading-tight tracking-tight text-foreground md:text-4xl">
  Bem-vindo de volta
  </h1>
- <p className="text-base font-normal leading-normal text-gray-500">
+ <p className="text-base font-normal leading-normal text-muted-foreground">
  Acesse seu painel para gerenciar suas vendas e estoque.
  </p>
  </div>
@@ -38,7 +38,7 @@ export default function SellerLoginPage() {
 
  {/* Footer / Register */}
  <div className="mt-8 text-center">
- <p className="text-sm text-gray-500">
+ <p className="text-sm text-muted-foreground">
  Ainda não é parceiro LupaShop?{' '}
  <button
  onClick={() => router.push(`/${locale}/auth/seller-register`)}
@@ -52,7 +52,7 @@ export default function SellerLoginPage() {
  </div>
 
  {/* Right Side: Brand Visual */}
- <div className="hidden lg:relative lg:flex lg:w-1/2 lg:flex-col lg:items-center lg:justify-center lg:bg-gray-100 lg:p-12">
+ <div className="hidden lg:relative lg:flex lg:w-1/2 lg:flex-col lg:items-center lg:justify-center lg:bg-muted lg:p-12">
  {/* Background Image */}
  <div className="absolute inset-0 h-full w-full overflow-hidden">
  <img

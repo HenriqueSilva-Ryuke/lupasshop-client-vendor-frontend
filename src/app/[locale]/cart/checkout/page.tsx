@@ -178,8 +178,8 @@ export default function CheckoutPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <ShoppingBag className="w-16 h-16 mx-auto mb-4 text-gray-300" />
-          <p className="text-lg text-gray-500 mb-4">Seu carrinho está vazio</p>
+      <ShoppingBag className="w-16 h-16 mx-auto mb-4 text-muted-foreground/40" />
+        <p className="text-lg text-muted-foreground mb-4">Seu carrinho está vazio</p>
           <Link href={`/${locale}/marketplace`} className="text-primary underline">
             Continuar comprando
           </Link>
@@ -189,14 +189,14 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <div className="max-w-3xl mx-auto px-4 py-8">
         {/* Header */}
         <div className="flex items-center gap-4 mb-8">
-          <Link href={`/${locale}/cart`} className="text-gray-500 hover:text-primary text-sm">
+          <Link href={`/${locale}/cart`} className="text-muted-foreground hover:text-primary text-sm">
             ← Voltar ao carrinho
           </Link>
-          <h1 className="text-2xl font-bold text-black">Finalizar Compra</h1>
+          <h1 className="text-2xl font-bold text-foreground">Finalizar Compra</h1>
         </div>
 
         {/* Step Indicator */}
@@ -213,12 +213,12 @@ export default function CheckoutPage() {
                         ? 'bg-primary text-white'
                         : isCurrent
                           ? 'bg-primary text-white ring-4 ring-primary/20'
-                          : 'bg-gray-200 text-gray-500'
+                          : 'bg-muted text-muted-foreground'
                     }`}
                   >
                     {isDone ? <CheckCircle2 className="w-4 h-4" /> : i + 1}
                   </div>
-                  {i < 4 && <ChevronRight className="w-4 h-4 text-gray-300" />}
+                  {i < 4 && <ChevronRight className="w-4 h-4 text-border" />}
                 </div>
               );
             })}
@@ -227,14 +227,14 @@ export default function CheckoutPage() {
 
         {/* ── REVIEW ── */}
         {step === 'review' && (
-          <div className="bg-white rounded-xl p-6 shadow-sm border">
+          <div className="rounded-xl bg-card p-6 shadow-sm border border-border">
             <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
               <ShoppingBag className="w-5 h-5" /> Revisão do Pedido
             </h2>
 
             {!user && (
-              <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-                <p className="text-sm text-yellow-800 mb-2">Faça login para continuar o checkout</p>
+              <div className="mb-6 p-4 bg-accent/30 border border-accent rounded-lg">
+                <p className="text-sm text-accent-foreground mb-2">Faça login para continuar o checkout</p>
                 <Link
                   href={`/${locale}/auth/login?redirect=/${locale}/cart/checkout`}
                   className="text-primary font-bold underline text-sm"
@@ -248,16 +248,16 @@ export default function CheckoutPage() {
               const storeName = storeItems[0]?.storeName || 'Loja';
               return (
                 <div key={storeId} className="mb-6 last:mb-0">
-                  <p className="text-xs font-bold text-gray-400 uppercase mb-3">{storeName}</p>
+                  <p className="text-xs font-bold text-muted-foreground uppercase mb-3">{storeName}</p>
                   {storeItems.map((item) => (
                     <div key={item.id} className="flex gap-3 mb-3">
                       <div
-                        className="w-14 h-14 rounded-lg bg-cover bg-center shrink-0 border bg-gray-100"
+                        className="w-14 h-14 rounded-lg bg-cover bg-center shrink-0 border bg-muted"
                         style={{ backgroundImage: item.image ? `url(${item.image})` : undefined }}
                       />
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-semibold truncate">{item.name}</p>
-                        <p className="text-xs text-gray-500">Qtd: {item.quantity}</p>
+                        <p className="text-xs text-muted-foreground">Qtd: {item.quantity}</p>
                       </div>
                       <p className="font-bold text-sm shrink-0">
                         R$ {(item.price * item.quantity).toFixed(2)}
@@ -269,7 +269,7 @@ export default function CheckoutPage() {
             })}
 
             <div className="border-t pt-4 mb-6 space-y-1 text-sm">
-              <div className="flex justify-between text-gray-500">
+              <div className="flex justify-between text-muted-foreground">
                 <span>Subtotal</span>
                 <span>R$ {subtotal.toFixed(2)}</span>
               </div>
@@ -291,7 +291,7 @@ export default function CheckoutPage() {
 
         {/* ── ADDRESS ── */}
         {step === 'address' && (
-          <div className="bg-white rounded-xl p-6 shadow-sm border">
+          <div className="rounded-xl bg-card p-6 shadow-sm border border-border">
             <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
               <MapPin className="w-5 h-5" /> Endereço de Entrega
             </h2>
@@ -307,7 +307,7 @@ export default function CheckoutPage() {
                     <label
                       key={addr.id}
                       className={`flex items-start gap-3 p-4 rounded-lg border cursor-pointer transition-colors ${
-                        selectedAddressId === addr.id ? 'border-primary bg-primary/5' : 'hover:bg-gray-50'
+                        selectedAddressId === addr.id ? 'border-primary bg-primary/5' : 'hover:bg-muted/50'
                       }`}
                     >
                       <input
@@ -320,10 +320,10 @@ export default function CheckoutPage() {
                       />
                       <div>
                         <p className="font-semibold text-sm">{addr.fullName}</p>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-xs text-muted-foreground">
                           {addr.street}, {addr.city}, {addr.state} {addr.postalCode}
                         </p>
-                        <p className="text-xs text-gray-500">{addr.phone}</p>
+                        <p className="text-xs text-muted-foreground">{addr.phone}</p>
                         {addr.isDefault && (
                           <span className="text-xs text-primary font-bold">Padrão</span>
                         )}
@@ -342,7 +342,7 @@ export default function CheckoutPage() {
                 )}
 
                 {showAddressForm && (
-                  <div className="border rounded-lg p-4 mb-6">
+                  <div className="rounded-lg border border-border p-4 mb-6">
                     <h3 className="font-semibold mb-3 text-sm">Novo Endereço</h3>
                     <div className="grid grid-cols-2 gap-3">
                       {(
@@ -364,7 +364,7 @@ export default function CheckoutPage() {
                             onChange={(e) =>
                               setAddressForm((prev) => ({ ...prev, [key]: e.target.value }))
                             }
-                            className="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20"
+                            className="w-full px-3 py-2 border border-border rounded-lg text-sm bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20"
                           />
                         </div>
                       ))}
@@ -388,7 +388,7 @@ export default function CheckoutPage() {
                       </button>
                       <button
                         onClick={() => setShowAddressForm(false)}
-                        className="px-4 py-2 border text-sm rounded-lg hover:bg-gray-50"
+                        className="px-4 py-2 border text-sm rounded-lg hover:bg-muted/50"
                       >
                         Cancelar
                       </button>
@@ -410,11 +410,11 @@ export default function CheckoutPage() {
 
         {/* ── COUPON ── */}
         {step === 'coupon' && (
-          <div className="bg-white rounded-xl p-6 shadow-sm border">
+          <div className="rounded-xl bg-card p-6 shadow-sm border border-border">
             <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
               <Tag className="w-5 h-5" /> Cupom de Desconto
             </h2>
-            <p className="text-sm text-gray-500 mb-4">
+            <p className="text-sm text-muted-foreground mb-4">
               Tem um cupom? Insira o código abaixo para aplicar o desconto.
             </p>
 
@@ -427,7 +427,7 @@ export default function CheckoutPage() {
                   setCouponError('');
                 }}
                 placeholder="CÓDIGO DO CUPOM"
-                className="flex-1 px-4 py-2 border rounded-lg text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary/20"
+                className="flex-1 px-4 py-2 border border-border rounded-lg bg-card text-sm font-mono text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20"
               />
               <button
                 onClick={handleApplyCoupon}
@@ -442,7 +442,7 @@ export default function CheckoutPage() {
               </button>
             </div>
 
-            {couponError && <p className="text-xs text-red-500 mb-4">{couponError}</p>}
+            {couponError && <p className="text-xs text-destructive mb-4">{couponError}</p>}
             {appliedCoupon && (
               <p className="text-sm text-primary mb-4 font-semibold">
                 ✓ Cupom {appliedCoupon.code} — desconto de R$ {appliedCoupon.discountAmount.toFixed(2)}
@@ -452,7 +452,7 @@ export default function CheckoutPage() {
             <div className="flex gap-3">
               <button
                 onClick={() => setStep('shipping')}
-                className="flex-1 border font-bold py-3 rounded-lg hover:bg-gray-50 text-sm text-gray-600"
+                className="flex-1 border border-border font-bold py-3 rounded-lg hover:bg-muted/50 text-sm text-muted-foreground"
               >
                 Pular
               </button>
@@ -468,7 +468,7 @@ export default function CheckoutPage() {
 
         {/* ── SHIPPING ── */}
         {step === 'shipping' && (
-          <div className="bg-white rounded-xl p-6 shadow-sm border">
+          <div className="rounded-xl bg-card p-6 shadow-sm border border-border">
             <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
               <Truck className="w-5 h-5" /> Frete
             </h2>
@@ -479,11 +479,11 @@ export default function CheckoutPage() {
                 return (
                   <div
                     key={storeId}
-                    className="flex justify-between items-center p-4 bg-gray-50 rounded-lg"
+                    className="flex justify-between items-center p-4 bg-muted/50 rounded-lg"
                   >
                     <div>
                       <p className="font-semibold text-sm">{storeName}</p>
-                      <p className="text-xs text-gray-500">Entrega padrão · 3–7 dias úteis</p>
+                      <p className="text-xs text-muted-foreground">Entrega padrão · 3–7 dias úteis</p>
                     </div>
                     <p className="font-bold text-sm">R$ {SHIPPING_COST_PER_STORE.toFixed(2)}</p>
                   </div>
@@ -492,11 +492,11 @@ export default function CheckoutPage() {
             </div>
 
             <div className="border-t pt-4 mb-6 space-y-2 text-sm">
-              <div className="flex justify-between text-gray-500">
+              <div className="flex justify-between text-muted-foreground">
                 <span>Subtotal</span>
                 <span>R$ {subtotal.toFixed(2)}</span>
               </div>
-              <div className="flex justify-between text-gray-500">
+              <div className="flex justify-between text-muted-foreground">
                 <span>Frete ({itemsByStore.length} loja{itemsByStore.length > 1 ? 's' : ''})</span>
                 <span>R$ {shippingTotal.toFixed(2)}</span>
               </div>
@@ -523,7 +523,7 @@ export default function CheckoutPage() {
 
         {/* ── PAYMENT ── */}
         {step === 'payment' && (
-          <div className="bg-white rounded-xl p-6 shadow-sm border">
+          <div className="rounded-xl bg-card p-6 shadow-sm border border-border">
             <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
               <CreditCard className="w-5 h-5" /> Forma de Pagamento
             </h2>
@@ -535,7 +535,7 @@ export default function CheckoutPage() {
                   className={`flex items-center gap-3 p-4 rounded-lg border cursor-pointer transition-colors ${
                     selectedPaymentMethod === method.value
                       ? 'border-primary bg-primary/5'
-                      : 'hover:bg-gray-50'
+                    : 'hover:bg-muted/50'
                   }`}
                 >
                   <input
@@ -550,15 +550,15 @@ export default function CheckoutPage() {
               ))}
             </div>
 
-            <div className="bg-gray-50 rounded-lg p-4 mb-6">
+            <div className="bg-muted/50 rounded-lg p-4 mb-6">
               <div className="flex justify-between items-center">
-                <span className="text-sm text-gray-600">Total a pagar</span>
+                <span className="text-sm text-muted-foreground">Total a pagar</span>
                 <span className="font-black text-xl">R$ {total.toFixed(2)}</span>
               </div>
             </div>
 
             {paymentError && (
-              <p className="text-sm text-red-500 mb-4">{paymentError}</p>
+              <p className="text-sm text-destructive mb-4">{paymentError}</p>
             )}
 
             <button
@@ -579,20 +579,20 @@ export default function CheckoutPage() {
 
         {/* ── CONFIRMATION ── */}
         {step === 'confirmation' && (
-          <div className="bg-white rounded-xl p-8 shadow-sm border text-center">
+          <div className="rounded-xl bg-card p-8 shadow-sm border border-border text-center">
             <CheckCircle2 className="w-16 h-16 text-green-500 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-black mb-2">Pedido Confirmado!</h2>
-            <p className="text-gray-500 mb-6 text-sm">
+            <h2 className="text-2xl font-bold text-foreground mb-2">Pedido Confirmado!</h2>
+            <p className="text-muted-foreground mb-6 text-sm">
               Seu pagamento foi processado com sucesso. Em breve você receberá a confirmação.
             </p>
 
             {confirmedOrderIds.length > 0 && (
-              <div className="mb-6 text-sm bg-gray-50 rounded-lg p-4">
-                <p className="font-semibold mb-2 text-gray-700">
+              <div className="mb-6 text-sm bg-muted/50 rounded-lg p-4">
+                <p className="font-semibold mb-2 text-foreground">
                   {confirmedOrderIds.length > 1 ? 'Pedidos criados:' : 'Pedido criado:'}
                 </p>
                 {confirmedOrderIds.map((id) => (
-                  <p key={id} className="font-mono text-xs text-gray-400 break-all">
+                  <p key={id} className="font-mono text-xs text-muted-foreground break-all">
                     {id}
                   </p>
                 ))}
@@ -608,7 +608,7 @@ export default function CheckoutPage() {
               </Link>
               <Link
                 href={`/${locale}/marketplace`}
-                className="w-full border font-bold py-3 rounded-lg hover:bg-gray-50 block text-gray-700"
+                className="w-full border border-border font-bold py-3 rounded-lg hover:bg-muted/50 block text-foreground"
               >
                 Continuar Comprando
               </Link>

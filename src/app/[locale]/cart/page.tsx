@@ -133,7 +133,7 @@ export default function CartPage() {
  <div className="flex flex-wrap justify-between items-end gap-3 pb-6 border-b mb-8">
  <div className="flex min-w-72 flex-col gap-2">
  <h1 className="text-3xl md:text-4xl font-black leading-tight">{t('title')}</h1>
- <p className="text-gray-500 text-base font-normal">
+ <p className="text-muted-foreground text-base font-normal">
  {t('itemsFrom', { count: items.length, stores: itemsByStore.length, plural: itemsByStore.length > 1 ? 's' : '' })}
  </p>
  </div>
@@ -156,14 +156,14 @@ export default function CartPage() {
  const storeName = storeItems[0]?.storeName || 'Loja';
 
  return (
- <div key={storeId} className="flex flex-col gap-0 rounded-xl overflow-hidden shadow-sm border border-gray-200">
+ <div key={storeId} className="flex flex-col gap-0 rounded-xl overflow-hidden shadow-sm border border-border">
  {/* Store Header */}
- <div className="bg-gray-50 px-6 py-4 border-b flex justify-between items-center">
+ <div className="bg-muted/50 px-6 py-4 border-b flex justify-between items-center">
  <div className="flex items-center gap-2">
  <Zap className="w-5 h-5 text-primary" />
  <h3 className="text-black text-sm font-bold leading-tight uppercase">{storeName}</h3>
  </div>
- <span className="text-xs font-bold bg-green-100 text-green-700 px-2.5 py-1 rounded-full">
+ <span className="text-xs font-bold bg-primary/10 text-primary px-2.5 py-1 rounded-full">
  {t('freeShipping')}
  </span>
  </div>
@@ -179,13 +179,13 @@ export default function CartPage() {
  {/* Product Info */}
  <div className="flex items-start gap-4 flex-1">
  <div
- className="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-24 shrink-0 border border-gray-100"
+ className="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-24 shrink-0 border border-border"
  style={{ backgroundImage: `url(${item.image || 'https://via.placeholder.com/96'})` }}
  />
  <div className="flex flex-col justify-between h-full min-h-[96px]">
  <div>
- <p className="text-black text-base font-bold leading-snug mb-1">{item.name}</p>
- <p className="text-gray-500 text-sm font-normal leading-normal mb-2">
+ <p className="text-foreground text-base font-bold leading-snug mb-1">{item.name}</p>
+ <p className="text-muted-foreground text-sm font-normal leading-normal mb-2">
  {t('quantity')}: {item.quantity}
  </p>
  {item.stockQuantity > 0 ? (
@@ -207,14 +207,14 @@ export default function CartPage() {
 
  {/* Price and Quantity */}
  <div className="flex flex-row sm:flex-col justify-between items-center sm:items-end gap-4 shrink-0">
- <p className="text-black text-lg font-bold leading-normal">
+ <p className="text-foreground text-lg font-bold leading-normal">
  R$ {(item.price * item.quantity).toFixed(2)}
  </p>
- <div className="flex items-center gap-1 text-black border rounded-lg p-1 bg-white">
+ <div className="flex items-center gap-1 text-foreground border rounded-lg p-1 bg-card">
  <Button
  variant="ghost"
  onClick={() => handleUpdateQuantity(item.id, item.quantity - 1)}
- className="flex h-7 w-7 items-center justify-center rounded hover:bg-accent100 cursor-pointer transition-colors text-gray-500"
+ className="flex h-7 w-7 items-center justify-center rounded hover:bg-muted cursor-pointer transition-colors text-muted-foreground"
  >
  <Minus className="w-4 h-4" />
  </Button>
@@ -222,7 +222,7 @@ export default function CartPage() {
  type="number"
  value={item.quantity}
  onChange={(e) => handleUpdateQuantity(item.id, parseInt(e.target.value) || 1)}
- className="text-sm font-semibold w-8 p-0 text-center bg-transparent focus:outline-0 focus:ring-0 border-none text-black"
+ className="text-sm font-semibold w-8 p-0 text-center bg-transparent focus:outline-0 focus:ring-0 border-none text-foreground"
  />
  <Button
  variant="ghost"
@@ -238,11 +238,11 @@ export default function CartPage() {
  ))}
 
  {/* Store Subtotal */}
- <div className="bg-gray-50 px-6 py-4 border-t flex justify-end items-center gap-3">
- <span className="text-sm text-gray-600">
+ <div className="bg-muted/50 px-6 py-4 border-t flex justify-end items-center gap-3">
+ <span className="text-sm text-muted-foreground">
  {t('storeSubtotal', { count: storeItems.length })}:
  </span>
- <span className="text-xl font-bold text-black">R$ {storeTotal.toFixed(2)}</span>
+ <span className="text-xl font-bold text-foreground">R$ {storeTotal.toFixed(2)}</span>
  </div>
  </div>
  );
@@ -255,20 +255,20 @@ export default function CartPage() {
  <motion.div
  initial={{ opacity: 0, y: 20 }}
  animate={{ opacity: 1, y: 0 }}
- className="bg-white rounded-xl p-6 shadow-lg border border-gray-200"
+ className="bg-card rounded-xl p-6 shadow-lg border border-border"
  >
- <h3 className="text-black text-xl font-bold leading-tight mb-6">{t('orderSummary')}</h3>
+ <h3 className="text-foreground text-xl font-bold leading-tight mb-6">{t('orderSummary')}</h3>
 
  {/* Shipping CEP */}
  <div className="mb-6">
- <label className="block text-sm font-bold text-black mb-2">{t('calculateShipping')}</label>
+ <label className="block text-sm font-bold text-foreground mb-2">{t('calculateShipping')}</label>
  <div className="flex gap-2">
  <input
  type="text"
  value={shippingCep}
  onChange={(e) => setShippingCep(e.target.value)}
  placeholder={t('enterCep')}
- className="flex-1 rounded-lg border bg-white px-3 py-2 text-sm text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+ className="flex-1 rounded-lg border border-border bg-card px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
  />
  <motion.button
  whileHover={{ scale: 1.02 }}
@@ -290,7 +290,7 @@ export default function CartPage() {
 
  {/* Coupon */}
  <div className="mb-6 border-b pb-6">
- <label className="block text-sm font-bold text-black mb-2">{t('couponCode')}</label>
+ <label className="block text-sm font-bold text-foreground mb-2">{t('couponCode')}</label>
  <div className="flex gap-2">
  <div className="relative flex-1">
  <input
@@ -298,7 +298,7 @@ export default function CartPage() {
  value={couponCode}
  onChange={(e) => setCouponCode(e.target.value)}
  placeholder={t('enterCoupon')}
- className="w-full rounded-lg border bg-white pl-9 pr-3 py-2 text-sm text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+ className="w-full rounded-lg border border-border bg-card pl-9 pr-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
  />
  </div>
          <motion.button
@@ -322,12 +322,12 @@ export default function CartPage() {
  {/* Price Breakdown */}
  <div className="space-y-3 mb-6">
  <div className="flex justify-between text-sm">
- <span className="text-gray-500">{t('subtotal')} ({items.length} itens)</span>
- <span className="text-black font-medium">R$ {subtotal.toFixed(2)}</span>
+ <span className="text-muted-foreground">{t('subtotal')} ({items.length} itens)</span>
+ <span className="text-foreground font-medium">R$ {subtotal.toFixed(2)}</span>
  </div>
  <div className="flex justify-between text-sm">
- <span className="text-gray-500">{t('shipping')}</span>
- <span className="text-black font-medium">R$ {shippingTotal.toFixed(2)}</span>
+ <span className="text-muted-foreground">{t('shipping')}</span>
+ <span className="text-foreground font-medium">R$ {shippingTotal.toFixed(2)}</span>
  </div>
  {appliedCoupon && (
  <div className="flex justify-between text-sm text-primary">
@@ -340,8 +340,8 @@ export default function CartPage() {
  {/* Total */}
  <div className="border-t pt-4 mb-6">
  <div className="flex justify-between items-center mb-1">
- <span className="text-lg font-bold text-black">{t('total')}</span>
- <span className="text-2xl font-black text-black">R$ {total.toFixed(2)}</span>
+ <span className="text-lg font-bold text-foreground">{t('total')}</span>
+ <span className="text-2xl font-black text-foreground">R$ {total.toFixed(2)}</span>
  </div>
  <p className="text-xs text-right">
  {t('installments', { count: installments, value: installmentValue.toFixed(2) })}
@@ -363,7 +363,7 @@ export default function CartPage() {
  whileHover={{ scale: 1.02 }}
  whileTap={{ scale: 0.98 }}
  onClick={() => router.push(`/${locale}/marketplace`)}
- className="w-full border hover:bg-accent50 text-black font-bold py-3 rounded-lg transition-colors text-sm"
+ className="w-full border border-border hover:bg-muted/50 text-foreground font-bold py-3 rounded-lg transition-colors text-sm"
  >
  Escolher mais produtos
  </motion.button>
@@ -374,13 +374,13 @@ export default function CartPage() {
  initial={{ opacity: 0, y: 20 }}
  animate={{ opacity: 1, y: 0 }}
  transition={{ delay: 0.1 }}
- className="bg-gray-50 rounded-xl p-4 flex flex-col items-center gap-3 text-center border border-gray-200"
+ className="bg-muted/50 rounded-xl p-4 flex flex-col items-center gap-3 text-center border border-border"
  >
  <div className="flex gap-2 items-center text-primary">
  <Lock className="w-4 h-4" />
  <span className="text-sm font-bold">Compra 100% Segura</span>
  </div>
- <p className="text-xs text-gray-500">
+ <p className="text-xs text-muted-foreground">
  Seus dados estão protegidos. LupaShop garante a entrega ou seu dinheiro de volta.
  </p>
  </motion.div>

@@ -112,19 +112,19 @@ export default function NewProductPage({ params }: { params: Promise<any> }) {
  <h1 className="text-2xl font-bold">Novo Produto</h1>
  </div>
 
- <div className="bg-white rounded-xl shadow-sm border p-6">
+ <div className="rounded-xl bg-card shadow-sm border border-border p-6">
  <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
  <div className="space-y-4">
  <h3 className="font-semibold border-b pb-2">Informações Básicas</h3>
  <div>
  <label className="block text-sm font-medium mb-1">Nome do Produto</label>
- <input {...register('name')} className="w-full input-primary border rounded-lg p-2" placeholder="Ex: Camiseta Algodão" />
- {errors.name && <p className="text-red-500 text-xs mt-1">{(errors.name as any).message}</p>}
+ <input {...register('name')} className="w-full input-primary border border-border rounded-lg p-2 bg-card text-foreground" placeholder="Ex: Camiseta Algódão" />
+ {errors.name && <p className="text-destructive text-xs mt-1">{(errors.name as any).message}</p>}
  </div>
  <div>
  <label className="block text-sm font-medium mb-1">Descrição</label>
- <textarea {...register('description')} rows={4} className="w-full border rounded-lg p-2" placeholder="Descreva seu produto..." />
- {errors.description && <p className="text-red-500 text-xs mt-1">{(errors.description as any).message}</p>}
+ <textarea {...register('description')} rows={4} className="w-full border border-border rounded-lg p-2 bg-card text-foreground" placeholder="Descreva seu produto..." />
+ {errors.description && <p className="text-destructive text-xs mt-1">{(errors.description as any).message}</p>}
  </div>
  </div>
 
@@ -133,17 +133,17 @@ export default function NewProductPage({ params }: { params: Promise<any> }) {
  <div className="grid grid-cols-2 gap-4">
  <div>
  <label className="block text-sm font-medium mb-1">Preço (AKZ)</label>
- <input type="number" step="0.01" {...register('price')} className="w-full border rounded-lg p-2" />
- {errors.price && <p className="text-red-500 text-xs mt-1">{(errors.price as any).message}</p>}
+ <input type="number" step="0.01" {...register('price')} className="w-full border border-border rounded-lg p-2 bg-card text-foreground" />
+ {errors.price && <p className="text-destructive text-xs mt-1">{(errors.price as any).message}</p>}
  </div>
  <div>
  <label className="block text-sm font-medium mb-1">Preço Original</label>
- <input type="number" step="0.01" {...register('originalPrice')} className="w-full border rounded-lg p-2" />
+ <input type="number" step="0.01" {...register('originalPrice')} className="w-full border border-border rounded-lg p-2 bg-card text-foreground" />
  </div>
  </div>
  <div>
  <label className="block text-sm font-medium mb-1">Quantidade</label>
- <input type="number" {...register('stockQuantity')} className="w-full border rounded-lg p-2" />
+ <input type="number" {...register('stockQuantity')} className="w-full border border-border rounded-lg p-2 bg-card text-foreground" />
  </div>
  </div>
 
@@ -151,8 +151,8 @@ export default function NewProductPage({ params }: { params: Promise<any> }) {
  <h3 className="font-semibold border-b pb-2">Imagens</h3>
  <div>
  <label className="block text-sm font-medium mb-1">URL da Imagem Principal</label>
- <input {...register('images.0')} className="w-full border rounded-lg p-2" placeholder="https://..." />
- {errors.images && <p className="text-red-500 text-xs mt-1">{(errors.images as any).message}</p>}
+ <input {...register('images.0')} className="w-full border border-border rounded-lg p-2 bg-card text-foreground" placeholder="https://..." />
+ {errors.images && <p className="text-destructive text-xs mt-1">{(errors.images as any).message}</p>}
  </div>
  </div>
 

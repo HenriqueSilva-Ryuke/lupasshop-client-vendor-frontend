@@ -104,7 +104,7 @@ export default function UserFinancesPage() {
 
  return (
  <main className="flex-1 overflow-y-auto h-full relative scroll-smooth bg-background-light bg-background-dark">
- <header className="sticky top-0 z-20 w-full bg-white/95 /95 backdrop-blur-md border-b border-gray-800">
+ <header className="sticky top-0 z-20 w-full bg-card/95 backdrop-blur-md border-b border-border">
  <div className="px-6 py-4 lg:px-10">
  <div className="flex flex-wrap justify-between items-center gap-4">
  <div className="flex flex-col gap-1">
@@ -143,10 +143,10 @@ export default function UserFinancesPage() {
  </div>
  </div>
 
- <div className="flex flex-col gap-2 rounded-xl p-6 border border-gray-700 shadow-sm transition-transform hover:-translate-y-1">
+ <div className="flex flex-col gap-2 rounded-xl p-6 border border-border shadow-sm transition-transform hover:-translate-y-1">
  <div className="flex items-center justify-between">
  <p className=" text-sm font-medium">Total Gasto</p>
- <div className="p-2 bg-primary50 bg-primary900/20 rounded-lg text-primary text-blue-400">
+ <div className="p-2 bg-primary/10 rounded-lg text-primary">
  <span className="material-symbols-outlined text-[20px]">shopping_cart</span>
  </div>
  </div>
@@ -163,10 +163,10 @@ export default function UserFinancesPage() {
  </div>
  </div>
 
- <div className="flex flex-col gap-2 rounded-xl p-6 border border-gray-700 shadow-sm transition-transform hover:-translate-y-1">
+ <div className="flex flex-col gap-2 rounded-xl p-6 border border-border shadow-sm transition-transform hover:-translate-y-1">
  <div className="flex items-center justify-between">
  <p className=" text-sm font-medium">Total Reembolsado</p>
- <div className="p-2 bg-green-50 bg-green-900/20 rounded-lg text-primary text-green-400">
+ <div className="p-2 bg-primary/10 rounded-lg text-primary">
  <span className="material-symbols-outlined text-[20px]">undo</span>
  </div>
  </div>
@@ -192,11 +192,11 @@ export default function UserFinancesPage() {
  </h3>
  </div>
 
- <div className="w-full overflow-hidden rounded-xl border border-gray-700 shadow-sm">
+ <div className="w-full overflow-hidden rounded-xl border border-border shadow-sm">
  <div className="overflow-x-auto">
  <table className="w-full text-left border-collapse">
  <thead>
- <tr className="bg-gray-50 /50 border-b border-gray-700">
+ <tr className="bg-muted/50 border-b border-border">
  <th className="p-4 text-xs font-bold uppercase tracking-wider ">
  Data
  </th>
@@ -211,11 +211,11 @@ export default function UserFinancesPage() {
  </th>
  </tr>
  </thead>
- <tbody className="divide-y divide-gray-100 divide-gray-700">
+ <tbody className="divide-y divide-border">
  {transactions.map((transaction) => (
  <tr
  key={transaction.id}
- className="group hover:bg-accent50 hover:bg-accent800 transition-colors"
+ className="group hover:bg-muted/50 transition-colors"
  >
  <td className="p-4 text-sm ">
  {formatDate(transaction.createdAt)}

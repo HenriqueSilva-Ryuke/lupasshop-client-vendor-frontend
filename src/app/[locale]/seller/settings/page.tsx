@@ -162,7 +162,7 @@ export default function SettingsPage() {
  <div className="flex h-screen w-full overflow-hidden">
  <BottomNav />
  <main className="flex-1 overflow-y-auto h-full relative scroll-smooth bg-background-light pb-20 lg:pb-0">
- <header className="sticky top-0 z-20 w-full bg-white/95 backdrop-blur-md border-b border-gray-200">
+ <header className="sticky top-0 z-20 w-full bg-card/95 backdrop-blur-md border-b border-border">
  <div className="px-6 py-4 lg:px-10">
  <div className="flex flex-wrap justify-between items-center gap-4">
  <div className="flex flex-col gap-1">
@@ -196,7 +196,7 @@ export default function SettingsPage() {
  <span className="material-symbols-outlined text-primary">storefront</span>
  Perfil da Loja
  </h2>
- <div className="bg-white rounded-xl border shadow-sm p-6 lg:p-8">
+ <div className="rounded-xl border border-border bg-card shadow-sm p-6 lg:p-8">
  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
  <div className="flex flex-col gap-4 items-center text-center">
  <div className="relative group cursor-pointer">
@@ -225,7 +225,7 @@ export default function SettingsPage() {
  value={logoUrl}
  onChange={(e) => setLogoUrl(e.target.value)}
  placeholder="URL da logo"
- className="text-sm w-full px-3 py-1.5 border rounded-lg"
+ className="text-sm w-full px-3 py-1.5 border border-border rounded-lg bg-card text-foreground focus:outline-none focus:border-primary"
  />
  </div>
 
@@ -252,28 +252,28 @@ export default function SettingsPage() {
  value={bannerUrl}
  onChange={(e) => setBannerUrl(e.target.value)}
  placeholder="URL do banner"
- className="text-sm w-full px-3 py-1.5 border rounded-lg mt-2"
+ className="text-sm w-full px-3 py-1.5 border border-border rounded-lg bg-card text-foreground focus:outline-none focus:border-primary mt-2"
  />
  </div>
 
  <div className="grid grid-cols-1 gap-4">
  <div className="flex flex-col gap-1.5">
- <label className="text-sm font-medium ">
+ <label className="text-sm font-medium text-foreground">
  Nome da Loja
  </label>
  <input
- className="w-full rounded-lg bg-white focus:border-primary focus:ring-primary sm:text-sm py-2.5"
+ className="w-full rounded-lg border border-border bg-card text-foreground focus:border-primary focus:outline-none sm:text-sm py-2.5 px-3"
  type="text"
  value={storeName}
  onChange={(e) => setStoreName(e.target.value)}
  />
  </div>
  <div className="flex flex-col gap-1.5">
- <label className="text-sm font-medium ">
+ <label className="text-sm font-medium text-foreground">
  Descrição Curta
  </label>
  <textarea
- className="w-full rounded-lg bg-white focus:border-primary focus:ring-primary sm:text-sm p-2.5"
+ className="w-full rounded-lg border border-border bg-card text-foreground focus:border-primary focus:outline-none sm:text-sm p-2.5"
  rows={3}
  value={description}
  onChange={(e) => setDescription(e.target.value)}
@@ -291,7 +291,7 @@ export default function SettingsPage() {
  <span className="material-symbols-outlined text-primary">local_shipping</span>
  Políticas de Envio
  </h2>
- <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
+ <div className="rounded-xl border border-border bg-card overflow-hidden shadow-sm">
  <div className="p-6 border-b flex flex-col sm:flex-row sm:items-center justify-between gap-4">
  <div>
  <h3 className="text-base font-semibold ">
@@ -303,11 +303,11 @@ export default function SettingsPage() {
  </div>
  </div>
 
- <div className="divide-y divide-gray-100">
+ <div className="divide-y divide-border">
  {shippingMethods.map((method) => (
  <div
  key={method.id}
- className="p-4 flex items-center justify-between hover:bg-accent50 transition-colors"
+ className="p-4 flex items-center justify-between hover:bg-muted/40 transition-colors"
  >
  <div className="flex items-center gap-4">
  <div
@@ -325,7 +325,7 @@ export default function SettingsPage() {
  className={`toggle-checkbox absolute block w-5 h-5 rounded-full border-4 appearance-none cursor-pointer ${
  method.enabled
  ? 'border-primary translate-x-5'
- : 'border-gray-300'
+ : 'border-muted-foreground'
  }`}
  id={`shipping-${method.id}`}
  type="checkbox"
@@ -334,7 +334,7 @@ export default function SettingsPage() {
  />
  <label
  className={`toggle-label block overflow-hidden h-5 rounded-full cursor-pointer ${
- method.enabled ? 'bg-primary' : 'bg-gray-300'
+ method.enabled ? 'bg-primary' : 'bg-muted'
  }`}
  htmlFor={`shipping-${method.id}`}
  ></label>
@@ -343,9 +343,9 @@ export default function SettingsPage() {
  ))}
  </div>
 
- <div className="p-4 border-t border-gray-100">
+ <div className="p-4 border-t border-border">
  <div className="flex flex-col gap-3">
- <h4 className="text-sm font-semibold ">
+ <h4 className="text-sm font-semibold text-foreground">
  Configurações Avançadas de Frete
  </h4>
  <div className="flex items-center gap-3">
@@ -360,7 +360,7 @@ export default function SettingsPage() {
  Oferecer Frete Grátis acima de R$
  </label>
  <input
- className="w-24 rounded py-1 px-2 text-sm focus:ring-primary focus:border-primary"
+ className="w-24 rounded border border-border bg-card py-1 px-2 text-sm focus:ring-primary focus:border-primary disabled:bg-muted disabled:text-muted-foreground"
  type="number"
  value={freeShippingMin}
  onChange={(e) => setFreeShippingMin(e.target.value)}
@@ -378,9 +378,9 @@ export default function SettingsPage() {
  <span className="material-symbols-outlined text-primary">credit_card</span>
  Métodos de Pagamento
  </h2>
- <div className="bg-white rounded-xl border shadow-sm p-6">
+ <div className="rounded-xl border border-border bg-card shadow-sm p-6">
  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
- <div className="border rounded-lg p-4 flex items-start gap-4 hover:border-primary transition-colors cursor-pointer group relative">
+ <div className="border border-border rounded-lg p-4 flex items-start gap-4 hover:border-primary transition-colors cursor-pointer group relative">
  {pixKey && (
  <div className="absolute top-4 right-4 text-primary">
  <span className="material-symbols-outlined">check_circle</span>
@@ -398,7 +398,7 @@ export default function SettingsPage() {
  value={pixKey}
  onChange={(e) => setPixKey(e.target.value)}
  placeholder="Chave PIX (CNPJ, email, telefone)"
- className="text-xs w-full mt-2 px-2 py-1 border rounded"
+ className="text-xs w-full mt-2 px-2 py-1 border border-border rounded bg-card text-foreground focus:outline-none focus:border-primary"
  />
  </div>
  </div>
@@ -407,7 +407,7 @@ export default function SettingsPage() {
  className={`border rounded-lg p-4 flex items-start gap-4 transition-colors cursor-pointer group relative ${
  acceptsCreditCard
  ? 'border-primary bg-primary/5'
- : 'border-gray-200 hover:border-gray-300'
+ : 'border-border hover:border-primary/50'
  }`}
  onClick={() => setAcceptsCreditCard(!acceptsCreditCard)}
  >
@@ -433,7 +433,7 @@ export default function SettingsPage() {
  className={`border rounded-lg p-4 flex items-start gap-4 transition-colors cursor-pointer ${
  acceptsBoleto
  ? 'border-primary bg-primary/5'
- : 'border-gray-200 hover:border-gray-300 opacity-70'
+ : 'border-border hover:border-primary/50 opacity-70'
  }`}
  onClick={() => setAcceptsBoleto(!acceptsBoleto)}
  >
@@ -442,7 +442,7 @@ export default function SettingsPage() {
  <span className="material-symbols-outlined">check_circle</span>
  </div>
  )}
- <div className="h-10 w-10 rounded flex items-center justify-center text-gray-500">
+ <div className="h-10 w-10 rounded flex items-center justify-center text-muted-foreground">
  <span className="material-symbols-outlined">receipt</span>
  </div>
  <div>
@@ -462,7 +462,7 @@ export default function SettingsPage() {
  <span className="material-symbols-outlined text-primary">share</span>
  Redes Sociais
  </h2>
- <div className="bg-white rounded-xl border shadow-sm p-6">
+ <div className="rounded-xl border border-border bg-card shadow-sm p-6">
  <div className="flex flex-col gap-4">
  <div className="flex items-center gap-3">
  <div className="w-8 flex justify-center text-pink-600">
@@ -473,7 +473,7 @@ export default function SettingsPage() {
  Instagram
  </label>
  <input
- className="w-full rounded-lg bg-gray-50 focus:border-primary focus:ring-primary text-sm py-2"
+ className="w-full rounded-lg bg-card border border-border text-foreground focus:border-primary focus:outline-none text-sm py-2 px-3"
  placeholder="@seuinstagram"
  type="text"
  value={instagramUrl}
@@ -491,7 +491,7 @@ export default function SettingsPage() {
  Facebook
  </label>
  <input
- className="w-full rounded-lg bg-gray-50 focus:border-primary focus:ring-primary text-sm py-2"
+ className="w-full rounded-lg bg-card border border-border text-foreground focus:border-primary focus:outline-none text-sm py-2 px-3"
  placeholder="facebook.com/suapagina"
  type="text"
  value={facebookUrl}
@@ -509,7 +509,7 @@ export default function SettingsPage() {
  WhatsApp (Botão flutuante)
  </label>
  <input
- className="w-full rounded-lg bg-gray-50 focus:border-primary focus:ring-primary text-sm py-2"
+ className="w-full rounded-lg bg-card border border-border text-foreground focus:border-primary focus:outline-none text-sm py-2 px-3"
  placeholder="(00) 00000-0000"
  type="text"
  value={whatsappNumber}
@@ -525,7 +525,7 @@ export default function SettingsPage() {
  </div>
 
  {/* Mobile Save Button */}
- <div className="fixed bottom-0 left-0 right-0 z-10 w-full border-t p-4 lg:hidden">
+ <div className="fixed bottom-0 left-0 right-0 z-10 w-full border-t border-border bg-card p-4 lg:hidden">
  <button
  onClick={handleSaveSettings}
  disabled={updateSettingsMutation.isPending}

@@ -35,11 +35,11 @@ function ShipmentRow({ order }: { order: any }) {
   const statusLabel = ORDER_STATUS_LABELS[order.status] ?? order.status;
 
   return (
-    <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
-      <div className="bg-gray-50 px-6 py-4 border-b flex flex-wrap justify-between items-center gap-4">
+    <div className="rounded-xl border border-border bg-card overflow-hidden shadow-sm">
+      <div className="bg-muted/40 px-6 py-4 border-b flex flex-wrap justify-between items-center gap-4">
         <div className="flex items-center gap-4 text-sm">
           <div>
-            <p className="text-gray-500 text-xs mb-0.5">Pedido</p>
+            <p className="text-muted-foreground text-xs mb-0.5">Pedido</p>
             <Link
               href={`/${locale}/seller/orders/${order.id}`}
               className="font-semibold text-primary hover:underline"
@@ -48,22 +48,22 @@ function ShipmentRow({ order }: { order: any }) {
             </Link>
           </div>
           <div>
-            <p className="text-gray-500 text-xs mb-0.5">Data</p>
+            <p className="text-muted-foreground text-xs mb-0.5">Data</p>
             <p className="font-medium">
               {new Date(parseInt(order.createdAt)).toLocaleDateString('pt-BR')}
             </p>
           </div>
           <div>
-            <p className="text-gray-500 text-xs mb-0.5">Total</p>
+            <p className="text-muted-foreground text-xs mb-0.5">Total</p>
             <p className="font-medium">AOA {Number(order.totalAmount).toFixed(2)}</p>
           </div>
         </div>
         <span className={cn(
           'inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium',
-          order.status === 'DELIVERED' ? 'bg-green-100 text-green-700' :
-          order.status === 'SHIPPED' ? 'bg-purple-100 text-purple-700' :
-          order.status === 'PAID' ? 'bg-blue-100 text-blue-700' :
-          'bg-gray-100 text-gray-700',
+          order.status === 'DELIVERED' ? 'bg-primary/10 text-primary' :
+          order.status === 'SHIPPED' ? 'bg-primary/15 text-primary' :
+          order.status === 'PAID' ? 'bg-primary/10 text-primary' :
+          'bg-muted text-muted-foreground',
         )}>
           {statusLabel}
         </span>
@@ -74,27 +74,27 @@ function ShipmentRow({ order }: { order: any }) {
         {shipment ? (
           <div className="flex flex-wrap gap-6 text-sm">
             <div>
-              <p className="text-gray-500 text-xs mb-0.5">Transportadora</p>
+              <p className="text-muted-foreground text-xs mb-0.5">Transportadora</p>
               <p className="font-medium">{shipment.carrier?.name ?? 'N/A'}</p>
             </div>
             <div>
-              <p className="text-gray-500 text-xs mb-0.5">Rastreio</p>
+              <p className="text-muted-foreground text-xs mb-0.5">Rastreio</p>
               <p className="font-mono font-bold text-primary">{shipment.trackingNumber ?? '—'}</p>
             </div>
             <div>
-              <p className="text-gray-500 text-xs mb-0.5">Custo Frete</p>
+              <p className="text-muted-foreground text-xs mb-0.5">Custo Frete</p>
               <p className="font-medium">AOA {Number(shipment.shippingCost ?? 0).toFixed(2)}</p>
             </div>
           </div>
         ) : (
-          <p className="text-sm text-gray-400">Nenhuma informação de envio registrada para este pedido.</p>
+          <p className="text-sm text-muted-foreground">Nenhuma informação de envio registrada para este pedido.</p>
         )}
 
         {/* Label actions */}
         {shipment && (
           <div className="flex flex-wrap gap-3 pt-1">
             {labelLoading ? (
-              <span className="text-xs text-gray-400 flex items-center gap-1">
+              <span className="text-xs text-muted-foreground flex items-center gap-1">
                 <Loader2 className="w-3.5 h-3.5 animate-spin" /> Verificando etiqueta...
               </span>
             ) : label ? (
@@ -109,7 +109,7 @@ function ShipmentRow({ order }: { order: any }) {
                     href={label.labelUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-50 border rounded-lg text-xs font-semibold hover:bg-gray-100 transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-muted border rounded-lg text-xs font-semibold hover:bg-muted/80 transition-colors"
                   >
                     <ExternalLink className="w-3.5 h-3.5" />
                     Ver Etiqueta
@@ -132,7 +132,7 @@ function ShipmentRow({ order }: { order: any }) {
               </>
             ) : (
               <div className="flex items-center gap-2">
-                <span className="text-xs text-gray-400 flex items-center gap-1">
+                  <span className="text-xs text-muted-foreground flex items-center gap-1">
                   <Clock className="w-3.5 h-3.5" />
                   Etiqueta não gerada
                 </span>
@@ -173,7 +173,7 @@ export default function SellerShipmentsPage() {
           <Truck className="w-6 h-6 text-primary" />
           Envios e Etiquetas
         </h1>
-        <p className="text-sm text-gray-500 mt-1">
+        <p className="text-sm text-muted-foreground mt-1">
           Gerencie os envios dos pedidos e imprima etiquetas de frete.
         </p>
       </div>
@@ -181,16 +181,16 @@ export default function SellerShipmentsPage() {
       {isLoading ? (
         <div className="grid gap-4">
           {[1, 2, 3].map((i) => (
-            <div key={i} className="bg-white rounded-xl border shadow-sm p-6 animate-pulse">
-              <div className="h-4 w-48 bg-gray-200 rounded mb-3" />
-              <div className="h-3 w-32 bg-gray-100 rounded" />
+            <div key={i} className="rounded-xl border border-border bg-card p-6 animate-pulse">
+              <div className="h-4 w-48 bg-muted rounded mb-3" />
+              <div className="h-3 w-32 bg-muted/50 rounded" />
             </div>
           ))}
         </div>
       ) : relevantOrders.length === 0 ? (
-        <div className="text-center py-20 bg-white rounded-xl border shadow-sm">
-          <Package className="w-12 h-12 mx-auto text-gray-300 mb-4" />
-          <p className="text-gray-500 font-medium">Nenhum pedido com envio disponível.</p>
+        <div className="text-center py-20 rounded-xl border border-border bg-card shadow-sm">
+          <Package className="w-12 h-12 mx-auto text-muted-foreground/50 mb-4" />
+          <p className="text-muted-foreground font-medium">Nenhum pedido com envio disponível.</p>
         </div>
       ) : (
         <div className="flex flex-col gap-4">

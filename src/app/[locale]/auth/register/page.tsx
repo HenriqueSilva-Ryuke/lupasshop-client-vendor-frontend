@@ -13,7 +13,7 @@ export default function RegisterPage() {
  return (
  <div className="min-h-screen flex flex-col">
  {/* Top Navigation Bar */}
- <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-100 px-6 lg:px-10 py-4 z-20">
+ <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-border px-6 lg:px-10 py-4 z-20">
  <Link href={`/${locale}`} className="flex items-center gap-3 cursor-pointer">
  <div className="size-8 text-primary flex items-center justify-center rounded-lg bg-primary/10">
  <span className="material-symbols-outlined text-[24px]">shopping_bag</span>
@@ -21,7 +21,7 @@ export default function RegisterPage() {
  <h2 className="text-text-main text-xl font-bold leading-tight tracking-tight">LupaShop</h2>
  </Link>
  <div className="flex gap-4 items-center">
- <span className="hidden sm:block text-sm text-slate-500">Já tem uma conta?</span>
+ <span className="hidden sm:block text-sm text-muted-foreground">Já tem uma conta?</span>
  <button
  onClick={() => router.push(`/${locale}/auth/login`)}
  className="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary/10 hover:bg-primary/20 text-primary text-sm font-bold transition-colors"
@@ -34,21 +34,21 @@ export default function RegisterPage() {
  {/* Main Content Area */}
  <main className="flex-1 flex flex-col lg:flex-row h-full">
  {/* Left Side: Form */}
- <div className="flex-1 flex flex-col justify-center items-center p-6 lg:p-12 xl:p-20 bg-white">
+ <div className="flex-1 flex flex-col justify-center items-center p-6 lg:p-12 xl:p-20 bg-card">
  <div className="w-full max-w-[480px] flex flex-col gap-6">
  {/* Header Text */}
  <div className="text-center lg:text-left">
  <h1 className="text-text-main text-3xl lg:text-4xl font-bold leading-tight mb-2 tracking-tight">
  Crie sua conta
  </h1>
- <p className="text-slate-500 text-base font-normal">
+ <p className="text-muted-foreground text-base font-normal">
  Junte-se a nós para as melhores ofertas exclusivas e frete grátis.
  </p>
  </div>
 
  {/* Social Login */}
  <div className="grid grid-cols-2 gap-4">
- <button className="flex items-center justify-center gap-3 h-12 px-4 rounded-xl border border-slate-200 hover:bg-slate-50 transition-colors bg-white">
+ <button className="flex items-center justify-center gap-3 h-12 px-4 rounded-xl border border-border hover:bg-muted/50 transition-colors bg-card">
  <img
  alt="Google"
  className="w-5 h-5"
@@ -56,7 +56,7 @@ export default function RegisterPage() {
  />
  <span className="text-sm font-medium text-text-main">Google</span>
  </button>
- <button className="flex items-center justify-center gap-3 h-12 px-4 rounded-xl border border-slate-200 hover:bg-slate-50 transition-colors bg-white">
+ <button className="flex items-center justify-center gap-3 h-12 px-4 rounded-xl border border-border hover:bg-muted/50 transition-colors bg-card">
  <img
  alt="Facebook"
  className="w-5 h-5"
@@ -67,11 +67,11 @@ export default function RegisterPage() {
  </div>
 
  <div className="relative flex py-2 items-center">
- <div className="flex-grow border-t border-slate-200"></div>
- <span className="flex-shrink-0 mx-4 text-slate-400 text-xs font-medium uppercase tracking-wider">
+ <div className="flex-grow border-t border-border"></div>
+ <span className="flex-shrink-0 mx-4 text-muted-foreground text-xs font-medium uppercase tracking-wider">
  Ou registre-se com e-mail
  </span>
- <div className="flex-grow border-t border-slate-200"></div>
+ <div className="flex-grow border-t border-border"></div>
  </div>
 
  {/* Registration Form */}
@@ -80,7 +80,7 @@ export default function RegisterPage() {
  </div>
 
  {/* Right Side: Visual Image */}
- <div className="hidden lg:flex flex-1 relative bg-slate-50 overflow-hidden">
+ <div className="hidden lg:flex flex-1 relative bg-muted overflow-hidden">
  <div className="absolute inset-0 m-6 rounded-3xl overflow-hidden shadow-2xl">
  <div className="absolute inset-0 bg-gradient-to-tr from-primary/80 to-primary-light/40 mix-blend-multiply z-10"></div>
  <img

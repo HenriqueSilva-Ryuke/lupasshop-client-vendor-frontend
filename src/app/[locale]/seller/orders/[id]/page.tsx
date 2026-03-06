@@ -35,7 +35,7 @@ export default function SellerOrderDetailPage({ params }: { params: Promise<{ id
  };
 
  if (loading) return <div>Carregando pedido...</div>;
- if (error) return <div className="text-red-500">Erro: {error.message}</div>;
+ if (error) return <div className="text-destructive">Erro: {error.message}</div>;
 
  const order = data?.getOrder;
  const shippingAddress = order?.shippingAddress || {};
@@ -56,12 +56,12 @@ export default function SellerOrderDetailPage({ params }: { params: Promise<{ id
  Pedido #{order.id.slice(0, 8)}
  <span className={cn(
  "text-sm px-2 py-1 rounded-full border",
- order.status === 'PAID' ? "bg-green-50 border-green-200 text-green-700" : "bg-gray-50 text-gray-700"
+ order.status === 'PAID' ? "bg-primary/10 border-primary/20 text-primary" : "bg-muted text-muted-foreground"
  )}>
  {order.status}
  </span>
  </h1>
- <p className="text-gray-500 text-sm">{new Date(order.createdAt).toLocaleString()}</p>
+ <p className="text-muted-foreground text-sm">{new Date(order.createdAt).toLocaleString()}</p>
  </div>
  <div className="ml-auto flex gap-2">
  <Button variant="outline" className="gap-2">
@@ -94,33 +94,33 @@ export default function SellerOrderDetailPage({ params }: { params: Promise<{ id
  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
  <div className="md:col-span-2 space-y-6">
  {/* Items */}
- <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
- <div className="px-6 py-4 border-b font-semibold bg-gray-50">Itens do Pedido</div>
- <div className="divide-y divide-gray-100">
+ <div className="rounded-xl bg-card shadow-sm border border-border overflow-hidden">
+ <div className="px-6 py-4 border-b font-semibold bg-muted/50">Itens do Pedido</div>
+ <div className="divide-y divide-border">
  {order.orderItems.map((item: any) => (
  <div key={item.id} className="p-6 flex gap-4">
- <div className="w-20 h-20 rounded-lg shrink-0 overflow-hidden border border-gray-200">
+ <div className="w-20 h-20 rounded-lg shrink-0 overflow-hidden border border-border">
  {item.product.images?.[0] && <img src={item.product.images[0]} className="w-full h-full object-cover" />}
  </div>
  <div className="flex-1">
- <h3 className="font-semibold text-gray-900">{item.product.name}</h3>
- <p className="text-sm text-gray-500">SKU: {item.product.id.slice(0, 6)}</p>
+ <h3 className="font-semibold text-foreground">{item.product.name}</h3>
+ <p className="text-sm text-muted-foreground">SKU: {item.product.id.slice(0, 6)}</p>
  </div>
  <div className="text-right">
  <p className="font-medium">R$ {item.priceAtPurchase.toFixed(2)}</p>
- <p className="text-sm text-gray-500">x {item.quantity}</p>
+ <p className="text-sm text-muted-foreground">x {item.quantity}</p>
  <p className="font-bold mt-1">R$ {(item.priceAtPurchase * item.quantity).toFixed(2)}</p>
  </div>
  </div>
  ))}
  </div>
- <div className="bg-gray-50 px-6 py-4 border-t flex justify-between items-center">
- <span className="font-semibold text-gray-700">Total do Pedido</span>
- <span className="text-xl font-bold text-gray-900">R$ {order.totalAmount.toFixed(2)}</span>
+ <div className="bg-muted/50 px-6 py-4 border-t flex justify-between items-center">
+ <span className="font-semibold text-muted-foreground">Total do Pedido</span>
+ <span className="text-xl font-bold text-foreground">R$ {order.totalAmount.toFixed(2)}</span>
  </div>
  </div>
 
- <div className="bg-white rounded-xl shadow-sm border p-6">
+ <div className="rounded-xl bg-card shadow-sm border border-border p-6">
  <h3 className="font-semibold mb-6">Histórico do Pedido</h3>
  <div className="relative border-l-2 ml-3 space-y-8 pl-8 pb-2">
  {steps.map((step, index) => {
@@ -130,12 +130,12 @@ export default function SellerOrderDetailPage({ params }: { params: Promise<{ id
  return (
  <div key={step} className="relative">
  <div className={cn(
- "absolute -left-[41px] top-1 w-5 h-5 rounded-full border-2 flex items-center justify-center bg-white",
- isCompleted ? "border-primary bg-primary text-white" : "border-gray-200"
+ "absolute -left-[41px] top-1 w-5 h-5 rounded-full border-2 flex items-center justify-center bg-card",
+ isCompleted ? "border-primary bg-primary text-white" : "border-border"
  )}>
  {isCompleted && <Check className="w-3 h-3" />}
  </div>
- <h4 className={cn("font-medium text-sm", isCompleted ? "text-gray-900" : "text-gray-400")}>
+ <h4 className={cn("font-medium text-sm", isCompleted ? "text-foreground" : "text-muted-foreground")}>
  {step === 'PENDING' && 'Pedido Realizado'}
  {step === 'PAID' && 'Pagamento Confirmado'}
  {step === 'SHIPPED' && 'Enviado para Transportadora'}
@@ -150,29 +150,29 @@ export default function SellerOrderDetailPage({ params }: { params: Promise<{ id
  </div>
 
  <div className="space-y-6">
- <div className="bg-white rounded-xl shadow-sm border p-6">
+ <div className="rounded-xl bg-card shadow-sm border border-border p-6">
  <h3 className="font-semibold mb-4 flex items-center gap-2">
- <User className="w-4 h-4 text-gray-400" />
+ <User className="w-4 h-4 text-muted-foreground" />
  Cliente
  </h3>
  <p className="font-medium">{order.user?.fullName || '—'}</p>
- <p className="text-sm text-gray-500">{order.user?.email || '—'}</p>
+ <p className="text-sm text-muted-foreground">{order.user?.email || '—'}</p>
  {shippingAddress.phone && (
- <p className="text-sm text-gray-500">{shippingAddress.phone}</p>
+ <p className="text-sm text-muted-foreground">{shippingAddress.phone}</p>
  )}
  </div>
 
- <div className="bg-white rounded-xl shadow-sm border p-6">
+ <div className="rounded-xl bg-card shadow-sm border border-border p-6">
  <h3 className="font-semibold mb-4 flex items-center gap-2">
- <MapPin className="w-4 h-4 text-gray-400" />
+ <MapPin className="w-4 h-4 text-muted-foreground" />
  Endereço de Entrega
  </h3>
- <p className="text-sm text-gray-600">
+ <p className="text-sm text-muted-foreground">
  {(shippingAddress.street || '—')}{shippingAddress.number ? `, ${shippingAddress.number}` : ''}<br />
  {(shippingAddress.neighborhood ? `${shippingAddress.neighborhood} - ` : '') + (shippingAddress.city || '')}{shippingAddress.state ? `, ${shippingAddress.state}` : ''}<br />
  {shippingAddress.zipCode ? `CEP: ${shippingAddress.zipCode}` : ''}
  </p>
- <div className="mt-4 pt-4 border-t border-gray-100">
+ <div className="mt-4 pt-4 border-t border-border">
  <h4 className="text-xs font-bold uppercase mb-2">Método de Envio</h4>
  <p className="text-sm font-medium">{order.shipment?.carrier?.name || '—'}</p>
  </div>
