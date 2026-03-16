@@ -2,11 +2,12 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 export function SellerHeader() {
  const router = useRouter();
  const locale = useLocale();
+ const t = useTranslations('seller');
  const [showNotifications, setShowNotifications] = useState(false);
  const [showUserMenu, setShowUserMenu] = useState(false);
 
@@ -95,8 +96,8 @@ export function SellerHeader() {
  className="flex items-center justify-center rounded-lg h-10 px-4 bg-primary text-card-foreground text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary-dark transition-colors shadow-lg shadow-primary/30"
  >
  <span className="mr-2 material-symbols-outlined text-[18px]">add</span>
- <span className="truncate hidden sm:inline">Adicionar Produto</span>
- <span className="truncate sm:hidden">Novo</span>
+ <span className="truncate hidden sm:inline">{t('addProduct')}</span>
+ <span className="truncate sm:hidden">{t('addProduct')}</span>
  </button>
 
  {/* User Menu */}

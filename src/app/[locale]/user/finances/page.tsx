@@ -134,7 +134,7 @@ export default function UserFinancesPage() {
  </div>
  </div>
  <div>
- <p className="tracking-tight text-3xl font-bold leading-tight mt-1">
+ <p className="tracking-tight text-3xl font-bold leading-tight mt-1 text-white">
  {formatCurrency(finances.walletBalance)}
  </p>
  <div className="flex items-center gap-1 mt-3">

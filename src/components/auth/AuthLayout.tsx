@@ -1,10 +1,9 @@
 'use client';
 
 import { motion } from 'motion/react';
-import AuthIllustration from './AuthIllustration';
 import { ReactNode } from 'react';
 import Link from 'next/link';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 interface AuthLayoutProps {
  children: ReactNode;
@@ -14,6 +13,7 @@ interface AuthLayoutProps {
 
 export default function AuthLayout({ children, title, subtitle }: AuthLayoutProps) {
  const locale = useLocale();
+ const t = useTranslations('auth.layout');
 
  return (
  <div className="min-h-screen flex">
@@ -64,21 +64,62 @@ export default function AuthLayout({ children, title, subtitle }: AuthLayoutProp
  className="mt-8 pt-8 border-t border-border text-center text-xs text-muted-foreground"
  >
  <p>
- Ao continuar, você concorda com nossos{' '}
+ {t('termsPrefix')}{' '}
  <Link href={`/${locale}/terms`} className="text-primary hover:underline">
- Termos de Serviço
- </Link>{' '}
- e{' '}
+ {t('terms')}
+ </Link>
+ {' '}e{' '}
  <Link href={`/${locale}/privacy`} className="text-primary hover:underline">
- Política de Privacidade
+ {t('privacy')}
  </Link>
  </p>
  </motion.div>
  </div>
  </motion.div>
 
- {/* Right Side - Illustration */}
- <AuthIllustration />
+ {/* Right Side - Image Illustration */}
+ <motion.div
+ initial={{ opacity: 0 }}
+ animate={{ opacity: 1 }}
+ transition={{ duration: 0.6, delay: 0.2 }}
+ className="hidden lg:flex lg:w-1/2 relative bg-muted overflow-hidden"
+ >
+ <div className="absolute inset-0 m-6 rounded-3xl overflow-hidden shadow-2xl">
+ <div className="absolute inset-0 bg-gradient-to-tr from-primary/80 to-primary-light/40 mix-blend-multiply z-10"></div>
+ <img
+ alt={t('heroAlt')}
+ className="w-full h-full object-cover"
+ src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVI6bdkV1UYi_5rncM6PQkV0GGn_Zhi8uYKpz06tnd2RQd_0JKccs4Ab_UdN831f4EnOdpHYBGvfB4ExDSyAvqoP6mq3iVIj_zZSza6YGdmki3JL7cnv-VewVrBF1x6rgTP9VflmjRogguh-vJnmRPjjCLfuvvA8pqcfNjI-oKvmWxDHsvXskOfOOh65kv5fMVuSN0uHmhIIiAJmnzIvYLB7RulVRjmb_Oe9soO7GGukAOslw1ZaBvKoXEm2y_tAneCUzswJjXpEc"
+ />
+ <div className="absolute bottom-0 left-0 p-12 z-20 max-w-lg">
+ <motion.div
+ initial={{ opacity: 0, y: 20 }}
+ animate={{ opacity: 1, y: 0 }}
+ transition={{ duration: 0.6, delay: 0.4 }}
+ className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/20 text-xs font-semibold mb-6"
+ >
+ <span className="material-symbols-outlined text-[16px]">verified</span>
+ {t('heroBadge')}
+ </motion.div>
+ <motion.h3
+ initial={{ opacity: 0, y: 20 }}
+ animate={{ opacity: 1, y: 0 }}
+ transition={{ duration: 0.6, delay: 0.5 }}
+ className="text-4xl font-bold mb-4 leading-tight text-white"
+ >
+ {t('heroTitle')}
+ </motion.h3>
+ <motion.p
+ initial={{ opacity: 0, y: 20 }}
+ animate={{ opacity: 1, y: 0 }}
+ transition={{ duration: 0.6, delay: 0.6 }}
+ className="text-lg text-white/90 font-medium"
+ >
+ {t('heroDescription')}
+ </motion.p>
+ </div>
+ </div>
+ </motion.div>
  </div>
  );
 }

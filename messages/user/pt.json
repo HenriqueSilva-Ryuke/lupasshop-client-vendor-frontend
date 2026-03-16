@@ -1,4 +1,28 @@
 {
+  "customer": {
+    "addresses": {
+      "title": "Meus Endereços",
+      "addNew": "Adicionar Novo Endereço",
+      "edit": "Editar",
+      "delete": "Excluir",
+      "setDefault": "Definir como Padrão",
+      "default": "Padrão",
+      "noAddresses": "Nenhum endereço cadastrado",
+      "form": {
+        "label": "Etiqueta (Casa, Trabalho, etc.)",
+        "fullName": "Nome Completo",
+        "street": "Rua",
+        "city": "Cidade",
+        "state": "Província",
+        "postalCode": "Código Postal",
+        "country": "País",
+        "phone": "Telefone",
+        "save": "Salvar Endereço",
+        "cancel": "Cancelar",
+        "edit": "Editar Endereço"
+      }
+    }
+  },
   "profile": "Perfil",
   "myProfile": "Meu Perfil",
   "settings": "Configurações",

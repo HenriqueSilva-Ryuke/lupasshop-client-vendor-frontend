@@ -1,14 +1,18 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import RegisterForm from '@/components/auth/RegisterForm';
+import RegisterTypeSelector from '@/components/auth/RegisterTypeSelector';
 import { useRouter } from 'next/navigation';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'motion/react';
 
 export default function RegisterPage() {
  const locale = useLocale();
  const router = useRouter();
+ const t = useTranslations('auth.register');
+ const [registerType, setRegisterType] = useState<'selector' | 'customer' | null>('selector');
 
  return (
  <div className="min-h-screen flex flex-col">
@@ -21,12 +25,12 @@ export default function RegisterPage() {
  <h2 className="text-text-main text-xl font-bold leading-tight tracking-tight">LupaShop</h2>
  </Link>
  <div className="flex gap-4 items-center">
- <span className="hidden sm:block text-sm text-muted-foreground">Já tem uma conta?</span>
+ <span className="hidden sm:block text-sm text-muted-foreground">{t('haveAccount')}</span>
  <button
  onClick={() => router.push(`/${locale}/auth/login`)}
  className="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary/10 hover:bg-primary/20 text-primary text-sm font-bold transition-colors"
  >
- <span className="truncate">Entrar</span>
+ <span className="truncate">{t('signIn')}</span>
  </button>
  </div>
  </header>
@@ -36,19 +40,48 @@ export default function RegisterPage() {
  {/* Left Side: Form */}
  <div className="flex-1 flex flex-col justify-center items-center p-6 lg:p-12 xl:p-20 bg-card">
  <div className="w-full max-w-[480px] flex flex-col gap-6">
- {/* Header Text */}
- <div className="text-center lg:text-left">
+ <AnimatePresence mode="wait">
+ {registerType === 'selector' ? (
+ <motion.div
+ key="selector"
+ initial={{ opacity: 0, y: 10 }}
+ animate={{ opacity: 1, y: 0 }}
+ exit={{ opacity: 0, y: -10 }}
+ transition={{ duration: 0.3 }}
+ >
+ <RegisterTypeSelector onSelect={(type) => {
+ if (type === 'customer') {
+ setRegisterType('customer');
+ }
+ // Vendedor redireciona automaticamente no componente
+ }} />
+ </motion.div>
+ ) : (
+ <motion.div
+ key="customer-form"
+ initial={{ opacity: 0, y: 10 }}
+ animate={{ opacity: 1, y: 0 }}
+ exit={{ opacity: 0, y: -10 }}
+ transition={{ duration: 0.3 }}
+ >
+ <div className="mb-8">
+ <button
+ onClick={() => setRegisterType('selector')}
+ className="text-primary hover:text-primary/80 text-sm font-semibold flex items-center gap-1 mb-4"
+ >
+ <span>←</span> {t('back')}
+ </button>
  <h1 className="text-text-main text-3xl lg:text-4xl font-bold leading-tight mb-2 tracking-tight">
- Crie sua conta
+ {t('customerTitle')}
  </h1>
  <p className="text-muted-foreground text-base font-normal">
- Junte-se a nós para as melhores ofertas exclusivas e frete grátis.
+ {t('customerSubtitle')}
  </p>
  </div>
 
  {/* Social Login */}
- <div className="grid grid-cols-2 gap-4">
- <button className="flex items-center justify-center gap-3 h-12 px-4 rounded-xl border border-border hover:bg-muted/50 transition-colors bg-card">
+ <div className="flex gap-4">
+ <button className="flex flex-1 items-center justify-center gap-3 h-12 px-4 rounded-xl border border-border hover:bg-muted/50 transition-colors bg-card">
  <img
  alt="Google"
  className="w-5 h-5"
@@ -56,26 +89,21 @@ export default function RegisterPage() {
  />
  <span className="text-sm font-medium text-text-main">Google</span>
  </button>
- <button className="flex items-center justify-center gap-3 h-12 px-4 rounded-xl border border-border hover:bg-muted/50 transition-colors bg-card">
- <img
- alt="Facebook"
- className="w-5 h-5"
- src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH1Rbsz-UMWAETW9kTn2nKoxifGj-cWY1bqwZsQHk3D-dxMGaFwHj1eXLqoarcPKEibK-BqUM5-JBv4PnXOYq6bou2PkG4ZlpMGj8YjN6KfMMQj51PdLSnQ37bo91s-c-QBuuKMy2vD49Z5_eTUQDaVmfu2RFEPdK-L_6NMVsynpWyIoBI-b4VovevTGDZtrcVjVTyQlO6DnaLRc6cQXTI84tEbGl5stZqfGouLKWPWz94VDXqN7YCCvyC6zEcBMUKDJK4CnHbUAc"
- />
- <span className="text-sm font-medium text-text-main">Facebook</span>
- </button>
  </div>
 
  <div className="relative flex py-2 items-center">
  <div className="flex-grow border-t border-border"></div>
  <span className="flex-shrink-0 mx-4 text-muted-foreground text-xs font-medium uppercase tracking-wider">
- Ou registre-se com e-mail
+ {t('emailDivider')}
  </span>
  <div className="flex-grow border-t border-border"></div>
  </div>
 
  {/* Registration Form */}
  <RegisterForm />
+ </motion.div>
+ )}
+ </AnimatePresence>
  </div>
  </div>
 
@@ -91,14 +119,14 @@ export default function RegisterPage() {
  <div className="absolute bottom-0 left-0 p-12 z-20 max-w-lg">
  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/20 text-xs font-semibold mb-6">
  <span className="material-symbols-outlined text-[16px]">verified</span>
- Compra Segura
+ {t('heroBadge')}
  </div>
  <h3 className="text-4xl font-bold mb-4 leading-tight">
- A melhor experiência de compra online.
+ {t('heroTitle')}
  </h3>
  <p className="text-lg text-white/90 font-medium">
- Cadastre-se hoje e ganhe 10% de desconto na sua primeira compra com o cupom{' '}
- <span className="text-white font-bold bg-white/20 px-2 rounded">BEMVINDO10</span>.
+ {t('heroDescriptionPrefix')}{' '}
+ <span className="text-white font-bold bg-white/20 px-2 rounded">{t('heroCoupon')}</span>.
  </p>
  </div>
  </div>

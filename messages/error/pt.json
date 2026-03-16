@@ -19,5 +19,36 @@
     "description": "Encontramos um problema inesperado. Por favor, recarregue a página ou volte ao início.",
     "tryAgain": "Tentar novamente",
     "goHome": "Voltar ao início"
+  },
+  "emptyStates": {
+    "searchResults": {
+      "title": "Nenhum resultado encontrado",
+      "description": "Não encontramos resultados para \"{query}\". Tente usar termos diferentes ou mais genéricos."
+    },
+    "cart": {
+      "title": "Seu carrinho está vazio",
+      "description": "Adicione produtos ao carrinho para continuar comprando e finalizar seu pedido.",
+      "action": "Explorar Marketplace"
+    },
+    "orders": {
+      "title": "Nenhum pedido ainda",
+      "description": "Você ainda não fez nenhum pedido. Explore o marketplace e encontre produtos incríveis!",
+      "action": "Começar a comprar"
+    },
+    "wishlist": {
+      "title": "Lista de desejos vazia",
+      "description": "Adicione produtos à sua lista de desejos para salvá-los e comprá-los depois.",
+      "action": "Explorar produtos"
+    },
+    "products": {
+      "title": "Nenhum produto cadastrado",
+      "description": "Comece adicionando seu primeiro produto para começar a vender no marketplace.",
+      "action": "Adicionar produto"
+    },
+    "stores": {
+      "title": "Nenhuma loja encontrada",
+      "description": "Não encontramos lojas correspondentes à sua busca. Tente ajustar os filtros.",
+      "action": "Limpar filtros"
+    }
   }
 }

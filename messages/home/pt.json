@@ -1,9 +1,11 @@
 {
   "hero": {
     "title": "Descubra Produtos Incríveis",
+    "mainTitle": "ENCONTRE OS MELHORES",
     "subtitle": "Seu marketplace único para eletrônicos, moda, casa e muito mais",
     "searchPlaceholder": "O que você está procurando hoje?",
-    "searchButton": "Buscar"
+    "searchButton": "Buscar",
+    "categoryWords": ["Gadgets", "Moda", "Móveis", "Tech", "Livros", "Presentes"]
   },
   "searchResults": {
     "products": "Produtos",
@@ -19,12 +21,18 @@
     "viewProduct": "Ver produto"
   },
   "categories": {
+    "sectionLabel": "Exploração / 02",
     "title": "Categorias Populares",
     "viewAll": "Ver todas"
   },
   "deals": {
+    "badgeTitle": "Ofertas Flash ao Vivo",
     "sectionTitle": "Ofertas do Dia",
+    "viewAll": "Ver Todas as Ofertas",
     "addButton": "Adicionar"
+  },
+  "promotionalCards": {
+    "viewCatalog": "Ver Catálogo"
   },
   "stores": {
     "featuredTitle": "Lojas em Destaque",

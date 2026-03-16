@@ -1,53 +1,93 @@
 {
   "hero": {
-    "title": "Sobre o LupaShop",
-    "description": "Estamos revolucionando o e-commerce conectando lojas independentes em um marketplace digital unificado, criando oportunidades para vendedores e compradores em todo o mundo."
+    "eyebrow": "Nossa História",
+    "title": "Sobre a LupaShop",
+    "description": "Estamos revolucionando o e-commerce conectando lojas independentes em um único marketplace digital — criando oportunidades reais para vendedores e compradores em todo o mundo.",
+    "ctaStore": "Entrar como Loja",
+    "ctaShop": "Começar a Comprar"
+  },
+  "strip": {
+    "stores": "500+ Lojas Parceiras",
+    "products": "50K+ Produtos",
+    "customers": "100K+ Clientes",
+    "deliveries": "1M+ Entregas",
+    "reviews": "Avaliações Top",
+    "speed": "Velocidade Máxima",
+    "discovery": "Descoberta Inteligente",
+    "trust": "Verificado & Confiável"
   },
   "stats": {
     "title": "Nosso Impacto",
+    "subtitle": "Números que refletem a confiança de milhares de lojas e clientes em nossa plataforma todos os dias.",
     "stores": "Lojas Parceiras",
-    "products": "Produtos",
+    "products": "Produtos Listados",
     "customers": "Clientes Satisfeitos",
     "deliveries": "Entregas Bem-Sucedidas"
   },
   "mission": {
+    "eyebrow": "Por Que Existimos",
     "title": "Nossa Missão",
-    "description": "Democratizar o e-commerce fornecendo às lojas independentes as ferramentas e plataforma necessárias para competir com grandes varejistas, oferecendo aos clientes uma experiência de compra diversificada e confiável."
+    "description": "Democratizar o e-commerce oferecendo às lojas independentes as ferramentas e a visibilidade necessárias para competir com grandes varejistas — enquanto oferecemos aos clientes uma experiência de compra diversificada e confiável.",
+    "quote": "Acreditamos que toda loja independente merece o mesmo alcance das maiores marcas do mundo."
   },
   "values": {
     "title": "Nossos Valores",
+    "subtitle": "Os princípios que guiam cada decisão que tomamos — do produto às pessoas.",
     "trust": {
       "title": "Confiança & Transparência",
-      "description": "Acreditamos em construir relacionamentos duradouros baseados em honestidade, transparência e respeito mútuo entre lojas e clientes."
+      "description": "Construímos relacionamentos duradouros baseados em honestidade e respeito mútuo entre lojas e clientes."
     },
     "innovation": {
       "title": "Inovação",
-      "description": "Evoluímos continuamente nossa plataforma com tecnologia de ponta para proporcionar a melhor experiência para nossa comunidade."
+      "description": "Impulsionamos nossa plataforma continuamente com tecnologia de ponta para entregar a melhor experiência à nossa comunidade."
     },
     "community": {
       "title": "Comunidade",
-      "description": "Fomentamos uma comunidade vibrante de empreendedores e compradores, criando oportunidades e conexões em todo o mundo."
+      "description": "Fomentamos um ecossistema vibrante de empreendedores e compradores, criando oportunidades e conexões que abrangem o mundo inteiro."
+    }
+  },
+  "timeline": {
+    "title": "Nossa Trajetória",
+    "y2022": {
+      "title": "A Ideia",
+      "description": "A LupaShop nasceu de uma frustração simples: lojas independentes eram invisíveis online. Começamos a construir a solução."
+    },
+    "y2023": {
+      "title": "Primeiras 100 Lojas",
+      "description": "Integramos nossas primeiras 100 lojas parceiras e processamos mais de 10.000 pedidos no primeiro ano operacional."
+    },
+    "y2024": {
+      "title": "Plataforma v2 & Escala",
+      "description": "Uma reconstrução completa da plataforma, busca em tempo real, painéis para vendedores e expansão para 500+ lojas em 12 cidades."
+    },
+    "y2025": {
+      "title": "100K Clientes",
+      "description": "Atingimos 100.000 clientes ativos, lançamos campanhas promocionais e alcançamos o marco de 1 milhão de entregas."
     }
   },
   "team": {
-    "title": "Conheça Nossa Equipe",
+    "title": "Conheça a Equipe",
+    "subtitle": "As pessoas construindo o futuro do comércio independente.",
     "founder": {
       "name": "João Silva",
-      "role": "Fundador & CEO"
+      "role": "Fundador & CEO",
+      "bio": "Apaixonado por empoderar pequenos negócios, João desenvolve produtos de e-commerce desde 2015."
     },
     "cto": {
       "name": "Maria Santos",
-      "role": "Diretora de Tecnologia"
+      "role": "Diretora de Tecnologia",
+      "bio": "Arquiteta full-stack com profunda expertise em sistemas distribuídos e plataformas de marketplace escaláveis."
     },
     "design": {
       "name": "Pedro Costa",
-      "role": "Diretor de Design"
+      "role": "Diretor de Design",
+      "bio": "Cria experiências pixel-perfect que equilibram beleza e conversão — design como vantagem competitiva."
     }
   },
   "cta": {
-    "title": "Junte-se à Nossa Comunidade",
-    "description": "Seja você um lojista buscando crescer seu negócio ou um cliente em busca de produtos únicos, o LupaShop é seu portal para o futuro do e-commerce.",
-    "joinStore": "Juntar-se como Loja",
+    "title": "Junte-se à Comunidade",
+    "description": "Seja você um lojista buscando crescer ou um cliente em busca de produtos únicos, a LupaShop é sua porta de entrada para o futuro do e-commerce.",
+    "joinStore": "Entrar como Loja",
     "startShopping": "Começar a Comprar"
   }
 }

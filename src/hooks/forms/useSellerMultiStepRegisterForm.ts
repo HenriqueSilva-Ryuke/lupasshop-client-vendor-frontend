@@ -171,6 +171,11 @@ export function useSellerMultiStepRegisterForm() {
   };
 
   const handleSubmit = form.handleSubmit((data) => {
+    // Guard against accidental submits before final step transition completes.
+    if (currentStep !== 4) {
+      return;
+    }
+
     registerMutation.mutate(data);
   });
 

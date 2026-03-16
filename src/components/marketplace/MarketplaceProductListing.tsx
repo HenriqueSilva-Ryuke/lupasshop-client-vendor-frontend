@@ -3,10 +3,11 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Heart, ShoppingCart, ChevronRight, ChevronLeft, Star } from 'lucide-react';
+import { Heart, ShoppingCart, ChevronRight, ChevronLeft, Star, Search } from 'lucide-react';
 import { useProducts } from '@/hooks/useProducts';
 import { useStores } from '@/hooks/useStores';
 import { useCategories } from '@/hooks/useCategories';
+import { useDebounce } from '@/hooks/useDebounce';
 import { useLocale, useTranslations } from 'next-intl';
 import type { Product, Store, Category } from '@/graphql/types';
 import { SkeletonProductCard } from '@/components/ui/SkeletonLoaders';
@@ -23,18 +24,21 @@ export default function MarketplaceProductListing() {
  const [currentPage, setCurrentPage] = useState(1);
  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
  const [sortBy, setSortBy] = useState('relevance');
+ const [searchQuery, setSearchQuery] = useState('');
  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
  const [selectedStores, setSelectedStores] = useState<string[]>([]);
  const [wishlistItems, setWishlistItems] = useState<Set<string>>(new Set());
  const [loadingCartItems, setLoadingCartItems] = useState<Set<string>>(new Set());
     const limit = 12;
     const offset = (currentPage - 1) * limit;
+    const debouncedSearchQuery = useDebounce(searchQuery, 800);
     
-    // Fetch data from backend
+    // Fetch data from backend - always load with limit/offset, optional category filter and search
     const { data: products = [], isLoading: productsLoading } = useProducts({
         limit,
         offset,
-        categoryId: selectedCategories[0] || undefined,
+        ...(selectedCategories[0] && { categoryId: selectedCategories[0] }),
+        ...(debouncedSearchQuery && { search: debouncedSearchQuery }),
     }) as { data: Product[], isLoading: boolean };
 
     const { data: stores = [] } = useStores({ limit: 10 }) as { data: Store[] };
@@ -184,6 +188,20 @@ export default function MarketplaceProductListing() {
 
                     {/* Main Products Area */}
                     <main className="flex-1 min-w-0">
+                        {/* Search Bar */}
+                        <div className="mb-6">
+                            <div className="relative">
+                                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" size={20} />
+                                <input
+                                    type="text"
+                                    placeholder={t('searchPlaceholder')}
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                    className="w-full pl-12 pr-4 py-3 bg-card rounded-lg border border-border shadow-sm focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none text-foreground placeholder-muted-foreground"
+                                />
+                            </div>
+                        </div>
+
                         {/* Header Bar */}
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 bg-card bg-[#1e2832] p-4 rounded-xl border border-border border-[#2e3a45] shadow-sm">
                             <div>
@@ -213,7 +231,7 @@ export default function MarketplaceProductListing() {
                                     <SkeletonProductCard key={i} />
                                 ))}
                             </div>
-                        ) : products.length === 0 ? (
+                        ) : products.length === 0 && (selectedCategories.length > 0 || selectedStores.length > 0) ? (
                             <EmptySearchResults query="" />
                         ) : (
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -310,8 +328,8 @@ export default function MarketplaceProductListing() {
                                 <button
                                     onClick={() => setCurrentPage(1)}
                                     className={`w-10 h-10 rounded-lg font-bold text-sm transition-colors ${currentPage === 1
-                                            ? 'bg-primary text-black shadow-sm'
-                                            : 'text-foreground text-black hover:bg-muted hover:bg-card/5'
+                                            ? 'bg-primary text-white shadow-sm'
+                                            : 'text-white hover:bg-muted hover:bg-card/5'
                                         }`}
                                 >
                                     1

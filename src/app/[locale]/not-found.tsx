@@ -21,11 +21,11 @@ export default function NotFound() {
       >
         {/* Actions */}
         <div className="flex flex-col sm:flex-row gap-3 mt-2">
-          <Button asChild variant="default" size="lg">
-            <Link href={`/${locale}`}>
+          <Link href={`/${locale}`}>
+            <Button variant="default" size="lg">
               {t('goHome')}
-            </Link>
-          </Button>
+            </Button>
+          </Link>
           <Button onClick={() => router.back()} variant="outline" size="lg">
             {t('goBack')}
           </Button>

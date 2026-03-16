@@ -1,4 +1,28 @@
 {
+  "customer": {
+    "addresses": {
+      "title": "My Addresses",
+      "addNew": "Add New Address",
+      "edit": "Edit",
+      "delete": "Delete",
+      "setDefault": "Set as Default",
+      "default": "Default",
+      "noAddresses": "No addresses registered",
+      "form": {
+        "label": "Label (Home, Work, etc.)",
+        "fullName": "Full Name",
+        "street": "Street",
+        "city": "City",
+        "state": "State",
+        "postalCode": "Postal Code",
+        "country": "Country",
+        "phone": "Phone",
+        "save": "Save Address",
+        "cancel": "Cancel",
+        "edit": "Edit Address"
+      }
+    }
+  },
   "profile": "Profile",
   "myProfile": "My Profile",
   "settings": "Settings",

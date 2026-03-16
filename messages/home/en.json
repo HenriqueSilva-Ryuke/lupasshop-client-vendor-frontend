@@ -1,9 +1,11 @@
 {
   "hero": {
     "title": "Discover Amazing Products",
+    "mainTitle": "DISCOVER THE BEST",
     "subtitle": "Your one-stop marketplace for electronics, fashion, home & more",
     "searchPlaceholder": "What are you looking for today?",
-    "searchButton": "Search"
+    "searchButton": "Search",
+    "categoryWords": ["Gadgets", "Fashion", "Furniture", "Tech", "Books", "Gifts"]
   },
   "searchResults": {
     "products": "Products",
@@ -19,12 +21,18 @@
     "viewProduct": "View product"
   },
   "categories": {
+    "sectionLabel": "Explore / 02",
     "title": "Popular Categories",
     "viewAll": "View all"
   },
   "deals": {
+    "badgeTitle": "Live Flash Deals",
     "sectionTitle": "Deals of the Day",
+    "viewAll": "View All Deals",
     "addButton": "Add"
+  },
+  "promotionalCards": {
+    "viewCatalog": "View Catalog"
   },
   "stores": {
     "featuredTitle": "Featured Stores",

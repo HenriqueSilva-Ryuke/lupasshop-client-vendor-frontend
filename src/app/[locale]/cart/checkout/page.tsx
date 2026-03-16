@@ -54,7 +54,7 @@ export default function CheckoutPage() {
   const locale = useLocale();
   const { items, clearCart } = useCartStore();
   const { data: user } = useCurrentUser();
-  const { data: addresses = [], isLoading: addressesLoading } = useAddresses(!!user);
+  const { data: addresses = [], isLoading: addressesLoading } = useAddresses(user?.id, !!user);
   const createAddress = useCreateAddress();
   const validateCoupon = useValidateCoupon();
 

@@ -19,5 +19,36 @@
     "description": "We encountered an unexpected problem. Please reload the page or go back to the home page.",
     "tryAgain": "Try again",
     "goHome": "Go to home"
+  },
+  "emptyStates": {
+    "searchResults": {
+      "title": "No results found",
+      "description": "We couldn't find results for \"{query}\". Try using different or more generic terms."
+    },
+    "cart": {
+      "title": "Your cart is empty",
+      "description": "Add products to your cart to continue shopping and complete your order.",
+      "action": "Explore Marketplace"
+    },
+    "orders": {
+      "title": "No orders yet",
+      "description": "You haven't placed any orders yet. Explore the marketplace and find amazing products!",
+      "action": "Start shopping"
+    },
+    "wishlist": {
+      "title": "Empty wishlist",
+      "description": "Add products to your wishlist to save them and buy them later.",
+      "action": "Explore products"
+    },
+    "products": {
+      "title": "No products registered",
+      "description": "Start by adding your first product to start selling on the marketplace.",
+      "action": "Add product"
+    },
+    "stores": {
+      "title": "No stores found",
+      "description": "We couldn't find stores matching your search. Try adjusting the filters.",
+      "action": "Clear filters"
+    }
   }
 }

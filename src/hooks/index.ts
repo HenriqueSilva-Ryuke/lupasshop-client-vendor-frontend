@@ -12,3 +12,4 @@ export { useNavigationHistory } from './useNavigationHistory';
 export { useResponsive } from './useResponsive';
 export { useDashboardNavigation } from './useDashboardNavigation';
 export { useAnalytics } from './useAnalytics';
+export { useNavbarState } from './useNavbarState';

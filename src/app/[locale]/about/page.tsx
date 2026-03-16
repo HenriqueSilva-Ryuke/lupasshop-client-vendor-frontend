@@ -15,7 +15,7 @@ export default async function About({
 
  return (
  <PageTransition>
- <div className="min-h-screen bg-linear-to-br from-purple-900 to-purple-700">
+ <div className="min-h-screen bg-background">
  <Navbar />
  <AboutSection />
  <Footer />

@@ -1,53 +1,93 @@
 {
   "hero": {
+    "eyebrow": "Our Story",
     "title": "About LupaShop",
-    "description": "We are revolutionizing e-commerce by connecting independent stores in a unified digital marketplace, creating opportunities for both sellers and buyers worldwide."
+    "description": "We're revolutionizing e-commerce by connecting independent stores in a single, unified digital marketplace — creating real opportunities for sellers and buyers worldwide.",
+    "ctaStore": "Join as a Store",
+    "ctaShop": "Start Shopping"
+  },
+  "strip": {
+    "stores": "500+ Partner Stores",
+    "products": "50K+ Products",
+    "customers": "100K+ Customers",
+    "deliveries": "1M+ Deliveries",
+    "reviews": "Top-Rated Reviews",
+    "speed": "Lightning Fast",
+    "discovery": "Smart Discovery",
+    "trust": "Verified & Trusted"
   },
   "stats": {
     "title": "Our Impact",
+    "subtitle": "Numbers that reflect the trust thousands of stores and customers place in our platform every day.",
     "stores": "Partner Stores",
-    "products": "Products",
+    "products": "Listed Products",
     "customers": "Happy Customers",
     "deliveries": "Successful Deliveries"
   },
   "mission": {
+    "eyebrow": "Why We Exist",
     "title": "Our Mission",
-    "description": "To democratize e-commerce by providing independent stores with the tools and platform they need to compete with large retailers, while offering customers a diverse and trustworthy shopping experience."
+    "description": "To democratize e-commerce by giving independent stores the tools and visibility they need to compete with large retailers — while offering customers a diverse and trustworthy shopping experience.",
+    "quote": "We believe every independent store deserves the same reach as the biggest brands in the world."
   },
   "values": {
     "title": "Our Values",
+    "subtitle": "The principles that guide every decision we make — from product to people.",
     "trust": {
       "title": "Trust & Transparency",
-      "description": "We believe in building lasting relationships based on honesty, transparency, and mutual respect between stores and customers."
+      "description": "We build lasting relationships grounded in honesty and mutual respect between stores and customers."
     },
     "innovation": {
       "title": "Innovation",
-      "description": "We continuously evolve our platform with cutting-edge technology to provide the best experience for our community."
+      "description": "We continuously push our platform forward with cutting-edge technology to deliver the best experience for our community."
     },
     "community": {
       "title": "Community",
-      "description": "We foster a vibrant community of entrepreneurs and shoppers, creating opportunities and connections worldwide."
+      "description": "We foster a vibrant ecosystem of entrepreneurs and shoppers, creating opportunities and connections that span the globe."
+    }
+  },
+  "timeline": {
+    "title": "Our Journey",
+    "y2022": {
+      "title": "The Idea",
+      "description": "LupaShop was born from a simple frustration: independent stores were invisible online. We started building the solution."
+    },
+    "y2023": {
+      "title": "First 100 Stores",
+      "description": "We onboarded our first 100 partner stores and processed over 10,000 orders in our first operational year."
+    },
+    "y2024": {
+      "title": "Platform v2 & Scale",
+      "description": "A full platform rebuild, real-time search, seller dashboards, and expansion to 500+ stores across 12 cities."
+    },
+    "y2025": {
+      "title": "100K Customers",
+      "description": "Reached 100,000 active customers, launched promotional campaigns, and hit our first 1 million deliveries milestone."
     }
   },
   "team": {
-    "title": "Meet Our Team",
+    "title": "Meet the Team",
+    "subtitle": "The people building the future of independent commerce.",
     "founder": {
       "name": "João Silva",
-      "role": "Founder & CEO"
+      "role": "Founder & CEO",
+      "bio": "Passionate about empowering small businesses, João has been building e-commerce products since 2015."
     },
     "cto": {
       "name": "Maria Santos",
-      "role": "Chief Technology Officer"
+      "role": "Chief Technology Officer",
+      "bio": "Full-stack architect with deep expertise in distributed systems and scalable marketplace platforms."
     },
     "design": {
       "name": "Pedro Costa",
-      "role": "Head of Design"
+      "role": "Head of Design",
+      "bio": "Crafts pixel-perfect experiences that balance beauty and conversion — design as a competitive advantage."
     }
   },
   "cta": {
     "title": "Join Our Community",
-    "description": "Whether you're a store owner looking to grow your business or a customer seeking unique products, LupaShop is your gateway to the future of e-commerce.",
-    "joinStore": "Join as Store",
+    "description": "Whether you're a store owner looking to grow or a customer seeking unique products, LupaShop is your gateway to the future of e-commerce.",
+    "joinStore": "Join as a Store",
     "startShopping": "Start Shopping"
   }
 }

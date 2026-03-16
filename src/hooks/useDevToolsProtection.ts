@@ -2,6 +2,14 @@ import { useEffect } from 'react';
 
 export const useDevToolsProtection = () => {
   useEffect(() => {
+    const isProduction = process.env.NODE_ENV === 'production';
+    const isEnabled = process.env.NEXT_PUBLIC_ENABLE_DEVTOOLS_PROTECTION === 'true';
+
+    // Avoid disruptive reload loops during development and keep this behavior opt-in.
+    if (!isProduction || !isEnabled) {
+      return;
+    }
+
     let devToolsOpenCount = 0;
     const MAX_ATTEMPTS = 5;
     let isBlocked = false;
@@ -20,11 +28,6 @@ export const useDevToolsProtection = () => {
           isBlocked = true;
           localStorage.setItem('devtools-blocked', 'true');
           window.location.reload();
-        } else {
-          // Reload na primeira abertura
-          if (devToolsOpenCount === 1) {
-            window.location.reload();
-          }
         }
       }
     };
@@ -53,8 +56,6 @@ export const useDevToolsProtection = () => {
         if (devToolsOpenCount >= MAX_ATTEMPTS) {
           isBlocked = true;
           localStorage.setItem('devtools-blocked', 'true');
-          window.location.reload();
-        } else {
           window.location.reload();
         }
       }

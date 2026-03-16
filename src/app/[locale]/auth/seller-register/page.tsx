@@ -3,12 +3,13 @@
 import React from 'react';
 import { SellerMultiStepRegisterForm } from '@/components/auth/SellerMultiStepRegisterForm';
 import { useRouter } from 'next/navigation';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
 
 export default function SellerRegisterPage() {
  const locale = useLocale();
  const router = useRouter();
+ const t = useTranslations('auth.register');
 
  return (
  <div className="min-h-screen flex flex-col">
@@ -21,12 +22,12 @@ export default function SellerRegisterPage() {
  <h2 className="text-text-main text-xl font-bold leading-tight tracking-tight">LupaShop</h2>
  </Link>
  <div className="flex gap-4 items-center">
- <span className="hidden sm:block text-sm text-muted-foreground">Já tem uma conta?</span>
+ <span className="hidden sm:block text-sm text-muted-foreground">{t('seller.haveAccount')}</span>
  <button
  onClick={() => router.push(`/${locale}/auth/seller-login`)}
  className="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary/10 hover:bg-primary/20 text-primary text-sm font-bold transition-colors"
  >
- <span className="truncate">Entrar</span>
+ <span className="truncate">{t('seller.signIn')}</span>
  </button>
  </div>
  </header>
@@ -39,39 +40,11 @@ export default function SellerRegisterPage() {
  {/* Header Text */}
  <div className="text-center lg:text-left">
  <h1 className="text-text-main text-3xl lg:text-4xl font-bold leading-tight mb-2 tracking-tight">
- Crie sua loja em 4 passos
+ {t('seller.title')}
  </h1>
  <p className="text-muted-foreground text-base font-normal">
- Complete seu cadastro e comece a vender na LupaShop hoje mesmo.
+ {t('seller.subtitle')}
  </p>
- </div>
-
- {/* Social Login */}
- <div className="grid grid-cols-2 gap-4">
- <button className="flex items-center justify-center gap-3 h-12 px-4 rounded-xl border border-border hover:bg-muted/50 transition-colors bg-card">
- <img
- alt="Google"
- className="w-5 h-5"
- src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLBIuBiJeGS-8Mskku5FkvQSiur94G7fCxjygPhMaiArQ-iTC29GfRFJGPeGeX0WseHG6FU-4mkU_HmrparIJqgYMbherBjjDDi2p_ae0xwbYQsBe1durnsr4UNCD-lGxXO10RQ8e6f3FmHu42CKWaIDbnWyEqOIyeBltnQV6mOWHemZPJ7Lx0kAki9ooGpPZGLhRt7nEDzoAHCsNN-q0FCEyLxxIxWcRKv4O2atdysstZeGQMJrdAOSsziTZtYXZvjBbLh915Hso"
- />
- <span className="text-sm font-medium text-text-main">Google</span>
- </button>
- <button className="flex items-center justify-center gap-3 h-12 px-4 rounded-xl border border-border hover:bg-muted/50 transition-colors bg-card">
- <img
- alt="Facebook"
- className="w-5 h-5"
- src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH1Rbsz-UMWAETW9kTn2nKoxifGj-cWY1bqwZsQHk3D-dxMGaFwHj1eXLqoarcPKEibK-BqUM5-JBv4PnXOYq6bou2PkG4ZlpMGj8YjN6KfMMQj51PdLSnQ37bo91s-c-QBuuKMy2vD49Z5_eTUQDaVmfu2RFEPdK-L_6NMVsynpWyIoBI-b4VovevTGDZtrcVjVTyQlO6DnaLRc6cQXTI84tEbGl5stZqfGouLKWPWz94VDXqN7YCCvyC6zEcBMUKDJK4CnHbUAc"
- />
- <span className="text-sm font-medium text-text-main">Facebook</span>
- </button>
- </div>
-
- <div className="relative flex py-2 items-center">
- <div className="flex-grow border-t border-border"></div>
- <span className="flex-shrink-0 mx-4 text-muted-foreground text-xs font-medium uppercase tracking-wider">
- Ou complete o cadastro
- </span>
- <div className="flex-grow border-t border-border"></div>
  </div>
 
  {/* Registration Form */}
@@ -88,16 +61,16 @@ export default function SellerRegisterPage() {
  className="w-full h-full object-cover"
  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoSfTglbrr5lOKNQoF-NDtIn6tMzbp3xFJbgzTftoJU7PyPvqxT_mjxNbswvvyOjBlhxXcLme1cG_B30yHoCesnuVXDGgryaaC5xtNQXJuls8fCzwe1D9JK1933izwzpWvHoZIMl-wQardvQEuEI9YJedVVAJfPqFcl4VkJWVSApRwxIl9gW_vjEtxarAglFk2N6RpaLM6n-FaKlg8YYL41VT3qL40E_jtBfW5956wKSSKsYxTYOL2x9P1mck9wGDthlk42BBz1vg"
  />
- <div className="absolute bottom-0 left-0 p-12 z-20 max-w-lg">
- <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/20 text-xs font-semibold mb-6">
+ <div className="absolute bottom-0 left-0 p-12 z-20 max-w-lg text-white">
+ <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/20 text-xs font-semibold mb-6 text-white">
  <span className="material-symbols-outlined text-[16px]">verified</span>
- Plataforma Confiável
+ {t('seller.heroBadge')}
  </div>
- <h3 className="text-4xl font-bold mb-4 leading-tight">
- Gerencie seu e-commerce com facilidade.
+ <h3 className="text-4xl font-bold mb-4 leading-tight text-white">
+ {t('seller.heroTitle')}
  </h3>
  <p className="text-lg text-white/90 font-medium">
- Integração com estoque, gestão de vendas, logística e pagamentos tudo em um único painel.
+ {t('seller.heroDescription')}
  </p>
  </div>
  </div>

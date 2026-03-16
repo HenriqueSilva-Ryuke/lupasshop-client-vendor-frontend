@@ -29,9 +29,9 @@ const emptyForm: CreateAddressInput = {
 };
 
 export default function AddressesPage() {
-  const t = useTranslations('customer.addresses');
+  const t = useTranslations('user.customer.addresses');
   const { data: user } = useCurrentUser();
-  const { data: addresses = [], isLoading } = useAddresses(!!user);
+  const { data: addresses = [], isLoading } = useAddresses(user?.id, !!user);
   const createAddress = useCreateAddress();
   const updateAddress = useUpdateAddress();
   const deleteAddress = useDeleteAddress();
@@ -96,7 +96,7 @@ export default function AddressesPage() {
 
   const isMutating = createAddress.isPending || updateAddress.isPending;
 
-  const AddressForm = () => (
+  const renderAddressForm = () => (
     <div className={`${surfaceClass} p-6 mb-6`}>
       <h3 className="text-xl font-semibold mb-4">
         {editingId ? t('form.edit') : t('addNew')}
@@ -215,7 +215,7 @@ export default function AddressesPage() {
         )}
       </div>
 
-      {showForm && <AddressForm />}
+      {showForm && renderAddressForm()}
 
       {isLoading ? (
         <div className="flex items-center justify-center py-12">

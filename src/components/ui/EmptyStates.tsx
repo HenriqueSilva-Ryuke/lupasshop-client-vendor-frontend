@@ -4,7 +4,7 @@ import React from 'react';
 import { ShoppingCart, Package, Heart, Store, Search, FileText, CreditCard, MapPin } from 'lucide-react';
 import { Button } from '@lupa/design-system';
 import Link from 'next/link';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { EmptyState } from '../ErrorIllustration';
 
 /**
@@ -43,9 +43,11 @@ function EmptyStateWrapper({ icon, title, description, action, secondaryAction }
         <div className="flex flex-col sm:flex-row gap-3 mt-2">
           {action && (
             action.href ? (
-              <Button asChild variant="default" size="lg">
-                <Link href={action.href}>{action.label}</Link>
-              </Button>
+              <Link href={action.href}>
+                <Button variant="default" size="lg">
+                  {action.label}
+                </Button>
+              </Link>
             ) : (
               <Button onClick={action.onClick} variant="default" size="lg">
                 {action.label}
@@ -54,9 +56,11 @@ function EmptyStateWrapper({ icon, title, description, action, secondaryAction }
           )}
           {secondaryAction && (
             secondaryAction.href ? (
-              <Button asChild variant="outline" size="lg">
-                <Link href={secondaryAction.href}>{secondaryAction.label}</Link>
-              </Button>
+              <Link href={secondaryAction.href}>
+                <Button variant="outline" size="lg">
+                  {secondaryAction.label}
+                </Button>
+              </Link>
             ) : (
               <Button onClick={secondaryAction.onClick} variant="outline" size="lg">
                 {secondaryAction.label}
@@ -71,13 +75,14 @@ function EmptyStateWrapper({ icon, title, description, action, secondaryAction }
 
 export function EmptyCart() {
   const locale = useLocale();
+  const t = useTranslations('error.emptyStates.cart');
   return (
     <EmptyStateWrapper
       icon={<ShoppingCart className="h-12 w-12" />}
-      title="Seu carrinho está vazio"
-      description="Adicione produtos ao carrinho para continuar comprando e finalizar seu pedido."
+      title={t('title')}
+      description={t('description')}
       action={{
-        label: 'Explorar Marketplace',
+        label: t('action'),
         href: `/${locale}/marketplace`,
       }}
     />
@@ -86,13 +91,14 @@ export function EmptyCart() {
 
 export function EmptyOrders() {
   const locale = useLocale();
+  const t = useTranslations('error.emptyStates.orders');
   return (
     <EmptyStateWrapper
       icon={<Package className="h-12 w-12" />}
-      title="Nenhum pedido ainda"
-      description="Você ainda não fez nenhum pedido. Explore o marketplace e encontre produtos incríveis!"
+      title={t('title')}
+      description={t('description')}
       action={{
-        label: 'Começar a comprar',
+        label: t('action'),
         href: `/${locale}/marketplace`,
       }}
     />
@@ -101,13 +107,14 @@ export function EmptyOrders() {
 
 export function EmptyWishlist() {
   const locale = useLocale();
+  const t = useTranslations('error.emptyStates.wishlist');
   return (
     <EmptyStateWrapper
       icon={<Heart className="h-12 w-12" />}
-      title="Lista de desejos vazia"
-      description="Adicione produtos à sua lista de desejos para salvá-los e comprá-los depois."
+      title={t('title')}
+      description={t('description')}
       action={{
-        label: 'Explorar produtos',
+        label: t('action'),
         href: `/${locale}/marketplace`,
       }}
     />
@@ -116,13 +123,14 @@ export function EmptyWishlist() {
 
 export function EmptyProducts() {
   const locale = useLocale();
+  const t = useTranslations('error.emptyStates.products');
   return (
     <EmptyStateWrapper
       icon={<Package className="h-12 w-12" />}
-      title="Nenhum produto cadastrado"
-      description="Comece adicionando seu primeiro produto para começar a vender no marketplace."
+      title={t('title')}
+      description={t('description')}
       action={{
-        label: 'Adicionar produto',
+        label: t('action'),
         href: `/${locale}/seller/products/new`,
       }}
     />
@@ -131,13 +139,14 @@ export function EmptyProducts() {
 
 export function EmptyStores() {
   const locale = useLocale();
+  const t = useTranslations('error.emptyStates.stores');
   return (
     <EmptyStateWrapper
       icon={<Store className="h-12 w-12" />}
-      title="Nenhuma loja encontrada"
-      description="Não encontramos lojas correspondentes à sua busca. Tente ajustar os filtros."
+      title={t('title')}
+      description={t('description')}
       action={{
-        label: 'Limpar filtros',
+        label: t('action'),
         onClick: () => window.location.reload(),
       }}
     />
@@ -145,11 +154,12 @@ export function EmptyStores() {
 }
 
 export function EmptySearchResults({ query }: { query: string }) {
+  const t = useTranslations('error.emptyStates.searchResults');
   return (
     <EmptyStateWrapper
       icon={<Search className="h-12 w-12" />}
-      title="Nenhum resultado encontrado"
-      description={`Não encontramos resultados para "${query}". Tente usar termos diferentes ou mais genéricos.`}
+      title={t('title')}
+      description={t('description', { query })}
     />
   );
 }
