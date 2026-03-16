@@ -1,5 +1,8 @@
 'use client';
 
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useAuthProtection } from '@/hooks/useAuthProtection';
 import { useQuery } from '@apollo/client/react';
 import { LIST_ORDERS } from '@/graphql/queries';
 import { useLocale } from 'next-intl';
@@ -32,11 +35,21 @@ import { use } from 'react';
 
 export default function SellerOrdersPage({ params }: { params: Promise<{ locale: string }> }) {
  const { locale } = use(params);
+ const router = useRouter();
+ const { isLoading: isAuthLoading, isAuthorized } = useAuthProtection(['SELLER', 'ADMIN']);
  // Fetch orders. The backend resolver automatically filters by the seller's store if storeId is omitted
  const { data, loading, error } = useQuery<any>(LIST_ORDERS, {
  variables: { limit: 20, offset: 0 },
- fetchPolicy: 'network-only' // Ensure fresh data
+ fetchPolicy: 'network-only',// Ensure fresh data
+ skip: !isAuthorized
  }) as any;
+
+ // Redirect to login if not authorized
+ useEffect(() => {
+ if (!isAuthLoading && !isAuthorized) {
+ router.replace(`/${locale}/auth/login`);
+ }
+ }, [isAuthLoading, isAuthorized, router, locale]);
 
 if (loading) return <div className="text-muted-foreground">Carregando pedidos...</div>;
   if (error) return <div className="text-destructive">Erro ao carregar pedidos: {error.message}</div>;
@@ -83,7 +96,7 @@ if (loading) return <div className="text-muted-foreground">Carregando pedidos...
  {/* Needs user expansion in query for name, fallback for MVP */}
  {order.userId ? "Cliente Registrado" : "Convidado"}
  </td>
- <td className="px-6 py-4 font-medium">R$ {order.totalAmount.toFixed(2)}</td>
+ <td className="px-6 py-4 font-medium">AOA {order.totalAmount.toFixed(2)}</td>
  <td className="px-6 py-4">
  <StatusBadge status={order.status} />
  </td>

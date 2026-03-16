@@ -58,7 +58,7 @@ export default function OrdersPage({ params }: { params: Promise<{ locale: strin
  <div className="h-8 w-px bg-border" />
  <div>
  <p className="text-muted-foreground mb-1">Total</p>
- <p className="font-semibold">R$ {order.totalAmount.toFixed(2)}</p>
+ <p className="font-semibold">AOA {order.totalAmount.toFixed(2)}</p>
  </div>
  <div className="h-8 w-px bg-border" />
  <div>
@@ -97,7 +97,7 @@ export default function OrdersPage({ params }: { params: Promise<{ locale: strin
  <p className="font-medium text-sm text-foreground">{item.product?.name || 'Produto indisponível'}</p>
  <p className="text-muted-foreground text-xs">Qtd: {item.quantity}</p>
  </div>
- <span className="font-semibold text-sm">R$ {item.priceAtPurchase.toFixed(2)}</span>
+ <span className="font-semibold text-sm">AOA {item.priceAtPurchase.toFixed(2)}</span>
  </div>
  ))}
  </div>

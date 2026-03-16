@@ -1,3 +1,8 @@
+'use client';
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useAuthProtection } from '@/hooks/useAuthProtection';
 import { useQuery, useMutation } from '@apollo/client/react';
 import { gql } from '@apollo/client';
 import { useLocale } from 'next-intl';
@@ -38,7 +43,11 @@ import { use } from 'react';
 
 export default function SellerProductsPage({ params }: { params: Promise<{ locale: string }> }) {
  const { locale } = use(params);
- const { data, loading, error, refetch } = useQuery<any>(SELLER_PRODUCTS_QUERY) as any;
+ const router = useRouter();
+ const { isLoading: isAuthLoading, isAuthorized }  = useAuthProtection(['SELLER', 'ADMIN']);
+ const { data, loading, error, refetch } = useQuery<any>(SELLER_PRODUCTS_QUERY, { 
+  skip: !isAuthorized 
+ }) as any;
  const [deleteProduct] = useMutation<any>(DELETE_PRODUCT_MUTATION);
  const { undo } = useToast();
 
@@ -66,6 +75,13 @@ export default function SellerProductsPage({ params }: { params: Promise<{ local
  refetch(); // Restore on error
  }
  };
+
+ // Redirect to login if not authorized
+ useEffect(() => {
+ if (!isAuthLoading && !isAuthorized) {
+ router.replace(`/${locale}/auth/login`);
+ }
+ }, [isAuthLoading, isAuthorized, router, locale]);
 
  if (loading) {
  return (
@@ -150,7 +166,7 @@ export default function SellerProductsPage({ params }: { params: Promise<{ local
  <span className="font-medium max-w-xs truncate">{product.name}</span>
  </div>
  </td>
- <td className="px-6 py-4 text-muted-foreground">R$ {product.price.toFixed(2)}</td>
+ <td className="px-6 py-4 text-muted-foreground">AOA {product.price.toFixed(2)}</td>
  <td className="px-6 py-4">
         <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${product.stockQuantity > 0 ? 'bg-primary/10 text-primary' : 'bg-destructive/10 text-destructive'}`}>
  {product.stockQuantity} un

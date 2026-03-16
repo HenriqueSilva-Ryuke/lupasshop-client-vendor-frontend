@@ -1,10 +1,13 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useMutation, useQuery } from '@apollo/client/react';
+import { useLocale } from 'next-intl';
+import { useAuthProtection } from '@/hooks/useAuthProtection';
 import { GET_CURRENT_USER } from '@/graphql/queries';
 import { UPDATE_USER } from '@/graphql/mutations';
 import Button from '@/components/ui/Button';
@@ -21,8 +24,12 @@ const profileSchema = z.object({
 type ProfileFormValues = z.infer<typeof profileSchema>;
 
 export default function ProfilePage({ params }: { params: Promise<{ locale: string }> }) {
- // const { locale } = use(params);
- const { data, loading } = useQuery<any>(GET_CURRENT_USER) as any;
+ const locale = useLocale();
+ const router = useRouter();
+ 
+ // Always call all hooks in the same order
+ const { isLoading: isAuthLoading, isAuthorized } = useAuthProtection(['BUYER']);
+ const { data, loading } = useQuery<any>(GET_CURRENT_USER, { skip: !isAuthorized }) as any;
  const [updateUser, { loading: updating }] = useMutation<any>(UPDATE_USER);
 
  const {
@@ -33,6 +40,13 @@ export default function ProfilePage({ params }: { params: Promise<{ locale: stri
  } = useForm<ProfileFormValues>({
  resolver: zodResolver(profileSchema),
  });
+
+ // Handle redirects after all hooks are called
+ useEffect(() => {
+ if (!isAuthLoading && !isAuthorized) {
+ router.replace(`/${locale}/auth/login`);
+ }
+ }, [isAuthLoading, isAuthorized, router, locale]);
 
  useEffect(() => {
  if (data?.me) {
@@ -59,6 +73,20 @@ export default function ProfilePage({ params }: { params: Promise<{ locale: stri
  toast.error('Erro ao atualizar perfil');
  }
  };
+
+ // Only show loading/error AFTER all hooks have been called
+ if (isAuthLoading) {
+ return (
+ <div className="flex items-center justify-center h-screen">
+ <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+ </div>
+ );
+ }
+
+ // If not authorized, don't render (useAuthProtection will handle redirect)
+ if (!isAuthorized) {
+ return null;
+ }
 
  if (loading) return <div>Carregando...</div>;
 

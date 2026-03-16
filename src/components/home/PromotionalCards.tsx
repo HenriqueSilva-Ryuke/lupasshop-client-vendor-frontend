@@ -19,7 +19,7 @@ export default function PromotionalCards() {
             id: product.id,
             store: product.store?.name || 'Unknown Store',
             title: product.name,
-            price: `R$ ${product.price?.toFixed(2) || '0.00'}`,
+            price: `AOA ${product.price?.toFixed(2) || '0.00'}`,
             badge: product.discount ? `${product.discount}%` : null,
             image: product.images?.[0] || 'https://via.placeholder.com/400',
             slug: product.slug,

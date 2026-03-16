@@ -46,7 +46,11 @@ export function SellerMultiStepRegisterForm() {
  ];
 
  return (
- <form onSubmit={handleSubmit} className="bg-card bg-[#1a2632] p-8 rounded-xl border border-[#e5e7eb] border-border shadow-sm flex flex-col gap-6">
+ <form
+  onSubmit={handleSubmit}
+  onKeyDown={(e) => { if (e.key === 'Enter') e.preventDefault(); }}
+  className="bg-card bg-[#1a2632] p-8 rounded-xl border border-[#e5e7eb] border-border shadow-sm flex flex-col gap-6"
+ >
  {/* Progress Bar */}
  <div className="flex flex-col gap-3 mb-4">
  <div className="flex items-center justify-between">

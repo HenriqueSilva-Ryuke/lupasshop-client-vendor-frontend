@@ -3,17 +3,33 @@
 import React from 'react';
 import { useOnboardingTour } from '@/hooks/useOnboardingTour';
 import Link from 'next/link';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import { Loader2 } from 'lucide-react';
 
 export function OnboardingTour() {
  const locale = useLocale();
+ const t = useTranslations('seller');
  const {
  steps,
  completedSteps,
  completionPercentage,
+ storesLoading,
+ storeName,
+ setStoreName,
+ createStoreError,
+ creatingStore,
+ handleCreateStore,
  skipTour,
  handleStepAction,
  } = useOnboardingTour();
+
+ if (storesLoading) {
+  return (
+   <div className="min-h-screen flex items-center justify-center bg-background">
+    <Loader2 className="w-8 h-8 text-primary animate-spin" />
+   </div>
+  );
+ }
 
  return (
  <div className="min-h-screen flex flex-col bg-background-light">
@@ -31,12 +47,12 @@ export function OnboardingTour() {
  onClick={skipTour}
  className="hidden text-sm font-medium text-[#6b7280] hover:text-primary sm:block transition-colors"
  >
- Pular introdução
+ {t('onboarding.skipTour')}
  </button>
  <div className="flex items-center gap-3">
  <div className="text-right hidden sm:block">
- <p className="text-sm font-bold text-foreground">Minha Loja</p>
- <p className="text-xs text-[#6b7280]">Bem-vindo!</p>
+ <p className="text-sm font-bold text-foreground">{t('onboarding.myStore')}</p>
+ <p className="text-xs text-[#6b7280]">{t('onboarding.welcome')}</p>
  </div>
  <div className="h-10 w-10 overflow-hidden rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
  <span className="material-symbols-outlined text-primary text-[20px]">person</span>
@@ -52,10 +68,10 @@ export function OnboardingTour() {
  {/* Page Heading */}
  <div className="mb-10 text-center sm:text-left">
  <h1 className="text-3xl font-black text-foreground sm:text-4xl tracking-tight mb-3">
- Bem-vindo à LupaShop!
+ {t('onboarding.pageTitle')}
  </h1>
  <p className="text-lg text-[#4b5563] max-w-2xl">
- Vamos colocar sua loja no ar em poucos minutos. Siga os passos abaixo para começar a vender online.
+ {t('onboarding.pageSubtitle')}
  </p>
  </div>
 
@@ -64,9 +80,12 @@ export function OnboardingTour() {
  <div className="flex flex-col gap-4">
  <div className="flex items-center justify-between">
  <div>
- <p className="text-base font-bold text-foreground">Progresso da configuração</p>
+ <p className="text-base font-bold text-foreground">{t('onboarding.progressLabel')}</p>
  <p className="text-sm text-[#6b7280]">
- {completedSteps.length} de {steps.length} tarefas completadas
+ {t('onboarding.tasksLabel', {
+ completed: completedSteps.length,
+ total: steps.length,
+ })}
  </p>
  </div>
  <span className="text-2xl font-bold text-primary">{completionPercentage}%</span>
@@ -107,7 +126,7 @@ export function OnboardingTour() {
  {step.status === 'active' && (
  <div className="absolute top-3 right-3 animate-pulse">
  <span className="inline-flex items-center rounded-full bg-primary/10 px-2 py-1 text-xs font-bold text-primary ring-1 ring-inset ring-primary/20">
- Próximo passo
+ {t('onboarding.nextStep')}
  </span>
  </div>
  )}
@@ -145,8 +164,34 @@ export function OnboardingTour() {
  {step.description}
  </p>
 
- {/* Action Button */}
+ {/* Action Button / Create Store inline */}
+ {step.action === 'create-store' && step.status === 'active' ? (
+  <div className="flex flex-col gap-2">
+   <input
+    type="text"
+    value={storeName}
+    onChange={(e) => setStoreName(e.target.value)}
+    placeholder={t('onboarding.steps.store.namePlaceholder')}
+    className="w-full h-10 px-3 rounded-lg border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+    onKeyDown={(e) => { if (e.key === 'Enter') handleCreateStore(); }}
+   />
+   {createStoreError && (
+    <p className="text-xs text-destructive">{createStoreError}</p>
+   )}
+   <button
+    type="button"
+    onClick={handleCreateStore}
+    disabled={creatingStore || !storeName.trim()}
+    className="inline-flex h-10 w-full items-center justify-center gap-2 rounded-lg px-4 text-sm font-semibold bg-primary text-card-foreground hover:bg-primary-hover shadow-sm active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+   >
+    {creatingStore ? (
+     <><Loader2 className="w-4 h-4 animate-spin" /> {t('onboarding.steps.store.creating')}</>
+    ) : step.actionLabel}
+   </button>
+  </div>
+ ) : (
  <button
+ type="button"
  onClick={() => {
  if (step.status !== 'locked') {
  handleStepAction(step.id, step.action);
@@ -157,12 +202,13 @@ export function OnboardingTour() {
  step.status === 'completed'
  ? 'border border-[#e5e7eb] bg-card text-[#374151] hover:bg-muted hover:text-foreground'
  : step.status === 'active'
- ? 'bg-primary text-card-foreground hover:bg-primary-dark shadow-sm hover:shadow active:scale-95'
+ ? 'bg-primary text-card-foreground hover:bg-primary-hover shadow-sm hover:shadow active:scale-95'
  : 'border border-[#e5e7eb] bg-muted text-[#9ca3af] hover:bg-muted hover:text-[#6b7280] cursor-not-allowed'
  }`}
  >
  {step.actionLabel}
  </button>
+ )}
  </div>
 
  {/* Bottom Indicator */}
@@ -185,17 +231,17 @@ export function OnboardingTour() {
  <div className="relative flex flex-col items-center justify-between gap-6 px-8 py-10 text-center sm:flex-row sm:text-left sm:px-12">
  <div className="flex flex-col gap-2">
  <h3 className="text-2xl font-bold text-card-foreground">
- Precisa de ajuda com a configuração?
+ {t('onboarding.helpTitle')}
  </h3>
  <p className="text-primary-light/80 text-sm sm:text-base">
- Nossa equipe de suporte preparou um guia completo para iniciantes.
+ {t('onboarding.helpSubtitle')}
  </p>
  </div>
  <button className="flex items-center gap-2 rounded-lg bg-card px-6 py-3 text-sm font-bold text-primary transition-all hover:bg-muted whitespace-nowrap shadow-lg">
  <span className="material-symbols-outlined text-[20px]">
  help
  </span>
- Acessar Central de Ajuda
+ {t('onboarding.helpButton')}
  </button>
  </div>
  </div>
@@ -206,26 +252,26 @@ export function OnboardingTour() {
  <footer className="border-t border-[#e5e7eb] bg-card py-8">
  <div className="mx-auto max-w-7xl px-6 flex flex-col items-center justify-between gap-4 sm:flex-row">
  <p className="text-sm text-[#6b7280]">
- © 2024 LupaShop Inc. Todos os direitos reservados.
+ {t('onboarding.copyright')}
  </p>
  <div className="flex gap-6">
  <a
  className="text-sm text-[#6b7280] hover:text-primary hover:underline transition-colors"
  href="#"
  >
- Termos de Uso
+ {t('onboarding.terms')}
  </a>
  <a
  className="text-sm text-[#6b7280] hover:text-primary hover:underline transition-colors"
  href="#"
  >
- Privacidade
+ {t('onboarding.privacy')}
  </a>
  <a
  className="text-sm text-[#6b7280] hover:text-primary hover:underline transition-colors"
  href="#"
  >
- Suporte
+ {t('onboarding.support')}
  </a>
  </div>
  </div>

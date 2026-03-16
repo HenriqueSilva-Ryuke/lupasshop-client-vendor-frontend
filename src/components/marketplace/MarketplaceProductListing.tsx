@@ -287,10 +287,10 @@ export default function MarketplaceProductListing() {
 
                                             <div className="mt-auto">
                                                 {product.originalPrice && product.originalPrice > product.price && (
-                                                    <p className="text-xs text-muted-foreground line-through">R$ {product.originalPrice.toFixed(2)}</p>
+                                                    <p className="text-xs text-muted-foreground line-through">AOA {product.originalPrice.toFixed(2)}</p>
                                                 )}
                                                 <div className="flex items-baseline gap-2 mb-3">
-                                                    <p className="text-xl font-bold text-primary">R$ {product.price.toFixed(2)}</p>
+                                                    <p className="text-xl font-bold text-primary">AOA {product.price.toFixed(2)}</p>
                                                 </div>
 
                                                 <LoadingButton

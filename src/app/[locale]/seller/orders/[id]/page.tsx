@@ -107,16 +107,16 @@ export default function SellerOrderDetailPage({ params }: { params: Promise<{ id
  <p className="text-sm text-muted-foreground">SKU: {item.product.id.slice(0, 6)}</p>
  </div>
  <div className="text-right">
- <p className="font-medium">R$ {item.priceAtPurchase.toFixed(2)}</p>
+ <p className="font-medium">AOA {item.priceAtPurchase.toFixed(2)}</p>
  <p className="text-sm text-muted-foreground">x {item.quantity}</p>
- <p className="font-bold mt-1">R$ {(item.priceAtPurchase * item.quantity).toFixed(2)}</p>
+ <p className="font-bold mt-1">AOA {(item.priceAtPurchase * item.quantity).toFixed(2)}</p>
  </div>
  </div>
  ))}
  </div>
  <div className="bg-muted/50 px-6 py-4 border-t flex justify-between items-center">
  <span className="font-semibold text-muted-foreground">Total do Pedido</span>
- <span className="text-xl font-bold text-foreground">R$ {order.totalAmount.toFixed(2)}</span>
+ <span className="text-xl font-bold text-foreground">AOA {order.totalAmount.toFixed(2)}</span>
  </div>
  </div>
 

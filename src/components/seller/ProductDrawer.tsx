@@ -4,6 +4,7 @@ import { useProductForm } from '@/hooks/forms/useProductForm';
 import { useSellerStore } from '@/hooks/useSellerStore';
 import { useClientAuth } from '@/hooks/useClientAuth';
 import { useRef } from 'react';
+import { Toggle } from '@/components/ui/Toggle';
 
 interface ProductDrawerProps {
  isOpen: boolean;
@@ -152,7 +153,7 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
  <div className="grid grid-cols-2 gap-4">
  <div className="flex flex-col gap-1.5">
  <label className="text-sm font-medium text-foreground" htmlFor="price">
- Preço (R$)
+ Preço (AOA)
  </label>
  <input
  {...register('price', { valueAsNumber: true })}
@@ -294,15 +295,10 @@ export function ProductDrawer({ isOpen, onClose, onSuccess }: ProductDrawerProps
  O produto ficará visível na loja
  </p>
  </div>
- <label className="relative inline-flex items-center cursor-pointer">
- <input
+ <Toggle
  {...register('isActive')}
- type="checkbox"
- className="sr-only peer"
- defaultChecked
+ defaultChecked={true}
  />
- <div className="w-11 h-6 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 peer-focus:ring-primary/40 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-border after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:border-border after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
- </label>
  </div>
 
  {/* Actions */}

@@ -12,6 +12,7 @@ import { useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
 import { toast } from 'sonner';
 import Button from '@/components/ui/Button';
+import { Toggle } from '@/components/ui/Toggle';
 import { ArrowLeft, Plus, X } from 'lucide-react';
 
 const productSchema = z.object({
@@ -132,7 +133,7 @@ export default function NewProductPage({ params }: { params: Promise<any> }) {
  <h3 className="font-semibold border-b pb-2">Preço e Estoque</h3>
  <div className="grid grid-cols-2 gap-4">
  <div>
- <label className="block text-sm font-medium mb-1">Preço (AKZ)</label>
+ <label className=\"block text-sm font-medium mb-1\">Preço (AOA)</label>
  <input type="number" step="0.01" {...register('price')} className="w-full border border-border rounded-lg p-2 bg-card text-foreground" />
  {errors.price && <p className="text-destructive text-xs mt-1">{(errors.price as any).message}</p>}
  </div>
@@ -157,14 +158,14 @@ export default function NewProductPage({ params }: { params: Promise<any> }) {
  </div>
 
  <div className="flex gap-6">
- <label className="flex items-center gap-2 cursor-pointer">
- <input type="checkbox" {...register('isNew')} />
- <span className="text-sm">Novo</span>
- </label>
- <label className="flex items-center gap-2 cursor-pointer">
- <input type="checkbox" {...register('isTrending')} />
- <span className="text-sm">Destaque</span>
- </label>
+ <Toggle
+ label="Novo"
+ {...register('isNew')}
+ />
+ <Toggle
+ label="Destaque"
+ {...register('isTrending')}
+ />
  </div>
 
  <div className="pt-4 border-t flex justify-end gap-3">

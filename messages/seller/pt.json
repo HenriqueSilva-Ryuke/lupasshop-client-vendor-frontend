@@ -11,5 +11,52 @@
   "editProduct": "Editar Produto",
   "deleteProduct": "Deletar Produto",
   "sales": "Vendas",
-  "revenue": "Receita"
+  "revenue": "Receita",
+  "overview": "Visão Geral",
+  "myProducts": "Meus Produtos",
+  "storeSettings": "Configurações da Loja",
+  "sellerPanel": "Painel do Vendedor",
+  "newProduct": "Novo Produto",
+  "onboarding": {
+    "skipTour": "Pular Introdução",
+    "myStore": "Minha Loja",
+    "welcome": "Bem-vindo!",
+    "pageTitle": "Bem-vindo à LupaShop!",
+    "pageSubtitle": "Vamos colocar sua loja no ar em poucos minutos. Siga os passos abaixo para começar a vender online.",
+    "progressLabel": "Progresso da configuração",
+    "tasksLabel": "{completed} de {total} tarefas completadas",
+    "nextStep": "Próximo passo",
+    "helpTitle": "Precisa de ajuda com a configuração?",
+    "helpSubtitle": "Nossa equipe de suporte preparou um guia completo para iniciantes.",
+    "helpButton": "Acessar Central de Ajuda",
+    "copyright": "© 2024 LupaShop Inc. Todos os direitos reservados.",
+    "terms": "Termos de Uso",
+    "privacy": "Privacidade",
+    "support": "Suporte",
+    "steps": {
+      "store": {
+        "title": "Criar a Sua Loja",
+        "description": "Dê um nome à sua loja para começar. Pode adicionar mais detalhes depois nas configurações.",
+        "actionLabel": "Criar Loja",
+        "actionLabelDone": "Loja Criada",
+        "namePlaceholder": "Nome da loja...",
+        "creating": "Criando..."
+      },
+      "profile": {
+        "title": "Configurar Perfil",
+        "description": "Defina a identidade da sua marca, adicione seu logotipo e preencha as informações de contato essenciais.",
+        "actionLabel": "Editar Detalhes"
+      },
+      "product": {
+        "title": "Adicionar Primeiro Produto",
+        "description": "Cadastre o primeiro item que você vai vender. Adicione fotos atraentes, uma descrição detalhada e o preço.",
+        "actionLabel": "Começar Agora"
+      },
+      "dashboard": {
+        "title": "Entender o Painel",
+        "description": "Faça um tour guiado pelo dashboard para aprender a gerenciar seus pedidos, estoque e visualizar relatórios.",
+        "actionLabel": "Aguardando etapa anterior"
+      }
+    }
+  }
 }

@@ -332,9 +332,9 @@ export default function StorePage() {
  </h3>
  <div className="mt-auto pt-3 space-y-3">
  <div className="flex items-end gap-2">
- <p className="text-xl font-bold text-foreground">R$ {(product.price || 0).toFixed(2)}</p>
+ <p className="text-xl font-bold text-foreground">AOA {(product.price || 0).toFixed(2)}</p>
  {product.originalPrice && (
- <p className="text-xs line-through">R$ {product.originalPrice.toFixed(2)}</p>
+ <p className="text-xs line-through">AOA {product.originalPrice.toFixed(2)}</p>
  )}
  </div>
  <motion.button

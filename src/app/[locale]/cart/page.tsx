@@ -208,7 +208,7 @@ export default function CartPage() {
  {/* Price and Quantity */}
  <div className="flex flex-row sm:flex-col justify-between items-center sm:items-end gap-4 shrink-0">
  <p className="text-foreground text-lg font-bold leading-normal">
- R$ {(item.price * item.quantity).toFixed(2)}
+ AOA {(item.price * item.quantity).toFixed(2)}
  </p>
  <div className="flex items-center gap-1 text-foreground border rounded-lg p-1 bg-card">
  <Button
@@ -242,7 +242,7 @@ export default function CartPage() {
  <span className="text-sm text-muted-foreground">
  {t('storeSubtotal', { count: storeItems.length })}:
  </span>
- <span className="text-xl font-bold text-foreground">R$ {storeTotal.toFixed(2)}</span>
+ <span className="text-xl font-bold text-foreground">AOA {storeTotal.toFixed(2)}</span>
  </div>
  </div>
  );
@@ -323,16 +323,16 @@ export default function CartPage() {
  <div className="space-y-3 mb-6">
  <div className="flex justify-between text-sm">
  <span className="text-muted-foreground">{t('subtotal')} ({items.length} itens)</span>
- <span className="text-foreground font-medium">R$ {subtotal.toFixed(2)}</span>
+ <span className="text-foreground font-medium">AOA {subtotal.toFixed(2)}</span>
  </div>
  <div className="flex justify-between text-sm">
  <span className="text-muted-foreground">{t('shipping')}</span>
- <span className="text-foreground font-medium">R$ {shippingTotal.toFixed(2)}</span>
+ <span className="text-foreground font-medium">AOA {shippingTotal.toFixed(2)}</span>
  </div>
  {appliedCoupon && (
  <div className="flex justify-between text-sm text-primary">
  <span>{t('discount')} ({appliedCoupon.code})</span>
- <span className="font-medium">- R$ {discountAmount.toFixed(2)}</span>
+ <span className="font-medium">- AOA {discountAmount.toFixed(2)}</span>
  </div>
  )}
  </div>
@@ -341,7 +341,7 @@ export default function CartPage() {
  <div className="border-t pt-4 mb-6">
  <div className="flex justify-between items-center mb-1">
  <span className="text-lg font-bold text-foreground">{t('total')}</span>
- <span className="text-2xl font-black text-foreground">R$ {total.toFixed(2)}</span>
+ <span className="text-2xl font-black text-foreground">AOA {total.toFixed(2)}</span>
  </div>
  <p className="text-xs text-right">
  {t('installments', { count: installments, value: installmentValue.toFixed(2) })}

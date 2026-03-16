@@ -7,7 +7,7 @@ import { motion } from 'motion/react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PageTransition from '@/components/PageTransition';
-import { useProducts } from '@/hooks/useProducts';
+import { useProductBySlug } from '@/hooks/useProducts';
 import type { Product } from '@/graphql/types';
 
 function formatMoney(value?: number | null, currency = 'BRL', locale: string = 'pt-BR') {
@@ -48,12 +48,11 @@ export default function ProductDetailPage() {
  const slug = (params?.slug as string) || '';
  const [selectedImage, setSelectedImage] = useState(0);
 
- const { data: products = [], isLoading } = useProducts({ search: slug, limit: 5 });
+ const { data: productData, isLoading } = useProductBySlug(slug);
 
  const product: Product | null = useMemo(() => {
- if (!products?.length) return null;
- return products.find((p) => p.slug === slug) ?? products[0] ?? null;
- }, [products, slug]);
+    return productData ?? null;
+  }, [productData]);
 
  const images = useMemo(() => {
  if (!product?.images) return [] as string[];
@@ -229,7 +228,7 @@ export default function ProductDetailPage() {
 
  <div className="flex flex-col gap-3 pt-2">
  <div className="flex gap-3 h-12">
- <div className="flex items-center rounded-lg border border-slate-300 border-slate-600 px-1 bg-slate-800 w-32">
+ <div className="flex items-center rounded-lg border border-slate-300 dark:border-slate-600 px-1 bg-white dark:bg-slate-800 w-32">
  <button className="w-10 h-full flex items-center justify-center text-slate-500 hover:text-foreground hover:text-black" aria-label="Diminuir quantidade">
  <span className="material-symbols-outlined text-[20px]">remove</span>
  </button>
@@ -237,7 +236,7 @@ export default function ProductDetailPage() {
  type="text"
  readOnly
  value="1"
- className="w-full bg-transparent border-none text-center font-semibold text-foreground text-black focus:ring-0 p-0"
+ className="w-full bg-transparent border-none text-center font-semibold text-foreground dark:text-white focus:ring-0 p-0"
  />
  <button className="w-10 h-full flex items-center justify-center text-slate-500 hover:text-foreground hover:text-black" aria-label="Aumentar quantidade">
  <span className="material-symbols-outlined text-[20px]">add</span>
@@ -246,7 +245,7 @@ export default function ProductDetailPage() {
  <motion.button
  whileHover={{ scale: 1.01 }}
  whileTap={{ scale: 0.99 }}
- className="flex-1 bg-primary hover:bg-primary-dark text-black font-bold rounded-lg shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
+ className="flex-1 bg-primary hover:bg-primary-dark text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
  >
  <span className="material-symbols-outlined">shopping_bag</span>
  Adicionar ao Carrinho

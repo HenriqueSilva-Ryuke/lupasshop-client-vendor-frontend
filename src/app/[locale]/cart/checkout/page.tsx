@@ -260,7 +260,7 @@ export default function CheckoutPage() {
                         <p className="text-xs text-muted-foreground">Qtd: {item.quantity}</p>
                       </div>
                       <p className="font-bold text-sm shrink-0">
-                        R$ {(item.price * item.quantity).toFixed(2)}
+                        AOA {(item.price * item.quantity).toFixed(2)}
                       </p>
                     </div>
                   ))}
@@ -271,11 +271,11 @@ export default function CheckoutPage() {
             <div className="border-t pt-4 mb-6 space-y-1 text-sm">
               <div className="flex justify-between text-muted-foreground">
                 <span>Subtotal</span>
-                <span>R$ {subtotal.toFixed(2)}</span>
+                <span>AOA {subtotal.toFixed(2)}</span>
               </div>
-              <div className="flex justify-between font-bold text-base pt-1">
+              <div className=\"flex justify-between font-bold text-base pt-1\">
                 <span>Total estimado</span>
-                <span>R$ {subtotal.toFixed(2)}</span>
+                <span>AOA {subtotal.toFixed(2)}</span>
               </div>
             </div>
 
@@ -445,7 +445,7 @@ export default function CheckoutPage() {
             {couponError && <p className="text-xs text-destructive mb-4">{couponError}</p>}
             {appliedCoupon && (
               <p className="text-sm text-primary mb-4 font-semibold">
-                ✓ Cupom {appliedCoupon.code} — desconto de R$ {appliedCoupon.discountAmount.toFixed(2)}
+                ✓ Cupom {appliedCoupon.code} — desconto de AOA {appliedCoupon.discountAmount.toFixed(2)}
               </p>
             )}
 
@@ -485,7 +485,7 @@ export default function CheckoutPage() {
                       <p className="font-semibold text-sm">{storeName}</p>
                       <p className="text-xs text-muted-foreground">Entrega padrão · 3–7 dias úteis</p>
                     </div>
-                    <p className="font-bold text-sm">R$ {SHIPPING_COST_PER_STORE.toFixed(2)}</p>
+                    <p className="font-bold text-sm">AOA {SHIPPING_COST_PER_STORE.toFixed(2)}</p>
                   </div>
                 );
               })}
@@ -494,21 +494,21 @@ export default function CheckoutPage() {
             <div className="border-t pt-4 mb-6 space-y-2 text-sm">
               <div className="flex justify-between text-muted-foreground">
                 <span>Subtotal</span>
-                <span>R$ {subtotal.toFixed(2)}</span>
+                <span>AOA {subtotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-muted-foreground">
                 <span>Frete ({itemsByStore.length} loja{itemsByStore.length > 1 ? 's' : ''})</span>
-                <span>R$ {shippingTotal.toFixed(2)}</span>
+                <span>AOA {shippingTotal.toFixed(2)}</span>
               </div>
               {appliedCoupon && (
                 <div className="flex justify-between text-primary">
                   <span>Cupom ({appliedCoupon.code})</span>
-                  <span>- R$ {discountAmount.toFixed(2)}</span>
+                  <span>- AOA {discountAmount.toFixed(2)}</span>
                 </div>
               )}
               <div className="flex justify-between font-bold text-base pt-2 border-t">
                 <span>Total</span>
-                <span>R$ {total.toFixed(2)}</span>
+                <span>AOA {total.toFixed(2)}</span>
               </div>
             </div>
 
@@ -553,7 +553,7 @@ export default function CheckoutPage() {
             <div className="bg-muted/50 rounded-lg p-4 mb-6">
               <div className="flex justify-between items-center">
                 <span className="text-sm text-muted-foreground">Total a pagar</span>
-                <span className="font-black text-xl">R$ {total.toFixed(2)}</span>
+                <span className="font-black text-xl">AOA {total.toFixed(2)}</span>
               </div>
             </div>
 

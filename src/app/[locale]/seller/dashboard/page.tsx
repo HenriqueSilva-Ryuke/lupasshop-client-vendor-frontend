@@ -1,15 +1,44 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useQuery } from '@apollo/client/react';
+import { useRouter } from 'next/navigation';
+import { useLocale } from 'next-intl';
 import { DollarSign, Package, ShoppingBag, TrendingUp } from 'lucide-react';
+import { useAuthProtection } from '@/hooks/useAuthProtection';
 import { GET_SELLER_DASHBOARD } from '@/graphql/queries';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 
 export default function SellerDashboardPage({ params }: { params: Promise<{ locale: string }> }) {
- const { data, loading } = useQuery<any>(GET_SELLER_DASHBOARD, {
+ const router = useRouter();
+ const locale = useLocale();
+ 
+ // Protect this page - only SELLER and ADMIN roles allowed
+ const { isLoading: isAuthLoading, isAuthorized } = useAuthProtection(['SELLER', 'ADMIN']);
+
+ const { data, loading, error } = useQuery<any>(GET_SELLER_DASHBOARD, {
  variables: { days: 30, recentLimit: 5, topLimit: 5 },
  fetchPolicy: 'cache-and-network',
+ skip: !isAuthorized, // Skip query if not authorized
  });
+
+ // Se o seller ainda não tem loja, manda para o onboarding
+ useEffect(() => {
+  if (error?.message?.includes('Store not found')) {
+   router.replace(`/${locale}/seller/onboarding`);
+  }
+ }, [error, router, locale]);
+
+ // Redirect to login if not authorized
+ useEffect(() => {
+  if (!isAuthLoading && !isAuthorized) {
+   router.replace(`/${locale}/auth/login`);
+  }
+ }, [isAuthLoading, isAuthorized, router, locale]);
+
+ if (error?.message?.includes('Store not found')) {
+  return null; // useEffect já fez o redirect
+ }
 
  const stats = data?.getSellerDashboard?.stats;
  const recentOrders = data?.getSellerDashboard?.recentOrders || [];

@@ -51,7 +51,7 @@ export function SellerHeader() {
  </div>
  <div className="flex-1">
  <p className="text-sm font-medium ">Novo pedido #7382</p>
- <p className="text-xs mt-1">Ana Silva fez um pedido de R$ 245,90</p>
+ <p className="text-xs mt-1">Ana Silva fez um pedido de AOA 245,90</p>
  <p className="text-xs text-primary mt-1">Há 5 minutos</p>
  </div>
  </div>
@@ -123,7 +123,7 @@ export function SellerHeader() {
  </div>
  <div className="p-2">
  <button
- onClick={() => router.push(`/${locale}/seller/profile`)}
+ onClick={() => router.push(`/${locale}/seller/settings`)}
  className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-muted transition-colors"
  >
  <span className="material-symbols-outlined text-[20px]">person</span>

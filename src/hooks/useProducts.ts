@@ -3,6 +3,7 @@
  */
 export {
   useProduct,
+  useProductBySlug,
   useProducts,
   useFeaturedProducts,
   useSearchProducts,

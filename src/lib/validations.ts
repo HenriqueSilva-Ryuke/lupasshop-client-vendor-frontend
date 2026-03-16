@@ -27,7 +27,7 @@ export const UpdateUserSchema = z.object({
 // Store Schemas
 export const CreateStoreSchema = z.object({
   name: z.string().min(3, 'Nome da loja deve ter no mínimo 3 caracteres'),
-  slug: z.string().optional(),
+  slug: z.string().min(1, 'Slug é obrigatório'),
   description: z.string().optional(),
   logoUrl: z.string().url('URL da logo inválida').optional(),
   coverImageUrl: z.string().url('URL da imagem de capa inválida').optional(),

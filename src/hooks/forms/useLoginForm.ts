@@ -57,7 +57,7 @@ export function useLoginForm() {
         mutation: LOGIN,
         variables: {
           input: {
-            email: data.email,
+            email: data.email.toLowerCase(),
             password: data.password,
           },
         },
@@ -84,7 +84,7 @@ export function useLoginForm() {
 
       // Lembrar email se selecionado
       if (variables.rememberMe) {
-        localStorage.setItem('remember-email', variables.email);
+        localStorage.setItem('remember-email', variables.email.toLowerCase());
       } else {
         localStorage.removeItem('remember-email');
       }

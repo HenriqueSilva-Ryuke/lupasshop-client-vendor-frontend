@@ -53,7 +53,7 @@ export function useRegisterForm() {
         mutation: SIGNUP,
         variables: {
           input: {
-            email: data.email,
+            email: data.email.toLowerCase(),
             password: data.password,
             fullName: data.fullName,
             role: 'BUYER',

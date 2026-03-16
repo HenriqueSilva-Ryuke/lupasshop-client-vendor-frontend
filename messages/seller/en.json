@@ -11,5 +11,52 @@
   "editProduct": "Edit Product",
   "deleteProduct": "Delete Product",
   "sales": "Sales",
-  "revenue": "Revenue"
+  "revenue": "Revenue",
+  "overview": "Overview",
+  "myProducts": "My Products",
+  "storeSettings": "Store Settings",
+  "sellerPanel": "Seller Panel",
+  "newProduct": "New Product",
+  "onboarding": {
+    "skipTour": "Skip Introduction",
+    "myStore": "My Store",
+    "welcome": "Welcome!",
+    "pageTitle": "Welcome to LupaShop!",
+    "pageSubtitle": "Let's get your store online in minutes. Follow the steps below to start selling.",
+    "progressLabel": "Setup Progress",
+    "tasksLabel": "{completed} of {total} tasks completed",
+    "nextStep": "Next Step",
+    "helpTitle": "Need help with setup?",
+    "helpSubtitle": "Our support team prepared a complete guide for beginners.",
+    "helpButton": "Access Help Center",
+    "copyright": "© 2024 LupaShop Inc. All rights reserved.",
+    "terms": "Terms of Use",
+    "privacy": "Privacy",
+    "support": "Support",
+    "steps": {
+      "store": {
+        "title": "Create Your Store",
+        "description": "Give your store a name to get started. You can add more details later from the settings.",
+        "actionLabel": "Create Store",
+        "actionLabelDone": "Store Created",
+        "namePlaceholder": "Store name...",
+        "creating": "Creating..."
+      },
+      "profile": {
+        "title": "Configure Profile",
+        "description": "Define your brand identity, add your logo and fill in essential contact information.",
+        "actionLabel": "Edit Details"
+      },
+      "product": {
+        "title": "Add First Product",
+        "description": "Register the first item you will sell. Add attractive photos, detailed description and price.",
+        "actionLabel": "Start Now"
+      },
+      "dashboard": {
+        "title": "Understand the Panel",
+        "description": "Take a guided tour of the dashboard to learn how to manage your orders, inventory and view reports.",
+        "actionLabel": "Waiting for previous step"
+      }
+    }
+  }
 }
