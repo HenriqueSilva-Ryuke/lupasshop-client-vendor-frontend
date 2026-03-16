@@ -23,6 +23,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useStores } from '@/hooks/useStores';
 import Button from '@/components/ui/Button';
+import { useToast } from '@/components/ui/Toast';
 
 export default function StorePage() {
  const locale = useLocale();
@@ -31,11 +32,39 @@ export default function StorePage() {
  const slug = pathParts[pathParts.length - 1] || '';
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
  const [currentPage, setCurrentPage] = useState(1);
+ 
+ const handleShare = async () => {
+   if (!store) return;
+   
+   const shareData = {
+     title: store.name,
+     text: `Confira a loja ${store.name} na LupaShop`,
+     url: window.location.href,
+   };
+
+   if (navigator.share && navigator.canShare(shareData)) {
+     try {
+       await navigator.share(shareData);
+     } catch (err) {
+       console.log('Erro ao compartilhar', err);
+     }
+   } else {
+     navigator.clipboard.writeText(window.location.href);
+     toast({
+       title: 'Link copiado!',
+       description: 'O link da loja foi copiado para sua área de transferência.',
+       type: 'success',
+     });
+   }
+ };
+
  const [sortBy, setSortBy] = useState('relevant');
+  const [activeTab, setActiveTab] = useState<'products' | 'reviews' | 'about'>('products');
  const productsPerPage = 12;
 
  // Fetch store by slug - vamos usar o hook e filtrar por slug
  const { data: allStores = [], isLoading: storesLoading } = useStores({ limit: 100 });
+ const { toast } = useToast();
   const store = useMemo(() => {
  return allStores.find((s: any) => s.slug === slug);
  }, [allStores, slug]);
@@ -188,6 +217,7 @@ export default function StorePage() {
  </Button>
  <Button
  variant="icon"
+ onClick={handleShare}
  className="size-10 flex items-center justify-center rounded-lg border border-border text-foreground hover:bg-muted transition-colors"
  >
  <Share2 className="w-5 h-5" />
@@ -204,15 +234,15 @@ export default function StorePage() {
 
  {/* Tabs */}
  <div className="flex gap-8 overflow-x-auto no-scrollbar">
- <a href="#products" className="pb-3 border-b-[3px] border-primary text-primary font-bold text-sm whitespace-nowrap">
+ <button onClick={() => setActiveTab('products')} className={`pb-3 border-b-[3px] text-sm whitespace-nowrap ${activeTab === 'products' ? 'border-primary text-primary font-bold' : 'border-transparent hover:text-foreground font-medium transition-colors'}`}>
  Produtos
- </a>
- <a href="#reviews" className="pb-3 border-b-[3px] border-transparent hover:text-foreground font-medium text-sm whitespace-nowrap transition-colors">
+ </button>
+ <button onClick={() => setActiveTab('reviews')} className={`pb-3 border-b-[3px] text-sm whitespace-nowrap ${activeTab === 'reviews' ? 'border-primary text-primary font-bold' : 'border-transparent hover:text-foreground font-medium transition-colors'}`}>
  Avaliações da Loja
- </a>
- <a href="#about" className="pb-3 border-b-[3px] border-transparent hover:text-foreground font-medium text-sm whitespace-nowrap transition-colors">
+ </button>
+ <button onClick={() => setActiveTab('about')} className={`pb-3 border-b-[3px] text-sm whitespace-nowrap ${activeTab === 'about' ? 'border-primary text-primary font-bold' : 'border-transparent hover:text-foreground font-medium transition-colors'}`}>
  Sobre {store.name.split(' ')[0]}
- </a>
+ </button>
  </div>
  </div>
  </div>
@@ -230,7 +260,7 @@ export default function StorePage() {
  <MapPin className="w-5 h-5 mt-0.5" />
  <div>
  <p className="text-xs font-medium uppercase tracking-wide">Endereço</p>
- <p className="text-sm text-foreground">{store.location || 'Endereço não informado'}</p>
+ <p className="text-sm text-foreground">{store.address || store.location || 'Não informado'}</p>
  </div>
  </div>
  <hr className="border-border" />
@@ -238,7 +268,7 @@ export default function StorePage() {
  <Clock className="w-5 h-5 mt-0.5" />
  <div>
  <p className="text-xs font-medium uppercase tracking-wide">Horário</p>
- <p className="text-sm text-foreground">Seg-Sex: 09h - 18h</p>
+ <p className="text-sm text-foreground">{store.schedule || 'Não informado'}</p>
  </div>
  </div>
  <hr className="border-border" />
@@ -246,7 +276,7 @@ export default function StorePage() {
  <Mail className="w-5 h-5 mt-0.5" />
  <div>
  <p className="text-xs font-medium uppercase tracking-wide">Contato</p>
- <p className="text-sm text-foreground break-all">{store.owner?.email || 'contato@loja.com.br'}</p>
+ <p className="text-sm text-foreground break-all">{store.email || store.contactInfo?.email || store.owner?.email || 'Não informado'}</p>
  </div>
  </div>
  </div>
@@ -280,6 +310,7 @@ export default function StorePage() {
  </aside>
 
  {/* Products Grid */}
+ {activeTab === 'products' && (
  <div className="col-span-1 lg:col-span-3">
  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
  <p className="text-sm text-muted-foreground">
@@ -412,6 +443,38 @@ export default function StorePage() {
  </div>
  )}
  </div>
+ )}
+ {/* Reviews Tab Content */}
+ {activeTab === 'reviews' && (
+   <div className="col-span-1 lg:col-span-3">
+     <div className="bg-card px-6 py-12 rounded-xl border border-border text-center">
+       <Star className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+       <h3 className="text-lg font-bold text-foreground mb-2">Avaliações da Loja</h3>
+       <p className="text-muted-foreground">Esta loja ainda não possui avaliações. Compre um produto para ser o primeiro a avaliar!</p>
+     </div>
+   </div>
+ )}
+ {/* About Tab Content */}
+ {activeTab === 'about' && (
+   <div className="col-span-1 lg:col-span-3">
+     <div className="bg-card p-6 rounded-xl border border-border space-y-6">
+       <h3 className="text-xl font-bold text-foreground">Sobre a {store.name}</h3>
+       <p className="text-muted-foreground leading-relaxed">
+         {store.description || 'Nossa loja oferece os melhores produtos do mercado com atendimento especializado e envio rápido para todo o país. Conte conosco.'}
+       </p>
+       <div className="pt-6 border-t border-border grid grid-cols-1 md:grid-cols-2 gap-6">
+         <div>
+           <h4 className="font-bold mb-3">Política de Retorno</h4>
+           <p className="text-sm text-muted-foreground">Devoluções aceitas em até 7 dias após o recebimento, mediante produto na embalagem original sem sinais de uso.</p>
+         </div>
+         <div>
+           <h4 className="font-bold mb-3">Prazos de Envio</h4>
+           <p className="text-sm text-muted-foreground">Todos os pedidos são despachados em até 24h úteis após a confirmação do pagamento.</p>
+         </div>
+       </div>
+     </div>
+   </div>
+ )}
  </div>
  </div>
 

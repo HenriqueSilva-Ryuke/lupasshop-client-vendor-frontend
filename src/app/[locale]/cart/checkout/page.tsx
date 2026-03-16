@@ -273,7 +273,7 @@ export default function CheckoutPage() {
                 <span>Subtotal</span>
                 <span>AOA {subtotal.toFixed(2)}</span>
               </div>
-              <div className=\"flex justify-between font-bold text-base pt-1\">
+              <div className="flex justify-between font-bold text-base pt-1">
                 <span>Total estimado</span>
                 <span>AOA {subtotal.toFixed(2)}</span>
               </div>

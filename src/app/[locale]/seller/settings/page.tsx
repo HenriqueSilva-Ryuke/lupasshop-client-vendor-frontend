@@ -32,6 +32,9 @@ export default function SettingsPage() {
 
  const [storeName, setStoreName] = useState('');
  const [description, setDescription] = useState('');
+ const [email, setEmail] = useState('');
+ const [address, setAddress] = useState('');
+ const [schedule, setSchedule] = useState('');
  const [logoFile, setLogoFile] = useState<File | null>(null);
  const [logoUrl, setLogoUrl] = useState('');
  const [bannerFile, setBannerFile] = useState<File | null>(null);
@@ -254,7 +257,49 @@ export default function SettingsPage() {
  onChange={(e) => setDescription(e.target.value)}
  />
  </div>
- </div>
+
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="flex flex-col gap-1.5 border-t border-border pt-4 mt-2">
+                <label className="text-sm font-medium text-foreground">
+                  E-mail de Contato
+                </label>
+                <input
+                  className="w-full rounded-lg border border-border bg-card text-foreground focus:border-primary focus:outline-none sm:text-sm py-2.5 px-3"
+                  type="email"
+                  placeholder="contato@minhaloja.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+              <div className="flex flex-col gap-1.5 border-t border-border pt-4 mt-2">
+                <label className="text-sm font-medium text-foreground">
+                  Horário de Funcionamento
+                </label>
+                <input
+                  className="w-full rounded-lg border border-border bg-card text-foreground focus:border-primary focus:outline-none sm:text-sm py-2.5 px-3"
+                  type="text"
+                  placeholder="Seg a Sex: 09h - 18h"
+                  value={schedule}
+                  onChange={(e) => setSchedule(e.target.value)}
+                />
+              </div>
+              <div className="flex flex-col gap-1.5 md:col-span-2">
+                <label className="text-sm font-medium text-foreground">
+                  Tempo de Tratamento ou Endereço Completo
+                </label>
+                <input
+                  className="w-full rounded-lg border border-border bg-card text-foreground focus:border-primary focus:outline-none sm:text-sm py-2.5 px-3"
+                  type="text"
+                  placeholder="Rua Exemplo, 123 - Centro, Cidade - UF"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                />
+              </div>
+            </div>
+
  </div>
  </div>
  </div>

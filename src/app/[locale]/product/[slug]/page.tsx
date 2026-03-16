@@ -8,7 +8,9 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PageTransition from '@/components/PageTransition';
 import { useProductBySlug } from '@/hooks/useProducts';
+import { useReviews } from '@lupa/api-client/hooks';
 import type { Product } from '@/graphql/types';
+import { useToast } from '@/components/ui/Toast';
 
 function formatMoney(value?: number | null, currency = 'BRL', locale: string = 'pt-BR') {
  if (value == null) return '—';
@@ -49,10 +51,39 @@ export default function ProductDetailPage() {
  const [selectedImage, setSelectedImage] = useState(0);
 
  const { data: productData, isLoading } = useProductBySlug(slug);
+ const { toast } = useToast();
+ const { data: productReviews = [] } = useReviews({ productId: productData?.id });
 
  const product: Product | null = useMemo(() => {
     return productData ?? null;
   }, [productData]);
+
+ 
+ const handleShare = async () => {
+   if (!product) return;
+   
+   const shareData = {
+     title: product.name,
+     text: `Confira ${product.name} na LupaShop`,
+     url: window.location.href,
+   };
+
+   if (navigator.share && navigator.canShare(shareData)) {
+     try {
+       await navigator.share(shareData);
+     } catch (err) {
+       console.log('Erro ao compartilhar', err);
+     }
+   } else {
+     // Fallback para copy to clipboard
+     navigator.clipboard.writeText(window.location.href);
+     toast({
+       title: 'Link copiado!',
+       description: 'O link do produto foi copiado para sua área de transferência.',
+       type: 'success',
+     });
+   }
+ };
 
  const images = useMemo(() => {
  if (!product?.images) return [] as string[];
@@ -337,42 +368,34 @@ export default function ProductDetailPage() {
  </div>
 
  <div className="space-y-6">
- <div className="flex flex-col gap-2 pb-6 border-b border-slate-100 border-slate-700 last:border-0 last:pb-0">
- <div className="flex items-center gap-3">
- <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs font-bold">JD</div>
- <div className="flex flex-col">
- <span className="text-sm font-bold text-foreground text-black">João D.</span>
- <span className="text-xs text-slate-400">Há 2 dias</span>
- </div>
- </div>
- <div className="flex text-yellow-500">
- {Array.from({ length: 5 }).map((_, i) => (
- <span key={i} className="material-symbols-outlined text-[16px] fill-current">star</span>
- ))}
- </div>
- <p className="text-sm text-slate-600 text-slate-300 leading-snug">
- O cancelamento de ruído é surreal. Desaparece tudo ao redor. Vale cada centavo!
- </p>
- </div>
- <div className="flex flex-col gap-2 pb-6 border-b border-slate-100 border-slate-700 last:border-0 last:pb-0">
- <div className="flex items-center gap-3">
- <div className="w-8 h-8 rounded-full bg-primary-light/10 text-primary-light flex items-center justify-center text-xs font-bold">MA</div>
- <div className="flex flex-col">
- <span className="text-sm font-bold text-foreground text-black">Maria A.</span>
- <span className="text-xs text-slate-400">Há 1 semana</span>
- </div>
- </div>
- <div className="flex text-yellow-500">
- {[0, 1, 2, 3].map((i) => (
- <span key={i} className="material-symbols-outlined text-[16px] fill-current">star</span>
- ))}
- <span className="material-symbols-outlined text-[16px] text-slate-300">star</span>
- </div>
- <p className="text-sm text-slate-600 text-slate-300 leading-snug">
- Muito bom, mas achei que aperta um pouco se usar óculos por muito tempo.
- </p>
- </div>
- </div>
+ {productReviews.length === 0 ? (
+   <p className="text-sm text-slate-500">Nenhuma avaliação ainda. Seja o primeiro a avaliar!</p>
+ ) : (
+   productReviews.map((review) => (
+   <div key={review.id} className="flex flex-col gap-2 pb-6 border-b border-slate-100 dark:border-slate-700 last:border-0 last:pb-0">
+     <div className="flex items-center gap-3">
+       <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs font-bold">
+         {review.user?.fullName?.slice(0, 2).toUpperCase() || 'U'}
+       </div>
+       <div className="flex flex-col">
+         <span className="text-sm font-bold text-foreground dark:text-white">{review.user?.fullName || 'Usuário Anônimo'}</span>
+         <span className="text-xs text-slate-400">
+           {new Date(review.createdAt).toLocaleDateString(locale === 'pt' ? 'pt-BR' : 'en-US')}
+         </span>
+       </div>
+     </div>
+     <div className="flex text-yellow-500">
+       {Array.from({ length: 5 }).map((_, i) => (
+         <span key={i} className={`material-symbols-outlined text-[16px] ${i < Math.round(review.rating) ? 'fill-current' : ''}`}>star</span>
+       ))}
+     </div>
+     <p className="text-sm text-slate-600 dark:text-slate-300 leading-snug">
+       {review.comment}
+     </p>
+   </div>
+   ))
+ )}
+ </div></div>
  </div>
  </div>
  </div>
