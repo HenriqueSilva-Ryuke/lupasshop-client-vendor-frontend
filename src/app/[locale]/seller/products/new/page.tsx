@@ -133,7 +133,7 @@ export default function NewProductPage({ params }: { params: Promise<any> }) {
  <h3 className="font-semibold border-b pb-2">Preço e Estoque</h3>
  <div className="grid grid-cols-2 gap-4">
  <div>
- <label className=\"block text-sm font-medium mb-1\">Preço (AOA)</label>
+ <label className="block text-sm font-medium mb-1">Preço (AOA)</label>
  <input type="number" step="0.01" {...register('price')} className="w-full border border-border rounded-lg p-2 bg-card text-foreground" />
  {errors.price && <p className="text-destructive text-xs mt-1">{(errors.price as any).message}</p>}
  </div>

@@ -194,7 +194,7 @@ export default function StorePage() {
  {(store.rating || 0).toFixed(1)} ({store.reviewCount || 0} avaliações)
  </span>
  <span className="hidden sm:inline">•</span>
- <span>{store.description || 'Loja de qualidade'}</span>
+ <span>{(store as any).category?.name || 'Loja sem categoria'}</span>
  {store.isVerified && (
  <>
  <span className="hidden sm:inline">•</span>
@@ -260,7 +260,7 @@ export default function StorePage() {
  <MapPin className="w-5 h-5 mt-0.5" />
  <div>
  <p className="text-xs font-medium uppercase tracking-wide">Endereço</p>
- <p className="text-sm text-foreground">{store.address || store.location || 'Não informado'}</p>
+ <p className="text-sm text-foreground">{(store as any).address || (store as any).location || 'Não informado'}</p>
  </div>
  </div>
  <hr className="border-border" />
@@ -268,7 +268,7 @@ export default function StorePage() {
  <Clock className="w-5 h-5 mt-0.5" />
  <div>
  <p className="text-xs font-medium uppercase tracking-wide">Horário</p>
- <p className="text-sm text-foreground">{store.schedule || 'Não informado'}</p>
+ <p className="text-sm text-foreground">{(store as any).schedule || 'Não informado'}</p>
  </div>
  </div>
  <hr className="border-border" />
@@ -276,7 +276,7 @@ export default function StorePage() {
  <Mail className="w-5 h-5 mt-0.5" />
  <div>
  <p className="text-xs font-medium uppercase tracking-wide">Contato</p>
- <p className="text-sm text-foreground break-all">{store.email || store.contactInfo?.email || store.owner?.email || 'Não informado'}</p>
+ <p className="text-sm text-foreground break-all">{(store as any).email || (store as any).contactInfo?.email || store.owner?.email || 'Não informado'}</p>
  </div>
  </div>
  </div>

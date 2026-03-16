@@ -109,12 +109,12 @@ export default function SettingsPage() {
  }
 
  if (store.shippingMethods && Array.isArray(store.shippingMethods)) {
- setShippingMethods(store.shippingMethods as ShippingMethod[]);
+ setShippingMethods(store.shippingMethods as unknown as ShippingMethod[]);
  }
  }
  }, [store]);
 
- const updateSettingsMutation = useMutation<any>({
+ const updateSettingsMutation = useMutation<any, Error, any>({
  mutationFn: async (data: any) => {
  const result = await apolloClient.mutate<{ updateStore: any }>({
  mutation: UPDATE_STORE_SETTINGS,
@@ -300,7 +300,6 @@ export default function SettingsPage() {
               </div>
             </div>
 
- </div>
  </div>
  </div>
  </section>

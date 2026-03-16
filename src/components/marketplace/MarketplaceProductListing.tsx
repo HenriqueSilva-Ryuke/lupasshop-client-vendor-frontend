@@ -202,6 +202,54 @@ export default function MarketplaceProductListing() {
                             </div>
                         </div>
 
+                        {/* Categorias Section */}
+                        {categories.filter(c => c.name.toLowerCase().includes(debouncedSearchQuery.toLowerCase())).length > 0 && (
+                            <div className="mb-8">
+                                <h2 className="text-xl font-bold text-foreground text-black mb-4">Categorias</h2>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                    {categories.filter(c => c.name.toLowerCase().includes(debouncedSearchQuery.toLowerCase())).slice(0, 3).map((cat) => (
+                                        <div key={cat.id} className="bg-card bg-[#1e2832] p-4 rounded-xl border border-border border-[#2e3a45] shadow-sm flex items-center justify-between cursor-pointer hover:border-primary transition-colors" onClick={() => handleCategoryToggle(cat.id)}>
+                                            <span className="font-semibold text-foreground text-black">{cat.name}</span>
+                                            <ChevronRight className="w-5 h-5 text-muted-foreground" />
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Lojas Section */}
+                        {stores.filter(s => s.name.toLowerCase().includes(debouncedSearchQuery.toLowerCase())).length > 0 && (
+                            <div className="mb-8">
+                                <h2 className="text-xl font-bold text-foreground text-black mb-4">Lojas</h2>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                    {stores.filter(s => s.name.toLowerCase().includes(debouncedSearchQuery.toLowerCase())).slice(0, 3).map((store) => (
+                                        <Link key={store.id} href={`/${locale}/store/${(store as any).slug || store.id}`} className="bg-card bg-[#1e2832] p-4 rounded-xl border border-border border-[#2e3a45] shadow-sm flex flex-col gap-2 hover:border-primary transition-colors">
+                                            <div className="flex items-center gap-3">
+                                                {store.logoUrl ? (
+                                                    <Image src={store.logoUrl} alt={store.name} width={40} height={40} className="rounded-full object-cover bg-muted" />
+                                                ) : (
+                                                    <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground text-lg font-bold">
+                                                        {store.name.charAt(0).toUpperCase()}
+                                                    </div>
+                                                )}
+                                                <div>
+                                                    <h3 className="font-semibold text-foreground text-black flex items-center gap-1">
+                                                        {store.name}
+                                                        {store.isVerified && <span className="text-primary text-xs">✓</span>}
+                                                    </h3>
+                                                    {store.rating && (
+                                                        <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                                                            <div className="flex text-yellow-400">{renderStars(store.rating || 0)}</div>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
                         {/* Header Bar */}
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 bg-card bg-[#1e2832] p-4 rounded-xl border border-border border-[#2e3a45] shadow-sm">
                             <div>

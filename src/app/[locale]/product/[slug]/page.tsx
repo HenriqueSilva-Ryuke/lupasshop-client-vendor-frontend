@@ -51,7 +51,7 @@ export default function ProductDetailPage() {
  const [selectedImage, setSelectedImage] = useState(0);
 
  const { data: productData, isLoading } = useProductBySlug(slug);
- const { toast } = useToast();
+ const { addToast: toast } = useToast();
  const { data: productReviews = [] } = useReviews({ productId: productData?.id });
 
  const product: Product | null = useMemo(() => {
@@ -78,7 +78,7 @@ export default function ProductDetailPage() {
      // Fallback para copy to clipboard
      navigator.clipboard.writeText(window.location.href);
      toast({
-       title: 'Link copiado!',
+       message: 'Link copiado!',
        description: 'O link do produto foi copiado para sua área de transferência.',
        type: 'success',
      });
@@ -380,7 +380,7 @@ export default function ProductDetailPage() {
        <div className="flex flex-col">
          <span className="text-sm font-bold text-foreground dark:text-white">{review.user?.fullName || 'Usuário Anônimo'}</span>
          <span className="text-xs text-slate-400">
-           {new Date(review.createdAt).toLocaleDateString(locale === 'pt' ? 'pt-BR' : 'en-US')}
+           {new Date(review.createdAt as string | number | Date).toLocaleDateString(locale === 'pt' ? 'pt-BR' : 'en-US')}
          </span>
        </div>
      </div>
@@ -396,7 +396,6 @@ export default function ProductDetailPage() {
    ))
  )}
  </div></div>
- </div>
  </div>
  </div>
  </main>
