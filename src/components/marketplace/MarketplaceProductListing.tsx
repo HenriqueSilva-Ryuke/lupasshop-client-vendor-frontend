@@ -27,6 +27,7 @@ export default function MarketplaceProductListing() {
  const [selectedStores, setSelectedStores] = useState<string[]>([]);
  const [wishlistItems, setWishlistItems] = useState<Set<string>>(new Set());
  const [loadingCartItems, setLoadingCartItems] = useState<Set<string>>(new Set());
+ const [availabilityFilter, setAvailabilityFilter] = useState<'all' | 'in_stock' | 'out_of_stock'>('all');
     const limit = 12;
     const offset = (currentPage - 1) * limit;
     const debouncedSearchQuery = useDebounce(searchQuery, 800);
@@ -41,9 +42,15 @@ export default function MarketplaceProductListing() {
         storeLimit: 10,
     });
 
-    const products = marketplaceData?.products ?? [];
+    const allProducts = marketplaceData?.products ?? [];
     const stores = marketplaceData?.stores ?? [];
     const categories = marketplaceData?.categories ?? [];
+
+    const products = allProducts.filter((p: Product) => {
+        if (availabilityFilter === 'in_stock') return (p.stockQuantity ?? 0) > 0;
+        if (availabilityFilter === 'out_of_stock') return (p.stockQuantity ?? 0) === 0;
+        return true;
+    });
 
     const renderStars = (rating: number) => {
         return Array.from({ length: 5 }, (_, i) => {
@@ -180,6 +187,33 @@ export default function MarketplaceProductListing() {
                                             />
                                             <span className="text-sm text-muted-foreground text-muted-foreground">{store.name}</span>
                                             {store.isVerified && <span className="text-primary text-xs">✓</span>}
+                                        </label>
+                                    ))}
+                                </div>
+                            </details>
+
+                            {/* Availability Filter */}
+                            <details className="group open:pb-4 border-b border-border" open>
+                                <summary className="flex cursor-pointer items-center justify-between py-3 list-none">
+                                    <span className="text-sm font-bold text-foreground text-black">Disponibilidade</span>
+                                    <ChevronRight className="w-5 h-5 text-muted-foreground group-open:rotate-90 transition-transform" />
+                                </summary>
+                                <div className="space-y-2 pt-1 pb-2 pl-1">
+                                    {([
+                                        { value: 'all', label: 'Todos' },
+                                        { value: 'in_stock', label: 'Em stock' },
+                                        { value: 'out_of_stock', label: 'Esgotado' },
+                                    ] as const).map(opt => (
+                                        <label key={opt.value} className="flex items-center gap-3 cursor-pointer">
+                                            <input
+                                                type="radio"
+                                                name="availability"
+                                                value={opt.value}
+                                                checked={availabilityFilter === opt.value}
+                                                onChange={() => { setAvailabilityFilter(opt.value); setCurrentPage(1); }}
+                                                className="w-4 h-4 border-border text-primary focus:ring-primary bg-card"
+                                            />
+                                            <span className="text-sm text-muted-foreground">{opt.label}</span>
                                         </label>
                                     ))}
                                 </div>
