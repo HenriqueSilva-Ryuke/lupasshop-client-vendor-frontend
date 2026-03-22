@@ -3,27 +3,14 @@
  * Configuração otimizada de fontes
  */
 
-import { Inter, Roboto } from 'next/font/google';
-
-// Font principal com subset otimizado
-export const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
+// Keep the same shape expected by layout.tsx without requiring remote font fetches.
+export const inter = {
   variable: '--font-inter',
-  preload: false,
-  fallback: ['system-ui', 'arial'],
-  adjustFontFallback: true,
-});
+};
 
-// Font secundária
-export const roboto = Roboto({
-  weight: ['300', '400', '500', '700'],
-  subsets: ['latin'],
-  display: 'swap',
+export const roboto = {
   variable: '--font-roboto',
-  preload: false,
-  fallback: ['system-ui', 'arial'],
-});
+};
 
 /**
  * Uso:
