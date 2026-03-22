@@ -10,8 +10,8 @@ import {
   useDeleteAddress,
   useSetDefaultAddress,
   useCurrentUser,
-} from '@lupa/api-client/hooks';
-import type { CreateAddressInput } from '@lupa/types';
+} from 'lupa-api-client/hooks';
+import type { CreateAddressInput } from 'lupa-types';
 import Button from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
 import { inputBaseClass, labelClass, pageContainerClass, sectionTitleClass, surfaceClass } from '@/components/ui/primitives';

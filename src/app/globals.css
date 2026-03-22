@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "@lupa/design-system/styles";
+@import "lupa-design-system/styles";
 
 /* ==========================================================================
    FRONTPLATAFORM — Extends shared design system

@@ -13,8 +13,8 @@ import {
   ExternalLink,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useSellerOrders } from '@lupa/api-client/hooks';
-import { useShippingLabelByShipment, useGenerateShippingLabel, usePrintShippingLabel } from '@lupa/api-client/hooks';
+import { useSellerOrders } from 'lupa-api-client/hooks';
+import { useShippingLabelByShipment, useGenerateShippingLabel, usePrintShippingLabel } from 'lupa-api-client/hooks';
 
 const ORDER_STATUS_LABELS: Record<string, string> = {
   PENDING: 'Pendente',

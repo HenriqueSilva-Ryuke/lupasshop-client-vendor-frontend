@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Star, ShoppingCart, Heart } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useCurrentUser, useWishlist, useAddToWishlist, useRemoveFromWishlist } from '@lupa/api-client/hooks';
+import { useCurrentUser, useWishlist, useAddToWishlist, useRemoveFromWishlist } from 'lupa-api-client/hooks';
 
 interface ProductCardProps {
  product: MarketplaceProduct;

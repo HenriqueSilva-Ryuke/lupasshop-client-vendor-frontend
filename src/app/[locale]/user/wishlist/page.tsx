@@ -7,7 +7,7 @@ import { EmptyWishlist } from '@/components/ui/EmptyStates';
 import { LoadingButton } from '@/components/ui/LoadingButton';
 import { useToast } from '@/components/ui/Toast';
 import { useCartStore } from '@/stores/cartStore';
-import { useWishlist, useRemoveFromWishlist, useAddToWishlist, useCurrentUser } from '@lupa/api-client/hooks';
+import { useWishlist, useRemoveFromWishlist, useAddToWishlist, useCurrentUser } from 'lupa-api-client/hooks';
 import Button from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
 import { pageContainerClass, sectionTitleClass } from '@/components/ui/primitives';

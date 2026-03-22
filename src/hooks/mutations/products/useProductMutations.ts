@@ -1,11 +1,11 @@
 /**
- * Product mutations — re-exported from @lupa/api-client
+ * Product mutations — re-exported from lupa-api-client
  */
 import {
   useCreateProduct,
   useUpdateProduct,
   useDeleteProduct,
-} from '@lupa/api-client/hooks';
+} from 'lupa-api-client/hooks';
 
 export { useCreateProduct, useUpdateProduct, useDeleteProduct };
 

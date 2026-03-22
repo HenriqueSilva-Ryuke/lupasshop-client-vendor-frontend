@@ -1,7 +1,7 @@
 /**
- * Order hooks — re-exported from @lupa/api-client
+ * Order hooks — re-exported from lupa-api-client
  */
-import { useOrders, useOrder } from '@lupa/api-client/hooks';
+import { useOrders, useOrder } from 'lupa-api-client/hooks';
 
 export { useOrders, useOrder };
 

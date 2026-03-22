@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Heart, ShoppingCart, ChevronRight, ChevronLeft, Star, Search } from 'lucide-react';
-import { useMarketplaceData } from '@lupa/api-client/hooks';
+import { useMarketplaceData } from 'lupa-api-client/hooks';
 import { useDebounce } from '@/hooks/useDebounce';
 import { useLocale, useTranslations } from 'next-intl';
 import type { Product, Store, Category } from '@/graphql/types';

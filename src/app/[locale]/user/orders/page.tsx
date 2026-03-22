@@ -2,7 +2,7 @@
 
 import { useQuery } from '@tanstack/react-query';
 import { LIST_ORDERS } from '@/graphql/queries';
-import { getApiClient } from '@lupa/api-client';
+import { getApiClient } from 'lupa-api-client';
 import { useLocale } from 'next-intl';
 import Link from 'next/link';
 import { Package, ChevronRight, Calendar, CreditCard } from 'lucide-react';

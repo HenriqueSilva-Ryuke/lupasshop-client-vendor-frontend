@@ -24,7 +24,7 @@ import { useCartStore } from '@/stores/cartStore';
 import PageTransition from '@/components/PageTransition';
 import { EmptyCart } from '@/components/ui/EmptyStates';
 import { useToast } from '@/components/ui/Toast';
-import { useValidateCoupon } from '@lupa/api-client/hooks';
+import { useValidateCoupon } from 'lupa-api-client/hooks';
 
 export default function CartPage() {
  const locale = useLocale();

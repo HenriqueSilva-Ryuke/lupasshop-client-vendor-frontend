@@ -1,12 +1,12 @@
 /**
- * Unified auth hook — uses GraphQL exclusively via @lupa/api-client
+ * Unified auth hook — uses GraphQL exclusively via lupa-api-client
  * Replaces the old raw fetch()-based implementation
  */
 'use client';
 
 import { useCallback } from 'react';
-import { useAuthState } from '@lupa/api-client/hooks';
-import type { LoginInput, CreateUserInput } from '@lupa/types';
+import { useAuthState } from 'lupa-api-client/hooks';
+import type { LoginInput, CreateUserInput } from 'lupa-types';
 
 export const useAuth = () => {
   const {

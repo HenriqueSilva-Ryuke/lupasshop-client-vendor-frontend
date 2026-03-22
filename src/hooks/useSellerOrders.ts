@@ -1,4 +1,4 @@
 /**
- * Re-exports from @lupa/api-client — unified GraphQL hooks
+ * Re-exports from lupa-api-client — unified GraphQL hooks
  */
-export { useSellerOrders } from '@lupa/api-client/hooks';
+export { useSellerOrders } from 'lupa-api-client/hooks';

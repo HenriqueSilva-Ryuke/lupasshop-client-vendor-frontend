@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { Button } from '@lupa/design-system';
+import { Button } from 'lupa-design-system';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { ErrorIllustration, EmptyState } from '@/components/ErrorIllustration';

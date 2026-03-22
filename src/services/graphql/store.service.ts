@@ -1,10 +1,10 @@
 /**
- * @deprecated — Use hooks from '@lupa/api-client/hooks' instead
+ * @deprecated — Use hooks from 'lupa-api-client/hooks' instead
  */
-import { getApiClient } from '@lupa/api-client/client';
-import { GET_STORE, LIST_STORES } from '@lupa/api-client/queries';
-import { CREATE_STORE, UPDATE_STORE, DELETE_STORE } from '@lupa/api-client/mutations';
-import type { Store, CreateStoreInput, UpdateStoreInput } from '@lupa/types';
+import { getApiClient } from 'lupa-api-client/client';
+import { GET_STORE, LIST_STORES } from 'lupa-api-client/queries';
+import { CREATE_STORE, UPDATE_STORE, DELETE_STORE } from 'lupa-api-client/mutations';
+import type { Store, CreateStoreInput, UpdateStoreInput } from 'lupa-types';
 
 export const storeService = {
   async getStore(id: string) {

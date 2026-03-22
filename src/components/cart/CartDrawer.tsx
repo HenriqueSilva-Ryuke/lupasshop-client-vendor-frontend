@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { useCartStore } from '@/stores/cartStore';
 import { useUIStore } from '@/stores/uiStore';
-import { useCart, useCurrentUser, useRemoveFromCart, useUpdateCartItem } from '@lupa/api-client/hooks';
+import { useCart, useCurrentUser, useRemoveFromCart, useUpdateCartItem } from 'lupa-api-client/hooks';
 import Image from 'next/image';
 import Link from 'next/link';
 import { X, Minus, Plus, ShoppingBag } from 'lucide-react';

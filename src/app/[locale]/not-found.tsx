@@ -1,7 +1,7 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
-import { Button } from '@lupa/design-system';
+import { Button } from 'lupa-design-system';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { NotFoundIllustration } from '@/components/NotFoundIllustration';

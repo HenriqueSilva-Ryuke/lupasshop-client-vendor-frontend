@@ -1,11 +1,11 @@
 /**
- * Review mutations — re-exported from @lupa/api-client
+ * Review mutations — re-exported from lupa-api-client
  */
 import {
   useCreateReview,
   useUpdateReview,
   useDeleteReview,
-} from '@lupa/api-client/hooks';
+} from 'lupa-api-client/hooks';
 
 export { useCreateReview, useUpdateReview, useDeleteReview };
 

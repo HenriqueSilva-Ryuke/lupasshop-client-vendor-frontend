@@ -1,5 +1,5 @@
 /**
- * Re-exports from @lupa/api-client — unified GraphQL hooks
+ * Re-exports from lupa-api-client — unified GraphQL hooks
  */
 export {
   useOrder,
@@ -8,4 +8,4 @@ export {
   useCreateOrder,
   useCreateOrderItem,
   useUpdateOrderStatus,
-} from '@lupa/api-client/hooks';
+} from 'lupa-api-client/hooks';

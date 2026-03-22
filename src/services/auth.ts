@@ -1,12 +1,12 @@
 /**
- * @deprecated — Use hooks from '@lupa/api-client/hooks' instead
+ * @deprecated — Use hooks from 'lupa-api-client/hooks' instead
  * Auth service is now handled via GraphQL mutations in the unified API client.
  * This file provides type re-exports for backward compatibility.
  */
-import { getApiClient } from '@lupa/api-client/client';
-import { LOGIN, SIGNUP } from '@lupa/api-client/mutations';
-import { GET_CURRENT_USER } from '@lupa/api-client/queries';
-import type { LoginInput, CreateUserInput, AuthResponse, User } from '@lupa/types';
+import { getApiClient } from 'lupa-api-client/client';
+import { LOGIN, SIGNUP } from 'lupa-api-client/mutations';
+import { GET_CURRENT_USER } from 'lupa-api-client/queries';
+import type { LoginInput, CreateUserInput, AuthResponse, User } from 'lupa-types';
 
 // Types re-exported for backward compatibility
 export type LoginRequest = LoginInput;

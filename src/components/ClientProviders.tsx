@@ -1,6 +1,6 @@
 'use client';
 
-import { ApiProvider } from "@lupa/api-client/provider";
+import { ApiProvider } from "lupa-api-client/provider";
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from "@/providers/QueryProvider";
 import { ToastProvider } from "@/components/ui/Toast";

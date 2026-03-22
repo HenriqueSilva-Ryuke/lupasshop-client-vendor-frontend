@@ -1,5 +1,5 @@
 /**
- * Re-exports from @lupa/api-client — unified GraphQL hooks
+ * Re-exports from lupa-api-client — unified GraphQL hooks
  */
 export {
   useStore,
@@ -10,4 +10,4 @@ export {
   useCreateStore,
   useUpdateStore,
   useDeleteStore,
-} from '@lupa/api-client/hooks';
+} from 'lupa-api-client/hooks';

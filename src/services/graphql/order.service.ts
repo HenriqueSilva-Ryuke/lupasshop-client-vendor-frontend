@@ -1,10 +1,10 @@
 /**
- * @deprecated — Use hooks from '@lupa/api-client/hooks' instead
+ * @deprecated — Use hooks from 'lupa-api-client/hooks' instead
  */
-import { getApiClient } from '@lupa/api-client/client';
-import { GET_ORDER, LIST_ORDERS } from '@lupa/api-client/queries';
-import { CREATE_ORDER, CREATE_ORDER_ITEM, UPDATE_ORDER_STATUS } from '@lupa/api-client/mutations';
-import type { Order, CreateOrderInput, CreateOrderItemInput, UpdateOrderStatusInput } from '@lupa/types';
+import { getApiClient } from 'lupa-api-client/client';
+import { GET_ORDER, LIST_ORDERS } from 'lupa-api-client/queries';
+import { CREATE_ORDER, CREATE_ORDER_ITEM, UPDATE_ORDER_STATUS } from 'lupa-api-client/mutations';
+import type { Order, CreateOrderInput, CreateOrderItemInput, UpdateOrderStatusInput } from 'lupa-types';
 
 export const orderService = {
   async getOrder(id: string) {

@@ -50,7 +50,7 @@ const nextConfig: NextConfig = {
   compress: true,
 
   // Transpile shared packages
-  transpilePackages: ['@lupa/design-system', '@lupa/api-client', '@lupa/types'],
+  transpilePackages: ['lupa-design-system', 'lupa-api-client', 'lupa-types'],
 
   // Webpack otimização
   webpack: (config, { dev, isServer }) => {

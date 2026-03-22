@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { ShoppingCart, Package, Heart, Store, Search, FileText, CreditCard, MapPin } from 'lucide-react';
-import { Button } from '@lupa/design-system';
+import { Button } from 'lupa-design-system';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import { EmptyState } from '../ErrorIllustration';

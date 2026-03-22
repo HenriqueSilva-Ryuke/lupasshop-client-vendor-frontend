@@ -17,9 +17,9 @@ import {
   Loader2,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useOrder } from '@lupa/api-client/hooks';
-import { useOrderReturns, useCreateReturn } from '@lupa/api-client/hooks';
-import { useShippingLabelByShipment } from '@lupa/api-client/hooks';
+import { useOrder } from 'lupa-api-client/hooks';
+import { useOrderReturns, useCreateReturn } from 'lupa-api-client/hooks';
+import { useShippingLabelByShipment } from 'lupa-api-client/hooks';
 
 const ORDER_STATUS_LABELS: Record<string, { label: string; color: string }> = {
   PENDING: { label: 'Pendente', color: 'bg-accent text-accent-foreground' },

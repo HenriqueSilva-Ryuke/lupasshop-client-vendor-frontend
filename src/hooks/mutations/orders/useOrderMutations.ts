@@ -1,10 +1,10 @@
 /**
- * Order mutations — re-exported from @lupa/api-client
+ * Order mutations — re-exported from lupa-api-client
  */
 import {
   useCreateOrder,
   useUpdateOrderStatus,
-} from '@lupa/api-client/hooks';
+} from 'lupa-api-client/hooks';
 
 export { useCreateOrder, useUpdateOrderStatus };
 

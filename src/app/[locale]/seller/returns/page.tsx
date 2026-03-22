@@ -12,8 +12,8 @@ import {
   Package,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useReturns, useApproveReturn, useRejectReturn } from '@lupa/api-client/hooks';
-import { useSellerStore } from '@lupa/api-client/hooks';
+import { useReturns, useApproveReturn, useRejectReturn } from 'lupa-api-client/hooks';
+import { useSellerStore } from 'lupa-api-client/hooks';
 
 const RETURN_STATUS_LABELS: Record<string, { label: string; color: string; icon: React.ReactNode }> = {
   REQUESTED: { label: 'Solicitado', color: 'bg-accent text-accent-foreground', icon: <Clock className="w-3 h-3" /> },

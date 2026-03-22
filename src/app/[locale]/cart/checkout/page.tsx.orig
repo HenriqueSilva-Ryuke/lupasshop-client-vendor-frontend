@@ -19,10 +19,10 @@ import {
   useAddresses,
   useCreateAddress,
   useValidateCoupon,
-} from '@lupa/api-client/hooks';
-import { getApiClient, CREATE_ORDER, CREATE_ORDER_ITEM, PROCESS_PAYMENT } from '@lupa/api-client';
-import { PaymentMethodType } from '@lupa/types';
-import type { CreateAddressInput, CreateOrderInput, CreateOrderItemInput, ProcessPaymentInput } from '@lupa/types';
+} from 'lupa-api-client/hooks';
+import { getApiClient, CREATE_ORDER, CREATE_ORDER_ITEM, PROCESS_PAYMENT } from 'lupa-api-client';
+import { PaymentMethodType } from 'lupa-types';
+import type { CreateAddressInput, CreateOrderInput, CreateOrderItemInput, ProcessPaymentInput } from 'lupa-types';
 import { useCartStore } from '@/stores/cartStore';
 
 type Step = 'review' | 'address' | 'coupon' | 'shipping' | 'payment' | 'confirmation';

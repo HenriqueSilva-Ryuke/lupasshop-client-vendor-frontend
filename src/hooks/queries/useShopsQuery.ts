@@ -1,7 +1,7 @@
 /**
- * Shops hooks — re-exported from @lupa/api-client
+ * Shops hooks — re-exported from lupa-api-client
  */
-import { useStores } from '@lupa/api-client/hooks';
+import { useStores } from 'lupa-api-client/hooks';
 
 export { useStores };
 

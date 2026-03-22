@@ -1,7 +1,7 @@
 /**
- * Review hooks — re-exported from @lupa/api-client
+ * Review hooks — re-exported from lupa-api-client
  */
-import { useReviews } from '@lupa/api-client/hooks';
+import { useReviews } from 'lupa-api-client/hooks';
 
 export { useReviews };
 
