@@ -6,79 +6,103 @@ import { useRouter } from "next/navigation";
 import { useClientAuth } from "@/hooks/useClientAuth";
 import { useAuthProtection } from "@/hooks/useAuthProtection";
 import { useSellerStore } from "@/hooks/useSellerStore";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { apolloClient } from "@/lib/graphql-client";
 import { UPDATE_STORE as UPDATE_STORE_SETTINGS } from "@/graphql/mutations";
 import { Toggle } from "@/components/ui/Toggle";
 import { FileUpload } from "@/components/ui/FileUpload";
+import { Loader2 } from "lucide-react";
+import { toast } from "sonner";
 
 interface ShippingMethod {
   id: string;
   name: string;
   description: string;
   enabled: boolean;
-  icon: string;
-  bgColor: string;
-  textColor: string;
+  badge: string;
+  badgeBg: string;
+  badgeText: string;
 }
+
+// ── Transportadoras e serviços de entrega em Angola ──────────────────────────
+const DEFAULT_SHIPPING_METHODS: ShippingMethod[] = [
+  {
+    id: "speed",
+    name: "Speed Angola",
+    description: "Entrega rápida em Luanda e províncias — 24h a 72h",
+    enabled: true,
+    badge: "SPEED",
+    badgeBg: "bg-[#ff5722]",
+    badgeText: "text-white",
+  },
+  {
+    id: "dhl",
+    name: "DHL Angola",
+    description: "Entregas internacionais e encomendas volumosas",
+    enabled: false,
+    badge: "DHL",
+    badgeBg: "bg-[#FFCC00]",
+    badgeText: "text-[#D40511]",
+  },
+  {
+    id: "correios",
+    name: "Correios de Angola (CTT)",
+    description: "Serviço postal para todo o país",
+    enabled: false,
+    badge: "CTT",
+    badgeBg: "bg-red-600",
+    badgeText: "text-white",
+  },
+  {
+    id: "mototaxi",
+    name: "Motoqueiro / Entrega Própria",
+    description: "Entrega local com taxa fixa por zona de Luanda",
+    enabled: true,
+    badge: "MOTO",
+    badgeBg: "bg-primary",
+    badgeText: "text-white",
+  },
+  {
+    id: "retirada",
+    name: "Levantamento na Loja",
+    description: "O cliente levanta pessoalmente na sua loja",
+    enabled: false,
+    badge: "LOJA",
+    badgeBg: "bg-muted",
+    badgeText: "text-foreground",
+  },
+];
+
+// ── Províncias de Angola ─────────────────────────────────────────────────────
+const PROVINCIAS = [
+  "Luanda", "Benguela", "Huambo", "Bié", "Malanje", "Kwanza Norte",
+  "Kwanza Sul", "Uíge", "Zaire", "Cabinda", "Lunda Norte", "Lunda Sul",
+  "Moxico", "Cuando Cubango", "Cunene", "Namibe", "Huíla", "Bengo",
+];
 
 export default function SettingsPage() {
   const locale = useLocale();
   const router = useRouter();
   const { user, isClient } = useClientAuth();
-  const { isLoading: isAuthLoading, isAuthorized } = useAuthProtection([
-    "SELLER",
-    "ADMIN",
-  ]);
+  const queryClient = useQueryClient();
+  const { isLoading: isAuthLoading, isAuthorized } = useAuthProtection(["SELLER", "ADMIN"]);
   const { data: store, isLoading: storeLoading } = useSellerStore(user?.id);
 
-  const [storeName, setStoreName] = useState("");
+  const [storeName, setStoreName]     = useState("");
   const [description, setDescription] = useState("");
-  const [email, setEmail] = useState("");
-  const [address, setAddress] = useState("");
-  const [schedule, setSchedule] = useState("");
-  const [logoFile, setLogoFile] = useState<File | null>(null);
-  const [logoUrl, setLogoUrl] = useState("");
-  const [bannerFile, setBannerFile] = useState<File | null>(null);
-  const [bannerUrl, setBannerUrl] = useState("");
-  const [instagramUrl, setInstagramUrl] = useState("");
-  const [facebookUrl, setFacebookUrl] = useState("");
-  const [whatsappNumber, setWhatsappNumber] = useState("");
-  const [pixKey, setPixKey] = useState("");
-  const [freeShippingMin, setFreeShippingMin] = useState("299");
-  const [enableFreeShipping, setEnableFreeShipping] = useState(false);
-  const [acceptsCreditCard, setAcceptsCreditCard] = useState(true);
-  const [acceptsBoleto, setAcceptsBoleto] = useState(false);
+  const [email, setEmail]             = useState("");
+  const [address, setAddress]         = useState("");
+  const [schedule, setSchedule]       = useState("");
+  const [provincia, setProvincia]     = useState("Luanda");
+  const [logoFile, setLogoFile]       = useState<File | null>(null);
+  const [logoUrl, setLogoUrl]         = useState("");
+  const [bannerFile, setBannerFile]   = useState<File | null>(null);
+  const [bannerUrl, setBannerUrl]     = useState("");
 
-  const [shippingMethods, setShippingMethods] = useState<ShippingMethod[]>([
-    {
-      id: "correios",
-      name: "Correios (SEDEX / PAC)",
-      description: "Calculado automaticamente",
-      enabled: true,
-      icon: "CORREIOS",
-      bgColor: "bg-yellow-400",
-      textColor: "text-blue-900",
-    },
-    {
-      id: "loggi",
-      name: "Loggi Express",
-      description: "Entrega local no mesmo dia",
-      enabled: false,
-      icon: "LOGGI",
-      bgColor: "bg-primary600",
-      textColor: "text-white",
-    },
-    {
-      id: "motobay",
-      name: "Entrega Própria",
-      description: "Taxa fixa por região",
-      enabled: true,
-      icon: "MOTOBAY",
-      bgColor: "",
-      textColor: "text-white",
-    },
-  ]);
+  const [freeShippingMin, setFreeShippingMin]       = useState("5000");
+  const [enableFreeShipping, setEnableFreeShipping] = useState(false);
+
+  const [shippingMethods, setShippingMethods] = useState<ShippingMethod[]>(DEFAULT_SHIPPING_METHODS);
 
   useEffect(() => {
     if (isClient && !user) {
@@ -86,7 +110,6 @@ export default function SettingsPage() {
     }
   }, [isClient, user, router, locale]);
 
-  // Redirect to login if not authorized
   useEffect(() => {
     if (!isAuthLoading && !isAuthorized) {
       router.replace(`/${locale}/auth/login`);
@@ -99,216 +122,196 @@ export default function SettingsPage() {
       setDescription(store.description || "");
       setLogoUrl(store.logoUrl || "");
       setBannerUrl(store.bannerUrl || "");
-      setInstagramUrl(store.instagramUrl || "");
-      setFacebookUrl(store.facebookUrl || "");
-      setWhatsappNumber(store.whatsappNumber || "");
-      setPixKey(store.pixKey || "");
-      setAcceptsCreditCard(store.acceptsCreditCard ?? true);
-      setAcceptsBoleto(store.acceptsBoleto ?? false);
+      setAddress(store.location || "");
       if (store.freeShippingMin) {
         setFreeShippingMin(store.freeShippingMin.toString());
         setEnableFreeShipping(true);
       }
-
       if (store.shippingMethods && Array.isArray(store.shippingMethods)) {
-        setShippingMethods(
-          store.shippingMethods as unknown as ShippingMethod[],
+        // Merge saved methods with defaults (to add new ones without losing saved state)
+        const saved = store.shippingMethods as unknown as ShippingMethod[];
+        setShippingMethods(prev =>
+          prev.map(def => {
+            const found = saved.find(s => s.id === def.id);
+            return found ? { ...def, enabled: found.enabled } : def;
+          })
         );
       }
     }
   }, [store]);
 
-  const updateSettingsMutation = useMutation<any, Error, any>({
+  const updateMutation = useMutation<any, Error, any>({
     mutationFn: async (data: any) => {
       const result = await apolloClient.mutate<{ updateStore: any }>({
         mutation: UPDATE_STORE_SETTINGS,
-        variables: {
-          id: store?.id,
-          input: data,
-        },
+        variables: { id: store?.id, input: data },
       });
       return result.data?.updateStore;
     },
     onSuccess: () => {
-      alert("Configurações salvas com sucesso!");
+      queryClient.invalidateQueries({ queryKey: ['sellerStore', user?.id] });
+      toast.success("Configurações guardadas com sucesso!");
     },
-    onError: (error) => {
-      console.error("Error updating settings:", error);
-      alert("Erro ao salvar configurações");
+    onError: (err) => {
+      toast.error(`Erro: ${err.message}`);
     },
   });
 
-  const handleSaveSettings = () => {
-    const input = {
+  const handleSave = () => {
+    updateMutation.mutate({
       name: storeName,
       description,
       logoUrl,
       bannerUrl,
-      instagramUrl,
-      facebookUrl,
-      whatsappNumber,
-      pixKey,
-      acceptsCreditCard,
-      acceptsBoleto,
-      shippingMethods: shippingMethods,
+      location: `${address}${provincia ? `, ${provincia}` : ''}`,
+      shippingMethods,
       freeShippingMin: enableFreeShipping ? parseFloat(freeShippingMin) : null,
-    };
-
-    updateSettingsMutation.mutate(input);
+    });
   };
 
-  const toggleShippingMethod = (id: string) => {
-    setShippingMethods((prev) =>
-      prev.map((method) =>
-        method.id === id ? { ...method, enabled: !method.enabled } : method,
-      ),
-    );
+  const toggleShipping = (id: string) => {
+    setShippingMethods(prev => prev.map(m => m.id === id ? { ...m, enabled: !m.enabled } : m));
   };
 
   if (storeLoading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+        <Loader2 className="w-8 h-8 text-primary animate-spin" />
       </div>
     );
   }
 
   if (!store && !storeLoading) {
     return (
-      <div className="flex flex-col items-center justify-center h-64">
-        <h2 className="text-xl font-bold mb-4">Loja não encontrada</h2>
-        <p className="text-muted-foreground">
-          Você ainda não configurou uma loja.
-        </p>
+      <div className="flex flex-col items-center justify-center h-64 gap-2 text-muted-foreground">
+        <p className="text-lg font-semibold">Loja não encontrada</p>
+        <p className="text-sm">Crie a sua loja primeiro através do processo de integração.</p>
       </div>
     );
   }
 
   return (
     <div className="w-full relative bg-background-light">
+      {/* Header */}
       <header className="sticky top-0 z-20 w-full bg-card/95 backdrop-blur-md border-b border-border">
-        <div className="px-6 py-4 lg:px-10">
-          <div className="flex flex-wrap justify-between items-center gap-4">
-            <div className="flex flex-col gap-1">
-              <h1 className="text-2xl lg:text-3xl font-black leading-tight tracking-[-0.033em] ">
-                Configurações da Loja
-              </h1>
-              <p className=" text-sm lg:text-base font-normal">
-                Gerencie o perfil da sua loja, pagamentos e envios.
-              </p>
-            </div>
-            <div className="flex items-center gap-3">
-              <button
-                onClick={handleSaveSettings}
-                disabled={updateSettingsMutation.isPending}
-                className="flex items-center justify-center rounded-lg h-10 px-4 bg-primary text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary-dark transition-colors shadow-lg shadow-primary/30 disabled:opacity-50"
-              >
-                <span className="mr-2 material-symbols-outlined text-[18px]">
-                  save
-                </span>
-                <span className="truncate">
-                  {updateSettingsMutation.isPending
-                    ? "Salvando..."
-                    : "Salvar Alterações"}
-                </span>
-              </button>
-            </div>
+        <div className="px-6 py-4 lg:px-10 flex flex-wrap justify-between items-center gap-4">
+          <div>
+            <h1 className="text-2xl lg:text-3xl font-black tracking-tight">Configurações da Loja</h1>
+            <p className="text-sm text-muted-foreground mt-0.5">Perfil, localização e políticas de entrega</p>
           </div>
+          <button
+            onClick={handleSave}
+            disabled={updateMutation.isPending}
+            className="flex items-center gap-2 rounded-lg h-10 px-4 bg-primary text-sm font-bold hover:bg-primary/90 transition-colors disabled:opacity-50"
+          >
+            {updateMutation.isPending ? (
+              <Loader2 className="w-4 h-4 animate-spin" />
+            ) : (
+              <span className="material-symbols-outlined text-[18px]">save</span>
+            )}
+            {updateMutation.isPending ? "A guardar..." : "Guardar Alterações"}
+          </button>
         </div>
       </header>
 
       <div className="px-6 py-8 lg:px-10 max-w-[1000px] mx-auto flex flex-col gap-8">
-        {/* Store Profile */}
-        <section className="flex flex-col gap-4">
+
+        {/* ── 1. Perfil da Loja ── */}
+        <section className="space-y-4">
           <h2 className="text-xl font-bold flex items-center gap-2">
-            <span className="material-symbols-outlined text-primary">
-              storefront
-            </span>
+            <span className="material-symbols-outlined text-primary">storefront</span>
             Perfil da Loja
           </h2>
-          <div className="rounded-xl border border-border bg-card shadow-sm p-6 lg:p-8">
+          <div className="rounded-xl border border-border bg-card p-6 lg:p-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="flex flex-col gap-4 items-center text-center">
+              {/* Logo */}
+              <div className="flex flex-col items-center text-center">
                 <FileUpload
                   label="Logo da Loja"
                   description="PNG ou JPG até 2MB"
                   accept="image/*"
                   preview={logoUrl}
-                  onFileSelect={(file) => setLogoFile(file)}
+                  onFileSelect={file => setLogoFile(file)}
                   onRemove={() => setLogoFile(null)}
                 />
               </div>
 
-              <div className="md:col-span-2 flex flex-col gap-5">
+              {/* Main fields */}
+              <div className="md:col-span-2 space-y-4">
                 <FileUpload
                   label="Banner da Loja"
-                  description="1200x300 pixels (PNG ou JPG)"
+                  description="1200×300 px (PNG ou JPG)"
                   accept="image/*"
                   preview={bannerUrl}
-                  onFileSelect={(file) => setBannerFile(file)}
+                  onFileSelect={file => setBannerFile(file)}
                 />
 
-                <div className="grid grid-cols-1 gap-4">
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-sm font-medium text-foreground">
-                      Nome da Loja
-                    </label>
-                    <input
-                      className="w-full rounded-lg border border-border bg-card text-foreground focus:border-primary focus:outline-none sm:text-sm py-2.5 px-3"
-                      type="text"
-                      value={storeName}
-                      onChange={(e) => setStoreName(e.target.value)}
-                    />
-                  </div>
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-sm font-medium text-foreground">
-                      Descrição Curta
-                    </label>
-                    <textarea
-                      className="w-full rounded-lg border border-border bg-card text-foreground focus:border-primary focus:outline-none sm:text-sm p-2.5"
-                      rows={3}
-                      value={description}
-                      onChange={(e) => setDescription(e.target.value)}
-                    />
-                  </div>
+                <div className="space-y-1.5">
+                  <label className="text-sm font-medium">Nome da Loja</label>
+                  <input
+                    className="w-full rounded-lg border border-border bg-card text-foreground focus:border-primary focus:outline-none text-sm py-2.5 px-3 transition-colors"
+                    type="text"
+                    value={storeName}
+                    onChange={e => setStoreName(e.target.value)}
+                    placeholder="Ex: Loja do João"
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-sm font-medium">Descrição Curta</label>
+                  <textarea
+                    className="w-full rounded-lg border border-border bg-card text-foreground focus:border-primary focus:outline-none text-sm p-2.5 transition-colors resize-none"
+                    rows={3}
+                    value={description}
+                    onChange={e => setDescription(e.target.value)}
+                    placeholder="Descreva brevemente a sua loja..."
+                  />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="flex flex-col gap-1.5 border-t border-border pt-4 mt-2">
-                  <label className="text-sm font-medium text-foreground">
-                    E-mail de Contato
-                  </label>
+              {/* Location / contact */}
+              <div className="md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-border pt-6">
+                <div className="space-y-1.5">
+                  <label className="text-sm font-medium">E-mail de Contacto</label>
                   <input
-                    className="w-full rounded-lg border border-border bg-card text-foreground focus:border-primary focus:outline-none sm:text-sm py-2.5 px-3"
+                    className="w-full rounded-lg border border-border bg-card text-foreground focus:border-primary focus:outline-none text-sm py-2.5 px-3 transition-colors"
                     type="email"
-                    placeholder="contato@minhaloja.com"
+                    placeholder="contacto@minha.loja"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={e => setEmail(e.target.value)}
                   />
                 </div>
-                <div className="flex flex-col gap-1.5 border-t border-border pt-4 mt-2">
-                  <label className="text-sm font-medium text-foreground">
-                    Horário de Funcionamento
-                  </label>
+
+                <div className="space-y-1.5">
+                  <label className="text-sm font-medium">Horário de Funcionamento</label>
                   <input
-                    className="w-full rounded-lg border border-border bg-card text-foreground focus:border-primary focus:outline-none sm:text-sm py-2.5 px-3"
+                    className="w-full rounded-lg border border-border bg-card text-foreground focus:border-primary focus:outline-none text-sm py-2.5 px-3 transition-colors"
                     type="text"
-                    placeholder="Seg a Sex: 09h - 18h"
+                    placeholder="Seg–Sex: 08h–17h | Sáb: 08h–13h"
                     value={schedule}
-                    onChange={(e) => setSchedule(e.target.value)}
+                    onChange={e => setSchedule(e.target.value)}
                   />
                 </div>
-                <div className="flex flex-col gap-1.5 md:col-span-2">
-                  <label className="text-sm font-medium text-foreground">
-                    Tempo de Tratamento ou Endereço Completo
-                  </label>
+
+                <div className="space-y-1.5">
+                  <label className="text-sm font-medium">Província</label>
+                  <select
+                    value={provincia}
+                    onChange={e => setProvincia(e.target.value)}
+                    className="w-full rounded-lg border border-border bg-card text-foreground focus:border-primary focus:outline-none text-sm py-2.5 px-3 transition-colors"
+                  >
+                    {PROVINCIAS.map(p => <option key={p}>{p}</option>)}
+                  </select>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-sm font-medium">Morada / Bairro</label>
                   <input
-                    className="w-full rounded-lg border border-border bg-card text-foreground focus:border-primary focus:outline-none sm:text-sm py-2.5 px-3"
+                    className="w-full rounded-lg border border-border bg-card text-foreground focus:border-primary focus:outline-none text-sm py-2.5 px-3 transition-colors"
                     type="text"
-                    placeholder="Rua Exemplo, 123 - Centro, Cidade - UF"
+                    placeholder="Ex: Rua da Missão, Miramar, Luanda"
                     value={address}
-                    onChange={(e) => setAddress(e.target.value)}
+                    onChange={e => setAddress(e.target.value)}
                   />
                 </div>
               </div>
@@ -316,105 +319,85 @@ export default function SettingsPage() {
           </div>
         </section>
 
-        {/* Shipping Policies */}
-        <section className="flex flex-col gap-4">
+        {/* ── 2. Transportadoras ── */}
+        <section className="space-y-4">
           <h2 className="text-xl font-bold flex items-center gap-2">
-            <span className="material-symbols-outlined text-primary">
-              local_shipping
-            </span>
-            Políticas de Envio
+            <span className="material-symbols-outlined text-primary">local_shipping</span>
+            Políticas de Entrega
           </h2>
-          <div className="rounded-xl border border-border bg-card overflow-hidden shadow-sm">
-            <div className="p-6 border-b flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div>
-                <h3 className="text-base font-semibold ">
-                  Transportadoras Ativas
-                </h3>
-                <p className="text-sm ">
-                  Selecione quais serviços de entrega deseja oferecer.
-                </p>
-              </div>
+
+          <div className="rounded-xl border border-border bg-card overflow-hidden">
+            <div className="p-5 border-b border-border bg-muted/20">
+              <p className="text-sm font-semibold">Serviços de Entrega Activos</p>
+              <p className="text-xs text-muted-foreground mt-0.5">Seleccione os serviços que a sua loja oferece</p>
             </div>
 
             <div className="divide-y divide-border">
-              {shippingMethods.map((method) => (
+              {shippingMethods.map(method => (
                 <div
                   key={method.id}
-                  className="p-4 flex items-center justify-between hover:bg-muted/40 transition-colors"
+                  className="px-5 py-4 flex items-center justify-between hover:bg-muted/30 transition-colors"
                 >
                   <div className="flex items-center gap-4">
                     <div
-                      className={`h-10 w-10 rounded-lg ${method.bgColor} flex items-center justify-center font-bold ${method.textColor} text-xs shadow-sm`}
+                      className={`h-10 w-10 rounded-lg ${method.badgeBg} ${method.badgeText} flex items-center justify-center font-bold text-xs shadow-sm shrink-0`}
                     >
-                      {method.icon}
+                      {method.badge}
                     </div>
                     <div>
-                      <p className="text-sm font-medium ">{method.name}</p>
-                      <p className="text-xs ">{method.description}</p>
+                      <p className="text-sm font-semibold">{method.name}</p>
+                      <p className="text-xs text-muted-foreground">{method.description}</p>
                     </div>
                   </div>
-                  <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
-                    <input
-                      className={`toggle-checkbox absolute block w-5 h-5 rounded-full border-4 appearance-none cursor-pointer ${
-                        method.enabled
-                          ? "border-primary translate-x-5"
-                          : "border-muted-foreground"
-                      }`}
-                      id={`shipping-${method.id}`}
-                      type="checkbox"
-                      checked={method.enabled}
-                      onChange={() => toggleShippingMethod(method.id)}
-                    />
-                    <label
-                      className={`toggle-label block overflow-hidden h-5 rounded-full cursor-pointer ${
-                        method.enabled ? "bg-primary" : "bg-muted"
-                      }`}
-                      htmlFor={`shipping-${method.id}`}
-                    ></label>
-                  </div>
+                  <Toggle
+                    checked={method.enabled}
+                    onChange={() => toggleShipping(method.id)}
+                  />
                 </div>
               ))}
             </div>
 
-            <div className="p-4 border-t border-border">
-              <div className="flex flex-col gap-3">
-                <h4 className="text-sm font-semibold text-foreground">
-                  Configurações Avançadas de Frete
-                </h4>
-                <div className="flex items-center gap-3">
-                  <Toggle
-                    label="Oferecer Frete Grátis acima de AOA"
-                    checked={enableFreeShipping}
-                    onChange={(e) =>
-                      setEnableFreeShipping(e.currentTarget.checked)
-                    }
-                  />
+            {/* Free shipping */}
+            <div className="p-5 border-t border-border bg-muted/10 space-y-3">
+              <p className="text-sm font-semibold">Frete Grátis</p>
+              <div className="flex flex-wrap items-center gap-4">
+                <Toggle
+                  label="Oferecer frete grátis acima de AOA"
+                  checked={enableFreeShipping}
+                  onChange={e => setEnableFreeShipping(e.currentTarget.checked)}
+                />
+                <div className="flex items-center gap-2">
                   <input
-                    className="w-24 rounded border border-border bg-card py-1 px-2 text-sm focus:ring-primary focus:border-primary disabled:bg-muted disabled:text-muted-foreground"
+                    className="w-28 rounded-lg border border-border bg-card py-1.5 px-3 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary focus:outline-none disabled:bg-muted disabled:text-muted-foreground transition-colors"
                     type="number"
                     value={freeShippingMin}
-                    onChange={(e) => setFreeShippingMin(e.target.value)}
+                    min={0}
+                    onChange={e => setFreeShippingMin(e.target.value)}
                     disabled={!enableFreeShipping}
                   />
+                  <span className="text-sm text-muted-foreground">AOA</span>
                 </div>
               </div>
+              {enableFreeShipping && (
+                <p className="text-xs text-muted-foreground">
+                  Pedidos acima de {parseInt(freeShippingMin || '0').toLocaleString('pt-AO')} AOA terão entrega gratuita.
+                </p>
+              )}
             </div>
           </div>
         </section>
 
-        <div className="h-12"></div>
+        <div className="h-16" />
       </div>
 
-      {/* Mobile Save Button */}
-      <div className="fixed bottom-0 left-0 right-0 z-10 w-full border-t border-border bg-card p-4 lg:hidden">
+      {/* Mobile save bar */}
+      <div className="fixed bottom-0 left-0 right-0 z-10 border-t border-border bg-card p-4 lg:hidden">
         <button
-          onClick={handleSaveSettings}
-          disabled={updateSettingsMutation.isPending}
-          className="w-full flex items-center justify-center rounded-lg h-12 px-4 bg-primary text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary-dark transition-colors shadow-lg disabled:opacity-50"
+          onClick={handleSave}
+          disabled={updateMutation.isPending}
+          className="w-full flex items-center justify-center rounded-lg h-12 px-4 bg-primary text-base font-bold hover:bg-primary/90 transition-colors disabled:opacity-50"
         >
-          {updateSettingsMutation.isPending
-            ? "Salvando..."
-            : "Salvar Todas as Alterações"}
+          {updateMutation.isPending ? "A guardar..." : "Guardar Todas as Alterações"}
         </button>
       </div>
     </div>
