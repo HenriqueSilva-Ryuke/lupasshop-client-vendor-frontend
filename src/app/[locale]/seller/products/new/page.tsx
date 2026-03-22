@@ -1,6 +1,6 @@
 'use client';
 
-import React, { use } from 'react';
+import React from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -28,12 +28,9 @@ const productSchema = z.object({
 
 type ProductFormValues = z.infer<typeof productSchema>;
 
-export default function NewProductPage({ params }: { params: Promise<any> }) {
+export default function NewProductPage() {
  const router = useRouter();
  const locale = useLocale();
-
- // In Next.js 15+, params are a promise
- // const resolvedParams = use(params); 
  const { data: userData } = useQuery<any>(gql`
  query MeAndStore {
  me { id }

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, use } from 'react';
+import React, { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -8,7 +8,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { GET_PRODUCT } from '@lupa/api-client/graphql/queries';
 import { UPDATE_PRODUCT } from '@lupa/api-client/graphql/mutations';
 import { getApiClient } from '@lupa/api-client';
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
 import { toast } from 'sonner';
 import Button from '@/components/ui/Button';
@@ -28,8 +28,9 @@ const productSchema = z.object({
 
 type ProductFormValues = z.infer<typeof productSchema>;
 
-export default function EditProductPage({ params }: { params: Promise<{ locale: string, id: string }> }) {
-  const { id } = use(params);
+export default function EditProductPage() {
+  const params = useParams<{ id: string }>();
+  const id = params?.id ?? '';
   const router = useRouter();
   const locale = useLocale();
   const queryClient = useQueryClient();
@@ -45,6 +46,7 @@ export default function EditProductPage({ params }: { params: Promise<{ locale: 
       });
       return res.data?.getProduct;
     },
+    enabled: !!id,
   });
 
   const {

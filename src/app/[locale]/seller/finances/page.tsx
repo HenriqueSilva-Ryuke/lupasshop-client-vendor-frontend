@@ -41,14 +41,14 @@ export default function FinancesPage() {
   }, [store]);
 
   // Balance
-  const { data: balanceData, loading: balanceLoading } = useQuery(GET_STORE_BALANCE, {
+  const { data: balanceData, loading: balanceLoading } = useQuery<any>(GET_STORE_BALANCE, {
     variables: { storeId: store?.id },
     skip: !store?.id,
     fetchPolicy: 'cache-and-network',
   });
 
   // Payouts history
-  const { data: payoutsData, loading: payoutsLoading } = useQuery(LIST_PAYOUTS, {
+  const { data: payoutsData, loading: payoutsLoading } = useQuery<any>(LIST_PAYOUTS, {
     variables: { storeId: store?.id },
     skip: !store?.id,
     fetchPolicy: 'cache-and-network',

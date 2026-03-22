@@ -1,20 +1,22 @@
 'use client';
 
-import React, { use } from 'react';
+import React from 'react';
 import { useQuery, useMutation } from '@apollo/client/react';
 import { GET_ORDER } from '@/graphql/queries';
 import { UPDATE_ORDER_STATUS } from '@/graphql/mutations';
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { ArrowLeft, Truck, Package, Check, MapPin, User, Printer } from 'lucide-react';
 import Button from '@/components/ui/Button';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
 
-export default function SellerOrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
- const { id } = use(params);
+export default function SellerOrderDetailPage() {
+ const params = useParams<{ id: string }>();
+ const id = params?.id ?? '';
  const router = useRouter();
  const { data, loading, error, refetch } = useQuery<any>(GET_ORDER, {
- variables: { id }
+ variables: { id },
+ skip: !id,
  }) as any;
 
  const [updateStatus, { loading: updating }] = useMutation<any>(UPDATE_ORDER_STATUS);

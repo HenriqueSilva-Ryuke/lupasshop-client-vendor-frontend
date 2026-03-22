@@ -35,7 +35,7 @@ export default function ReportsPage() {
   const { data: store } = useSellerStore(user?.id);
   const [days, setDays] = useState('30');
 
-  const { data, loading, error } = useQuery(GET_SELLER_DASHBOARD, {
+  const { data, loading, error } = useQuery<any>(GET_SELLER_DASHBOARD, {
     variables: { days: parseInt(days), recentLimit: 10, topLimit: 5 },
     skip: !store?.id,
     fetchPolicy: 'cache-and-network',

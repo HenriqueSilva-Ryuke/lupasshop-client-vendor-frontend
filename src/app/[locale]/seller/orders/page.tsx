@@ -31,10 +31,8 @@ PENDING: "bg-accent text-accent-foreground",
  );
 }
 
-import { use } from 'react';
-
-export default function SellerOrdersPage({ params }: { params: Promise<{ locale: string }> }) {
- const { locale } = use(params);
+export default function SellerOrdersPage() {
+ const locale = useLocale();
  const router = useRouter();
  const { isLoading: isAuthLoading, isAuthorized } = useAuthProtection(['SELLER', 'ADMIN']);
  // Fetch orders. The backend resolver automatically filters by the seller's store if storeId is omitted

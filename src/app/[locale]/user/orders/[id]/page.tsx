@@ -1,8 +1,9 @@
 'use client';
 
-import { use, useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
+import { useParams } from 'next/navigation';
 import {
   Package,
   ArrowLeft,
@@ -102,8 +103,9 @@ function TrackingSection({ shipment }: { shipment: any }) {
   );
 }
 
-export default function OrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id: orderId } = use(params);
+export default function OrderDetailPage() {
+  const params = useParams<{ id: string }>();
+  const orderId = params?.id ?? '';
   const locale = useLocale();
 
   const { data: order, isLoading: orderLoading } = useOrder(orderId);

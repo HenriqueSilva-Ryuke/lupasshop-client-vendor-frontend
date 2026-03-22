@@ -39,10 +39,8 @@ const DELETE_PRODUCT_MUTATION = gql`
  }
 `;
 
-import { use } from 'react';
-
-export default function SellerProductsPage({ params }: { params: Promise<{ locale: string }> }) {
- const { locale } = use(params);
+export default function SellerProductsPage() {
+ const locale = useLocale();
  const router = useRouter();
  const { isLoading: isAuthLoading, isAuthorized }  = useAuthProtection(['SELLER', 'ADMIN']);
  const { data, loading, error, refetch } = useQuery<any>(SELLER_PRODUCTS_QUERY, { 
