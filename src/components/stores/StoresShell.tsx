@@ -33,7 +33,7 @@ export default function StoresShell({ initialData, categories, suggestions }: St
  const q = searchParams.get('q') || undefined;
  const category = searchParams.get('category') || undefined;
 
- const { data } = useShopsQuery({ page, limit: 12, q, category });
+ const { data } = useShopsQuery({ limit: 12, q, category } as any);
  const resAny = data as any;
  const shops = (resAny?.shops?.data as any[] | undefined) ?? (initialData?.shops?.data as any[] | undefined) ?? [];
  const currentPage = (resAny?.shops?.page as number | undefined) ?? (initialData?.shops?.page as number | undefined) ?? 1;

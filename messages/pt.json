@@ -144,7 +144,12 @@
     "overview": "Visão Geral",
     "myProducts": "Meus Produtos",
     "orders": "Pedidos",
-    "storeSettings": "Configurações da Loja",
+    "customers": "Clientes",
+    "storeSettings": "Configurações",
+    "stock": "Estoque",
+    "reports": "Relatórios",
+    "finances": "Finanças",
+    "social": "Redes Sociais",
     "newProduct": "Novo Produto",
     "sellerPanel": "Painel do Parceiro",
     "logout": "Sair"

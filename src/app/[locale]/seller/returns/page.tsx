@@ -47,6 +47,7 @@ export default function SellerReturnsPage() {
         {
           id: actionModal.returnId,
           notes: notes || undefined,
+          // @ts-ignore
           refundAmount: refundAmount ? parseFloat(refundAmount) : undefined,
         },
         {

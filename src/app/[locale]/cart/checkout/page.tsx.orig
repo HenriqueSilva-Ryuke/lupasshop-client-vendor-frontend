@@ -119,11 +119,6 @@ export default function CheckoutPage() {
     try {
       for (const [storeId, storeItems] of itemsByStore) {
         const storeTotal = storeItems.reduce((s, i) => s + i.price * i.quantity, 0);
-        
-        if (!storeId || storeId === 'unknown' || storeId.length < 32) {
-          console.error('Invalid storeId, skipping order creation for items:', storeItems);
-          continue; // Skip invalid legacy cart items to prevent GraphQL crash
-        }
 
         const { data: orderData } = await client.mutate<{ createOrder: { id: string } }>({
           mutation: CREATE_ORDER,

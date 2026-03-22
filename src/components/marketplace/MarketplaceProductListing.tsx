@@ -4,9 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Heart, ShoppingCart, ChevronRight, ChevronLeft, Star, Search } from 'lucide-react';
-import { useProducts } from '@/hooks/useProducts';
-import { useStores } from '@/hooks/useStores';
-import { useCategories } from '@/hooks/useCategories';
+import { useMarketplaceData } from '@lupa/api-client/hooks';
 import { useDebounce } from '@/hooks/useDebounce';
 import { useLocale, useTranslations } from 'next-intl';
 import type { Product, Store, Category } from '@/graphql/types';
@@ -33,16 +31,19 @@ export default function MarketplaceProductListing() {
     const offset = (currentPage - 1) * limit;
     const debouncedSearchQuery = useDebounce(searchQuery, 800);
     
-    // Fetch data from backend - always load with limit/offset, optional category filter and search
-    const { data: products = [], isLoading: productsLoading } = useProducts({
+    // Fetch data from backend using unified endpoint
+    const { data: marketplaceData, isLoading: productsLoading } = useMarketplaceData({
         limit,
         offset,
         ...(selectedCategories[0] && { categoryId: selectedCategories[0] }),
         ...(debouncedSearchQuery && { search: debouncedSearchQuery }),
-    }) as { data: Product[], isLoading: boolean };
+        categoryLimit: 20,
+        storeLimit: 10,
+    });
 
-    const { data: stores = [] } = useStores({ limit: 10 }) as { data: Store[] };
-    const { data: categories = [] } = useCategories('PRODUCT', 20) as { data: Category[] };
+    const products = marketplaceData?.products ?? [];
+    const stores = marketplaceData?.stores ?? [];
+    const categories = marketplaceData?.categories ?? [];
 
     const renderStars = (rating: number) => {
         return Array.from({ length: 5 }, (_, i) => {
@@ -104,7 +105,7 @@ export default function MarketplaceProductListing() {
  setTimeout(() => {
  addItem({
  productId: product.id,
- storeId: product.storeId || 'unknown',
+ storeId: product.store?.id || product.storeId || 'unknown',
  storeName: 'Store',
  name: product.name,
  price: product.price,

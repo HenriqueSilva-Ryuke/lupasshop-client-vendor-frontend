@@ -144,7 +144,12 @@
     "overview": "Overview",
     "myProducts": "My Products",
     "orders": "Orders",
-    "storeSettings": "Store Settings",
+    "customers": "Customers",
+    "storeSettings": "Settings",
+    "stock": "Stock Management",
+    "reports": "Reports",
+    "finances": "Finances",
+    "social": "Social Media",
     "newProduct": "New Product",
     "sellerPanel": "Seller Panel",
     "logout": "Logout"

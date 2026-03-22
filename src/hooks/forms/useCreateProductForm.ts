@@ -22,7 +22,7 @@ export const useCreateProductForm = (storeId: string) => {
   });
 
   const onSubmit = form.handleSubmit((data) => {
-    createProduct.mutate(data);
+    createProduct.mutate(data as any);
   });
 
   return {

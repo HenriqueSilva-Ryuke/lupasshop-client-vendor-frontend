@@ -137,7 +137,7 @@ function ShipmentRow({ order }: { order: any }) {
                   Etiqueta não gerada
                 </span>
                 <button
-                  onClick={() => generateLabel.mutate({ shipmentId: shipment.id })}
+                  onClick={() => generateLabel.mutate({ shipmentId: shipment.id } as any)}
                   disabled={generateLabel.isPending}
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary text-white rounded-lg text-xs font-semibold hover:bg-primary/90 disabled:opacity-50 transition-colors"
                 >

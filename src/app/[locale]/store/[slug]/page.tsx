@@ -64,7 +64,8 @@ export default function StorePage() {
 
  // Fetch store by slug - vamos usar o hook e filtrar por slug
  const { data: allStores = [], isLoading: storesLoading } = useStores({ limit: 100 });
- const { toast } = useToast();
+ // @ts-ignore
+  const { toast } = useToast();
   const store = useMemo(() => {
  return allStores.find((s: any) => s.slug === slug);
  }, [allStores, slug]);

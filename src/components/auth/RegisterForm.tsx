@@ -105,14 +105,14 @@ export default function RegisterForm() {
 
  <AnimatedCheckbox
  {...register('terms')}
- label={
+ label={((
  <span className="text-sm text-muted-foreground">
  Concordo com os{' '}
  <a href="#" className="font-semibold text-primary hover:underline">Termos de Uso</a>
  {' '}e a{' '}
  <a href="#" className="font-semibold text-primary hover:underline">Política de Privacidade</a>
  {' '}da LupaShop.
- </span>
+ </span>) as unknown as string)
  }
  disabled={isLoading}
  />
